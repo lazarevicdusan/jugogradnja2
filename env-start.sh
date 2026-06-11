@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
-# env-start.sh — start wp-env and patch the docker-compose.yml for the space in the project path.
-# Usage: bash env-start.sh
+# env-start.sh — start wp-env with a workaround for the space in "Jugogradnja 2".
+#
+# Docker Desktop on macOS cannot bind-mount paths that contain spaces AND only
+# shares certain host directories. We rsync the theme into /private/tmp (always
+# accessible to Docker) and patch docker-compose.yml to mount from there.
+#
+# Usage: bash env-start.sh   (run from anywhere)
 set -e
 
 REAL_PATH="/Users/dusanlazarevic/Desktop/Claude/Jugogradnja 2"
-SAFE_PATH="/Users/dusanlazarevic/Desktop/Claude/jugogradnja-dev"
+THEME_SRC="$REAL_PATH/wp-content/themes/jugogradnja"
+THEME_DST="/private/tmp/jugogradnja-stage/wp-content/themes/jugogradnja"
 
-# Ensure symlink exists
-ln -sfn "$REAL_PATH" "$SAFE_PATH"
+echo "Syncing theme to /private/tmp ..."
+mkdir -p "$THEME_DST"
+rsync -a --delete "$THEME_SRC/" "$THEME_DST/"
+echo "Sync done."
 
 cd "$REAL_PATH"
 npx wp-env start
 
-# Find the generated docker-compose.yml
 COMPOSE_FILE=$(ls ~/.wp-env/*/docker-compose.yml 2>/dev/null | head -1)
 if [ -z "$COMPOSE_FILE" ]; then
   echo "Could not find docker-compose.yml" >&2
@@ -21,31 +28,47 @@ fi
 
 echo "Patching $COMPOSE_FILE ..."
 
-# Replace the broken multi-line volume with the symlink path
-python3 - <<PYEOF
+python3 - "$COMPOSE_FILE" "$THEME_DST" <<'PYEOF'
 import re, sys
 
-path = "$COMPOSE_FILE"
-safe = "$SAFE_PATH"
+compose_file = sys.argv[1]
+theme_dst    = sys.argv[2]
 
-with open(path) as f:
+with open(compose_file) as f:
     content = f.read()
 
-# The broken pattern: ">-\n        /...Jugogradnja\n        2/wp-content/themes/jugogradnja:..."
-broken = r'>-\n\s+/[^\n]+Jugogradnja\n\s+2/wp-content/themes/jugogradnja:/var/www/html/wp-content/themes/jugogradnja'
-fixed  = f"'{safe}/wp-content/themes/jugogradnja:/var/www/html/wp-content/themes/jugogradnja'"
+# Replace any existing jugogradnja theme mount (broken block scalar or old path)
+patterns = [
+    # Broken >- block scalar (path with space split across lines)
+    (r'>-\r?\n\s+/[^\n]+?Jugogradnja\r?\n\s+2/wp-content/themes/jugogradnja:/var/www/html/wp-content/themes/jugogradnja',
+     theme_dst + ':/var/www/html/wp-content/themes/jugogradnja'),
+    # Already-patched but stale path
+    (r'/(?:private/tmp|Users/[^\s]+)/jugogradnja[^:]+:/var/www/html/wp-content/themes/jugogradnja',
+     theme_dst + ':/var/www/html/wp-content/themes/jugogradnja'),
+]
 
-new_content = re.sub(broken, fixed, content)
+total = 0
+new_content = content
+for pattern, replacement in patterns:
+    new_content, n = re.subn(pattern, replacement, new_content)
+    total += n
 
-if new_content == content:
-    print("Pattern not found — mount may already be correct or format changed.")
+if total == 0:
+    print("No replacements made — printing jugogradnja volume lines for debug:")
+    for line in new_content.splitlines():
+        if 'jugogradnja' in line.lower() and ('wp-content' in line or '>-' in line):
+            print(" ", repr(line))
 else:
-    with open(path, 'w') as f:
+    with open(compose_file, 'w') as f:
         f.write(new_content)
-    print("Patched successfully.")
+    print(f"Patched {total} occurrence(s). Mounting from: {theme_dst}")
 PYEOF
 
-# Restart the containers with the patched config
-COMPOSE_DIR=$(dirname "$COMPOSE_FILE")
-docker compose -f "$COMPOSE_FILE" up -d 2>&1 | tail -5
+# Force-recreate the wordpress container so the new volume binding takes effect
+docker compose -f "$COMPOSE_FILE" up -d --force-recreate wordpress 2>&1 | tail -5
+
+echo ""
 echo "Done. Visit http://localhost:8888"
+echo ""
+echo "TIP: After editing theme files, re-sync with:"
+echo "  rsync -a --delete '$THEME_SRC/' '$THEME_DST/'"
