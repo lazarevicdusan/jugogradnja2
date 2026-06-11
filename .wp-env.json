@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/wp-env/schema.json",
+  "core": null,
+  "phpVersion": "8.2",
+  "plugins": [],
+  "themes": [ "./wp-content/themes/jugogradnja" ],
+  "config": {
+    "WP_DEBUG": true,
+    "WP_DEBUG_LOG": true,
+    "WP_DEBUG_DISPLAY": false,
+    "SCRIPT_DEBUG": true,
+    "WP_ENVIRONMENT_TYPE": "local"
+  },
+  "mappings": {
+    "wp-content/themes/jugogradnja": "./wp-content/themes/jugogradnja"
+  }
+}

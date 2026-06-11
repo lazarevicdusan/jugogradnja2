@@ -1,0 +1,16 @@
+node_modules/
+.wp-env/
+.wp-env.override.json
+*.DS_Store
+.DS_Store
+Thumbs.db
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/plugins/akismet/
+*.log
+*.cache
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
