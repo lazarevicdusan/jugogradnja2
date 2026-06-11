@@ -10,12 +10,12 @@ $img = esc_url( $t . '/assets/images/photos/about-team.webp' );
 
 $t = get_template_directory_uri();
 $depts = [
-  [ 'Техничка припрема',          esc_url( $t . '/assets/images/icons/dept-tehnicka.png' ) ],
-  [ 'Грађевинска оператива',      esc_url( $t . '/assets/images/icons/dept-gradevinska.png' ) ],
-  [ 'Логистика',                  esc_url( $t . '/assets/images/icons/dept-logistika.png' ) ],
-  [ 'Инвестиције',                esc_url( $t . '/assets/images/icons/dept-investicije.png' ) ],
-  [ 'Финансије и администрација', esc_url( $t . '/assets/images/icons/dept-finansije.png' ) ],
-  [ 'Контрола пословања',         esc_url( $t . '/assets/images/icons/dept-kontrola.png' ) ],
+  [ 'Техничка припрема',          esc_url( $t . '/assets/images/icons/dept-tehnicka.svg' ) ],
+  [ 'Грађевинска оператива',      esc_url( $t . '/assets/images/icons/dept-gradevinska.svg' ) ],
+  [ 'Логистика',                  esc_url( $t . '/assets/images/icons/dept-logistika.svg' ) ],
+  [ 'Инвестиције',                esc_url( $t . '/assets/images/icons/dept-investicije.svg' ) ],
+  [ 'Финансије и администрација', esc_url( $t . '/assets/images/icons/dept-finansije.svg' ) ],
+  [ 'Контрола пословања',         esc_url( $t . '/assets/images/icons/dept-kontrola.svg' ) ],
 ];
 ?>
 <!-- wp:html -->
