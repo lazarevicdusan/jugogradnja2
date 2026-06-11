@@ -8,13 +8,14 @@
 $t   = get_template_directory_uri();
 $img = esc_url( $t . '/assets/images/photos/about-team.webp' );
 
+$t = get_template_directory_uri();
 $depts = [
-  [ 'Техничка припрема',          'М-техничке' ],
-  [ 'Грађевинска оператива',      'М-извођење' ],
-  [ 'Логистика',                  'М-логистика' ],
-  [ 'Инвестиције',                'М-инвестиције' ],
-  [ 'Финансије и администрација', 'М-финансије' ],
-  [ 'Контрола пословања',         'М-контрола' ],
+  [ 'Техничка припрема',          esc_url( $t . '/assets/images/icons/dept-tehnicka.png' ) ],
+  [ 'Грађевинска оператива',      esc_url( $t . '/assets/images/icons/dept-gradevinska.png' ) ],
+  [ 'Логистика',                  esc_url( $t . '/assets/images/icons/dept-logistika.png' ) ],
+  [ 'Инвестиције',                esc_url( $t . '/assets/images/icons/dept-investicije.png' ) ],
+  [ 'Финансије и администрација', esc_url( $t . '/assets/images/icons/dept-finansije.png' ) ],
+  [ 'Контрола пословања',         esc_url( $t . '/assets/images/icons/dept-kontrola.png' ) ],
 ];
 ?>
 <!-- wp:html -->
@@ -33,6 +34,7 @@ $depts = [
       <div class="jg-dept-cards">
         <?php foreach ( $depts as $d ) : ?>
         <div class="jg-dept-card">
+          <img src="<?= $d[1] ?>" width="32" height="32" alt="" aria-hidden="true" class="jg-dept-card__icon">
           <span class="jg-dept-card__label"><?= esc_html( $d[0] ); ?></span>
         </div>
         <?php endforeach; ?>

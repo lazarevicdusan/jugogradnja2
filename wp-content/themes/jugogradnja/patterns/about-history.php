@@ -28,7 +28,7 @@ $milestones = [
       <?php foreach ( $milestones as $m ) : ?>
       <div class="jg-timeline__item">
         <div class="jg-timeline__dot"></div>
-        <p class="jg-timeline__entry"><strong><?= esc_html( $m[0] ); ?></strong> — <?= esc_html( $m[1] ); ?></p>
+        <p class="jg-timeline__entry"><?= esc_html( $m[0] . ' - ' . $m[1] ); ?></p>
       </div>
       <?php endforeach; ?>
     </div>
