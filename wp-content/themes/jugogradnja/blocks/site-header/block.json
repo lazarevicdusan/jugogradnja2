@@ -6,6 +6,7 @@
   "category": "jugogradnja",
   "description": "Global site header — logo, primary nav with dropdowns, script/language toggle, mobile drawer.",
   "textdomain": "jugogradnja",
+  "render": "file:./render.php",
   "supports": {
     "html": false,
     "inserter": false,
