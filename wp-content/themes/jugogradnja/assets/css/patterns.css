@@ -1301,6 +1301,20 @@
 .jg-timeline {
   position: relative;
   padding-left: 48px;
+  padding-bottom: 48px;
+}
+
+.jg-timeline::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  bottom: 16px;
+  width: 7px;
+  height: 7px;
+  background: var(--wp--preset--color--footer-blue, #253D86);
+  box-shadow:
+    0 12px 0 var(--wp--preset--color--footer-blue, #253D86),
+    0 24px 0 var(--wp--preset--color--footer-blue, #253D86);
 }
 
 .jg-timeline::before {
