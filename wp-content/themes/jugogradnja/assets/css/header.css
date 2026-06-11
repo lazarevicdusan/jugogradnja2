@@ -1,0 +1,427 @@
+/* header.css — site header, nav, dropdowns, mobile drawer */
+
+/* ── Header shell ─────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--wp--custom--header--height, 80px);
+  background: #fff;
+  z-index: 1000;
+  transition: box-shadow var(--wp--custom--transition--base, 300ms ease);
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 2px 16px rgba(33, 41, 80, 0.10);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: var(--wp--style--global--content-size, 1280px);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px);
+  gap: 32px;
+}
+
+/* ── Logo ─────────────────────────────────────────────────── */
+.site-header__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__logo img {
+  width: clamp(180px, 22vw, 320px);
+  height: auto;
+}
+
+/* ── Desktop nav ──────────────────────────────────────────── */
+.site-nav {
+  flex: 1;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .site-nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.site-nav__item {
+  position: relative;
+}
+
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(37, 61, 134, 0.9);
+  white-space: nowrap;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--wp--custom--transition--base, 300ms ease),
+              color var(--wp--custom--transition--base, 300ms ease);
+}
+
+.site-nav__link:hover,
+.site-nav__link[aria-current="page"] {
+  border-bottom-color: var(--wp--preset--color--accent, #c5a059);
+  color: rgba(37, 61, 134, 1);
+}
+
+/* ── Dropdown toggle (chevron button) ─────────────────────── */
+.has-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  padding: 4px 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: rgba(37, 61, 134, 0.9);
+  transition: transform var(--wp--custom--transition--base, 300ms ease);
+}
+
+.dropdown-toggle img {
+  transition: transform var(--wp--custom--transition--base, 300ms ease);
+}
+
+.has-dropdown:hover .dropdown-toggle img,
+.dropdown-toggle[aria-expanded="true"] img {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown panel ───────────────────────────────────────── */
+.site-nav__dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 0;
+  min-width: 240px;
+  background: #fff;
+  border-top: 3px solid rgba(197, 160, 89, 0.20);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 24px rgba(33, 41, 80, 0.12);
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--wp--custom--transition--base, 300ms ease),
+              visibility var(--wp--custom--transition--base, 300ms ease),
+              transform var(--wp--custom--transition--base, 300ms ease);
+  z-index: 100;
+}
+
+.has-dropdown:hover .site-nav__dropdown,
+.has-dropdown:focus-within .site-nav__dropdown,
+.site-nav__dropdown.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.site-nav__dropdown a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(37, 61, 134, 0.9);
+  transition: background var(--wp--custom--transition--base, 300ms ease),
+              color var(--wp--custom--transition--base, 300ms ease);
+}
+
+.site-nav__dropdown a:hover {
+  background: rgba(197, 160, 89, 0.08);
+  color: rgba(37, 61, 134, 1);
+}
+
+/* ── Language / script toggle ─────────────────────────────── */
+.site-header__lang {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .site-header__lang {
+    display: flex;
+  }
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(37, 61, 134, 0.7);
+  padding: 4px 2px;
+  transition: color var(--wp--custom--transition--base, 300ms ease);
+}
+
+.lang-btn:hover,
+.lang-btn--active {
+  color: rgba(37, 61, 134, 1);
+}
+
+.lang-sep {
+  color: rgba(37, 61, 134, 0.4);
+  font-size: 14px;
+  user-select: none;
+}
+
+/* ── Hamburger ────────────────────────────────────────────── */
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--wp--preset--color--primary, #212950);
+  padding: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+/* ── Mobile drawer overlay ────────────────────────────────── */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(33, 41, 80, 0.5);
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease, visibility 300ms ease;
+}
+
+.mobile-drawer-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Mobile drawer panel ──────────────────────────────────── */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(360px, 100vw);
+  background: var(--wp--preset--color--footer-blue, #253D86);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-drawer.is-open {
+  transform: translateX(0);
+}
+
+.mobile-drawer__inner {
+  flex: 1;
+  padding: 24px 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Drawer head */
+.mobile-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-drawer__logo img {
+  width: 200px;
+  height: auto;
+}
+
+.mobile-drawer__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tagline */
+.mobile-drawer__tagline {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.02em;
+}
+
+/* Sections */
+.mobile-drawer__section-title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+.mobile-drawer__nav a {
+  display: block;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: color 200ms ease;
+}
+
+.mobile-drawer__nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-drawer__nav a:hover {
+  color: #fff;
+}
+
+/* Contact */
+.mobile-drawer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-drawer__contact li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.mobile-drawer__contact img {
+  flex-shrink: 0;
+  margin-top: 3px;
+  opacity: 0.7;
+  filter: brightness(10);
+}
+
+.mobile-drawer__contact div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-drawer__contact span,
+.mobile-drawer__contact a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 200ms ease;
+}
+
+.mobile-drawer__contact a:hover {
+  color: #fff;
+}
+
+.mobile-drawer__contact .label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 6px;
+}
+
+.mobile-drawer__contact .label:first-child {
+  margin-top: 0;
+}
+
+.mobile-drawer__contact .hours {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+/* Lang inside drawer */
+.mobile-drawer__lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 24px;
+}
+
+.mobile-drawer__lang .lang-btn {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mobile-drawer__lang .lang-btn:hover,
+.mobile-drawer__lang .lang-btn--active {
+  color: #fff;
+}
+
+.mobile-drawer__lang .lang-sep {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Drawer footer */
+.mobile-drawer__footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mobile-drawer__footer p {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+
+.mobile-drawer__legal {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mobile-drawer__legal a {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 200ms ease;
+}
+
+.mobile-drawer__legal a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Body scroll lock when drawer is open ─────────────────── */
+body.drawer-open {
+  overflow: hidden;
+}

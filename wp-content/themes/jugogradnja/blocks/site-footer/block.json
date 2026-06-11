@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jugogradnja/site-footer",
+  "title": "Site Footer",
+  "category": "jugogradnja",
+  "description": "Global site footer — four-column layout, contact details, legal bar.",
+  "textdomain": "jugogradnja",
+  "supports": {
+    "html": false,
+    "inserter": false,
+    "lock": true
+  }
+}

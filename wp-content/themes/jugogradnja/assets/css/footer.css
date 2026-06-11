@@ -1,0 +1,167 @@
+/* footer.css — site footer */
+
+.site-footer {
+  background-color: var(--wp--preset--color--footer-blue, #253D86);
+  color: rgba(255, 255, 255, 0.7);
+  padding: clamp(48px, 6vw, 64px) clamp(16px, 4vw, 48px) 0;
+}
+
+/* ── 4-column grid ────────────────────────────────────────── */
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  max-width: var(--wp--style--global--content-size, 1280px);
+  margin: 0 auto;
+  padding-bottom: clamp(40px, 5vw, 64px);
+}
+
+@media (min-width: 640px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 48px;
+  }
+}
+
+/* ── Brand col ────────────────────────────────────────────── */
+.site-footer__logo img {
+  width: clamp(180px, 50%, 315px);
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.site-footer__tagline {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* ── Column headings ──────────────────────────────────────── */
+.site-footer__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
+}
+
+/* ── Nav / service links ──────────────────────────────────── */
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.site-footer__links a {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color var(--wp--custom--transition--base, 300ms ease);
+}
+
+.site-footer__links a:hover {
+  color: var(--wp--preset--color--accent, #c5a059);
+}
+
+/* ── Contact column ───────────────────────────────────────── */
+.site-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.site-footer__contact-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.site-footer__contact-item img {
+  flex-shrink: 0;
+  margin-top: 2px;
+  opacity: 0.6;
+  filter: brightness(10);
+}
+
+.site-footer__contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-footer__contact-text span,
+.site-footer__contact-text a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  transition: color var(--wp--custom--transition--base, 300ms ease);
+}
+
+.site-footer__contact-text a:hover {
+  color: var(--wp--preset--color--accent, #c5a059);
+}
+
+.site-footer__contact-label {
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45) !important;
+  margin-top: 6px;
+}
+
+.site-footer__contact-hours {
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+  margin-bottom: 4px;
+}
+
+/* ── Bottom bar ───────────────────────────────────────────── */
+.site-footer__bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 0;
+  max-width: var(--wp--style--global--content-size, 1280px);
+  margin: 0 auto;
+}
+
+.site-footer__copy {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.site-footer__legal {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-footer__legal a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color var(--wp--custom--transition--base, 300ms ease);
+}
+
+.site-footer__legal a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
