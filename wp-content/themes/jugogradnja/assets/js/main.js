@@ -122,6 +122,34 @@
     });
   });
 
+  /* ── Stat counter count-up ───────────────────────────────── */
+  var counters = document.querySelectorAll('.jg-stat__number[data-count]');
+  if (counters.length && 'IntersectionObserver' in window) {
+    var counted = new Set();
+    var countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || counted.has(entry.target)) return;
+        counted.add(entry.target);
+        var el     = entry.target;
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var start  = 0;
+        var duration = 1400;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var ease = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
+          var current = Math.round(ease * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(function (el) { countObserver.observe(el); });
+  }
+
   /* ── Smooth scroll for anchor links ──────────────────────── */
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href^="#"]');

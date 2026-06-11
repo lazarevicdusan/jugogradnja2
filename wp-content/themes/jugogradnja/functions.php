@@ -98,6 +98,9 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'jugogradnja-header', $uri . '/assets/css/header.css', [ 'jugogradnja-global' ], $ver );
 	wp_enqueue_style( 'jugogradnja-footer', $uri . '/assets/css/footer.css', [ 'jugogradnja-global' ], $ver );
 
+	// Pattern / section styles
+	wp_enqueue_style( 'jugogradnja-patterns', $uri . '/assets/css/patterns.css', [ 'jugogradnja-global' ], $ver );
+
 	// Theme JS (deferred)
 	wp_enqueue_script( 'jugogradnja-main', $uri . '/assets/js/main.js', [], $ver, true );
 
@@ -309,7 +312,7 @@ add_action( 'plugins_loaded', function () {
 } );
 
 // ──────────────────────────────────────────────
-// 8. BLOCK CATEGORY
+// 8. BLOCK CATEGORY + PATTERN CATEGORY
 // ──────────────────────────────────────────────
 
 add_filter( 'block_categories_all', function ( $categories ) {
@@ -324,6 +327,47 @@ add_filter( 'block_categories_all', function ( $categories ) {
 		$categories
 	);
 }, 10, 1 );
+
+// Register pattern category and all theme patterns.
+add_action( 'init', function () {
+	register_block_pattern_category( 'jugogradnja', [ 'label' => 'Jugogradnja' ] );
+
+	$header_keys = [
+		'title'       => 'Title',
+		'slug'        => 'Slug',
+		'description' => 'Description',
+		'categories'  => 'Categories',
+		'inserter'    => 'Inserter',
+	];
+
+	$patterns_dir = get_template_directory() . '/patterns';
+	foreach ( glob( $patterns_dir . '/*.php' ) ?: [] as $file ) {
+		$headers = get_file_data( $file, $header_keys );
+		if ( empty( $headers['slug'] ) || empty( $headers['title'] ) ) {
+			continue;
+		}
+
+		ob_start();
+		include $file;
+		$content = ob_get_clean();
+
+		$args = [
+			'title'      => $headers['title'],
+			'content'    => $content,
+			'inserter'   => ( 'false' !== strtolower( $headers['inserter'] ?? 'true' ) ),
+		];
+
+		if ( ! empty( $headers['description'] ) ) {
+			$args['description'] = $headers['description'];
+		}
+
+		if ( ! empty( $headers['categories'] ) ) {
+			$args['categories'] = array_map( 'trim', explode( ',', $headers['categories'] ) );
+		}
+
+		register_block_pattern( $headers['slug'], $args );
+	}
+}, 9 );
 
 // ──────────────────────────────────────────────
 // 9. SECURITY HARDENING
