@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "jugogradnja/reference-grid",
+  "title": "Reference Grid",
+  "category": "theme",
+  "description": "Sidebar category filter + 2-col project card grid for the Références archive.",
+  "textdomain": "jugogradnja",
+  "editorScript": "file:../../assets/js/editor.js",
+  "render": "file:./render.php",
+  "supports": { "html": false, "inserter": true }
+}

@@ -1,5 +1,12 @@
 /* footer.css — site footer */
 
+.wp-block-template-part:has(.site-footer),
+.site-footer {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .site-footer {
   background-color: var(--wp--preset--color--footer-blue, #253D86);
   color: rgba(255, 255, 255, 0.7);

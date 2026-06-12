@@ -17,8 +17,8 @@ $ref    = esc_url( home_url( '/reference/' ) );
   </picture>
   <div class="jg-hero__overlay" aria-hidden="true"></div>
   <div class="jg-hero__content">
-    <h1 class="jg-hero__title">Радимо. Градимо. Већ 30 година</h1>
-    <p class="jg-hero__sub">Више од 30 година инжењерске прецизности у служби модерне архитектуре.</p>
+    <h1 class="jg-hero__title">Радимо. Градимо. Од 1992. године</h1>
+    <p class="jg-hero__sub">Традиција која траје — три деценије искуства и поверења</p>
     <a class="jg-btn-outline" href="<?= $ref ?>">ИСТРАЖИТЕ ПРОЈЕКТЕ</a>
   </div>
   <div class="jg-hero__scroll" aria-hidden="true">

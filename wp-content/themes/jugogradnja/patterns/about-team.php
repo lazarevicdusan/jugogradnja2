@@ -43,10 +43,12 @@ $depts = [
 
   </div>
 </section>
+<!-- /wp:html -->
 
+<!-- wp:html -->
 <section class="jg-cta-banner">
   <div class="jg-cta-banner__inner">
-    <p class="jg-cta-banner__heading">Тражите посао — погледајте нашу страницу Каријере</p>
+    <p class="jg-cta-banner__heading">Тражите посао - погледајте нашу страницу Каријере</p>
     <a href="/karijere" class="jg-btn jg-btn--gold">Каријере</a>
   </div>
 </section>

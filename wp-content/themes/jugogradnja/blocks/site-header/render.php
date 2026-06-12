@@ -78,10 +78,10 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
             <img src="<?= $chv ?>" width="12" height="12" alt="" aria-hidden="true">
           </button>
           <ul class="site-nav__dropdown" role="list">
-            <li><a href="<?= $u( '/usluge/inzenjering/' ) ?>">Инжењеринг</a></li>
-            <li><a href="<?= $u( '/usluge/visokogradnja/' ) ?>">Висоградња</a></li>
-            <li><a href="<?= $u( '/usluge/rekonstrukcija/' ) ?>">Реконструкција и адаптација</a></li>
-            <li><a href="<?= $u( '/usluge/enterijer/' ) ?>">Услуге ентеријера</a></li>
+            <li><a href="<?= $u( '/investicije/' ) ?>"<?= $is_current( '/investicije/' ) ?>>Инвестиције и развој пројеката</a></li>
+            <li><a href="<?= $u( '/izgradnja/' ) ?>"<?= $is_current( '/izgradnja/' ) ?>>Изградња објеката</a></li>
+            <li><a href="<?= $u( '/rekonstrukcija/' ) ?>"<?= $is_current( '/rekonstrukcija/' ) ?>>Реконструкција и санација</a></li>
+            <li><a href="<?= $u( '/enterijer/' ) ?>"<?= $is_current( '/enterijer/' ) ?>>Дизајн и опремање ентеријера</a></li>
           </ul>
         </li>
 
@@ -185,10 +185,10 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
     <div class="mobile-drawer__section">
       <p class="mobile-drawer__section-title">Услуге</p>
       <ul class="mobile-drawer__nav" role="list">
-        <li><a href="<?= $u( '/usluge/inzenjering/' ) ?>" tabindex="-1">Инжењеринг</a></li>
-        <li><a href="<?= $u( '/usluge/visokogradnja/' ) ?>" tabindex="-1">Висоградња</a></li>
-        <li><a href="<?= $u( '/usluge/rekonstrukcija/' ) ?>" tabindex="-1">Реконструкција и адаптација</a></li>
-        <li><a href="<?= $u( '/usluge/enterijer/' ) ?>" tabindex="-1">Услуге ентеријера</a></li>
+        <li><a href="<?= $u( '/investicije/' ) ?>" tabindex="-1">Инвестиције и развој пројеката</a></li>
+        <li><a href="<?= $u( '/izgradnja/' ) ?>" tabindex="-1">Изградња објеката</a></li>
+        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>" tabindex="-1">Реконструкција и адаптација</a></li>
+        <li><a href="<?= $u( '/enterijer/' ) ?>" tabindex="-1">Дизајн и опремање ентеријера</a></li>
       </ul>
     </div>
 

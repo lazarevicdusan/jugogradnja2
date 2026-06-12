@@ -220,6 +220,29 @@ add_action( 'init', function () {
 } );
 
 // ──────────────────────────────────────────────
+// 5b. NEKRETNINA META FIELDS
+// ──────────────────────────────────────────────
+
+add_action( 'init', function () {
+	$string_fields = [
+		'_nekretnina_cena', '_nekretnina_povrsina', '_nekretnina_sobe',
+		'_nekretnina_spavace', '_nekretnina_kupatilo', '_nekretnina_lokacija',
+		'_nekretnina_godina', '_nekretnina_sprat', '_nekretnina_grejanje',
+		'_nekretnina_parking', '_nekretnina_status', '_nekretnina_istaknuto',
+		'_nekretnina_galerija', '_nekretnina_oprema', '_nekretnina_prostorije',
+		'_nekretnina_blizina',
+	];
+	foreach ( $string_fields as $key ) {
+		register_post_meta( 'nekretnina', $key, [
+			'type'         => 'string',
+			'single'       => true,
+			'show_in_rest' => true,
+			'auth_callback' => '__return_true',
+		] );
+	}
+} );
+
+// ──────────────────────────────────────────────
 // 6. CYRILLIC → LATIN TRANSLITERATION
 // ──────────────────────────────────────────────
 
@@ -390,10 +413,34 @@ add_action( 'init', function () {
 
 	register_block_type( $blocks_dir . '/site-header' );
 	register_block_type( $blocks_dir . '/site-footer' );
+	register_block_type( $blocks_dir . '/reference-grid' );
+	register_block_type( $blocks_dir . '/nekretnina-single', [
+		'render_callback' => function ( $attributes, $content, $block ) {
+			ob_start();
+			include get_template_directory() . '/blocks/nekretnina-single/render.php';
+			return ob_get_clean();
+		},
+	] );
 } );
 
 // ──────────────────────────────────────────────
-// 11. SVG UPLOAD SUPPORT
+// 11. REFERENCE EXPAND SCRIPT
+// ──────────────────────────────────────────────
+
+add_action( 'wp_enqueue_scripts', function () {
+	if ( is_post_type_archive( 'projekat' ) || has_block( 'jugogradnja/reference-grid' ) ) {
+		wp_enqueue_script(
+			'jg-reference-expand',
+			get_template_directory_uri() . '/assets/js/reference-expand.js',
+			[],
+			'1.0.0',
+			[ 'strategy' => 'defer', 'in_footer' => true ]
+		);
+	}
+} );
+
+// ──────────────────────────────────────────────
+// 12. SVG UPLOAD SUPPORT
 // ──────────────────────────────────────────────
 
 add_filter( 'upload_mimes', function ( $mimes ) {

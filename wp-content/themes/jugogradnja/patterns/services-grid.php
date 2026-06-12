@@ -10,28 +10,28 @@ $services = [
     [
         'img'   => $t . '/assets/images/photos/service-inzenjering.webp',
         'imgsm' => $t . '/assets/images/photos/service-inzenjering-sm.webp',
-        'title' => 'Инжењеринг',
+        'title' => 'Изградња објеката',
         'url'   => home_url( '/usluge/inzenjering/' ),
         'alt'   => 'Инжењеринг',
     ],
     [
         'img'   => $t . '/assets/images/photos/service-visokogradnja.webp',
         'imgsm' => $t . '/assets/images/photos/service-visokogradnja-sm.webp',
-        'title' => 'Висоградња',
+        'title' => 'Реконструкција и санација',
         'url'   => home_url( '/usluge/visokogradnja/' ),
         'alt'   => 'Висоградња',
     ],
     [
         'img'   => $t . '/assets/images/photos/service-investicije.webp',
         'imgsm' => $t . '/assets/images/photos/service-investicije-sm.webp',
-        'title' => 'Реконструкција и адаптација',
+        'title' => 'Инвестиције и развој пројеката',
         'url'   => home_url( '/usluge/rekonstrukcija/' ),
         'alt'   => 'Реконструкција и адаптација',
     ],
     [
         'img'   => $t . '/assets/images/photos/service-enterijer.webp',
         'imgsm' => $t . '/assets/images/photos/service-enterijer-sm.webp',
-        'title' => 'Услуге ентеријера',
+        'title' => 'Дизајн и опремање ентеријера',
         'url'   => home_url( '/usluge/enterijer/' ),
         'alt'   => 'Услуге ентеријера',
     ],
@@ -40,7 +40,7 @@ $services = [
 <!-- wp:html -->
 <section class="jg-services">
   <div class="jg-services__inner">
-    <h2 class="jg-section-heading">Четири стуба наше експертизе</h2>
+    <h2 class="jg-section-heading">Четири стуба нашег пословања</h2>
     <div class="jg-services__grid">
       <?php foreach ( $services as $svc ) : ?>
       <a class="jg-service-card" href="<?= esc_url( $svc['url'] ) ?>">
