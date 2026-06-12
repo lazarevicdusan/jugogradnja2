@@ -68,8 +68,14 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
     <nav class="site-nav" id="site-nav" aria-label="<?= esc_attr__( 'Primarni meni', 'jugogradnja' ) ?>">
       <ul class="site-nav__list" role="list">
 
-        <li class="site-nav__item">
+        <li class="site-nav__item has-dropdown">
           <a class="site-nav__link" href="<?= $u( '/o-nama/' ) ?>"<?= $is_current( '/o-nama/' ) ?>>О нама</a>
+          <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-label="<?= esc_attr__( 'Proširi podmeni O nama', 'jugogradnja' ) ?>">
+            <img src="<?= $chv ?>" width="12" height="12" alt="" aria-hidden="true">
+          </button>
+          <ul class="site-nav__dropdown" role="list">
+            <li><a href="<?= $u( '/karijere/' ) ?>"<?= $is_current( '/karijere/' ) ?>>Каријере</a></li>
+          </ul>
         </li>
 
         <li class="site-nav__item has-dropdown">

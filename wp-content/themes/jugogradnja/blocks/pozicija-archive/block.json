@@ -1,0 +1,7 @@
+{
+  "name": "jugogradnja/pozicija-archive",
+  "title": "Отворене позиције — архива",
+  "category": "theme",
+  "textdomain": "jugogradnja",
+  "supports": { "html": false, "inserter": false }
+}

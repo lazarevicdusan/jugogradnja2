@@ -220,6 +220,21 @@ add_action( 'init', function () {
 } );
 
 // ──────────────────────────────────────────────
+// 5a. POZICIJA META FIELDS
+// ──────────────────────────────────────────────
+
+add_action( 'init', function () {
+	foreach ( [ '_pozicija_tip', '_pozicija_closed', '_pozicija_lokacija', '_pozicija_opis_uvod', '_pozicija_opis', '_pozicija_uslovi', '_pozicija_nudimo' ] as $key ) {
+		register_post_meta( 'pozicija', $key, [
+			'type'          => 'string',
+			'single'        => true,
+			'show_in_rest'  => true,
+			'auth_callback' => '__return_true',
+		] );
+	}
+} );
+
+// ──────────────────────────────────────────────
 // 5b. NEKRETNINA META FIELDS
 // ──────────────────────────────────────────────
 
@@ -414,6 +429,20 @@ add_action( 'init', function () {
 	register_block_type( $blocks_dir . '/site-header' );
 	register_block_type( $blocks_dir . '/site-footer' );
 	register_block_type( $blocks_dir . '/reference-grid' );
+	register_block_type( $blocks_dir . '/pozicija-single', [
+		'render_callback' => function ( $attributes, $content, $block ) {
+			ob_start();
+			include get_template_directory() . '/blocks/pozicija-single/render.php';
+			return ob_get_clean();
+		},
+	] );
+	register_block_type( $blocks_dir . '/pozicija-archive', [
+		'render_callback' => function ( $attributes, $content, $block ) {
+			ob_start();
+			include get_template_directory() . '/blocks/pozicija-archive/render.php';
+			return ob_get_clean();
+		},
+	] );
 	register_block_type( $blocks_dir . '/nekretnina-single', [
 		'render_callback' => function ( $attributes, $content, $block ) {
 			ob_start();

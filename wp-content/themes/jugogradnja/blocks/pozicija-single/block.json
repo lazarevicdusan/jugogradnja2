@@ -1,0 +1,8 @@
+{
+  "name": "jugogradnja/pozicija-single",
+  "title": "Позиција — детаљ",
+  "category": "theme",
+  "textdomain": "jugogradnja",
+  "usesContext": ["postId", "postType"],
+  "supports": { "html": false, "inserter": false }
+}

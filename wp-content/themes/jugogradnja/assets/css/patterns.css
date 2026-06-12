@@ -1591,6 +1591,7 @@
   line-height: 1.7;
   color: #212950;
   margin: 24px 0 0;
+  text-align: center;
 }
 
 /* ── Benefits grid ─────────────────────────────────────────── */
@@ -1617,13 +1618,8 @@
   gap: 20px;
 }
 .jg-benefit-card__icon-wrap {
-  width: 56px;
-  height: 56px;
-  background: #fff;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
 }
 .jg-benefit-card__title {
@@ -1679,20 +1675,38 @@
 }
 .jg-internship-testimonial__body {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   align-items: flex-start;
-}
-.jg-internship-testimonial__avatar-wrap {
-  flex-shrink: 0;
-}
-.jg-internship-testimonial__avatar-placeholder {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #e8ecf2;
 }
 .jg-internship-testimonial__content {
   flex: 1;
+  min-width: 0;
+}
+.jg-internship-testimonial__avatar-wrap {
+  flex-shrink: 0;
+  order: 1;
+}
+.jg-internship-testimonial__avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #e8ecf2;
+}
+.jg-internship-testimonial__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 28px;
+}
+.jg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+  display: inline-block;
+}
+.jg-dot--active {
+  background: #212950;
 }
 .jg-internship-testimonial__name {
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
@@ -1727,55 +1741,65 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+.jg-careers-positions__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(24px, 2.5vw, 40px);
+  font-weight: 700;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 40px;
+}
 .jg-positions-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  margin-top: 48px;
 }
 .jg-position-card {
-  background: #f9f9f9;
-  border-radius: 16px;
-  padding: 32px 24px;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px 24px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
   text-decoration: none;
   color: #212950;
-  transition: background 300ms, box-shadow 300ms;
+  transition: border-color 300ms, box-shadow 300ms;
 }
 .jg-position-card:hover {
-  background: #f0f2f7;
-  box-shadow: 0 4px 20px rgba(33,41,80,0.1);
+  border-color: #253D86;
+  box-shadow: 0 4px 16px rgba(33,41,80,0.08);
+}
+.jg-position-card__bullet {
+  width: 8px;
+  height: 8px;
+  background: #C5A059;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 6px;
 }
 .jg-position-card__title {
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: clamp(15px, 1.3vw, 18px);
-  font-weight: 700;
-  line-height: 1.3;
-}
-.jg-position-card__arrow {
-  font-size: 20px;
-  color: #C5A059;
-  align-self: flex-end;
+  font-size: clamp(15px, 1.3vw, 17px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #253D86;
 }
 .jg-careers-positions__cta {
   text-align: center;
   margin-top: 40px;
 }
 .jg-careers-positions__all-link {
-  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: #212950;
   text-decoration: none;
-  border-bottom: 2px solid #C5A059;
-  padding-bottom: 2px;
   transition: color 300ms;
 }
 .jg-careers-positions__all-link:hover {
-  color: #C5A059;
+  color: #253D86;
 }
 
 /* ── Application form ──────────────────────────────────────── */
@@ -1787,18 +1811,19 @@
   max-width: 920px;
   margin: 0 auto;
 }
-.jg-careers-form__card {
-  background: #fff;
-  border: 2px solid #212950;
-  border-radius: 24px;
-  padding: clamp(32px, 4vw, 64px);
-}
 .jg-careers-form__heading {
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: clamp(22px, 2.5vw, 36px);
+  font-size: clamp(24px, 2.5vw, 40px);
   font-weight: 700;
-  color: #212950;
+  color: #253D86;
+  text-align: center;
   margin: 0 0 40px;
+}
+.jg-careers-form__card {
+  background: #fff;
+  border: 1.5px solid #212950;
+  border-radius: 16px;
+  padding: clamp(32px, 4vw, 56px);
 }
 .jg-apply-form {
   display: flex;
@@ -1818,7 +1843,7 @@
 .jg-apply-form__label {
   font-size: 14px;
   font-weight: 500;
-  color: #212950;
+  color: #253D86;
 }
 .jg-apply-form__label span {
   color: #C5A059;
@@ -1831,12 +1856,17 @@
   font-size: 15px;
   font-weight: 300;
   color: #212950;
-  background: #f9f9f9;
+  background: #fff;
   transition: border-color 300ms;
   outline: none;
   font-family: inherit;
   width: 100%;
   box-sizing: border-box;
+}
+.jg-apply-form__input::placeholder,
+.jg-apply-form__textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 300;
 }
 .jg-apply-form__input:focus,
 .jg-apply-form__textarea:focus {
@@ -1865,9 +1895,10 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 2px dashed #d1d5dc;
+  border: 1.5px solid #d1d5dc;
   border-radius: 8px;
-  padding: 32px 24px;
+  padding: 40px 24px;
+  background: #f9f9f9;
   cursor: pointer;
   transition: border-color 300ms, background 300ms;
   text-align: center;
@@ -1889,8 +1920,21 @@
 .jg-apply-form__submit {
   width: 100%;
   margin-top: 8px;
+  padding: 18px 32px;
+  background: #C5A059;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
   font-size: 15px;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 300ms;
+}
+.jg-apply-form__submit:hover {
+  background: #b08a40;
 }
 
 /* ── Careers responsive ────────────────────────────────────── */
@@ -1916,6 +1960,307 @@
   .jg-internship-testimonial__body {
     flex-direction: column;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   POZICIJA SINGLE PAGE
+   ═══════════════════════════════════════════════════════════ */
+
+/* Back link */
+.jg-poz-back {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 12px 0;
+}
+.jg-poz-back__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 40px);
+}
+.jg-poz-back__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #212950;
+  text-decoration: none;
+  transition: color 300ms;
+}
+.jg-poz-back__link:hover { color: #253D86; }
+
+/* Hero */
+.jg-poz-hero {
+  background: #253D86;
+  padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 40px);
+}
+.jg-poz-hero__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.jg-poz-hero__title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 20px;
+}
+.jg-poz-hero__meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.jg-poz-hero__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,.85);
+}
+
+/* Content wrapper */
+.jg-poz-content {
+  background: #fff;
+  padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 40px);
+}
+.jg-poz-content__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* Sections */
+.jg-poz-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.jg-poz-section--shaded {
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: 32px;
+}
+.jg-poz-section__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  color: #253D86;
+  margin: 0;
+}
+.jg-poz-section__text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #364153;
+  margin: 0;
+}
+
+/* Checklist */
+.jg-poz-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.jg-poz-checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #364153;
+}
+.jg-poz-checklist__item svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Нудимо card */
+.jg-poz-nudimo-card {
+  border: 1.5px solid #253D86;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.jg-poz-nudimo-card__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.jg-poz-nudimo-card__heading h2 {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 700;
+  color: #253D86;
+  margin: 0;
+}
+
+/* Apply section */
+.jg-poz-apply {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.jg-poz-apply__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 700;
+  color: #253D86;
+  text-align: center;
+  margin: 0;
+}
+.jg-poz-apply__sub {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #364153;
+  text-align: center;
+  margin: 0;
+  max-width: 640px;
+  align-self: center;
+}
+.jg-poz-apply__form-wrap {
+  background: #fff;
+  border: 1.5px solid #212950;
+  border-radius: 16px;
+  padding: clamp(24px, 3vw, 40px);
+  margin-top: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   POZICIJA ARCHIVE PAGE
+   ═══════════════════════════════════════════════════════════ */
+
+.jg-pozicija-hero {
+  background: #253D86;
+  padding: clamp(56px, 7vw, 96px) 24px clamp(48px, 6vw, 80px);
+  text-align: center;
+}
+.jg-pozicija-hero__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.jg-pozicija-hero__title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.jg-pozicija-hero__sub {
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 300;
+  color: rgba(255,255,255,.85);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.jg-pozicija-archive {
+  background: #fff;
+  padding: clamp(48px, 6vw, 80px) 24px;
+}
+.jg-pozicija-archive__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.jg-pozicija-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.jg-pozicija-card {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 14px;
+  text-decoration: none;
+  transition: border-color 300ms, box-shadow 300ms;
+}
+.jg-pozicija-card:hover {
+  border-color: #253D86;
+  box-shadow: 0 4px 16px rgba(33,41,80,0.08);
+}
+.jg-pozicija-card__bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: #C5A059;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.jg-pozicija-card--closed .jg-pozicija-card__bullet {
+  background: #d1d5db;
+}
+.jg-pozicija-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jg-pozicija-card__title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: #253D86;
+  line-height: 1.35;
+}
+.jg-pozicija-card--closed .jg-pozicija-card__title {
+  color: #9ca3af;
+}
+.jg-pozicija-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+.jg-pozicija-archive__empty {
+  text-align: center;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* No-match CTA card */
+.jg-pozicija-nomatch {
+  background: #f9f9f9;
+  border-radius: 16px;
+  padding: clamp(32px, 4vw, 48px);
+}
+.jg-pozicija-nomatch__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 700;
+  color: #212950;
+  margin: 0 0 16px;
+}
+.jg-pozicija-nomatch__text {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #364153;
+  margin: 0 0 28px;
+  max-width: 680px;
+}
+
+@media (max-width: 768px) {
+  .jg-pozicija-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .jg-pozicija-grid { grid-template-columns: 1fr; }
 }
 
 /* ═══════════════════════════════════════════════════════════
