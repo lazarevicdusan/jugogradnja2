@@ -4372,3 +4372,3190 @@
   .jg-prop-single__interest-actions { flex-direction: column; align-items: stretch; }
   .jg-btn--outline-navy { width: 100%; text-align: center; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   SOFEIJA PAGE
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Sofeija Hero ──────────────────────────────────────────────── */
+.jg-sofeija-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 442px;
+  background-color: #785143;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sofeija-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.jg-sofeija-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.jg-sofeija-hero__overlay {
+  display: none;
+}
+.jg-sofeija-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  text-align: center;
+  color: #fff;
+}
+.jg-sofeija-hero__badge {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+.jg-sofeija-hero__title {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0 0 28px;
+  color: #fff;
+}
+.jg-sofeija-hero__text {
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 780px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ── Sofeija Stats ──────────────────────────────────────────────── */
+.jg-sofeija-stats {
+  background: #fff;
+  padding: 64px 32px;
+}
+.jg-sofeija-stats__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.jg-sofeija-stats__number {
+  display: block;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 700;
+  color: #c5a059;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.jg-sofeija-stats__label {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  color: #253d86;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* ── Sofeija Tech ──────────────────────────────────────────────── */
+.jg-sofeija-tech {
+  background: #fff;
+  padding: 80px 32px;
+}
+.jg-sofeija-tech__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.jg-sofeija-tech__heading-wrap {
+  display: table;
+  margin-bottom: 20px;
+}
+.jg-sofeija-tech__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 10px;
+  white-space: nowrap;
+}
+.jg-sofeija-tech__accent {
+  width: 100%;
+  height: 4px;
+  background: #253d86;
+}
+.jg-sofeija-tech__lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 32px;
+}
+.jg-sofeija-tech__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.jg-sofeija-tech__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.jg-sofeija-tech__check {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.jg-sofeija-tech__item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.jg-sofeija-tech__item-body strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.4;
+}
+.jg-sofeija-tech__item-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+}
+.jg-sofeija-tech__photo img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  display: block;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+
+/* ── Sofeija Video placeholder ──────────────────────────────────── */
+.jg-sofeija-video-placeholder {
+  width: 100%;
+  height: 477px;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sofeija-video-placeholder__icon {
+  opacity: 0.4;
+}
+
+/* ── Sofeija View Offer ──────────────────────────────────────────── */
+.jg-sofeija-view-offer {
+  background: #fff;
+  padding: 64px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.jg-sofeija-view-offer__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.jg-btn--pill {
+  border-radius: 999px;
+  padding: 12px 32px;
+  font-size: 15px;
+}
+
+/* ── Sofeija Gallery ──────────────────────────────────────────── */
+.jg-sofeija-gallery {
+  background: #fff;
+  padding: 80px 32px;
+}
+.jg-sofeija-gallery__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.jg-sofeija-gallery__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  margin: 0 0 32px;
+  letter-spacing: -0.01em;
+}
+.jg-sofeija-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.jg-sofeija-gallery__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  aspect-ratio: 4/3;
+}
+.jg-sofeija-gallery__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.jg-sofeija-gallery__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 40%;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.17);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  backdrop-filter: blur(2px);
+}
+.jg-sofeija-gallery__cta {
+  text-align: center;
+  margin-top: 48px;
+}
+.jg-btn--outline-navy {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 2px solid #212950;
+  color: #212950;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 300ms, color 300ms;
+}
+.jg-btn--outline-navy:hover {
+  background: #212950;
+  color: #fff;
+}
+
+/* ── Sofeija Why ──────────────────────────────────────────────── */
+.jg-sofeija-why {
+  display: block;
+  width: 100%;
+}
+.jg-sofeija-why__top {
+  background: #fff;
+  padding: 64px 32px 48px;
+  color: #000;
+}
+.jg-sofeija-why__top-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+}
+.jg-sofeija-why__label {
+  font-size: 16px;
+  color: #020000;
+  margin-bottom: 16px;
+}
+.jg-sofeija-why__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 800;
+  color: #000;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0;
+}
+.jg-sofeija-why__grid {
+  position: relative;
+  min-height: 555px;
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.jg-sofeija-why__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(13,125,252,0.17), rgba(0,9,43,0.8));
+}
+.jg-sofeija-why__col {
+  position: relative;
+  z-index: 1;
+  padding: 32px 32px 59px 32px;
+  border-right: 1px solid rgba(255,255,255,0.17);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 555px;
+}
+.jg-sofeija-why__col:last-child {
+  border-right: none;
+}
+.jg-sofeija-why__num {
+  font-size: 24px;
+  font-weight: 300;
+  opacity: 0.7;
+  margin-bottom: 12px;
+  display: block;
+}
+.jg-sofeija-why__col-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Sofeija Partners ──────────────────────────────────────────── */
+.jg-sofeija-partners {
+  background: #f7f7f7;
+  padding: 80px 32px;
+}
+.jg-sofeija-partners__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 44% 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.jg-sofeija-partners__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(22px, 2.5vw, 36px);
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  line-height: 1.35;
+}
+.jg-sofeija-partners__accent {
+  height: 4px;
+  background: #253d86;
+  width: 100%;
+  margin: 20px 0 24px;
+}
+.jg-sofeija-partners__body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+  letter-spacing: 0.09em;
+}
+.jg-sofeija-partners__logos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+.jg-sofeija-partners__logo {
+  background: #fff;
+  border: 1px solid #785143;
+  border-radius: 3px;
+  height: 94px;
+  padding: 16px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sofeija-partners__logo img {
+  width: 100%;
+  height: 100%;
+  max-height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Sofeija What We Offer ──────────────────────────────────────── */
+.jg-sofeija-offer {
+  position: relative;
+  overflow: hidden;
+  min-height: 482px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sofeija-offer__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.jg-sofeija-offer__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.jg-sofeija-offer__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,9,43,0.5) 0%, rgba(120,81,67,1) 100%);
+  opacity: 0.9;
+}
+.jg-sofeija-offer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  text-align: center;
+  color: #fff;
+}
+.jg-sofeija-offer__badge {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+.jg-sofeija-offer__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin: 0 0 24px;
+  color: #fff;
+  letter-spacing: -0.05em;
+}
+.jg-sofeija-offer__text {
+  font-size: 16px;
+  line-height: 1.75;
+  opacity: 0.9;
+}
+
+/* ── Sofeija Services ──────────────────────────────────────────── */
+.jg-sofeija-svc {
+  background: #f9f9f9;
+  padding: 80px 32px;
+}
+.jg-sofeija-svc__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.jg-sofeija-svc__card {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 30px 30px rgba(0,0,0,0.1);
+}
+.jg-sofeija-svc__icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.jg-sofeija-svc__icon svg {
+  width: 64px;
+  height: 64px;
+}
+.jg-sofeija-svc__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+.jg-sofeija-svc__text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+/* ── Sofeija Contact ──────────────────────────────────────────── */
+.jg-sofeija-contact {
+  position: relative;
+  overflow: hidden;
+}
+.jg-sofeija-contact__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.jg-sofeija-contact__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.jg-sofeija-contact__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(247,247,247,0.8) 0%, rgba(247,247,247,1) 70%);
+}
+.jg-sofeija-contact__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+.jg-sofeija-contact__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 16px;
+  line-height: 1.1;
+}
+.jg-sofeija-contact__accent {
+  width: 100%;
+  height: 3px;
+  background: #253d86;
+  margin-bottom: 24px;
+}
+.jg-sofeija-contact__body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #333;
+  margin: 0;
+}
+.jg-sofeija-contact__catalog-label {
+  font-size: 13px;
+  color: #c5a059;
+  margin-top: 8px;
+}
+.jg-sofeija-contact__left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.jg-btn--catalog {
+  margin-top: 0;
+}
+
+/* Sofeija form card */
+.jg-sofeija-contact__right {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  padding: 40px 40px 44px;
+}
+
+/* Sofeija form */
+.jg-sofeija-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.jg-sofeija-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.jg-sofeija-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.jg-sofeija-form__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #253d86;
+}
+.jg-sofeija-form__label span {
+  color: #c5a059;
+}
+.jg-sofeija-form__input,
+.jg-sofeija-form__textarea {
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111;
+  outline: none;
+  transition: border-color 200ms;
+}
+.jg-sofeija-form__input:focus,
+.jg-sofeija-form__textarea:focus {
+  border-color: #253d86;
+}
+.jg-sofeija-form__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.jg-sofeija-form__note {
+  font-size: 12px;
+  color: #c5a059;
+  margin: 0;
+}
+.jg-sofeija-form__captcha {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.jg-sofeija-form__captcha-code {
+  font-weight: 600;
+  color: #212950;
+}
+.jg-sofeija-form__submit {
+  align-self: flex-end;
+  background: #785143;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 48px;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 300ms;
+}
+.jg-sofeija-form__submit:hover {
+  background: #6a4539;
+}
+
+/* ── Sofeija responsive ──────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .jg-sofeija-stats__inner { grid-template-columns: repeat(2, 1fr); }
+  .jg-sofeija-tech__inner { grid-template-columns: 1fr; }
+  .jg-sofeija-tech__photo { order: -1; }
+  .jg-sofeija-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+  .jg-sofeija-why__grid { grid-template-columns: repeat(2, 1fr); }
+  .jg-sofeija-svc__inner { grid-template-columns: repeat(2, 1fr); }
+  .jg-sofeija-contact__inner { grid-template-columns: 1fr; gap: 40px; }
+  .jg-sofeija-partners__inner { grid-template-columns: 1fr; }
+  .jg-sofeija-partners__logos { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 599px) {
+  .jg-sofeija-stats__inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .jg-sofeija-gallery__grid { grid-template-columns: 1fr; }
+  .jg-sofeija-why__grid { grid-template-columns: 1fr; }
+  .jg-sofeija-svc__inner { grid-template-columns: 1fr; }
+  .jg-sofeija-form__row { grid-template-columns: 1fr; }
+  .jg-sofeija-catalog__actions { flex-direction: column; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VELUX SECTIONS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── VELUX Hero ─────────────────────────────────────────── */
+.jg-velux-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 760px;
+  display: flex;
+  align-items: center;
+}
+.jg-velux-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.jg-velux-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.jg-velux-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
+}
+.jg-velux-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.jg-velux-hero__logo {
+  width: 200px;
+  height: auto;
+}
+.jg-velux-hero__badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(197,160,89,0.6);
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+.jg-velux-hero__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+  max-width: 640px;
+}
+.jg-velux-hero__sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.85);
+  margin: 0;
+  max-width: 500px;
+}
+.jg-velux-hero__cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.jg-velux-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 32px;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 300ms;
+}
+.jg-velux-hero__btn--gold {
+  background: #C5A059;
+  color: #fff;
+  border: 2px solid #C5A059;
+}
+.jg-velux-hero__btn--gold:hover { background: #b38d42; border-color: #b38d42; }
+.jg-velux-hero__btn--outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.7);
+}
+.jg-velux-hero__btn--outline:hover { background: rgba(255,255,255,0.1); }
+.jg-velux-hero__contacts {
+  display: flex;
+  gap: 0;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 700px;
+}
+.jg-velux-hero__contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 24px;
+}
+.jg-velux-hero__contact:first-child { border-radius: 0; }
+.jg-velux-hero__contact-label {
+  display: block;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2px;
+}
+.jg-velux-hero__contact-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ── VELUX Упит ─────────────────────────────────────────── */
+.jg-velux-upit {
+  background: #fff;
+  padding: 80px 32px;
+}
+.jg-velux-upit__inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.jg-velux-upit__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 700;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 12px;
+}
+.jg-velux-upit__sub {
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+  margin: 0 0 40px;
+}
+.jg-velux-upit__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.jg-velux-upit__card {
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  padding: 40px 40px 44px;
+  text-decoration: none;
+  transition: box-shadow 300ms, transform 300ms;
+}
+.jg-velux-upit__card:hover {
+  box-shadow: 0 8px 30px rgba(33,41,80,0.12);
+  transform: translateY(-2px);
+}
+.jg-velux-upit__icon {
+  width: 52px;
+  height: 52px;
+  background: #fef6e8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.jg-velux-upit__card-title {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #253D86;
+  margin: 0 0 12px;
+}
+.jg-velux-upit__card-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+.jg-velux-upit__contact {
+  background: #253D86;
+  border-radius: 12px;
+  padding: 28px 32px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.jg-velux-upit__contact-label {
+  display: block;
+  color: rgba(255,255,255,0.8);
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+.jg-velux-upit__contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.jg-velux-upit__contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 200ms;
+}
+.jg-velux-upit__contact-link:hover { color: #C5A059; }
+.jg-velux-upit__sep { color: rgba(255,255,255,0.3); font-size: 20px; }
+
+/* ── VELUX Stats ────────────────────────────────────────── */
+.jg-velux-stats {
+  background: #f9f9f9;
+  padding: 80px 32px;
+}
+.jg-velux-stats__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.jg-velux-stats__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  color: #253D86;
+  margin: 0 0 20px;
+}
+.jg-velux-stats__sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+  max-width: 680px;
+  margin: 0 auto 56px;
+}
+.jg-velux-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.jg-velux-stats__card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(37,61,134,0.07);
+}
+.jg-velux-stats__icon {
+  width: 60px;
+  height: 60px;
+  background: rgba(197,160,89,0.12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.jg-velux-stats__number {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: #C5A059;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.jg-velux-stats__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #253D86;
+  margin-bottom: 10px;
+}
+.jg-velux-stats__desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #888;
+  margin: 0;
+}
+
+/* ── VELUX Promo ────────────────────────────────────────── */
+.jg-velux-promo {
+  background: #fff;
+  padding: 80px 32px;
+}
+.jg-velux-promo__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.jg-velux-promo__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(197,160,89,0.5);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  color: #C5A059;
+  letter-spacing: 0.06em;
+  margin-bottom: 28px;
+}
+.jg-velux-promo__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  color: #253D86;
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+.jg-velux-promo__sub {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0 0 40px;
+}
+.jg-velux-promo__empty {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 48px 32px;
+  background: #fafafa;
+}
+.jg-velux-promo__empty-title {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 400;
+  color: #374151;
+  margin: 0 0 8px;
+}
+.jg-velux-promo__empty-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: #9ca3af;
+  margin: 0;
+}
+
+
+/* ── VELUX Прозори ──────────────────────────────────────── */
+.jg-velux-prozori {
+  background: #fff;
+  padding: 80px 32px;
+}
+.jg-velux-prozori__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.jg-velux-prozori__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 16px;
+}
+.jg-velux-prozori__sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #666;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 56px;
+}
+.jg-velux-prozori__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 40px;
+}
+.jg-velux-prozori__card {
+  border: 1px solid #e8eaf0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.jg-velux-prozori__card-img {
+  position: relative;
+  height: 320px;
+}
+.jg-velux-prozori__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.jg-velux-prozori__card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20,28,65,0.75) 0%, rgba(20,28,65,0.15) 55%, transparent 100%);
+  pointer-events: none;
+}
+.jg-velux-prozori__card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 20px 18px;
+  z-index: 1;
+}
+.jg-velux-prozori__card-title {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px;
+  line-height: 1.25;
+}
+.jg-velux-prozori__card-subtitle {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+.jg-velux-prozori__card-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #C5A059;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.jg-velux-prozori__card-body {
+  padding: 28px 28px 32px;
+}
+
+.jg-velux-prozori__card-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #666;
+  margin: 0 0 24px;
+}
+.jg-velux-prozori__price-wrap {
+  text-align: center;
+  background: rgba(106,114,130,0.09);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+.jg-velux-prozori__price-label {
+  display: block;
+  font-size: 12px;
+  color: #6A7282;
+  margin-bottom: 2px;
+}
+.jg-velux-prozori__price {
+  display: block;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: #253D86;
+  line-height: 1.1;
+}
+.jg-velux-prozori__price-unit {
+  font-size: 12px;
+  color: #6A7282;
+}
+.jg-velux-prozori__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.jg-velux-prozori__features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #444;
+}
+.jg-velux-prozori__features li::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  background: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='9' r='8' stroke='%23C5A059' stroke-width='1.4'/%3E%3Cpath d='M5.5 9l2.5 2.5 4.5-5' stroke='%23C5A059' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.jg-velux-prozori__cta {
+  display: block;
+  width: 100%;
+  background: #253D86;
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 300ms;
+}
+.jg-velux-prozori__cta:hover { background: #1a2140; }
+.jg-velux-prozori__trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.jg-velux-prozori__trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 24px;
+  border-radius: 16px;
+  text-align: center;
+}
+.jg-velux-prozori__trust-item svg { flex-shrink: 0; }
+.jg-velux-prozori__trust-item div { display: flex; flex-direction: column; gap: 4px; }
+.jg-velux-prozori__trust-item strong { font-size: 22px; font-weight: 400; color: #fff; line-height: 1.2; }
+.jg-velux-prozori__trust-item span { font-size: 14px; color: rgba(255,255,255,0.75); }
+.jg-velux-prozori__promo-wrap {
+  background: #F9F9F9;
+  border-radius: 12px;
+  padding: 40px 32px;
+}
+.jg-velux-prozori__cta-banner {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.jg-velux-prozori__cta-banner-text {
+  display: inline-block;
+  background: #C5A059;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+.jg-velux-prozori__guide {
+  text-align: center;
+}
+.jg-velux-prozori__guide p {
+  font-size: 15px;
+  color: #555;
+  margin: 0 0 24px;
+}
+.jg-velux-prozori__guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #C5A059;
+  color: #fff;
+  padding: 16px 40px;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 300ms;
+}
+.jg-velux-prozori__guide-btn:hover { background: #b08a48; }
+
+/* ── VELUX Reviews ──────────────────────────────────────── */
+.jg-velux-reviews {
+  background: #fff;
+  padding: 80px 32px;
+}
+.jg-velux-reviews__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+.jg-velux-reviews__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 700;
+  color: #253D86;
+  margin: 0 0 16px;
+}
+.jg-velux-reviews__rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.jg-velux-reviews__stars { display: flex; gap: 4px; }
+.jg-velux-reviews__score {
+  font-size: 24px;
+  font-weight: 700;
+  color: #253D86;
+}
+.jg-velux-reviews__count {
+  font-size: 14px;
+  color: #888;
+  margin: 0 0 40px;
+}
+.jg-velux-reviews__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+.jg-velux-reviews__card {
+  background: #fff;
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+  padding: 24px;
+}
+.jg-velux-reviews__card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.jg-velux-reviews__avatar {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: #C5A059;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.jg-velux-reviews__name {
+  display: block;
+  font-size: 15px;
+  color: #253D86;
+}
+.jg-velux-reviews__meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.jg-velux-reviews__meta span {
+  font-size: 12px;
+  color: #aaa;
+  margin-left: 4px;
+}
+.jg-velux-reviews__text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+.jg-velux-reviews__google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #e0e3ec;
+  color: #444;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 300ms;
+  margin-bottom: 32px;
+}
+.jg-velux-reviews__google-btn:hover { border-color: #253D86; color: #253D86; }
+.jg-velux-reviews__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #C5A059;
+  border-radius: 8px;
+  padding: 12px 20px;
+  color: #253D86;
+}
+.jg-velux-reviews__badge div { display: flex; flex-direction: column; text-align: left; }
+.jg-velux-reviews__badge span { font-size: 12px; color: #888; }
+.jg-velux-reviews__badge strong { font-size: 15px; color: #C5A059; }
+
+/* ── VELUX Ролетне ──────────────────────────────────────── */
+.jg-velux-roletne {
+  background: #F9F9F9;
+  padding: 80px 32px 0;
+}
+.jg-velux-roletne__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.jg-velux-roletne__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight: 700;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 12px;
+}
+.jg-velux-roletne__sub {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 40px;
+}
+.jg-velux-roletne__photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.jg-velux-roletne__photo {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 300px;
+}
+.jg-velux-roletne__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.jg-velux-roletne__features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.jg-velux-roletne__feature {
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 20px;
+  text-align: center;
+}
+.jg-velux-roletne__feature-icon {
+  width: 56px;
+  height: 56px;
+  background: #fef6e8;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.jg-velux-roletne__feature-title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #253D86;
+  margin: 0 0 8px;
+}
+.jg-velux-roletne__feature-text {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #777;
+  margin: 0;
+}
+.jg-velux-roletne__info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.jg-velux-roletne__info-card {
+  border-left: 4px solid #C5A059;
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 0 8px 8px 0;
+}
+.jg-velux-roletne__info-card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #253D86;
+  margin: 0 0 10px;
+}
+.jg-velux-roletne__info-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin: 0;
+}
+.jg-velux-roletne__cta {
+  background: #253D86;
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+}
+.jg-velux-roletne__cta-title {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 12px;
+}
+.jg-velux-roletne__cta-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  margin: 0 0 28px;
+}
+.jg-velux-roletne__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #C5A059;
+  color: #fff;
+  padding: 14px 36px;
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 300ms;
+}
+.jg-velux-roletne__cta-btn:hover { background: #b38d42; }
+
+/* ── VELUX Bottom CTA ───────────────────────────────────── */
+.jg-velux-bcta {
+  background: #253D86;
+  padding: 80px 32px;
+}
+.jg-velux-bcta__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.jg-velux-bcta__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.jg-velux-bcta__badge {
+  display: inline-block;
+  background: #C5A059;
+  border-radius: 0;
+  padding: 10px 24px;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+.jg-velux-bcta__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(32px, 3.2vw, 48px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin: 0 0 24px;
+}
+.jg-velux-bcta__sub {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.8);
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+.jg-velux-bcta__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 36px;
+}
+.jg-velux-bcta__card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0;
+  padding: 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.jg-velux-bcta__card-icon { flex-shrink: 0; margin-top: 2px; }
+.jg-velux-bcta__card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.jg-velux-bcta__card-label {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+}
+.jg-velux-bcta__card-value {
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+}
+.jg-velux-bcta__card-value--lg { font-size: 24px; }
+.jg-velux-bcta__card-sub {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.8);
+}
+.jg-velux-bcta__btn {
+  display: inline-flex;
+  align-items: center;
+  background: #C5A059;
+  color: #fff;
+  padding: 16px 32px;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 0;
+  min-height: 56px;
+  transition: background 300ms;
+}
+.jg-velux-bcta__btn:hover { background: #b08a48; }
+.jg-velux-bcta__right {
+  position: relative;
+  padding-top: 80px;
+}
+.jg-velux-bcta__img-frame {
+  background: rgba(197,160,89,0.1);
+  border: 4px solid rgba(197,160,89,0.2);
+  border-radius: 0;
+  padding: 4px;
+}
+.jg-velux-bcta__img-frame img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+.jg-velux-bcta__float {
+  position: absolute;
+  bottom: 40px;
+  right: -20px;
+  background: #fff;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 280px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+.jg-velux-bcta__float svg { flex-shrink: 0; margin-top: 2px; }
+.jg-velux-bcta__float > div { display: flex; flex-direction: column; gap: 6px; }
+.jg-velux-bcta__float strong {
+  font-size: 16px;
+  font-weight: 600;
+  color: #253D86;
+}
+.jg-velux-bcta__float span {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5565;
+  line-height: 1.5;
+}
+
+/* ── VELUX responsive ───────────────────────────────────── */
+@media (max-width: 1023px) {
+  .jg-velux-upit__cards { grid-template-columns: 1fr; }
+  .jg-velux-stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .jg-velux-prozori__grid { grid-template-columns: 1fr; }
+  .jg-velux-prozori__trust { grid-template-columns: 1fr; }
+  .jg-velux-prozori__trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .jg-velux-roletne__features { grid-template-columns: repeat(2, 1fr); }
+  .jg-velux-roletne__photos { grid-template-columns: 1fr 1fr; }
+  .jg-velux-roletne__photos .jg-velux-roletne__photo:last-child { display: none; }
+  .jg-velux-reviews__grid { grid-template-columns: 1fr; }
+  .jg-velux-bcta__inner { grid-template-columns: 1fr; }
+  .jg-velux-bcta__img { display: none; }
+}
+@media (max-width: 599px) {
+  .jg-velux-hero__contacts { flex-direction: column; }
+  .jg-velux-hero__heading { font-size: 36px; }
+  .jg-velux-stats__grid { grid-template-columns: 1fr 1fr; }
+  .jg-velux-roletne__features { grid-template-columns: 1fr 1fr; }
+  .jg-velux-roletne__info { grid-template-columns: 1fr; }
+  .jg-velux-roletne__photos { grid-template-columns: 1fr; }
+  .jg-velux-roletne__photos .jg-velux-roletne__photo:last-child { display: block; }
+}
+
+/* ── VELUX Subpage Hero ───────────────────────────────────── */
+.jg-velux-sp-hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 60px;
+  overflow: hidden;
+}
+.jg-velux-sp-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.jg-velux-sp-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.jg-velux-sp-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(33,41,80,0.55) 0%, rgba(33,41,80,0.85) 100%);
+}
+.jg-velux-sp-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 40px 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.jg-velux-sp-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 200ms;
+}
+.jg-velux-sp-hero__back:hover { color: #fff; }
+.jg-velux-sp-hero__logo {
+  width: 140px;
+  height: auto;
+}
+.jg-velux-sp-hero__badge {
+  display: inline-block;
+  background: #C5A059;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 5px 14px;
+  border-radius: 4px;
+  width: fit-content;
+}
+.jg-velux-sp-hero__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.jg-velux-sp-hero__title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+.jg-velux-sp-hero__subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+}
+.jg-velux-sp-hero__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  max-width: 640px;
+  margin: 0;
+}
+
+/* ── VELUX Subpage Features ───────────────────────────────── */
+.jg-velux-sp-features {
+  background: #fff;
+  padding: 64px 32px;
+}
+.jg-velux-sp-features__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+.jg-velux-sp-features__desc {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #364153;
+  text-align: center;
+  margin: 0;
+}
+.jg-velux-sp-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+.jg-velux-sp-features__grid[data-cols="2"] { grid-template-columns: repeat(2, 1fr); }
+.jg-velux-sp-features__grid[data-cols="4"] { grid-template-columns: repeat(4, 1fr); }
+.jg-velux-sp-features__card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.jg-velux-sp-features__icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.jg-velux-sp-features__icon svg { width: 32px; height: 32px; }
+.jg-velux-sp-features__title {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: #253D86;
+  margin: 0;
+}
+.jg-velux-sp-features__text {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5565;
+  margin: 0;
+}
+
+/* ── VELUX Standard Energy Banner ───────────────────────── */
+.jg-velux-energy {
+  background: #C5A059;
+  padding: 64px 32px;
+}
+.jg-velux-energy__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+.jg-velux-energy__icon {
+  margin-bottom: 24px;
+}
+.jg-velux-energy__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(24px, 2.5vw, 30px);
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+.jg-velux-energy__sub {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+  max-width: 860px;
+  margin: 0 0 40px;
+}
+.jg-velux-energy__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+.jg-velux-energy__stat {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.jg-velux-energy__stat-num {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 36px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.1;
+}
+.jg-velux-energy__stat-label {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── VELUX Pricing ────────────────────────────────────────── */
+/* ── VELUX Pricing Cards (Standard) ──────────────────────── */
+.jg-velux-pc {
+  background: #fff;
+  padding: 64px 40px;
+}
+.jg-velux-pc__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.jg-velux-pc__group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.jg-velux-pc__group-header {
+  background: #253D86;
+  border-radius: 8px;
+  padding: 32px;
+}
+.jg-velux-pc__group-title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.jg-velux-pc__group-sub {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.8);
+  margin: 0 0 4px;
+}
+.jg-velux-pc__group-note {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+.jg-velux-pc__grid {
+  display: grid;
+  gap: 24px;
+}
+.jg-velux-pc__grid--3 { grid-template-columns: repeat(3, 1fr); }
+.jg-velux-pc__grid--4 { grid-template-columns: repeat(4, 1fr); }
+.jg-velux-pc__card {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.jg-velux-pc__card-size {
+  background: #4a6fa5;
+  padding: 32px 16px;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 36px;
+}
+.jg-velux-pc__card-body {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  min-height: 204px;
+}
+.jg-velux-pc__card-code {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a6fa5;
+  text-align: center;
+  margin: 0 0 20px;
+}
+.jg-velux-pc__card-orig-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+.jg-velux-pc__card-orig {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 24px;
+  font-weight: 300;
+  color: #99a1af;
+  line-height: 32px;
+}
+.jg-velux-pc__card-strike {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #fb2c36;
+  transform: translateY(-50%);
+}
+.jg-velux-pc__card-price {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 4px;
+  line-height: 1;
+}
+.jg-velux-pc__card-amount {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+}
+.jg-velux-pc__card-currency {
+  font-size: 20px;
+  font-weight: 400;
+  color: #6a7282;
+  margin-left: 4px;
+  vertical-align: bottom;
+  line-height: 28px;
+}
+.jg-velux-pc__card-label {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: #6a7282;
+  text-align: center;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .jg-velux-pc__grid--3,
+  .jg-velux-pc__grid--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .jg-velux-pc { padding: 48px 20px; }
+  .jg-velux-pc__group-header { padding: 20px; }
+  .jg-velux-pc__group-title { font-size: 22px; }
+  .jg-velux-pc__grid--3,
+  .jg-velux-pc__grid--4 { grid-template-columns: 1fr; }
+  .jg-velux-pc__card-size { font-size: 24px; padding: 24px 16px; }
+  .jg-velux-pc__card-amount { font-size: 28px; }
+}
+
+/* ── VELUX Komfor Pricing Cards ──────────────────────────── */
+.jg-velux-kpc {
+  padding: 64px 40px;
+}
+.jg-velux-kpc__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.jg-velux-kpc__group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Variant A (GNL, GLL): white bg, solid navy header, grey cards, gold badge */
+.jg-velux-kpc--a { background: #fff; }
+.jg-velux-kpc--a .jg-velux-kpc__group-header {
+  background: #253D86;
+  border-radius: 8px;
+  padding: 32px;
+}
+.jg-velux-kpc--a .jg-velux-kpc__group-title { color: #fff; }
+.jg-velux-kpc--a .jg-velux-kpc__group-sub   { color: rgba(255,255,255,0.8); }
+.jg-velux-kpc--a .jg-velux-kpc__group-note  { color: rgba(255,255,255,0.6); }
+.jg-velux-kpc--a .jg-velux-kpc__card        { background: #f9f9f9; }
+.jg-velux-kpc--a .jg-velux-kpc__card-badge {
+  background: #C5A059;
+  color: #fff;
+  border: none;
+}
+.jg-velux-kpc--a .jg-velux-kpc__features {
+  background: rgba(197,160,89,0.1);
+  border-left: 4px solid #C5A059;
+}
+
+/* Variant B (GNU, GLU): #f9f9f9 bg, white bordered header, white cards, navy badge */
+.jg-velux-kpc--b { background: #f9f9f9; }
+.jg-velux-kpc--b .jg-velux-kpc__group-header {
+  background: #fff;
+  border: 2px solid #253D86;
+  border-radius: 8px;
+  padding: 32px;
+}
+.jg-velux-kpc--b .jg-velux-kpc__group-title { color: #253D86; }
+.jg-velux-kpc--b .jg-velux-kpc__group-sub   { color: #364153; }
+.jg-velux-kpc--b .jg-velux-kpc__group-note  { color: #4a5565; }
+.jg-velux-kpc--b .jg-velux-kpc__card        { background: #fff; }
+.jg-velux-kpc--b .jg-velux-kpc__card-badge {
+  background: #fff;
+  color: #253D86;
+  border: 2px solid #253D86;
+}
+.jg-velux-kpc--b .jg-velux-kpc__features {
+  background: #fff;
+  border-left: 4px solid #253D86;
+}
+
+/* Variant C (GLL): white bg, gold solid header, grey cards, gold badge */
+.jg-velux-kpc--c { background: #fff; }
+.jg-velux-kpc--c .jg-velux-kpc__group-header {
+  background: #C5A059;
+  border-radius: 8px;
+  padding: 32px;
+}
+.jg-velux-kpc--c .jg-velux-kpc__group-title { color: #fff; }
+.jg-velux-kpc--c .jg-velux-kpc__group-sub   { color: rgba(255,255,255,0.8); }
+.jg-velux-kpc--c .jg-velux-kpc__group-note  { color: rgba(255,255,255,0.6); }
+.jg-velux-kpc--c .jg-velux-kpc__card        { background: #f9f9f9; }
+.jg-velux-kpc--c .jg-velux-kpc__card-badge {
+  background: #C5A059;
+  color: #fff;
+  border: none;
+}
+.jg-velux-kpc--c .jg-velux-kpc__features {
+  background: rgba(197,160,89,0.1);
+  border-left: 4px solid #C5A059;
+}
+
+/* Variant D (GLU): #f9f9f9 bg, solid navy header, white cards, navy outlined badge */
+.jg-velux-kpc--d { background: #f9f9f9; }
+.jg-velux-kpc--d .jg-velux-kpc__group-header {
+  background: #253D86;
+  border-radius: 8px;
+  padding: 32px;
+}
+.jg-velux-kpc--d .jg-velux-kpc__group-title { color: #fff; }
+.jg-velux-kpc--d .jg-velux-kpc__group-sub   { color: rgba(255,255,255,0.8); }
+.jg-velux-kpc--d .jg-velux-kpc__group-note  { color: rgba(255,255,255,0.6); }
+.jg-velux-kpc--d .jg-velux-kpc__card        { background: #fff; }
+.jg-velux-kpc--d .jg-velux-kpc__card-badge {
+  background: #fff;
+  color: #253D86;
+  border: 2px solid #253D86;
+}
+.jg-velux-kpc--d .jg-velux-kpc__features {
+  background: #fff;
+  border-left: 4px solid #253D86;
+}
+
+/* Shared group header typography */
+.jg-velux-kpc__group-title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+.jg-velux-kpc__group-sub {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0 0 4px;
+}
+.jg-velux-kpc__group-note {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+}
+.jg-velux-kpc__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.jg-velux-kpc__card {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 192px;
+}
+.jg-velux-kpc__card-badge {
+  display: inline-block;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.jg-velux-kpc__card-code {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 12px;
+  font-weight: 300;
+  color: #6a7282;
+  text-align: center;
+  margin: 0 0 2px;
+}
+.jg-velux-kpc__card-id {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5565;
+  text-align: center;
+  margin: 0 0 14px;
+}
+.jg-velux-kpc__card-inquiry {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 20px;
+  font-weight: 300;
+  color: #253D86;
+  text-align: center;
+  margin: 0;
+  line-height: 28px;
+}
+.jg-velux-kpc__features {
+  padding: 24px 24px 24px 28px;
+}
+.jg-velux-kpc__features-heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #253D86;
+  margin: 0 0 12px;
+}
+.jg-velux-kpc__features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.jg-velux-kpc__features-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: #364153;
+  line-height: 24px;
+}
+.jg-velux-kpc__features-item svg { flex-shrink: 0; margin-top: 2px; }
+@media (max-width: 900px) {
+  .jg-velux-kpc__grid { grid-template-columns: repeat(3, 1fr); }
+  .jg-velux-kpc__features-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .jg-velux-kpc { padding: 48px 20px; }
+  .jg-velux-kpc__group-header { padding: 20px; }
+  .jg-velux-kpc__group-title { font-size: 20px; }
+  .jg-velux-kpc__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── VELUX Komfor Plus Pricing ────────────────────────────── */
+.jg-velux-kpp { padding: 64px 40px; }
+.jg-velux-kpp__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.jg-velux-kpp__header {
+  border-radius: 8px;
+  padding: 32px;
+  min-height: 168px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.jg-velux-kpp__title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+.jg-velux-kpp__sub  { font-size: 16px; font-weight: 300; line-height: 1.5; margin: 0 0 8px; }
+.jg-velux-kpp__note { font-size: 14px; font-weight: 300; line-height: 1.4; margin: 0; }
+.jg-velux-kpp__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.jg-velux-kpp__card {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 26px 26px 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.jg-velux-kpp__card-badge {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.jg-velux-kpp__card-info { display: flex; flex-direction: column; gap: 8px; }
+.jg-velux-kpp__card-code  { font-size: 14px; font-weight: 300; color: #4a5565; text-align: center; margin: 0; }
+.jg-velux-kpp__card-type  { font-size: 12px; font-weight: 300; color: #C5A059; text-align: center; margin: 0; }
+.jg-velux-kpp__card-price { font-size: 18px; font-weight: 300; color: #253D86; text-align: center; margin: 0; line-height: 1.6; }
+.jg-velux-kpp__features {
+  padding: 24px 24px 24px 28px;
+  border-left: 4px solid;
+}
+.jg-velux-kpp__feat-hd {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #253D86;
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+.jg-velux-kpp__feat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.jg-velux-kpp__feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  color: #364153;
+  line-height: 1.5;
+}
+.jg-velux-kpp__feat-item svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Variant A: white bg, navy header, grey cards, gold filled badge */
+.jg-velux-kpp--a { background: #fff; }
+.jg-velux-kpp--a .jg-velux-kpp__header { background: #253D86; }
+.jg-velux-kpp--a .jg-velux-kpp__title  { color: #fff; }
+.jg-velux-kpp--a .jg-velux-kpp__sub    { color: rgba(255,255,255,0.8); }
+.jg-velux-kpp--a .jg-velux-kpp__note   { color: rgba(255,255,255,0.6); }
+.jg-velux-kpp--a .jg-velux-kpp__card   { background: #f9f9f9; }
+.jg-velux-kpp--a .jg-velux-kpp__card-badge { background: #C5A059; color: #fff; border: none; }
+.jg-velux-kpp--a .jg-velux-kpp__features { background: rgba(197,160,89,0.1); border-color: #C5A059; }
+
+/* Variant B: f9f9f9 bg, gold header, white cards, gold outlined badge */
+.jg-velux-kpp--b { background: #f9f9f9; }
+.jg-velux-kpp--b .jg-velux-kpp__header { background: #C5A059; }
+.jg-velux-kpp--b .jg-velux-kpp__title  { color: #fff; }
+.jg-velux-kpp--b .jg-velux-kpp__sub    { color: rgba(255,255,255,0.8); }
+.jg-velux-kpp--b .jg-velux-kpp__note   { color: rgba(255,255,255,0.6); }
+.jg-velux-kpp--b .jg-velux-kpp__card   { background: #fff; }
+.jg-velux-kpp--b .jg-velux-kpp__card-badge { background: #fff; color: #C5A059; border: 2px solid #C5A059; height: 44px; }
+.jg-velux-kpp--b .jg-velux-kpp__features { background: #fff; border-color: #C5A059; }
+
+/* Variant C: white bg, navy header, grey cards, navy filled badge, gold-tint+navy border */
+.jg-velux-kpp--c { background: #fff; }
+.jg-velux-kpp--c .jg-velux-kpp__header { background: #253D86; }
+.jg-velux-kpp--c .jg-velux-kpp__title  { color: #fff; }
+.jg-velux-kpp--c .jg-velux-kpp__sub    { color: rgba(255,255,255,0.8); }
+.jg-velux-kpp--c .jg-velux-kpp__note   { color: rgba(255,255,255,0.6); }
+.jg-velux-kpp--c .jg-velux-kpp__card   { background: #f9f9f9; }
+.jg-velux-kpp--c .jg-velux-kpp__card-badge { background: #253D86; color: #fff; border: none; }
+.jg-velux-kpp--c .jg-velux-kpp__features { background: rgba(197,160,89,0.1); border-color: #253D86; }
+
+@media (max-width: 1023px) {
+  .jg-velux-kpp__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767px) {
+  .jg-velux-kpp { padding: 48px 20px; }
+  .jg-velux-kpp__grid { grid-template-columns: 1fr 1fr; }
+  .jg-velux-kpp__feat-list { grid-template-columns: 1fr; }
+}
+
+/* ── VELUX Glass Types ─────────────────────────────────────── */
+.jg-velux-gt {
+  background: #f9f9f9;
+  padding: 64px 40px;
+}
+.jg-velux-gt__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.jg-velux-gt__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 32px;
+  line-height: 1.2;
+}
+.jg-velux-gt__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.jg-velux-gt__card {
+  background: #fff;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 32px;
+}
+.jg-velux-gt__pill {
+  display: inline-block;
+  height: 52px;
+  padding: 0 24px;
+  border-radius: 8px;
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 52px;
+  margin-bottom: 24px;
+}
+.jg-velux-gt__pill--gold { background: #C5A059; }
+.jg-velux-gt__pill--navy { background: #253D86; }
+.jg-velux-gt__desc {
+  font-size: 16px;
+  font-weight: 300;
+  color: #364153;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+.jg-velux-gt__bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.jg-velux-gt__bullets li {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5565;
+  line-height: 1.4;
+}
+@media (max-width: 767px) {
+  .jg-velux-gt { padding: 48px 20px; }
+  .jg-velux-gt__grid { grid-template-columns: 1fr; }
+}
+
+/* ── VELUX Ready CTA ──────────────────────────────────────── */
+.jg-velux-rcta {
+  background: #f9f9f9;
+  padding: 64px 40px;
+}
+.jg-velux-rcta__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.jg-velux-rcta__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: #253D86;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+.jg-velux-rcta__sub {
+  font-size: 20px;
+  font-weight: 300;
+  color: #4a5565;
+  line-height: 1.4;
+  margin: 0 0 32px;
+  max-width: 640px;
+}
+.jg-velux-rcta__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.jg-velux-rcta__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #C5A059;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 18px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 200ms;
+}
+.jg-velux-rcta__btn-primary:hover { background: #b8904a; }
+.jg-velux-rcta__btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  color: #253D86;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 18px 28px;
+  border: 2px solid #253D86;
+  border-radius: 8px;
+  background: #fff;
+  text-decoration: none;
+  transition: background 200ms, color 200ms;
+}
+.jg-velux-rcta__btn-secondary:hover { background: #253D86; color: #fff; }
+
+/* ── VELUX Subpage Responsive ─────────────────────────────── */
+@media (max-width: 1023px) {
+  .jg-velux-sp-features__grid[data-cols="4"] { grid-template-columns: repeat(2, 1fr); }
+  .jg-velux-rcta__actions { flex-direction: column; align-items: center; }
+}
+@media (max-width: 767px) {
+  .jg-velux-sp-hero__inner { padding: 80px 20px 0; }
+  .jg-velux-sp-features { padding: 48px 20px; }
+  .jg-velux-sp-features__grid { grid-template-columns: 1fr !important; }
+  .jg-velux-pricing { padding: 48px 20px; }
+  .jg-velux-pricing__table-wrap { padding: 20px; overflow-x: auto; }
+  .jg-velux-pricing__table { min-width: 520px; }
+  .jg-velux-pricing__glass-grid { grid-template-columns: 1fr; }
+  .jg-velux-rcta { padding: 48px 20px; }
+}
+
+/* ── VELUX Ролетне Page ───────────────────────────────────── */
+.jg-velux-rp-gallery {
+  background: #fff;
+  padding: 60px 40px 40px;
+}
+.jg-velux-rp-gallery__inner { max-width: 1200px; margin: 0 auto; }
+.jg-velux-rp-gallery__title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 22px; font-weight: 600; color: #253D86;
+  text-align: center; margin: 0 0 24px;
+}
+.jg-velux-rp-gallery__grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+}
+.jg-velux-rp-gallery__grid img {
+  width: 100%; height: 260px; object-fit: cover; border-radius: 12px; display: block;
+}
+
+.jg-velux-rp-intro {
+  background: #f9f9f9;
+  padding: 80px 40px;
+}
+.jg-velux-rp-intro__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.jg-velux-rp-intro__card {
+  background: #fff;
+  border-left: 4px solid #C5A059;
+  padding: 32px 32px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.jg-velux-rp-intro__title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 24px;
+  font-weight: 500;
+  color: #253D86;
+  margin: 0;
+  line-height: 1.33;
+}
+.jg-velux-rp-intro__card p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #364153;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── VELUX Roletne product cards (node 4219-8187) ─────────── */
+.jg-velux-rp-products {
+  background: #fff; padding: 80px 40px;
+}
+.jg-velux-rp-products__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 48px;
+}
+.jg-velux-rp-card {
+  border: 2px solid #e5e7eb; overflow: hidden;
+}
+/* Navy header */
+.jg-velux-rp-card__header {
+  background: #253D86;
+  padding: 32px 32px 32px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.jg-velux-rp-card__hrow {
+  display: flex; align-items: center; gap: 16px;
+}
+.jg-velux-rp-card__icon-box {
+  width: 56px; height: 56px; background: #C5A059; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.jg-velux-rp-card__htxt { display: flex; flex-direction: column; gap: 4px; }
+.jg-velux-rp-card__title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 24px; font-weight: 500; color: #fff;
+  line-height: 1.33; margin: 0;
+}
+.jg-velux-rp-card__code {
+  font-size: 14px; font-weight: 300; color: #C5A059;
+  line-height: 1.43; margin: 0;
+}
+.jg-velux-rp-card__desc {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.8);
+  line-height: 1.5; margin: 0;
+}
+/* Price grid */
+.jg-velux-rp-card__prices {
+  background: #f9f9f9; padding: 32px; display: flex; flex-direction: column; gap: 16px;
+}
+.jg-velux-rp-card__price-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+}
+.jg-velux-rp-card__price-item {
+  background: #fff; border: 2px solid #e5e7eb; border-radius: 8px;
+  padding: 24px; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; text-align: center;
+}
+.jg-velux-rp-card__price-badge {
+  background: rgba(197,160,89,0.1); border-radius: 8px;
+  padding: 10px 16px; font-size: 14px; font-weight: 600;
+  color: #253D86; line-height: 1.43; white-space: nowrap;
+}
+.jg-velux-rp-card__price-size {
+  font-size: 14px; font-weight: 300; color: #4a5565;
+  line-height: 1.43; margin: 0;
+}
+.jg-velux-rp-card__price-amount {
+  font-size: 30px; font-weight: 300; color: #253D86;
+  line-height: 1.2; margin: 0;
+}
+.jg-velux-rp-card__price-currency {
+  font-size: 14px; font-weight: 300; color: #6a7282;
+  line-height: 1.43; margin: 0;
+}
+.jg-velux-rp-card__note {
+  font-size: 14px; font-weight: 300; color: #4a5565;
+  font-style: italic; margin: 0; line-height: 1.43;
+}
+/* Photos row */
+.jg-velux-rp-card__photos {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+  padding: 32px;
+}
+.jg-velux-rp-card__photo img {
+  width: 100%; height: 221px; object-fit: cover;
+  border-radius: 8px; display: block;
+}
+/* ZIL has only 2 price cards */
+.jg-velux-rp-card__price-grid:has(.jg-velux-rp-card__price-item:only-child),
+.jg-velux-rp-card__price-grid:has(> *:nth-child(2)):not(:has(> *:nth-child(3))) {
+  grid-template-columns: repeat(2,1fr); max-width: 66.67%;
+}
+
+.jg-velux-rp-addons { background: #f9f9f9; padding: 80px 40px; }
+.jg-velux-rp-addons__inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+.jg-velux-rp-addons__title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 30px; font-weight: 500; color: #253D86; margin: 0; line-height: 1.2;
+}
+.jg-velux-rp-addons__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; }
+.jg-velux-rp-addons__card {
+  background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; padding: 32px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.jg-velux-rp-addons__card-title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 20px; font-weight: 500; color: #253D86; margin: 0; line-height: 1.4;
+}
+.jg-velux-rp-addons__card-desc {
+  font-size: 14px; font-weight: 300; color: #4a5565; margin: 0; line-height: 1.57;
+}
+.jg-velux-rp-addons__rows { display: flex; flex-direction: column; gap: 12px; }
+.jg-velux-rp-addons__row {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #f9f9f9; padding: 0 16px; height: 56px;
+}
+.jg-velux-rp-addons__left { display: flex; align-items: baseline; gap: 0; }
+.jg-velux-rp-addons__left strong {
+  font-size: 16px; font-weight: 500; color: #253D86; line-height: 1.5;
+}
+.jg-velux-rp-addons__sz {
+  font-size: 14px; font-weight: 300; color: #4a5565; line-height: 1.43;
+}
+.jg-velux-rp-addons__price {
+  font-size: 16px; font-weight: 600; color: #253D86; line-height: 1.5; white-space: nowrap;
+}
+
+/* ── VELUX Roletne CTA (node 4219-8470) ──────────────────── */
+.jg-velux-rl-cta {
+  background: #253D86; padding: 80px 40px;
+}
+.jg-velux-rl-cta__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 32px;
+}
+.jg-velux-rl-cta__notice {
+  background: #C5A059; border-radius: 8px;
+  padding: 32px; display: flex; flex-direction: column; gap: 16px;
+}
+.jg-velux-rl-cta__notice-title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 24px; font-weight: 500; color: #fff;
+  line-height: 1.33; margin: 0;
+}
+.jg-velux-rl-cta__notice-text {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.9);
+  line-height: 1.625; margin: 0;
+}
+.jg-velux-rl-cta__bottom {
+  display: flex; flex-direction: column; align-items: center; gap: 48px;
+}
+.jg-velux-rl-cta__question {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.8);
+  line-height: 1.5; margin: 0; text-align: center;
+}
+.jg-velux-rl-cta__btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #C5A059; border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 16px; font-weight: 300; color: #fff;
+  text-decoration: none; line-height: 1.5; white-space: nowrap;
+  transition: opacity 0.3s;
+}
+.jg-velux-rl-cta__btn:hover { opacity: 0.88; }
+.jg-velux-rl-cta__btn svg { flex-shrink: 0; }
+
+/* ── VELUX Водич Guide ────────────────────────────────────── */
+/* ── VELUX Vodic Hero ─────────────────────────────────────── */
+.jg-velux-vh {
+  position: relative; height: 600px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.jg-velux-vh__bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.jg-velux-vh__overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.4);
+}
+.jg-velux-vh__inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  text-align: center; max-width: 900px; padding: 0 40px;
+}
+.jg-velux-vh__logo {
+  height: 80px; width: auto; object-fit: contain; margin-bottom: 32px;
+}
+.jg-velux-vh__badge {
+  display: inline-block; background: #C5A059;
+  font-size: 14px; font-weight: 600; color: #fff; letter-spacing: 0.08em;
+  padding: 10px 20px; margin-bottom: 32px;
+}
+.jg-velux-vh__title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: clamp(36px, 4.5vw, 60px); font-weight: 500; color: #fff;
+  line-height: 1.2; margin: 0 0 24px;
+}
+.jg-velux-vh__sub {
+  font-size: 20px; font-weight: 300; color: rgba(255,255,255,0.8);
+  line-height: 1.4; margin: 0 0 60px;
+}
+.jg-velux-vh__phone {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.8);
+  text-decoration: none;
+}
+.jg-velux-vh__phone:hover { color: #fff; }
+
+/* ── VELUX Vodic Guide ────────────────────────────────────── */
+.jg-velux-vodic { background: #fff; padding: 80px 40px; }
+.jg-velux-vodic__inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 64px;
+}
+
+/* Step wrapper: f9f9f9 + 4px gold left border */
+.jg-velux-vodic__step {
+  background: #f9f9f9; border-left: 4px solid #C5A059;
+  padding: 32px 36px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.jg-velux-vodic__step-hrow {
+  display: flex; align-items: flex-start; gap: 24px;
+}
+.jg-velux-vodic__step-num {
+  width: 64px; height: 64px; background: #C5A059; color: #fff;
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 24px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; flex-shrink: 0;
+}
+.jg-velux-vodic__step-body { display: flex; flex-direction: column; gap: 16px; flex: 1; }
+.jg-velux-vodic__step-title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 30px; font-weight: 500; color: #253D86;
+  line-height: 1.2; margin: 0;
+}
+.jg-velux-vodic__step-text {
+  font-size: 18px; font-weight: 300; color: #364153;
+  line-height: 1.625; margin: 0;
+}
+
+/* Step sub-content: indented to align with body column */
+.jg-velux-vodic__step-content {
+  padding-left: 88px; /* 64px num + 24px gap */
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+/* Tip box */
+.jg-velux-vodic__tip {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: rgba(197,160,89,0.1); border-left: 4px solid #C5A059;
+  padding: 24px 24px 24px 28px;
+}
+.jg-velux-vodic__tip svg { flex-shrink: 0; margin-top: 2px; }
+.jg-velux-vodic__tip > div { display: flex; flex-direction: column; gap: 4px; }
+.jg-velux-vodic__tip strong {
+  font-size: 14px; font-weight: 600; color: #253D86;
+  line-height: 1.43; letter-spacing: 0.04em;
+}
+.jg-velux-vodic__tip p { font-size: 16px; font-weight: 300; color: #364153; line-height: 1.625; margin: 0; }
+
+/* Note (step 04 warning) */
+.jg-velux-vodic__note {
+  background: rgba(197,160,89,0.1); border-left: 4px solid #C5A059;
+  padding: 16px 24px;
+}
+.jg-velux-vodic__note p { font-size: 16px; font-weight: 300; color: #364153; line-height: 1.625; margin: 0; }
+
+/* White box (dimensions) */
+.jg-velux-vodic__box {
+  background: #fff; border: 2px solid #e5e7eb; border-radius: 8px;
+  padding: 26px;
+}
+.jg-velux-vodic__box-title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 18px; font-weight: 500; color: #253D86;
+  line-height: 1.56; margin: 0 0 16px;
+}
+.jg-velux-vodic__dims { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.jg-velux-vodic__dim {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 16px; font-weight: 300; color: #364153; line-height: 1.5;
+}
+.jg-velux-vodic__dim svg { flex-shrink: 0; }
+
+/* Models (step 02) */
+.jg-velux-vodic__models { display: flex; flex-direction: column; gap: 0; }
+.jg-velux-vodic__model {
+  background: #fff; border: 2px solid #e5e7eb; border-radius: 8px;
+  padding: 26px; margin-bottom: 16px;
+}
+.jg-velux-vodic__model:last-child { margin-bottom: 0; }
+.jg-velux-vodic__model-title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 18px; font-weight: 500; color: #253D86;
+  line-height: 1.56; margin: 0 0 16px;
+}
+.jg-velux-vodic__model-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.jg-velux-vodic__model-list li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 16px; font-weight: 300; color: #364153;
+}
+.jg-velux-vodic__model-list svg { flex-shrink: 0; }
+
+/* Example box (step 03) */
+.jg-velux-vodic__example {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff; border: 2px solid #e5e7eb; border-radius: 8px;
+  padding: 26px;
+}
+.jg-velux-vodic__example svg { flex-shrink: 0; margin-top: 2px; }
+.jg-velux-vodic__example-label {
+  font-size: 14px; font-weight: 500; color: #253D86;
+  line-height: 1.43; margin: 0 0 4px;
+}
+.jg-velux-vodic__example-text {
+  font-size: 18px; font-weight: 300; color: #253D86;
+  line-height: 1.56; margin: 0;
+}
+
+/* Subtitle (step 04) */
+.jg-velux-vodic__subtitle {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 18px; font-weight: 500; color: #253D86; margin: 0;
+}
+
+/* Flashings (step 04) */
+.jg-velux-vodic__flashings { display: flex; flex-direction: column; gap: 0; }
+.jg-velux-vodic__flashing {
+  background: #fff; border: 2px solid #e5e7eb;
+  border-bottom: none;
+  padding: 24px 28px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.jg-velux-vodic__flashing:first-child { border-radius: 8px 8px 0 0; }
+.jg-velux-vodic__flashing:last-child { border-bottom: 2px solid #e5e7eb; border-radius: 0 0 8px 8px; }
+.jg-velux-vodic__flashing-hrow {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.jg-velux-vodic__flashing-code {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 18px; font-weight: 500; color: #253D86;
+}
+.jg-velux-vodic__flashing-badge {
+  font-size: 14px; font-weight: 400; color: #253D86;
+  background: rgba(37,61,134,0.06); padding: 4px 12px; border-radius: 4px;
+  white-space: nowrap;
+}
+.jg-velux-vodic__flashing-desc {
+  font-size: 16px; font-weight: 300; color: #364153; margin: 0;
+}
+.jg-velux-vodic__flashing-incl {
+  font-size: 14px; font-weight: 400; color: #C5A059;
+}
+.jg-velux-vodic__flashing-excl {
+  font-size: 14px; font-weight: 400; color: #e07a3a;
+}
+
+/* Protection cards (step 05) */
+.jg-velux-vodic__pcards {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 0;
+}
+.jg-velux-vodic__pcard {
+  background: #fff; border: 2px solid #e5e7eb;
+  padding: 26px; display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: -2px; margin-right: -2px;
+}
+.jg-velux-vodic__pcard-top {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 12px; margin-bottom: 8px;
+}
+.jg-velux-vodic__pcard-cat {
+  font-size: 14px; font-weight: 300; color: #4a5565;
+  line-height: 1.43; margin: 0 0 4px;
+}
+.jg-velux-vodic__pcard-name {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 20px; font-weight: 500; color: #253D86;
+  line-height: 1.4; margin: 0;
+}
+.jg-velux-vodic__pcard-code {
+  font-size: 14px; font-weight: 600; background: #253D86; color: #fff;
+  padding: 4px 12px; border-radius: 4px; white-space: nowrap; flex-shrink: 0;
+}
+.jg-velux-vodic__pcard-accent {
+  font-size: 16px; font-weight: 300; color: #253D86; margin: 0;
+}
+.jg-velux-vodic__pcard-desc {
+  font-size: 14px; font-weight: 300; color: #4a5565;
+  line-height: 1.43; margin: 0;
+}
+
+/* Ролетне + Водич responsive */
+@media (max-width: 1023px) {
+  .jg-velux-rp-addons__grid { grid-template-columns: 1fr; }
+  .jg-velux-vodic__step-content { padding-left: 0; }
+  .jg-velux-vodic__dims { grid-template-columns: 1fr; }
+  .jg-velux-vodic__pcards { grid-template-columns: 1fr; }
+  .jg-velux-vodic__pcard { margin-right: 0; }
+}
+@media (max-width: 767px) {
+  .jg-velux-rp-gallery { padding: 40px 20px 24px; }
+  .jg-velux-rp-gallery__grid { grid-template-columns: 1fr 1fr; }
+  .jg-velux-rp-gallery__grid img:last-child { display: none; }
+  .jg-velux-rp-intro { padding: 0 20px 40px; }
+  .jg-velux-rp-intro__inner { grid-template-columns: 1fr; }
+  .jg-velux-rp-product { padding: 0 20px 32px; }
+  .jg-velux-rp-product__prices { grid-template-columns: 1fr; }
+  .jg-velux-rp-product__photos { grid-template-columns: 1fr 1fr; }
+  .jg-velux-rp-product__photos .jg-velux-rp-product__photo:last-child { display: none; }
+  .jg-velux-rp-addons { padding: 40px 20px; }
+  .jg-velux-vodic { padding: 48px 20px; }
+  .jg-velux-vodic__step { grid-template-columns: 48px 1fr; gap: 16px; }
+  .jg-velux-vodic__step-num { width: 44px; height: 44px; font-size: 16px; }
+  .jg-velux-vodic__dims { grid-template-columns: 1fr; }
+  .jg-velux-vodic__models { grid-template-columns: 1fr; }
+}
+
+/* ── VELUX Product Gallery (after features) ───────────────── */
+.jg-velux-sp-gallery {
+  background: #f9f9f9;
+  padding: 64px 40px;
+}
+.jg-velux-sp-gallery__inner { max-width: 1200px; margin: 0 auto; }
+.jg-velux-sp-gallery__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 32px;
+}
+.jg-velux-sp-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.jg-velux-sp-gallery__item {
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.jg-velux-sp-gallery__item img {
+  width: 100%;
+  height: 364px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── VELUX Pricing Card Grid (Основни/Стандард style) ────── */
+.jg-velux-pricing-ov { background: #f9f9f9; padding: 60px 40px; }
+.jg-velux-pricing-ov__inner {
+  max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px;
+}
+
+/* Series header */
+.jg-velux-series { border-radius: 12px; padding: 24px 32px; }
+.jg-velux-series--dark { background: #253D86; }
+.jg-velux-series--light {
+  background: #fff; border: 1px solid #eee;
+  border-left: 5px solid #C5A059;
+}
+.jg-velux-series--dark .jg-velux-series__title { color: #fff; }
+.jg-velux-series--dark .jg-velux-series__sub  { color: rgba(255,255,255,0.7); }
+.jg-velux-series--dark .jg-velux-series__note { color: rgba(255,255,255,0.5); }
+.jg-velux-series--light .jg-velux-series__title { color: #253D86; }
+.jg-velux-series--light .jg-velux-series__sub  { color: #555; }
+.jg-velux-series--light .jg-velux-series__note { color: #888; }
+.jg-velux-series__title {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 22px; font-weight: 700; margin: 0 0 4px;
+}
+.jg-velux-series__sub  { font-size: 14px; font-weight: 500; margin: 0 0 4px; }
+.jg-velux-series__note { font-size: 13px; margin: 0; }
+
+/* Price cards grid */
+.jg-velux-pcards {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+}
+.jg-velux-pcards__card {
+  background: #fff; border-radius: 12px;
+  overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.jg-velux-pcards__dim {
+  background: #3a5ca8; color: #fff;
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 17px; font-weight: 700;
+  padding: 16px 12px; text-align: center;
+}
+.jg-velux-pcards__body {
+  padding: 16px; display: flex; flex-direction: column; align-items: center;
+  gap: 4px; text-align: center; flex: 1;
+}
+.jg-velux-pcards__code { font-size: 13px; font-weight: 600; color: #3a5ca8; }
+.jg-velux-pcards__note {
+  font-size: 11px; font-weight: 700; color: #C5A059;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.jg-velux-pcards__old {
+  font-size: 13px; color: #bbb; text-decoration: line-through;
+}
+.jg-velux-pcards__price {
+  display: flex; align-items: baseline; gap: 2px;
+}
+.jg-velux-pcards__price strong {
+  font-size: 24px; font-weight: 700; color: #253D86; font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+}
+.jg-velux-pcards__price sup {
+  font-size: 13px; font-weight: 600; color: #253D86; margin-left: 2px;
+}
+.jg-velux-pcards__label { font-size: 12px; color: #aaa; }
+
+/* Discount banner */
+.jg-velux-discount-banner {
+  background: #e03030; border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px; padding: 20px 32px; text-align: center;
+}
+.jg-velux-discount-banner strong {
+  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
+  font-size: 28px; font-weight: 700; color: #fff;
+}
+.jg-velux-discount-banner span { font-size: 14px; color: rgba(255,255,255,0.85); }
+
+/* Characteristics box */
+.jg-velux-chars {
+  background: #fdf8f1; border-radius: 10px; padding: 20px 28px;
+  border: 1px solid rgba(197,160,89,0.2);
+}
+.jg-velux-chars__title {
+  font-size: 15px; font-weight: 600; color: #3a5ca8; margin: 0 0 14px;
+}
+.jg-velux-chars__title span { color: #555; font-weight: 400; }
+.jg-velux-chars__list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px;
+}
+.jg-velux-chars__list li {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 14px; color: #444;
+}
+.jg-velux-chars__list li svg { flex-shrink: 0; }
+
+/* Pricing responsive */
+@media (max-width: 1023px) {
+  .jg-velux-pcards { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 767px) {
+  .jg-velux-pricing-ov { padding: 40px 20px; }
+  .jg-velux-sp-gallery { padding: 32px 20px; }
+  .jg-velux-sp-gallery__grid { grid-template-columns: 1fr 1fr; }
+  .jg-velux-sp-gallery__item:last-child { display: none; }
+  .jg-velux-sp-gallery__item img { height: 220px; }
+  .jg-velux-pcards { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .jg-velux-pcards__dim { font-size: 15px; }
+  .jg-velux-pcards__price strong { font-size: 20px; }
+  .jg-velux-chars__list { grid-template-columns: 1fr; }
+}
+@media (max-width: 479px) {
+  .jg-velux-pcards { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── VELUX Trust bar — 3 variant backgrounds ─────────────── */
+.jg-velux-prozori__trust { background: transparent; }
+
+.jg-velux-prozori__trust-item--navy {
+  background: #253D86;
+}
+.jg-velux-prozori__trust-item--navy strong { color: #fff; }
+.jg-velux-prozori__trust-item--navy span   { color: rgba(255,255,255,0.65); }
+
+.jg-velux-prozori__trust-item--gold {
+  background: #C5A059;
+}
+.jg-velux-prozori__trust-item--gold strong { color: #fff; }
+.jg-velux-prozori__trust-item--gold span   { color: rgba(255,255,255,0.8); }
+
+.jg-velux-prozori__trust-item--white {
+  background: #fff;
+  border: 1px solid #e8eaf0;
+}
+.jg-velux-prozori__trust-item--white strong { font-size: 22px; font-weight: 600; color: #253D86; }
+.jg-velux-prozori__trust-item--white span   { color: #6A7282; }
+
+/* "На упит" price style */
+.jg-velux-prozori__price--inquiry {
+  font-size: 28px;
+  color: #253D86;
+  letter-spacing: 0.01em;
+}
+
+/* Badge colour for energy-efficient card */
+.jg-velux-prozori__card-badge--green {
+  background: #2a7a4b;
+}
+
+/* ── Global VELUX heading consistency (light-bg sections only) ── */
+.jg-velux-upit__heading,
+.jg-velux-stats__heading,
+.jg-velux-prozori__heading,
+.jg-velux-reviews__heading,
+.jg-velux-roletne__heading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-weight: 700;
+  color: #253D86;
+}
+
+/* Gold accent consistency across VELUX */
+.jg-velux-stats__number,
+.jg-velux-reviews__star { color: #C5A059; }
