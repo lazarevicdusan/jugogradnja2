@@ -318,15 +318,22 @@ function jugogradnja_current_script(): string {
  */
 function jugogradnja_transliterate_html( string $html ): string {
 	$protected = [];
-	$html = preg_replace_callback(
-		'#<(script|style)\b[^>]*>.*?</\1>#is',
-		function ( $m ) use ( &$protected ) {
-			$key = "\x01PROTECT" . count( $protected ) . "\x02";
-			$protected[ $key ] = $m[0];
-			return $key;
-		},
-		$html
-	);
+	$protect = function ( string $pattern ) use ( &$html, &$protected ) {
+		$html = preg_replace_callback(
+			$pattern,
+			function ( $m ) use ( &$protected ) {
+				$key = "\x01PROTECT" . count( $protected ) . "\x02";
+				$protected[ $key ] = $m[0];
+				return $key;
+			},
+			$html
+		);
+	};
+
+	$protect( '#<(script|style)\b[^>]*>.*?</\1>#is' );
+	// Elements explicitly opted out (e.g. the script-toggle button, whose
+	// label is a literal "SR"/"СР" abbreviation, not prose to transliterate).
+	$protect( '#<([a-z0-9]+)\b[^>]*\bdata-notranslit\b[^>]*>.*?</\1>#is' );
 
 	foreach ( [ 'alt', 'aria-label', 'placeholder', 'title', 'value' ] as $attr ) {
 		$html = preg_replace_callback(

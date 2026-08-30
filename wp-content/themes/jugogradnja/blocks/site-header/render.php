@@ -126,7 +126,7 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
     </nav>
 
     <div class="site-header__lang" aria-label="<?= esc_attr__( 'Izbor pisma i jezika', 'jugogradnja' ) ?>">
-      <button class="lang-btn lang-btn--script" data-script-toggle="<?= esc_attr( $sr_target ) ?>" type="button">
+      <button class="lang-btn lang-btn--script" data-script-toggle="<?= esc_attr( $sr_target ) ?>" data-notranslit type="button">
         <?= esc_html( $sr_label ) ?>
       </button>
       <span class="lang-sep" aria-hidden="true">|</span>
@@ -245,7 +245,7 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
 
     <!-- Language toggle -->
     <div class="mobile-drawer__item mobile-drawer__item--lang">
-      <button class="mobile-drawer__lang-btn lang-btn--script" data-script-toggle="<?= esc_attr( $sr_target ) ?>" type="button" tabindex="-1">
+      <button class="mobile-drawer__lang-btn lang-btn--script" data-script-toggle="<?= esc_attr( $sr_target ) ?>" data-notranslit type="button" tabindex="-1">
         <?= esc_html( $sr_label ) ?>
       </button>
       <span class="mobile-drawer__lang-sep" aria-hidden="true">|</span>
