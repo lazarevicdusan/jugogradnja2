@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Некретнина — Детаљ
+ * Title: Некретнина - Детаљ
  * Slug: jugogradnja/nekretnina-single
  * Categories: jugogradnja
  * Inserter: false

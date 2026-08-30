@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: О нама — херо
+ * Title: О нама - херо
  * Slug: jugogradnja/about-intro
  * Categories: jugogradnja
  * Inserter: true

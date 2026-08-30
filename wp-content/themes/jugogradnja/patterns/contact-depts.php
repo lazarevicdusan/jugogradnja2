@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Контакт — департмани
+ * Title: Контакт - департмани
  * Slug: jugogradnja/contact-depts
  * Categories: jugogradnja
  * Inserter: true

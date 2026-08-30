@@ -21,7 +21,7 @@ $gzl_cards = [
 $gzl_chars = [
 	'Природна нордијска боровина',
 	'Класичан дизајн',
-	'Безбојни лак — истиче текстуру дрвета',
+	'Безбојни лак - истиче текстуру дрвета',
 	'Одличне топлотне перформансе',
 ];
 
@@ -37,7 +37,7 @@ $glu_cards = [
 ];
 
 $glu_chars = [
-	'Бели полиуретан — без одржавања',
+	'Бели полиуретан - без одржавања',
 	'Идеалнo за купатила и кухиње',
 	'Отпоран на влагу',
 	'Не захтева лакирање',
@@ -65,7 +65,7 @@ function jg_velux_price_cards( array $cards ): void {
 
 function jg_velux_chars( string $label, array $items ): void {
 	echo '<div class="jg-velux-chars">';
-	echo '<h4 class="jg-velux-chars__title">' . esc_html( $label ) . ' — <span>Карактеристике</span></h4>';
+	echo '<h4 class="jg-velux-chars__title">' . esc_html( $label ) . ' - <span>Карактеристике</span></h4>';
 	echo '<ul class="jg-velux-chars__list">';
 	foreach ( $items as $item ) {
 		echo '<li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="8" stroke="#C5A059" stroke-width="1.3"/><path d="M5.5 9l2.5 2.5 4.5-5" stroke="#C5A059" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>' . esc_html( $item ) . '</li>';
@@ -80,7 +80,7 @@ function jg_velux_chars( string $label, array $items ): void {
 
 		<!-- GZL серија -->
 		<div class="jg-velux-series jg-velux-series--dark">
-			<h2 class="jg-velux-series__title">GZL серија — Природна боја дрвета</h2>
+			<h2 class="jg-velux-series__title">GZL серија - Природна боја дрвета</h2>
 			<p class="jg-velux-series__sub">Лакирани безбојним лаком</p>
 			<p class="jg-velux-series__note">Цена прозора је са опшивком EDW 2000</p>
 		</div>
@@ -89,14 +89,14 @@ function jg_velux_chars( string $label, array $items ): void {
 
 		<div class="jg-velux-discount-banner">
 			<strong>-15% ПОПУСТ</strong>
-			<span>Важи до 31.03.2025 | Ограничена понуда</span>
+			<span>Важи до 01.07.2026 | Ограничена понуда</span>
 		</div>
 
 		<?php jg_velux_chars( 'GZL', $gzl_chars ); ?>
 
 		<!-- GLU серија -->
 		<div class="jg-velux-series jg-velux-series--light">
-			<h2 class="jg-velux-series__title">GLU серија — Бели полиуретан</h2>
+			<h2 class="jg-velux-series__title">GLU серија - Бели полиуретан</h2>
 			<p class="jg-velux-series__sub">Без додатног одржавања</p>
 			<p class="jg-velux-series__note">Цена прозора је са опшивком EDW 2000. Погодни за просторије са већом концентрацијом влаге.</p>
 		</div>
@@ -105,7 +105,7 @@ function jg_velux_chars( string $label, array $items ): void {
 
 		<div class="jg-velux-discount-banner">
 			<strong>-15% ПОПУСТ</strong>
-			<span>Важи до 31.03.2025 | Ограничена понуда</span>
+			<span>Важи до 01.07.2026 | Ограничена понуда</span>
 		</div>
 
 		<?php jg_velux_chars( 'GLU', $glu_chars ); ?>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Инвестиције — Херо
+ * Title: Инвестиције - Херо
  * Slug: jugogradnja/investicije-hero
  * Categories: jugogradnja
  * Inserter: true

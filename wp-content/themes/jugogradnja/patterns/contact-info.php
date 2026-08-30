@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Контакт — информације
+ * Title: Контакт - информације
  * Slug: jugogradnja/contact-info
  * Categories: jugogradnja
  * Inserter: true

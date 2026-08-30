@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Каријере — Hero
+ * Title: Каријере - Hero
  * Slug: jugogradnja/careers-hero
  * Categories: jugogradnja
  * Inserter: true

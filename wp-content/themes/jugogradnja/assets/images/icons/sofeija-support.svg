@@ -1,0 +1,29 @@
+<svg width="65" height="66" viewBox="0 0 65 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="65" height="66" fill="#F5F5F5"/>
+<g id="Jugogradnja Website Redesign SOfeiya">
+<rect width="1919" height="7012" transform="translate(-749.65 -5023.39)" fill="white"/>
+<g id="Component 2">
+<g id="Section">
+<g id="Section_2">
+<g id="Paragraph+Background+Border+Shadow" filter="url(#filter0_d_4219_2)">
+<rect x="-137.65" y="-32.998" width="340" height="326.2" rx="16" fill="white" shape-rendering="crispEdges"/>
+<rect x="-137.15" y="-32.498" width="339" height="325.2" rx="15.5" stroke="white" shape-rendering="crispEdges"/>
+<path id="Symbol" d="M42.6559 10.2832C47.0992 10.2832 51.9234 8.75977 56.4937 6.72852C60.4293 5.07812 64.9996 7.99805 64.9996 12.3145V42.7832C64.9996 44.9414 63.857 46.8457 62.2066 47.9883C58.7789 50.1465 53.3199 52.9395 45.8297 52.9395C37.1969 52.9395 31.484 48.877 25.2633 48.877C18.1539 48.877 13.8375 50.4004 9.14023 52.5586V63.0957C9.14023 64.2383 8.12461 65.127 7.10898 65.127H5.07773C3.93515 65.127 3.04648 64.2383 3.04648 63.0957V11.5527C1.14219 10.5371 -0.000392914 8.50586 -0.000392914 6.2207C-0.000392914 2.79297 2.91953 0 6.47422 0.253906C9.39414 0.380859 11.8062 2.66602 12.0602 5.58594C12.0602 5.83984 12.0602 6.09375 12.0602 6.2207C12.0602 6.98242 12.0602 7.61719 11.8062 8.25195C14.5992 7.10938 18.027 6.2207 22.0895 6.2207C30.7223 6.2207 36.4352 10.2832 42.6559 10.2832ZM58.9059 42.7832V12.3145C54.8434 14.2188 48.1148 16.377 42.6559 16.377C35.0387 16.377 29.7066 12.3145 22.0895 12.3145C16.7574 12.3145 11.8062 14.4727 9.14023 16.377V45.8301C13.0758 44.0527 19.8043 42.7832 25.2633 42.7832C32.8805 42.7832 38.2125 46.8457 45.8297 46.8457C51.1617 46.8457 56.1129 44.8145 58.9059 42.7832Z" fill="black"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_4219_2" x="-197.65" y="-62.998" width="460" height="446.199" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="30"/>
+<feGaussianBlur stdDeviation="30"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4219_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4219_2" result="shape"/>
+</filter>
+</defs>
+</svg>

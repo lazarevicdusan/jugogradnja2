@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Контакт — хеадер
+ * Title: Контакт - хеадер
  * Slug: jugogradnja/contact-hero
  * Categories: jugogradnja
  * Inserter: true

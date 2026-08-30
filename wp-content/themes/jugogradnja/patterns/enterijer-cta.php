@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Ентеријер — Позив на акцију
+ * Title: Ентеријер - Позив на акцију
  * Slug: jugogradnja/enterijer-cta
  * Categories: jugogradnja
  * Inserter: true

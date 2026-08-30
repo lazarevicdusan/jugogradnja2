@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: О нама — историја
+ * Title: О нама - историја
  * Slug: jugogradnja/about-history
  * Categories: jugogradnja
  * Inserter: true
@@ -22,15 +22,19 @@ $milestones = [
 <section class="jg-about-history">
   <div class="jg-about-history__inner">
     <h2 class="jg-section-heading">Историја компаније</h2>
-    <p class="jg-about-history__lead">Од пројектовања до реализације, водимо пројекте кроз све фазе — уз контролу квалитета, рокова и трошкова. Више од три деценије искуства гарантује поуздану и сигурну реализацију.</p>
+    <p class="jg-about-history__lead">Од пројектовања до реализације, водимо пројекте кроз све фазе - уз контролу квалитета, рокова и трошкова. Више од три деценије искуства гарантује поуздану и сигурну реализацију.</p>
 
     <div class="jg-timeline">
+      <div class="jg-timeline__line" aria-hidden="true"></div>
       <?php foreach ( $milestones as $m ) : ?>
       <div class="jg-timeline__item">
-        <div class="jg-timeline__dot"></div>
+        <div class="jg-timeline__dot" aria-hidden="true"></div>
         <p class="jg-timeline__entry"><?= esc_html( $m[0] . ' - ' . $m[1] ); ?></p>
       </div>
       <?php endforeach; ?>
+      <div class="jg-timeline__tail" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
     </div>
   </div>
 </section>

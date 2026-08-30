@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: О нама — контакт CTA
+ * Title: О нама - контакт CTA
  * Slug: jugogradnja/about-contact-cta
  * Categories: jugogradnja
  * Inserter: true

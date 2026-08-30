@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Некретнине — Наслов странице
+ * Title: Некретнине - Наслов странице
  * Slug: jugogradnja/nekretnine-header
  * Categories: jugogradnja
  * Inserter: true

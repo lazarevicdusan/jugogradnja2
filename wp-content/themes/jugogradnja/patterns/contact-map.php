@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Контакт — Пронађите нас
+ * Title: Контакт - Пронађите нас
  * Slug: jugogradnja/contact-map
  * Categories: jugogradnja
  * Inserter: true
@@ -16,11 +16,11 @@
         <div class="jg-contact-map__frame-wrap">
           <iframe
             class="jg-contact-map__iframe"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.123456789!2d20.4651!3d44.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7ab7b9b9b9b9%3A0x0!2zUHVrb3ZuaWthIFBlam92acSHYSAxYSwgQmVvZ3JhZA!5e0!3m2!1ssr!2srs!4v1234567890"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2821.6083577193012!2d20.478707699999994!3d44.7670733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a70b400000001%3A0x47ca2e53009ca70f!2z0IjRg9Cz0L7Qs9GA0LDQtNGa0LAg0JHQtdC-0LPRgNCw0LQg0LQu0L4u0L4uIC8vIEp1Z29ncmFkbmphIEJlb2dyYWQgZC5vLm8u!5e1!3m2!1sen!2sus!4v1774960246809!5m2!1sen!2sus"
             width="100%" height="100%"
             style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Канцеларије — Пуковника Пејовића 1а, Београд"></iframe>
+            title="Канцеларије - Пуковника Пејовића 1а, Београд"></iframe>
         </div>
         <p class="jg-contact-map__label">
           <svg class="jg-contact-map__pin" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -34,11 +34,11 @@
         <div class="jg-contact-map__frame-wrap">
           <iframe
             class="jg-contact-map__iframe"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.123456789!2d20.4200!3d44.7800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7ab7b9b9b9b9%3A0x0!2zU3ZldG9saWthIE5pa2HDIGV2acSHYSBiYiwgQmVvZ3JhZA!5e0!3m2!1ssr!2srs!4v1234567890"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1064.6582280034884!2d20.335757928604487!3d44.836540998184375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDTCsDUwJzExLjYiTiAyMMKwMjAnMTEuMSJF!5e1!3m2!1sen!2sus!4v1775046432069!5m2!1sen!2sus"
             width="100%" height="100%"
             style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Малопродаја — Светолика Никачевића бб, Београд"></iframe>
+            title="Малопродаја - Светолика Никачевића бб, Београд"></iframe>
         </div>
         <p class="jg-contact-map__label">
           <svg class="jg-contact-map__pin" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Изградња — Шта градимо
+ * Title: Изградња - Шта градимо
  * Slug: jugogradnja/izgradnja-what
  * Categories: jugogradnja
  * Inserter: true

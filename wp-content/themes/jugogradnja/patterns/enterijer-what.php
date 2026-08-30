@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Ентеријер — Шта опремамо
+ * Title: Ентеријер - Шта опремамо
  * Slug: jugogradnja/enterijer-what
  * Categories: jugogradnja
  * Inserter: true

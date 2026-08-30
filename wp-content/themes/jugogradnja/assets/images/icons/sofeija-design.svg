@@ -1,0 +1,29 @@
+<svg width="59" height="65" viewBox="0 0 59 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="59" height="65" fill="#F5F5F5"/>
+<g id="Jugogradnja Website Redesign SOfeiya">
+<rect width="1919" height="7012" transform="translate(-392.824 -5023.52)" fill="white"/>
+<g id="Component 2">
+<g id="Section">
+<g id="Section_2">
+<g id="Paragraph+Background+Border+Shadow" filter="url(#filter0_d_4219_2)">
+<rect x="-140.824" y="-33.125" width="340" height="326.2" rx="16" fill="white" shape-rendering="crispEdges"/>
+<rect x="-140.324" y="-32.625" width="339" height="325.2" rx="15.5" stroke="white" shape-rendering="crispEdges"/>
+<path id="Symbol" d="M30.7223 26.9141L10.0289 12.3145C9.01328 12.9492 7.8707 13.3301 6.60117 13.3301C2.91953 13.3301 -0.000392914 10.4102 -0.000392914 6.72852C-0.000392914 3.04688 2.91953 0 6.60117 0C10.2828 0 13.2027 3.04688 13.2027 6.72852C13.2027 7.23633 13.2027 7.87109 12.9488 8.37891C19.5504 13.457 30.9762 21.582 34.4039 24.248C36.0543 23.3594 37.9586 22.8516 39.8629 22.5977V14.7266C37.5777 13.8379 36.3082 11.8066 36.3082 9.39453C36.3082 5.9668 38.8473 3.30078 42.148 3.30078C45.5758 3.30078 48.1148 5.9668 48.1148 9.39453C48.1148 11.8066 46.8453 13.8379 44.5602 14.7266V22.5977C52.5582 23.8672 58.525 30.7227 58.525 38.9746C58.525 48.1152 51.1617 55.4785 42.0211 55.4785C38.3395 55.4785 34.7848 54.209 31.9918 52.0508L25.6441 58.3984C25.7711 58.9062 25.898 59.4141 25.898 59.9219C25.898 61.3184 25.3902 62.5879 24.3746 63.6035C23.4859 64.6191 22.0895 65 20.8199 65C19.4234 65 18.1539 64.4922 17.1383 63.6035C16.2496 62.5879 15.6148 61.3184 15.6148 59.9219C15.6148 58.6523 16.2496 57.2559 17.1383 56.3672C18.1539 55.3516 19.4234 54.8438 20.8199 54.8438C21.4547 54.8438 21.9625 54.9707 22.5973 55.0977L28.818 48.877C26.7867 46.084 25.5172 42.6562 25.5172 38.9746C25.5172 34.1504 27.5484 29.9609 30.7223 26.9141ZM42.0211 47.7344C46.9723 47.7344 50.7809 43.7988 50.7809 38.9746C50.7809 34.1504 46.9723 30.2148 42.0211 30.2148C37.1969 30.2148 33.2613 34.1504 33.2613 38.9746C33.2613 43.7988 37.1969 47.7344 42.0211 47.7344Z" fill="black"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_4219_2" x="-200.824" y="-63.125" width="460" height="446.199" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="30"/>
+<feGaussianBlur stdDeviation="30"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4219_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4219_2" result="shape"/>
+</filter>
+</defs>
+</svg>

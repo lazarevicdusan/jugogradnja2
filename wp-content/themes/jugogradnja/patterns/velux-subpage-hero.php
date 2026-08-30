@@ -6,7 +6,7 @@
  */
 $t = get_template_directory_uri();
 
-// Derive slug from the request URI — reliable at any WP execution stage
+// Derive slug from the request URI - reliable at any WP execution stage
 $uri_path  = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
 $segments  = array_values( array_filter( explode( '/', $uri_path ) ) );
 $page_slug = end( $segments ) ?: '';

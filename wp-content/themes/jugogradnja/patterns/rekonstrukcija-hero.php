@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Реконструкција — Херо
+ * Title: Реконструкција - Херо
  * Slug: jugogradnja/rekonstrukcija-hero
  * Categories: jugogradnja
  * Inserter: true

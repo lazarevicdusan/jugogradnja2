@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Услуге — четири стуба
+ * Title: Услуге - четири стуба
  * Slug: jugogradnja/services-hub-grid
  * Categories: jugogradnja
  * Inserter: true
@@ -12,28 +12,28 @@ $cards = [
         'img'   => $t . '/assets/images/photos/service-inzenjering.webp',
         'imgsm' => $t . '/assets/images/photos/service-inzenjering-sm.webp',
         'title' => 'Изградња објеката',
-        'url'   => home_url( '/usluge/inzenjering/' ),
+        'url'   => home_url( '/izgradnja/' ),
         'alt'   => 'Изградња објеката',
     ],
     [
         'img'   => $t . '/assets/images/photos/service-visokogradnja.webp',
         'imgsm' => $t . '/assets/images/photos/service-visokogradnja-sm.webp',
         'title' => 'Реконструкција и санација',
-        'url'   => home_url( '/usluge/visokogradnja/' ),
+        'url'   => home_url( '/rekonstrukcija/' ),
         'alt'   => 'Реконструкција и санација',
     ],
     [
         'img'   => $t . '/assets/images/photos/service-investicije.webp',
         'imgsm' => $t . '/assets/images/photos/service-investicije-sm.webp',
         'title' => 'Инвестиције и развој пројеката',
-        'url'   => home_url( '/usluge/rekonstrukcija/' ),
+        'url'   => home_url( '/investicije/' ),
         'alt'   => 'Инвестиције и развој пројеката',
     ],
     [
         'img'   => $t . '/assets/images/photos/service-enterijer.webp',
         'imgsm' => $t . '/assets/images/photos/service-enterijer-sm.webp',
         'title' => 'Дизајн и опремање ентеријера',
-        'url'   => home_url( '/usluge/enterijer/' ),
+        'url'   => home_url( '/enterijer/' ),
         'alt'   => 'Дизајн и опремање ентеријера',
     ],
 ];

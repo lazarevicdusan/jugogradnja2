@@ -1,6 +1,6 @@
 <?php
 /**
- * Site Footer block — render.php
+ * Site Footer block - render.php
  *
  * Four-column footer on #253D86 background, matching Figma node 683:1636 (footer section).
  * Col 1: white logo + tagline | Col 2: nav links | Col 3: services | Col 4: contact
@@ -25,7 +25,7 @@ $year = gmdate( 'Y' );
   <div class="site-footer__grid">
 
     <div class="site-footer__col site-footer__col--brand">
-      <a class="site-footer__logo" href="<?= $h ?>" aria-label="<?= esc_attr__( 'Jugogradnja — početna stranica', 'jugogradnja' ) ?>">
+      <a class="site-footer__logo" href="<?= $h ?>" aria-label="<?= esc_attr__( 'Jugogradnja - početna stranica', 'jugogradnja' ) ?>">
         <img src="<?= $lw ?>" width="315" height="49" alt="Jugogradnja" loading="lazy">
       </a>
       <p class="site-footer__tagline">Радимо. Градимо. Од 1992. године</p>
@@ -47,10 +47,10 @@ $year = gmdate( 'Y' );
     <nav class="site-footer__col" aria-label="<?= esc_attr__( 'Usluge u podgrađu', 'jugogradnja' ) ?>">
       <p class="site-footer__heading">Услуге</p>
       <ul class="site-footer__links" role="list">
-        <li><a href="<?= $u( '/usluge/inzenjering/' ) ?>">Инжењеринг</a></li>
-        <li><a href="<?= $u( '/usluge/visokogradnja/' ) ?>">Висоградња</a></li>
-        <li><a href="<?= $u( '/usluge/rekonstrukcija/' ) ?>">Реконструкција и адаптација</a></li>
-        <li><a href="<?= $u( '/usluge/enterijer/' ) ?>">Услуге ентеријера</a></li>
+        <li><a href="<?= $u( '/investicije/' ) ?>">Инвестиције и развој пројеката</a></li>
+        <li><a href="<?= $u( '/izgradnja/' ) ?>">Изградња објеката</a></li>
+        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>">Реконструкција и санација</a></li>
+        <li><a href="<?= $u( '/enterijer/' ) ?>">Дизајн и опремање ентеријера</a></li>
       </ul>
     </nav>
 
@@ -62,10 +62,10 @@ $year = gmdate( 'Y' );
           <img src="<?= $ico['location'] ?>" width="16" height="16" alt="" aria-hidden="true">
           <div class="site-footer__contact-text">
             <span class="site-footer__contact-label">Седиште</span>
-            <span>Пуковника Пејовића 7а, Београд</span>
+            <span>Пуковника Пејовића 1а, Београд</span>
             <span class="site-footer__contact-hours">08:00 – 16:00</span>
             <span class="site-footer__contact-label">Малопродаја</span>
-            <span>Светозара Никчевића 66</span>
+            <span>Светолика Никачевића бб</span>
             <span class="site-footer__contact-hours">07:00 – 15:00</span>
           </div>
         </li>

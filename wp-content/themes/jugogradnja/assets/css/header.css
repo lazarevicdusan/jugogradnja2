@@ -1,4 +1,4 @@
-/* header.css — site header, nav, dropdowns, mobile drawer */
+/* header.css - site header, nav, dropdowns, mobile drawer */
 
 /* ── Header shell ─────────────────────────────────────────── */
 .site-header {
@@ -212,7 +212,7 @@
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(33, 41, 80, 0.5);
+  background: rgba(33, 41, 80, 0.4);
   z-index: 1100;
   opacity: 0;
   visibility: hidden;
@@ -228,14 +228,14 @@
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
-  width: min(360px, 100vw);
-  background: var(--wp--preset--color--footer-blue, #253D86);
+  width: 100vw;
+  background: #fff;
   z-index: 1200;
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
+  transform: translateX(-100%);
   transition: transform 300ms ease;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -245,23 +245,19 @@
   transform: translateX(0);
 }
 
-.mobile-drawer__inner {
-  flex: 1;
-  padding: 24px 24px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* Drawer head */
+/* Drawer head row */
 .mobile-drawer__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 16px;
+  height: 80px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(33, 41, 80, 0.1);
 }
 
 .mobile-drawer__logo img {
-  width: 200px;
+  width: 180px;
   height: auto;
 }
 
@@ -269,156 +265,129 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #fff;
+  color: rgba(33, 41, 80, 0.8);
   padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Tagline */
-.mobile-drawer__tagline {
-  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 0.02em;
+/* Nav list */
+.mobile-drawer__nav {
+  flex: 1;
+  padding: 8px 16px 24px;
 }
 
-/* Sections */
-.mobile-drawer__section-title {
-  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 12px;
+.mobile-drawer__item {
+  border-bottom: 1px solid rgba(33, 41, 80, 0.05);
 }
 
-.mobile-drawer__nav a {
-  display: block;
-  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
-  font-size: 16px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: color 200ms ease;
-}
-
-.mobile-drawer__nav a:last-child {
+.mobile-drawer__item:last-child {
   border-bottom: none;
 }
 
-.mobile-drawer__nav a:hover {
-  color: #fff;
-}
-
-/* Contact */
-.mobile-drawer__contact {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.mobile-drawer__contact li {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.mobile-drawer__contact img {
-  flex-shrink: 0;
-  margin-top: 3px;
-  opacity: 0.7;
-  filter: brightness(10);
-}
-
-.mobile-drawer__contact div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.mobile-drawer__contact span,
-.mobile-drawer__contact a {
-  font-size: 13px;
+.mobile-drawer__link {
+  display: block;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 200ms ease;
+  color: rgba(33, 41, 80, 0.9);
+  padding: 12px 0;
+  text-decoration: none;
+  transition: color 200ms;
 }
 
-.mobile-drawer__contact a:hover {
-  color: #fff;
+.mobile-drawer__link:hover,
+.mobile-drawer__link[aria-current="page"] {
+  color: #212950;
 }
 
-.mobile-drawer__contact .label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 6px;
-}
-
-.mobile-drawer__contact .label:first-child {
-  margin-top: 0;
-}
-
-.mobile-drawer__contact .hours {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 12px;
-}
-
-/* Lang inside drawer */
-.mobile-drawer__lang {
+/* Row with chevron */
+.mobile-drawer__row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding-bottom: 24px;
+  justify-content: space-between;
 }
 
-.mobile-drawer__lang .lang-btn {
-  color: rgba(255, 255, 255, 0.7);
+.mobile-drawer__row .mobile-drawer__link {
+  flex: 1;
 }
 
-.mobile-drawer__lang .lang-btn:hover,
-.mobile-drawer__lang .lang-btn--active {
-  color: #fff;
-}
-
-.mobile-drawer__lang .lang-sep {
-  color: rgba(255, 255, 255, 0.3);
-}
-
-/* Drawer footer */
-.mobile-drawer__footer {
-  padding: 16px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.mobile-drawer__footer p {
-  font-size: 12px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 8px;
-}
-
-.mobile-drawer__legal {
+.mobile-drawer__chevron {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: rgba(33, 41, 80, 0.6);
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 300ms ease, color 200ms;
 }
 
-.mobile-drawer__legal a {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.5);
-  transition: color 200ms ease;
+.mobile-drawer__chevron[aria-expanded="true"] {
+  transform: rotate(180deg);
+  color: rgba(33, 41, 80, 0.9);
 }
 
-.mobile-drawer__legal a:hover {
-  color: rgba(255, 255, 255, 0.8);
+/* Sub-items */
+.mobile-drawer__sub {
+  padding: 0 0 8px 16px;
+  list-style: none;
+  margin: 0;
+}
+
+.mobile-drawer__sub[hidden] {
+  display: none !important;
+}
+
+.mobile-drawer__sub li a {
+  display: block;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(33, 41, 80, 0.8);
+  padding: 8px 0;
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.mobile-drawer__sub li a:hover {
+  color: #212950;
+}
+
+/* Language row */
+.mobile-drawer__item--lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: none;
+}
+
+.mobile-drawer__lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(33, 41, 80, 0.5);
+  padding: 0;
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.mobile-drawer__lang-btn:hover,
+.mobile-drawer__lang-btn.is-active {
+  color: rgba(33, 41, 80, 0.9);
+}
+
+.mobile-drawer__lang-sep {
+  color: rgba(33, 41, 80, 0.2);
+  font-size: 16px;
+  user-select: none;
 }
 
 /* ── Body scroll lock when drawer is open ─────────────────── */

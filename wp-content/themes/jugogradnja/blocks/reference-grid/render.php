@@ -1,12 +1,49 @@
 <?php
 /**
- * Reference Grid block — sidebar filter + 2-col card grid with inline expand panel.
+ * Reference Grid block - sidebar filter + 2-col card grid with inline expand panel.
  * URL params: ?kategorija=<slug>  ?stranica=<n>
  */
 
 $per_page    = 6;
 $active_slug = isset( $_GET['kategorija'] ) ? sanitize_title( $_GET['kategorija'] ) : '';
 $page_num    = max( 1, isset( $_GET['stranica'] ) ? absint( $_GET['stranica'] ) : 1 );
+
+// Deep link from other pages (?projekat=<post_name>): jump straight to the
+// project's own category and the page of results it falls on, then let JS
+// auto-open its detail panel. The project has no standalone page of its
+// own - this archive + inline panel is the only place it's ever shown.
+$deeplink_slug = isset( $_GET['proj'] ) ? sanitize_title( $_GET['proj'] ) : '';
+if ( $deeplink_slug ) {
+    $deeplink_post = get_page_by_path( $deeplink_slug, OBJECT, 'projekat' );
+    if ( $deeplink_post && 'publish' === $deeplink_post->post_status ) {
+        $dl_terms = get_the_terms( $deeplink_post->ID, 'kategorija_projekta' );
+        $active_slug = ( $dl_terms && ! is_wp_error( $dl_terms ) ) ? $dl_terms[0]->slug : '';
+
+        $dl_ids = get_posts( [
+            'post_type'      => 'projekat',
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+            'fields'         => 'ids',
+            'tax_query'      => $active_slug ? [ [
+                'taxonomy' => 'kategorija_projekta',
+                'field'    => 'slug',
+                'terms'    => $active_slug,
+            ] ] : [],
+            'meta_query'     => [
+                'relation'      => 'OR',
+                'godina_clause' => [ 'key' => 'godina', 'compare' => 'EXISTS' ],
+                [ 'key' => 'godina', 'compare' => 'NOT EXISTS' ],
+            ],
+            'orderby'        => [ 'godina_clause' => 'DESC', 'date' => 'DESC' ],
+        ] );
+        $dl_position = array_search( $deeplink_post->ID, $dl_ids, true );
+        if ( false !== $dl_position ) {
+            $page_num = (int) floor( $dl_position / $per_page ) + 1;
+        }
+    } else {
+        $deeplink_slug = '';
+    }
+}
 
 $terms = get_terms( [
     'taxonomy'   => 'kategorija_projekta',
@@ -29,8 +66,21 @@ $query = new WP_Query( [
     'posts_per_page' => $per_page,
     'paged'          => $page_num,
     'tax_query'      => $tax_query,
-    'orderby'        => 'date',
-    'order'          => 'DESC',
+    // Sort by 'godina' without excluding posts that don't have it set -
+    // a plain top-level 'meta_key' turns into an INNER JOIN filter and
+    // silently drops posts lacking that meta, so union both cases here.
+    'meta_query'     => [
+        'relation'     => 'OR',
+        'godina_clause' => [
+            'key'     => 'godina',
+            'compare' => 'EXISTS',
+        ],
+        [
+            'key'     => 'godina',
+            'compare' => 'NOT EXISTS',
+        ],
+    ],
+    'orderby'        => [ 'godina_clause' => 'DESC', 'date' => 'DESC' ],
 ] );
 
 $total_posts = $query->found_posts;
@@ -78,6 +128,7 @@ function jg_ref_cat_label( int $post_id ): string {
 
     <!-- Main grid -->
     <div class="jg-ref-main">
+      <div id="jg-ref-results" data-deeplink="<?= esc_attr( $deeplink_slug ) ?>">
       <h2 class="jg-ref-main__heading">
         Сви пројекти
         <span class="jg-ref-main__count">(<?= esc_html( (string) $total_posts ) ?>)</span>
@@ -86,7 +137,7 @@ function jg_ref_cat_label( int $post_id ): string {
       <?php if ( $query->have_posts() ) : ?>
       <div class="jg-ref-card-grid" id="jg-ref-card-grid">
 
-        <?php $card_index = 0; while ( $query->have_posts() ) : $query->the_post(); ?>
+        <?php $card_index = 0; $first = null; while ( $query->have_posts() ) : $query->the_post(); ?>
         <?php
           $post_id  = get_the_ID();
           $lokacija = get_post_meta( $post_id, 'lokacija', true );
@@ -96,10 +147,26 @@ function jg_ref_cat_label( int $post_id ): string {
           $content  = get_the_content();
           $thumb    = get_the_post_thumbnail_url( $post_id, 'large' ) ?: '';
           $cat      = jg_ref_cat_label( $post_id );
+          // Build gallery from galeria_ids, excluding the hero/featured image
+          // so the slideshow doesn't repeat the same photo shown above it.
+          $gallery_imgs = [];
+          $galeria_ids = get_post_meta( $post_id, 'galeria_ids', true );
+          if ( $galeria_ids ) {
+            foreach ( explode( ',', $galeria_ids ) as $gid ) {
+              $gid = (int) trim( $gid );
+              $gurl = wp_get_attachment_image_url( $gid, 'large' );
+              if ( $gurl && $gurl !== $thumb && ! in_array( $gurl, $gallery_imgs, true ) ) $gallery_imgs[] = $gurl;
+            }
+          }
+          if ( $card_index === 0 ) {
+            $first = compact( 'post_id', 'lokacija', 'godina', 'povrsina', 'excerpt', 'content', 'thumb', 'cat', 'gallery_imgs' );
+            $first['title'] = get_the_title();
+          }
         ?>
         <article class="jg-ref-card"
                  data-index="<?= $card_index ?>"
                  data-id="<?= $post_id ?>"
+                 data-slug="<?= esc_attr( get_post_field( 'post_name', $post_id ) ) ?>"
                  data-title="<?= esc_attr( get_the_title() ) ?>"
                  data-cat="<?= esc_attr( $cat ) ?>"
                  data-lokacija="<?= esc_attr( $lokacija ) ?>"
@@ -107,7 +174,8 @@ function jg_ref_cat_label( int $post_id ): string {
                  data-povrsina="<?= esc_attr( $povrsina ) ?>"
                  data-excerpt="<?= esc_attr( $excerpt ) ?>"
                  data-content="<?= esc_attr( wp_strip_all_tags( $content ) ) ?>"
-                 data-thumb="<?= esc_attr( $thumb ) ?>">
+                 data-thumb="<?= esc_attr( $thumb ) ?>"
+                 data-gallery="<?= esc_attr( wp_json_encode( $gallery_imgs ) ) ?>">
           <button class="jg-ref-card__inner" aria-expanded="false" aria-label="<?= esc_attr( get_the_title() ) ?>">
             <div class="jg-ref-card__img-wrap">
               <?php if ( $thumb ) : ?>
@@ -134,9 +202,6 @@ function jg_ref_cat_label( int $post_id ): string {
                 <span><?= esc_html( $godina ) ?></span>
               </p>
               <?php endif; ?>
-              <?php if ( $excerpt ) : ?>
-              <p class="jg-ref-card__excerpt"><?= esc_html( $excerpt ) ?></p>
-              <?php endif; ?>
               <span class="jg-ref-card__cta">
                 Погледај више
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 15L12.5 10L7.5 5" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -146,14 +211,14 @@ function jg_ref_cat_label( int $post_id ): string {
         </article>
         <?php $card_index++; endwhile; wp_reset_postdata(); ?>
 
-        <!-- Inline expand panel (moved by JS after clicked row) -->
-        <div class="jg-ref-detail" id="jg-ref-detail" hidden aria-live="polite">
+        <!-- Inline expand panel (moved by JS after clicked row; pre-open for design review) -->
+        <div class="jg-ref-detail" id="jg-ref-detail" aria-live="polite" hidden>
           <div class="jg-ref-detail__inner">
 
             <div class="jg-ref-detail__header">
               <div class="jg-ref-detail__header-text">
-                <span class="jg-ref-detail__cat"></span>
-                <h3 class="jg-ref-detail__title"></h3>
+                <span class="jg-ref-detail__cat"><?= $first ? esc_html( $first['cat'] ) : '' ?></span>
+                <h3 class="jg-ref-detail__title"><?= $first ? esc_html( $first['title'] ) : '' ?></h3>
               </div>
               <button class="jg-ref-detail__close-x" aria-label="Затвори">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M15 5L5 15" stroke="#253D86" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5L15 15" stroke="#253D86" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -162,43 +227,60 @@ function jg_ref_cat_label( int $post_id ): string {
 
             <div class="jg-ref-detail__media">
               <div class="jg-ref-detail__img-wrap">
-                <img class="jg-ref-detail__img" src="" alt="" width="530" height="299" loading="lazy">
-                <div class="jg-ref-detail__img-placeholder" aria-hidden="true"></div>
+                <img class="jg-ref-detail__img" src="<?= $first ? esc_url( $first['thumb'] ) : '' ?>" alt="<?= $first ? esc_attr( $first['title'] ) : '' ?>" width="530" height="299" loading="lazy"<?= ( ! $first || ! $first['thumb'] ) ? ' hidden' : '' ?>>
+                <div class="jg-ref-detail__img-placeholder" aria-hidden="true"<?= ( $first && $first['thumb'] ) ? ' hidden' : '' ?>></div>
               </div>
               <div class="jg-ref-detail__meta">
-                <div class="jg-ref-detail__meta-item jg-ref-detail__meta-lokacija">
+                <div class="jg-ref-detail__meta-item jg-ref-detail__meta-lokacija"<?= ( ! $first || ! $first['lokacija'] ) ? ' hidden' : '' ?>>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16.6667 8.33333C16.6667 12.4942 12.0508 16.8275 10.5008 18.1658C10.3564 18.2744 10.1807 18.3331 10 18.3331C9.81933 18.3331 9.64356 18.2744 9.49917 18.1658C7.94917 16.8275 3.33333 12.4942 3.33333 8.33333C3.33333 6.56522 4.03571 4.86953 5.28595 3.61929C6.5362 2.36905 8.23189 1.66667 10 1.66667C11.7681 1.66667 13.4638 2.36905 14.714 3.61929C15.9643 4.86953 16.6667 6.56522 16.6667 8.33333Z" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 10.8333C11.3807 10.8333 12.5 9.71405 12.5 8.33333C12.5 6.95262 11.3807 5.83333 10 5.83333C8.61929 5.83333 7.5 6.95262 7.5 8.33333C7.5 9.71405 8.61929 10.8333 10 10.8333Z" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <div class="jg-ref-detail__meta-text">
                     <span class="jg-ref-detail__meta-label">Локација</span>
-                    <span class="jg-ref-detail__meta-value jg-val-lokacija"></span>
+                    <span class="jg-ref-detail__meta-value jg-val-lokacija"><?= $first ? esc_html( $first['lokacija'] ) : '' ?></span>
                   </div>
                 </div>
-                <div class="jg-ref-detail__meta-item jg-ref-detail__meta-godina">
+                <div class="jg-ref-detail__meta-item jg-ref-detail__meta-godina"<?= ( ! $first || ! $first['godina'] ) ? ' hidden' : '' ?>>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6.66667 1.66667V5" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.3333 1.66667V5" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.8333 3.33333H4.16667C3.24619 3.33333 2.5 4.07953 2.5 5V16.6667C2.5 17.5871 3.24619 18.3333 4.16667 18.3333H15.8333C16.7538 18.3333 17.5 17.5871 17.5 16.6667V5C17.5 4.07953 16.7538 3.33333 15.8333 3.33333Z" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 8.33333H17.5" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <div class="jg-ref-detail__meta-text">
                     <span class="jg-ref-detail__meta-label">Година</span>
-                    <span class="jg-ref-detail__meta-value jg-val-godina"></span>
+                    <span class="jg-ref-detail__meta-value jg-val-godina"><?= $first ? esc_html( $first['godina'] ) : '' ?></span>
                   </div>
                 </div>
-                <div class="jg-ref-detail__meta-item jg-ref-detail__meta-povrsina" hidden>
+                <div class="jg-ref-detail__meta-item jg-ref-detail__meta-povrsina"<?= ( ! $first || ! $first['povrsina'] ) ? ' hidden' : '' ?>>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 18.3333V3.33333C5 2.89131 5.17559 2.46738 5.48816 2.15482C5.80072 1.84226 6.22464 1.66667 6.66667 1.66667H13.3333C13.7754 1.66667 14.1993 1.84226 14.5118 2.15482C14.8244 2.46738 15 2.89131 15 3.33333V18.3333H5Z" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10H3.33333C2.89131 10 2.46738 10.1756 2.15482 10.4882C1.84226 10.8007 1.66667 11.2246 1.66667 11.6667V16.6667C1.66667 17.1087 1.84226 17.5326 2.15482 17.8452C2.46738 18.1577 2.89131 18.3333 3.33333 18.3333H5" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7.5H16.6667C17.1087 7.5 17.5326 7.6756 17.8452 7.98816C18.1577 8.30072 18.3333 8.72464 18.3333 9.16667V16.6667C18.3333 17.1087 18.1577 17.5326 17.8452 17.8452C17.5326 18.1577 17.1087 18.3333 16.6667 18.3333H15" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33333 5H11.6667" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33333 8.33333H11.6667" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33333 11.6667H11.6667" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33333 15H11.6667" stroke="#C5A059" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <div class="jg-ref-detail__meta-text">
                     <span class="jg-ref-detail__meta-label">Површина</span>
-                    <span class="jg-ref-detail__meta-value jg-val-povrsina"></span>
+                    <span class="jg-ref-detail__meta-value jg-val-povrsina"><?= $first ? esc_html( $first['povrsina'] ) : '' ?></span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="jg-ref-detail__about" hidden>
+            <div class="jg-ref-detail__about"<?= ( ! $first || ( ! $first['excerpt'] && ! wp_strip_all_tags( $first['content'] ) ) ) ? ' hidden' : '' ?>>
               <h4 class="jg-ref-detail__section-title">О пројекту</h4>
-              <p class="jg-ref-detail__about-text jg-val-content"></p>
+              <p class="jg-ref-detail__about-text jg-val-content"><?= $first ? esc_html( $first['excerpt'] ?: wp_strip_all_tags( $first['content'] ) ) : '' ?></p>
             </div>
 
-            <div class="jg-ref-detail__gallery" hidden>
+            <div class="jg-ref-detail__gallery"<?= ( ! $first || empty( $first['gallery_imgs'] ) ) ? ' hidden' : '' ?>>
               <h4 class="jg-ref-detail__section-title">Галерија слика</h4>
-              <div class="jg-ref-detail__gallery-wrap">
-                <img class="jg-ref-detail__gallery-img jg-val-gallery-img" src="" alt="">
+              <div class="jg-ref-detail__slideshow">
+                <div class="jg-ref-detail__slides">
+                  <?php if ( $first ) : foreach ( $first['gallery_imgs'] as $i => $gi ) : ?>
+                  <div class="jg-ref-detail__slide<?= $i === 0 ? ' is-active' : '' ?>">
+                    <img class="jg-ref-detail__gallery-img" src="<?= esc_url( $gi ) ?>" alt="<?= esc_attr( $first['title'] ) ?>" loading="lazy">
+                  </div>
+                  <?php endforeach; endif; ?>
+                </div>
+                <button class="jg-ref-detail__slide-prev" aria-label="Претходна слика">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="jg-ref-detail__slide-next" aria-label="Следећа слика">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="jg-ref-detail__slide-dots">
+                  <?php if ( $first ) : foreach ( $first['gallery_imgs'] as $i => $gi ) : ?>
+                  <button class="jg-ref-detail__slide-dot<?= $i === 0 ? ' is-active' : '' ?>" aria-label="Слика <?= $i + 1 ?>"></button>
+                  <?php endforeach; endif; ?>
+                </div>
               </div>
             </div>
 
@@ -232,6 +314,7 @@ function jg_ref_cat_label( int $post_id ): string {
       <?php else : ?>
       <p class="jg-ref-main__empty">Нема пројеката у овој категорији.</p>
       <?php endif; ?>
+      </div><!-- /#jg-ref-results -->
     </div><!-- /.jg-ref-main -->
 
   </div>

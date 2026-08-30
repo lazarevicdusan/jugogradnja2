@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Каријере — Отворене позиције
+ * Title: Каријере - Отворене позиције
  * Slug: jugogradnja/careers-positions
  * Categories: jugogradnja
  * Inserter: true

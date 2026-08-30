@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Реконструкција — Шта радимо
+ * Title: Реконструкција - Шта радимо
  * Slug: jugogradnja/rekonstrukcija-what
  * Categories: jugogradnja
  * Inserter: true
@@ -30,14 +30,14 @@ $services = [
 ];
 ?>
 <!-- wp:html -->
-<section class="jg-inv-services">
+<section class="jg-inv-services jg-inv-services--gray">
   <div class="jg-inv-services__inner">
     <h2 class="jg-inv-services__heading">Шта радимо</h2>
     <div class="jg-inv-services__grid">
       <?php foreach ( $services as $s ) : ?>
       <div class="jg-inv-service-card">
         <div class="jg-inv-service-card__icon-wrap">
-          <img src="<?= esc_url( $s['icon'] ) ?>" width="32" height="32" alt="" aria-hidden="true">
+          <img src="<?= esc_url( $s['icon'] ) ?>" alt="" aria-hidden="true">
         </div>
         <h3 class="jg-inv-service-card__title"><?= esc_html( $s['title'] ) ?></h3>
         <p class="jg-inv-service-card__desc"><?= esc_html( $s['desc'] ) ?></p>

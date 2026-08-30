@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Каријере — Увод
+ * Title: Каријере - Увод
  * Slug: jugogradnja/careers-intro
  * Categories: jugogradnja
  * Inserter: true

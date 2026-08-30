@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Некретнине — CTA банер
+ * Title: Некретнине - CTA банер
  * Slug: jugogradnja/nekretnine-cta
  * Categories: jugogradnja
  * Inserter: true

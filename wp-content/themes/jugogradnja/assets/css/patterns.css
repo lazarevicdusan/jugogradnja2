@@ -1,4 +1,4 @@
-/* patterns.css — all section pattern styles */
+/* patterns.css - all section pattern styles */
 
 /* ── Shared section wrapper ───────────────────────────────── */
 .jg-hero,
@@ -140,6 +140,7 @@
 .jg-btn-outline {
   display: inline-block;
   border: 2px solid #fff;
+  border-radius: 8px;
   color: #fff;
   font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
   font-size: 18px;
@@ -156,7 +157,7 @@
   color: var(--wp--preset--color--primary, #212950);
 }
 
-/* Scroll indicator — hidden (card-style hero has no scroll indicator) */
+/* Scroll indicator - hidden (card-style hero has no scroll indicator) */
 .jg-hero__scroll {
   display: none;
   position: absolute;
@@ -283,9 +284,17 @@
 .jg-service-card {
   position: relative;
   display: block;
-  height: clamp(250px, 35vw, 500px);
+  aspect-ratio: 16 / 9;
   overflow: hidden;
+  border-radius: 24px;
   text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .jg-service-card {
+    aspect-ratio: unset;
+    height: 250px;
+  }
 }
 
 .jg-service-card__img {
@@ -372,7 +381,7 @@
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
   font-size: clamp(28px, 3.5vw, 48px);
   font-weight: 700;
-  color: var(--wp--preset--color--primary, #212950);
+  color: #253D86;
   text-align: center;
   margin: 0 0 16px;
   line-height: 1.15;
@@ -386,16 +395,23 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+}
+
+.jg-cert-card:hover {
+  border-color: rgba(197, 160, 89, 0.6);
+  box-shadow: 0 8px 32px rgba(33, 41, 80, 0.12);
+  transform: translateY(-4px);
 }
 
 .jg-cert-card__body {
-  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
-  font-size: 15px;
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(15px, 1.3vw, 19px);
   font-weight: 400;
-  color: var(--wp--preset--color--primary, #212950);
-  line-height: 1.6;
+  color: #253D86;
+  line-height: 1.68;
   text-align: center;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
 }
 
 .jg-cert-card__icon-wrap {
@@ -447,10 +463,17 @@
   border-bottom: 1px solid rgba(33, 41, 80, 0.05);
 }
 
+.jg-cert-card__list--license {
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 .jg-cert-card__list--license li {
   font-size: 24px;
   font-weight: 600;
-  padding: 16px 0;
+  padding: 0;
+  border-bottom: none;
 }
 
 .jg-cert-card__badge {
@@ -472,7 +495,7 @@
 }
 
 /* ══════════════════════════════════════════════════════════
-   PHASE 3 — STANDARD PAGES
+   PHASE 3 - STANDARD PAGES
    ══════════════════════════════════════════════════════════ */
 
 /* ── About Intro ─────────────────────────────────────────── */
@@ -497,6 +520,11 @@
   }
   .jg-about-intro__image {
     order: -1;
+  }
+}
+@media (max-width: 640px) {
+  .jg-about-features {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -625,7 +653,7 @@
   gap: 32px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .jg-mv-cards {
     grid-template-columns: 1fr;
   }
@@ -824,10 +852,6 @@
   gap: 0;
 }
 
-.jg-about-team__content .jg-section-heading {
-  margin-bottom: clamp(24px, 3vw, 48px);
-  text-align: left;
-}
 
 .jg-about-team__text {
   display: flex;
@@ -900,6 +924,7 @@
 
 /* ── Services Hub ────────────────────────────────────────── */
 .jg-services--hub {
+  padding-top: 0;
   padding-bottom: clamp(48px, 6vw, 96px);
 }
 
@@ -910,6 +935,7 @@
 .jg-services-hub {
   background: #fff;
   padding: clamp(48px, 6vw, 96px) 0 0;
+  overflow: hidden;
 }
 
 .jg-services-hub__inner {
@@ -1390,27 +1416,35 @@
   padding-bottom: 48px;
 }
 
-.jg-timeline::after {
-  content: '';
+/* Animated line div - grows downward as items scroll into view */
+.jg-timeline__line {
   position: absolute;
-  left: 15px;
-  bottom: 16px;
-  width: 7px;
-  height: 7px;
-  background: var(--wp--preset--color--footer-blue, #253D86);
-  box-shadow:
-    0 12px 0 var(--wp--preset--color--footer-blue, #253D86),
-    0 24px 0 var(--wp--preset--color--footer-blue, #253D86);
+  left: 17.25px;
+  top: 12px;
+  width: 3.5px;
+  height: 0;
+  background: #253d86;
+  transition: height 2200ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: height;
 }
 
-.jg-timeline::before {
-  content: '';
+/* Trailing dots - positioned by JS just below last visible dot */
+.jg-timeline__tail {
   position: absolute;
-  left: 15px;
-  top: 12px;
-  bottom: 12px;
-  width: 7px;
-  background: var(--wp--preset--color--footer-blue, #253D86);
+  left: 16.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 1800ms ease;
+}
+.jg-timeline.jg-tl--complete .jg-timeline__tail { opacity: 1; }
+.jg-timeline__tail span {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #253d86;
 }
 
 .jg-timeline__item {
@@ -1418,6 +1452,7 @@
   margin-bottom: clamp(20px, 2.5vw, 28px);
 }
 
+/* Dot: pops in with a spring after the line reaches it */
 .jg-timeline__dot {
   position: absolute;
   left: -41px;
@@ -1425,28 +1460,65 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--wp--preset--color--accent, #C5A059);
+  background: #c5a059;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 1000ms ease, transform 1400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: 0ms;
 }
 
+/* Text: slides in from the right slightly after the dot */
 .jg-timeline__entry {
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: clamp(14px, 1.2vw, 22px);
   font-weight: 700;
-  color: var(--wp--preset--color--footer-blue, #253D86);
+  color: #253d86;
   line-height: 1.5;
   margin: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 1600ms ease, transform 1600ms ease;
+  transition-delay: 0ms;
 }
 
-/* ── О нама: Тим — department cards ──────────────────────── */
+.jg-timeline__item.jg-tl--visible .jg-timeline__dot {
+  opacity: 1;
+  transform: scale(1);
+}
+.jg-timeline__item.jg-tl--visible .jg-timeline__entry {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reduced motion: skip all animation */
+@media (prefers-reduced-motion: reduce) {
+  .jg-timeline__line { transition: none !important; height: 100% !important; }
+  .jg-timeline__dot, .jg-timeline__entry { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .jg-timeline__tail { opacity: 1 !important; transition: none !important; }
+}
+
+/* ── О нама: Тим - department cards ──────────────────────── */
 .jg-about-team {
   background: #fff;
   padding: clamp(48px, 6vw, 96px) 0;
 }
 
-.jg-about-team__inner {
+.jg-about-team__wrap {
   max-width: 1152px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 48px);
+}
+
+.jg-about-team__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+  color: #253D86;
+  text-align: center;
+  margin: 0 0 clamp(32px, 4vw, 48px);
+}
+
+.jg-about-team__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(32px, 5vw, 80px);
@@ -1460,6 +1532,11 @@
   display: block;
   object-fit: cover;
   aspect-ratio: 552 / 500;
+}
+
+.jg-about-team__content {
+  display: flex;
+  flex-direction: column;
 }
 
 .jg-about-team__body {
@@ -1478,7 +1555,7 @@
 }
 
 .jg-dept-card {
-  background: var(--wp--preset--color--bg-light, #F9F9F9);
+  background: #f9f9f9;
   border-radius: 8px;
   height: 128px;
   display: flex;
@@ -1499,7 +1576,7 @@
 .jg-dept-card__label {
   font-size: 14px;
   font-weight: 500;
-  color: var(--wp--preset--color--primary, #212950);
+  color: #212950;
   text-align: center;
   line-height: 1.4;
   padding: 0 8px;
@@ -1547,7 +1624,7 @@
   }
 
   .jg-dept-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1560,8 +1637,14 @@
     padding-left: 32px;
   }
 
-  .jg-timeline::before {
-    left: 8px;
+  /* dot center = 32 - 28 + 9 = 13px; line center must match */
+  .jg-timeline__line {
+    left: 10.9px;
+    width: 4.2px;
+  }
+
+  .jg-timeline__tail {
+    left: 10.5px;
   }
 
   .jg-timeline__dot {
@@ -1642,36 +1725,36 @@
 }
 .jg-internship-card {
   background: #fff;
-  border: 2px solid #212950;
+  border: 2px solid #253D86;
   border-radius: 24px;
-  padding: clamp(32px, 4vw, 64px);
+  padding: clamp(32px, 4vw, 48px);
 }
 .jg-internship-card__heading {
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: clamp(22px, 2.5vw, 36px);
+  font-size: clamp(22px, 2.5vw, 30px);
   font-weight: 700;
-  color: #212950;
+  color: #253D86;
   margin: 0 0 20px;
 }
 .jg-internship-card__text {
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: clamp(15px, 1.2vw, 20px);
   font-weight: 300;
-  line-height: 1.7;
-  color: #212950;
-  margin: 0 0 36px;
+  line-height: 1.625;
+  color: #364153;
+  margin: 0 0 32px;
 }
 .jg-internship-testimonial {
+  background: rgba(197, 160, 89, 0.1);
   border-left: 4px solid #C5A059;
-  padding-left: 28px;
+  padding: 32px 32px 32px 36px;
 }
 .jg-internship-testimonial__label {
-  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
   color: #C5A059;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 .jg-internship-testimonial__body {
   display: flex;
@@ -1692,6 +1775,27 @@
   border-radius: 50%;
   background: #e8ecf2;
 }
+.jg-internship-testimonial__avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.jg-internship-testimonial__track {
+  position: relative;
+}
+.jg-internship-testimonial__slide {
+  display: none;
+  animation: jg-slide-in 400ms ease both;
+}
+.jg-internship-testimonial__slide.jg-slide--active {
+  display: block;
+}
+@keyframes jg-slide-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 .jg-internship-testimonial__dots {
   display: flex;
   gap: 8px;
@@ -1703,30 +1807,33 @@
   height: 10px;
   border-radius: 50%;
   background: #d1d5db;
-  display: inline-block;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 300ms;
 }
 .jg-dot--active {
   background: #212950;
 }
 .jg-internship-testimonial__name {
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: 16px;
-  font-weight: 700;
-  color: #212950;
+  font-size: 20px;
+  font-weight: 600;
+  color: #253D86;
   margin: 0 0 4px;
 }
 .jg-internship-testimonial__role {
   font-size: 14px;
-  font-weight: 400;
-  color: #6b7280;
-  margin: 0 0 16px;
+  font-weight: 300;
+  color: #4a5565;
+  margin: 0 0 24px;
 }
 .jg-internship-testimonial__quote {
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: clamp(14px, 1.2vw, 18px);
   font-weight: 300;
   font-style: italic;
-  line-height: 1.7;
-  color: #212950;
+  line-height: 1.625;
+  color: #364153;
   margin: 0;
   border: none;
   padding: 0;
@@ -1821,9 +1928,8 @@
 }
 .jg-careers-form__card {
   background: #fff;
-  border: 1.5px solid #212950;
-  border-radius: 16px;
-  padding: clamp(32px, 4vw, 56px);
+  border: 2px solid #253D86;
+  padding: clamp(32px, 4vw, 50px);
 }
 .jg-apply-form {
   display: flex;
@@ -1841,8 +1947,9 @@
   gap: 8px;
 }
 .jg-apply-form__label {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: #253D86;
 }
 .jg-apply-form__label span {
@@ -1850,13 +1957,13 @@
 }
 .jg-apply-form__input,
 .jg-apply-form__textarea {
-  border: 1.5px solid #d1d5dc;
+  border: 1px solid #d1d5dc;
   border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 15px;
-  font-weight: 300;
-  color: #212950;
-  background: #fff;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #364153;
+  background: #f9f9f9;
   transition: border-color 300ms;
   outline: none;
   font-family: inherit;
@@ -1865,13 +1972,13 @@
 }
 .jg-apply-form__input::placeholder,
 .jg-apply-form__textarea::placeholder {
-  color: #9ca3af;
+  color: #5a5a6f;
   font-weight: 300;
 }
 .jg-apply-form__input:focus,
 .jg-apply-form__textarea:focus {
-  border-color: #212950;
-  background: #fff;
+  border-color: #253D86;
+  background: #f9f9f9;
 }
 .jg-apply-form__textarea {
   resize: vertical;
@@ -1895,7 +2002,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1.5px solid #d1d5dc;
+  border: 2px solid #d1d5dc;
   border-radius: 8px;
   padding: 40px 24px;
   background: #f9f9f9;
@@ -1908,27 +2015,27 @@
   background: #fdf8f0;
 }
 .jg-apply-form__upload-text {
-  font-size: 15px;
-  font-weight: 400;
-  color: #212950;
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5565;
 }
 .jg-apply-form__upload-hint {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 300;
-  color: #6b7280;
+  color: #6a7282;
 }
 .jg-apply-form__submit {
   width: 100%;
   margin-top: 8px;
-  padding: 18px 32px;
+  padding: 16px 32px;
   background: #C5A059;
   color: #fff;
   border: none;
   border-radius: 8px;
   font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   cursor: pointer;
   transition: background 300ms;
@@ -2824,9 +2931,23 @@
   gap: 32px;
 }
 .jg-inv-service-card {
-  background: #f9f9f9;
+  background: #fff;
+  border: 1px solid #e8eaf0;
   border-radius: 16px;
   padding: 32px;
+  transition: box-shadow 300ms ease, transform 300ms ease, border-color 300ms ease;
+}
+
+.jg-inv-service-card:hover {
+  box-shadow: 0 8px 30px rgba(33, 41, 80, 0.12);
+  transform: translateY(-4px);
+  border-color: rgba(197, 160, 89, 0.6);
+}
+.jg-inv-services--gray {
+  background: #f9f9f9;
+}
+.jg-inv-services--gray .jg-inv-service-card {
+  background: #fff;
 }
 .jg-inv-service-card__icon-wrap {
   width: 64px;
@@ -2838,13 +2959,18 @@
   justify-content: center;
   margin-bottom: 24px;
 }
+.jg-inv-service-card__icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 .jg-inv-service-card__title {
   font-family: var(--wp--preset--font-family--montserrat);
   font-weight: 600;
   font-size: 20px;
   line-height: 1.4;
   color: #253d86;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 .jg-inv-service-card__desc {
   font-family: var(--wp--preset--font-family--roboto);
@@ -2943,6 +3069,10 @@
   color: rgba(37,61,134,0.7);
   margin: 0 0 16px;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .jg-inv-proj-card__more {
   font-family: var(--wp--preset--font-family--roboto);
@@ -2991,7 +3121,7 @@
 }
 
 /* ============================================================
-   ИЗГРАДЊА PAGE — "Шта градимо" section
+   ИЗГРАДЊА PAGE - "Шта градимо" section
    ============================================================ */
 .jg-izgr-what {
   background: #f9f9f9;
@@ -3012,13 +3142,19 @@
 }
 .jg-izgr-what__list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 32px;
 }
 .jg-izgr-cat-card {
   background: #fff;
   border-radius: 16px;
   padding: 40px;
+  flex: 1;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+.jg-izgr-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(33,41,80,0.1);
 }
 .jg-izgr-cat-card__header {
   display: flex;
@@ -3064,6 +3200,9 @@
 }
 
 @media (max-width: 768px) {
+  .jg-izgr-what__list {
+    flex-direction: column;
+  }
   .jg-izgr-cat-card {
     padding: 24px;
   }
@@ -3112,6 +3251,7 @@
 }
 
 /* ── Enterijer: "Шта опремамо" italic quote ───────────────── */
+.jg-ent-what { background: #f9f9f9; }
 .jg-ent-what__quote {
   font-family: var(--wp--preset--font-family--roboto);
   font-weight: 300;
@@ -3440,7 +3580,7 @@
   margin: 0 0 16px;
 }
 .jg-ref-sidebar__card {
-  /* no card wrapper styling — rows are flat */
+  /* no card wrapper styling - rows are flat */
 }
 .jg-ref-sidebar__list {
   list-style: none;
@@ -3767,6 +3907,9 @@
   display: block;
   border-radius: 16px;
 }
+.jg-ref-detail__img[hidden] {
+  display: none;
+}
 .jg-ref-detail__img-placeholder {
   width: 100%;
   height: 299px;
@@ -3827,17 +3970,74 @@
 }
 
 /* Gallery */
-.jg-ref-detail__gallery-wrap {
+.jg-ref-detail__slideshow {
+  position: relative;
   border-radius: 16px;
   overflow: hidden;
-  background: #e5e7eb;
+  background: #111;
+}
+.jg-ref-detail__slides {
+  position: relative;
+}
+.jg-ref-detail__slide {
+  display: none;
+}
+.jg-ref-detail__slide.is-active {
+  display: block;
 }
 .jg-ref-detail__gallery-img {
   width: 100%;
-  height: 457px;
+  height: 380px;
   object-fit: cover;
   display: block;
-  border-radius: 16px;
+}
+.jg-ref-detail__slide-prev,
+.jg-ref-detail__slide-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms;
+  z-index: 2;
+}
+.jg-ref-detail__slide-prev:hover,
+.jg-ref-detail__slide-next:hover {
+  background: rgba(255,255,255,0.3);
+}
+.jg-ref-detail__slide-prev { left: 12px; }
+.jg-ref-detail__slide-next { right: 12px; }
+.jg-ref-detail__slide-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.jg-ref-detail__slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  padding: 0;
+  transition: background 200ms, transform 200ms;
+}
+.jg-ref-detail__slide-dot.is-active {
+  background: #fff;
+  transform: scale(1.25);
 }
 
 /* Footer close */
@@ -3869,16 +4069,19 @@
   .jg-ref-detail__img-wrap { width: 100%; }
   .jg-ref-detail__img,
   .jg-ref-detail__img-placeholder { height: 220px; }
-  .jg-ref-detail__gallery-img { height: 240px; }
+  .jg-ref-detail__gallery-img { height: 220px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   NEKRETNINA — SINGLE PAGE
+   NEKRETNINA - SINGLE PAGE
    ═══════════════════════════════════════════════════════════════ */
 
 /* Back link bar */
+.jg-prop-single {
+  background: #fff;
+}
 .jg-prop-back {
-  background: #f9f9f9;
+  background: #fff;
   border-bottom: 1px solid #e5e7eb;
 }
 .jg-prop-back__inner {
@@ -4019,65 +4222,62 @@
 .jg-prop-single__sidebar-inner {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
+  background: #253d86;
+  border-radius: 16px;
+  padding: 32px;
+  color: #fff;
 }
 
-/* Price card */
+/* Price card - visually part of the single dark card */
 .jg-prop-single__price-card {
-  background: #253D86;
-  border-radius: 16px;
-  padding: 24px;
-  color: #fff;
+  padding-bottom: 24px;
 }
 .jg-prop-single__price-label {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 300;
   color: rgba(255,255,255,.7);
   margin: 0 0 8px;
 }
 .jg-prop-single__price-amount {
-  font-family: var(--wp--preset--font-family--montserrat, Montserrat, sans-serif);
-  font-size: clamp(28px, 3vw, 36px);
-  font-weight: 700;
+  font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
+  font-size: 36px;
+  font-weight: 300;
   color: #fff;
-  line-height: 1.1;
-  margin-bottom: 4px;
+  line-height: 40px;
+  margin-bottom: 8px;
 }
 .jg-prop-single__price-sqm {
   font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 300;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.7);
 }
 
-/* Contact card */
+/* Contact section - separated from price by a divider line */
 .jg-prop-single__contact-card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 24px;
+  border-top: 1px solid rgba(255,255,255,.2);
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 .jg-prop-single__contact-label {
   font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
-  font-size: 12px;
-  font-weight: 400;
-  color: #6b7280;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,.7);
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: .04em;
 }
 .jg-prop-single__contact-name {
-  font-family: var(--wp--preset--font-family--montserrat, Montserrat, sans-serif);
-  font-size: 16px;
-  font-weight: 700;
-  color: #212950;
+  font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
   margin: 0;
 }
 .jg-prop-single__contact-row {
@@ -4086,11 +4286,17 @@
   gap: 8px;
   font-family: var(--wp--preset--font-family--roboto, Roboto, sans-serif);
   font-size: 14px;
-  font-weight: 400;
-  color: #364153;
+  font-weight: 300;
+  color: rgba(255,255,255,.8);
   text-decoration: none;
 }
-.jg-prop-single__contact-row:hover { color: #253D86; }
+.jg-prop-single__contact-row:hover { color: #fff; }
+.jg-prop-single__sidebar-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
 .jg-btn--block { width: 100%; justify-content: center; text-align: center; }
 .jg-btn--outline-white {
   display: inline-flex;
@@ -4106,11 +4312,21 @@
   background: #fff;
   border: 2px solid #253D86;
   color: #253D86;
-  transition: background 300ms, color 300ms;
+  transition: background 300ms, color 300ms, border-color 300ms;
 }
 .jg-btn--outline-white:hover { background: #253D86; color: #fff; }
+/* Dark-card context override for ПОДЕЛИ button */
+.jg-prop-single__sidebar-btns .jg-btn--outline-white {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+}
+.jg-prop-single__sidebar-btns .jg-btn--outline-white:hover {
+  background: rgba(255,255,255,.2);
+  border-color: rgba(255,255,255,.5);
+}
 
-/* Legacy — keep for back-compat if referenced elsewhere */
+/* Legacy - keep for back-compat if referenced elsewhere */
 .jg-prop-single__content { display: none; }
 
 /* Badges */
@@ -4149,26 +4365,35 @@
 .jg-prop-single__stat-tile {
   background: #f9f9f9;
   border-radius: 16px;
-  padding: 16px;
-  min-height: 128px;
+  padding: 16px 16px 16px;
+  height: 128px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  justify-content: flex-start;
+  gap: 0;
   text-align: center;
+  box-sizing: border-box;
+}
+.jg-prop-single__stat-tile img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-bottom: 8px;
 }
 .jg-prop-single__stat-value {
   font-size: 24px;
   font-weight: 300;
-  color: var(--wp--preset--color--footer-blue, #253D86);
-  line-height: 1.2;
+  color: #253d86;
+  line-height: 32px;
   font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  margin-bottom: 4px;
 }
 .jg-prop-single__stat-label {
   font-size: 14px;
   font-weight: 300;
   color: #4a5565;
+  line-height: 20px;
   font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
 }
 
@@ -4212,7 +4437,8 @@
 .jg-prop-single__info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  column-gap: 16px;
+  row-gap: 0;
 }
 .jg-prop-single__info-row {
   display: flex;
@@ -4221,17 +4447,21 @@
   padding: 12px 0;
   border-bottom: 1px solid #e5e7eb;
   gap: 16px;
+  min-height: 49px;
+  box-sizing: border-box;
 }
 .jg-prop-single__info-label {
   font-size: 16px;
   font-weight: 300;
   color: #4a5565;
+  line-height: 24px;
 }
 .jg-prop-single__info-value {
   font-size: 16px;
   font-weight: 300;
-  color: var(--wp--preset--color--footer-blue, #253D86);
+  color: #253d86;
   text-align: right;
+  line-height: 24px;
 }
 
 /* Amenities 2-col list */
@@ -4256,7 +4486,7 @@
 .jg-prop-single__rooms-card {
   background: #f9f9f9;
   border-radius: 16px;
-  padding: 24px;
+  padding: 24px 24px 0;
   display: flex;
   flex-direction: column;
 }
@@ -4268,16 +4498,21 @@
   border-bottom: 1px solid #d1d5dc;
   font-size: 16px;
   font-weight: 300;
+  min-height: 49px;
+  box-sizing: border-box;
 }
-.jg-prop-single__room-row:last-child { border-bottom: none; }
-.jg-prop-single__room-name { color: #364153; }
-.jg-prop-single__room-size { color: var(--wp--preset--color--footer-blue, #253D86); }
+.jg-prop-single__room-row:last-child {
+  border-bottom: none;
+  padding-bottom: 24px;
+}
+.jg-prop-single__room-name { color: #364153; line-height: 24px; }
+.jg-prop-single__room-size { color: #253d86; line-height: 24px; }
 
 /* Proximity grid */
 .jg-prop-single__proximity-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 16px;
 }
 .jg-prop-single__proximity-item {
   display: flex;
@@ -4285,19 +4520,23 @@
   align-items: center;
   background: #f9f9f9;
   border-radius: 8px;
-  padding: 12px;
+  padding: 0 12px;
+  height: 48px;
   font-size: 16px;
   font-weight: 300;
+  box-sizing: border-box;
 }
-.jg-prop-single__proximity-name { color: #364153; }
+.jg-prop-single__proximity-name { color: #364153; line-height: 24px; }
 .jg-prop-single__proximity-dist {
-  color: var(--wp--preset--color--accent, #C5A059);
-  font-weight: 400;
+  color: #c5a059;
+  font-weight: 300;
+  line-height: 24px;
 }
 
 /* Interest CTA */
 .jg-prop-single__interest {
-  background: #f9f9f9;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
   padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 40px);
 }
 .jg-prop-single__interest-inner {
@@ -4371,6 +4610,9 @@
   .jg-prop-gallery__thumb { width: 80px; height: 60px; }
   .jg-prop-single__interest-actions { flex-direction: column; align-items: stretch; }
   .jg-btn--outline-navy { width: 100%; text-align: center; }
+}
+@media (max-width: 480px) {
+  .jg-prop-single__stats { grid-template-columns: 1fr; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -4636,23 +4878,157 @@
   text-align: center;
   margin-top: 48px;
 }
+
+/* card hover */
+.jg-sofeija-gallery__card {
+  cursor: pointer;
+}
+.jg-sofeija-gallery__card img {
+  transition: transform 700ms ease;
+}
+.jg-sofeija-gallery__card:hover img,
+.jg-sofeija-gallery__card:focus-visible img {
+  transform: scale(1.05);
+}
+.jg-sofeija-gallery__hover-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+  pointer-events: none;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sofeija-gallery__card:hover .jg-sofeija-gallery__hover-icon,
+.jg-sofeija-gallery__card:focus-visible .jg-sofeija-gallery__hover-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ── Sofeija gallery lightbox ── */
+.jg-sof-backdrop[hidden],
+.jg-sof-modal[hidden] {
+  display: none !important;
+}
+.jg-sof-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9000;
+}
+.jg-sof-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 64px 24px 24px;
+}
+/* row: prev arrow | image | next arrow */
+.jg-sof-modal__stage {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 100%;
+}
+.jg-sof-modal__wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sof-modal__img {
+  max-height: 75vh;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  display: block;
+}
+.jg-sof-modal__caption {
+  color: rgba(255,255,255,0.8);
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+}
+.jg-sof-modal__close {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 0;
+  opacity: 0.8;
+  transition: opacity 200ms;
+}
+.jg-sof-modal__close:hover { opacity: 1; }
+.jg-sof-modal__prev,
+.jg-sof-modal__next {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms;
+  line-height: 0;
+}
+.jg-sof-modal__prev:hover,
+.jg-sof-modal__next:hover { background: rgba(255,255,255,0.25); }
+.jg-sof-modal__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.jg-sof-modal__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: background 200ms;
+}
+.jg-sof-modal__dot.is-active { background: #fff; }
+
+@media (max-width: 600px) {
+  .jg-sof-modal { padding: 56px 8px 16px; gap: 8px; }
+  .jg-sof-modal__stage { gap: 8px; }
+  .jg-sof-modal__prev,
+  .jg-sof-modal__next { width: 36px; height: 36px; }
+}
 .jg-btn--outline-navy {
   display: inline-block;
   padding: 14px 40px;
-  border: 2px solid #212950;
-  color: #212950;
-  font-family: var(--wp--preset--font-family--heading);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  border: 2px solid #253d86;
+  color: #253d86;
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 16px;
+  font-weight: 300;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 8px;
   transition: background 300ms, color 300ms;
 }
 .jg-btn--outline-navy:hover {
-  background: #212950;
-  color: #fff;
+  background: #f0f4ff;
 }
 
 /* ── Sofeija Why ──────────────────────────────────────────────── */
@@ -4691,6 +5067,8 @@
   background-position: center;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .jg-sofeija-why__grid-overlay {
   position: absolute;
@@ -4723,6 +5101,7 @@
   font-weight: 700;
   line-height: 1.4;
   margin: 0;
+  color: #fff;
 }
 
 /* ── Sofeija Partners ──────────────────────────────────────────── */
@@ -4791,6 +5170,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 80px;
 }
 .jg-sofeija-offer__bg {
   position: absolute;
@@ -4837,6 +5217,65 @@
   font-size: 16px;
   line-height: 1.75;
   opacity: 0.9;
+}
+
+/* ── Sofeija Offer Cards ───────────────────────────────────────── */
+.jg-sofeija-offer-cards {
+  background: #fff;
+  padding: 0 32px 80px;
+}
+.jg-sofeija-offer-cards__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  transform: translateY(-60px);
+}
+.jg-sofeija-offer-card {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  box-shadow: 0 30px 30px rgba(0,0,0,0.1);
+  padding: 32px 32px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.jg-sofeija-offer-card__icon {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.jg-sofeija-offer-card__title {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 0 16px;
+  line-height: 1.3;
+}
+.jg-sofeija-offer-card__text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #020101;
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .jg-sofeija-offer-cards__inner {
+    grid-template-columns: repeat(2, 1fr);
+    transform: translateY(-40px);
+  }
+}
+@media (max-width: 560px) {
+  .jg-sofeija-offer-cards__inner {
+    grid-template-columns: 1fr;
+    transform: translateY(-30px);
+  }
 }
 
 /* ── Sofeija Services ──────────────────────────────────────────── */
@@ -5044,12 +5483,16 @@
   .jg-sofeija-partners__logos { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 599px) {
-  .jg-sofeija-stats__inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .jg-sofeija-stats__inner { grid-template-columns: 1fr; gap: 24px; }
   .jg-sofeija-gallery__grid { grid-template-columns: 1fr; }
   .jg-sofeija-why__grid { grid-template-columns: 1fr; }
   .jg-sofeija-svc__inner { grid-template-columns: 1fr; }
+  .jg-sofeija-partners__logos { grid-template-columns: repeat(2, 1fr); }
   .jg-sofeija-form__row { grid-template-columns: 1fr; }
   .jg-sofeija-catalog__actions { flex-direction: column; }
+}
+@media (max-width: 400px) {
+  .jg-sofeija-partners__logos { grid-template-columns: 1fr; }
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -5219,6 +5662,9 @@
   border-radius: 16px;
   padding: 40px 40px 44px;
   text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
   transition: box-shadow 300ms, transform 300ms;
 }
 .jg-velux-upit__card:hover {
@@ -5280,6 +5726,112 @@
 }
 .jg-velux-upit__contact-link:hover { color: #C5A059; }
 .jg-velux-upit__sep { color: rgba(255,255,255,0.3); font-size: 20px; }
+
+/* Velux upit - form panels */
+.jg-velux-upit__form-wrap[hidden],
+.jg-velux-upit__cards[hidden] { display: none !important; }
+.jg-velux-upit__form-wrap { margin-bottom: 40px; }
+.jg-velux-upit__form-box {
+  background: #f9f9f9;
+  padding: 40px 48px 48px;
+}
+.jg-velux-upit__form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.jg-velux-upit__form-title {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: #212950;
+  margin: 0;
+}
+.jg-velux-upit__back {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6a7282;
+  text-decoration: underline;
+  font-family: var(--wp--preset--font-family--body);
+}
+.jg-velux-upit__back:hover { color: #212950; }
+.jg-velux-upit__form { display: flex; flex-direction: column; gap: 24px; }
+.jg-velux-upit__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.jg-velux-upit__field { display: flex; flex-direction: column; gap: 8px; }
+.jg-velux-upit__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #364153;
+  font-family: var(--wp--preset--font-family--body);
+}
+.jg-velux-upit__input,
+.jg-velux-upit__select,
+.jg-velux-upit__textarea {
+  width: 100%;
+  border: 2px solid #e5e7eb;
+  background: #fff;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-family: var(--wp--preset--font-family--body);
+  color: #212950;
+  outline: none;
+  border-radius: 0;
+  transition: border-color 200ms;
+  box-sizing: border-box;
+}
+.jg-velux-upit__input::placeholder,
+.jg-velux-upit__textarea::placeholder { color: rgba(33,41,80,0.4); }
+.jg-velux-upit__select { appearance: none; cursor: pointer; color: rgba(33,41,80,0.6); }
+.jg-velux-upit__select:valid:not([value=""]) { color: #212950; }
+.jg-velux-upit__input:focus,
+.jg-velux-upit__select:focus,
+.jg-velux-upit__textarea:focus { border-color: #C5A059; }
+.jg-velux-upit__textarea { resize: vertical; min-height: 124px; }
+.jg-velux-upit__hint {
+  font-size: 13px;
+  color: #6a7282;
+  font-weight: 300;
+  margin: 4px 0 0;
+}
+.jg-velux-upit__submit-wrap {
+  border-top: 1px solid #d1d5dc;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+.jg-velux-upit__submit {
+  display: block;
+  width: 100%;
+  background: #C5A059;
+  color: #fff;
+  border: none;
+  padding: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-family: var(--wp--preset--font-family--body);
+  cursor: pointer;
+  transition: background 200ms;
+}
+.jg-velux-upit__submit:hover { background: #b08d45; }
+.jg-velux-upit__submit-note {
+  text-align: center;
+  font-size: 13px;
+  color: #6a7282;
+  font-weight: 300;
+  margin: 0;
+}
 
 /* ── VELUX Stats ────────────────────────────────────────── */
 .jg-velux-stats {
@@ -5640,116 +6192,145 @@
   padding: 80px 32px;
 }
 .jg-velux-reviews__inner {
-  max-width: 1100px;
+  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
 }
 .jg-velux-reviews__heading {
   font-family: var(--wp--preset--font-family--heading);
   font-size: clamp(24px, 2.8vw, 36px);
-  font-weight: 700;
-  color: #253D86;
+  font-weight: 500;
+  color: #253d86;
   margin: 0 0 16px;
 }
 .jg-velux-reviews__rating {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 16px;
   margin-bottom: 8px;
 }
 .jg-velux-reviews__stars { display: flex; gap: 4px; }
 .jg-velux-reviews__score {
+  font-family: var(--wp--preset--font-family--roboto);
   font-size: 24px;
-  font-weight: 700;
-  color: #253D86;
+  font-weight: 300;
+  color: #253d86;
 }
 .jg-velux-reviews__count {
-  font-size: 14px;
-  color: #888;
-  margin: 0 0 40px;
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 16px;
+  font-weight: 300;
+  color: #4a5565;
+  margin: 0 0 48px;
 }
 .jg-velux-reviews__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 32px;
   margin-bottom: 32px;
   text-align: left;
 }
 .jg-velux-reviews__card {
-  background: #fff;
-  border: 1px solid #e8eaf0;
-  border-radius: 12px;
-  padding: 24px;
+  background: #f9f9f9;
+  border: 2px solid #e5e7eb;
+  border-radius: 0;
+  padding: 26px 26px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 .jg-velux-reviews__card-header {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  align-items: flex-start;
+  gap: 16px;
 }
 .jg-velux-reviews__avatar {
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  background: #C5A059;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  background: #c5a059;
   color: #fff;
+  font-family: var(--wp--preset--font-family--roboto);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 0;
 }
 .jg-velux-reviews__name {
   display: block;
-  font-size: 15px;
-  color: #253D86;
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 18px;
+  font-weight: 300;
+  color: #253d86;
+  line-height: 28px;
 }
 .jg-velux-reviews__meta {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   margin-top: 4px;
 }
+.jg-velux-reviews__meta-stars { display: flex; gap: 2px; }
 .jg-velux-reviews__meta span {
-  font-size: 12px;
-  color: #aaa;
-  margin-left: 4px;
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 14px;
+  font-weight: 300;
+  color: #6a7282;
 }
 .jg-velux-reviews__text {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #555;
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+  color: #364153;
   margin: 0;
 }
-.jg-velux-reviews__google-btn {
+.jg-velux-reviews__cta {
   display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+.jg-velux-reviews__google-btn {
+  display: flex;
   align-items: center;
   gap: 8px;
-  border: 2px solid #e0e3ec;
-  color: #444;
-  padding: 12px 28px;
+  border: 2px solid #253d86;
+  color: #253d86;
+  padding: 14px 32px;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 16px;
+  font-weight: 300;
   text-decoration: none;
-  transition: border-color 300ms;
-  margin-bottom: 32px;
+  transition: background 300ms;
 }
-.jg-velux-reviews__google-btn:hover { border-color: #253D86; color: #253D86; }
+.jg-velux-reviews__google-btn:hover { background: #f0f4ff; }
 .jg-velux-reviews__badge {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  border: 1px solid #C5A059;
+  gap: 16px;
+  background: rgba(197,160,89,0.1);
+  border: 2px solid #c5a059;
   border-radius: 8px;
-  padding: 12px 20px;
-  color: #253D86;
+  padding: 16px 24px;
 }
-.jg-velux-reviews__badge div { display: flex; flex-direction: column; text-align: left; }
-.jg-velux-reviews__badge span { font-size: 12px; color: #888; }
-.jg-velux-reviews__badge strong { font-size: 15px; color: #C5A059; }
+.jg-velux-reviews__badge-text { display: flex; flex-direction: column; text-align: left; gap: 4px; }
+.jg-velux-reviews__badge span {
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5565;
+}
+.jg-velux-reviews__badge strong {
+  font-family: var(--wp--preset--font-family--roboto);
+  font-size: 18px;
+  font-weight: 300;
+  color: #253d86;
+}
 
 /* ── VELUX Ролетне ──────────────────────────────────────── */
 .jg-velux-roletne {
@@ -5784,11 +6365,20 @@
   border-radius: 12px;
   overflow: hidden;
   height: 300px;
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+.jg-velux-roletne__photo:hover {
+  box-shadow: 0 8px 32px rgba(33, 41, 80, 0.18);
+  transform: translateY(-4px);
 }
 .jg-velux-roletne__photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 700ms ease;
+}
+.jg-velux-roletne__photo:hover img {
+  transform: scale(1.05);
 }
 .jg-velux-roletne__features {
   display: grid;
@@ -7404,24 +7994,39 @@
 }
 
 /* Series header */
-.jg-velux-series { border-radius: 12px; padding: 24px 32px; }
-.jg-velux-series--dark { background: #253D86; }
+.jg-velux-series { border-radius: 8px; padding: 32px; }
+.jg-velux-series--dark { background: #253d86; }
 .jg-velux-series--light {
-  background: #fff; border: 1px solid #eee;
-  border-left: 5px solid #C5A059;
+  background: #fff;
+  border: 2px solid #253d86;
 }
 .jg-velux-series--dark .jg-velux-series__title { color: #fff; }
 .jg-velux-series--dark .jg-velux-series__sub  { color: rgba(255,255,255,0.7); }
 .jg-velux-series--dark .jg-velux-series__note { color: rgba(255,255,255,0.5); }
-.jg-velux-series--light .jg-velux-series__title { color: #253D86; }
-.jg-velux-series--light .jg-velux-series__sub  { color: #555; }
-.jg-velux-series--light .jg-velux-series__note { color: #888; }
+.jg-velux-series--light .jg-velux-series__title { color: #253d86; }
+.jg-velux-series--light .jg-velux-series__sub  { color: #364153; }
+.jg-velux-series--light .jg-velux-series__note { color: #4a5565; }
 .jg-velux-series__title {
-  font-family: var(--wp--preset--font-family--heading,'Montserrat',sans-serif);
-  font-size: 22px; font-weight: 700; margin: 0 0 4px;
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 36px;
+  margin: 0 0 16px;
 }
-.jg-velux-series__sub  { font-size: 14px; font-weight: 500; margin: 0 0 4px; }
-.jg-velux-series__note { font-size: 13px; margin: 0; }
+.jg-velux-series__sub {
+  font-family: var(--wp--preset--font-family--roboto, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 0 0 8px;
+}
+.jg-velux-series__note {
+  font-family: var(--wp--preset--font-family--roboto, 'Roboto', sans-serif);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  margin: 0;
+}
 
 /* Price cards grid */
 .jg-velux-pcards {
@@ -7511,7 +8116,7 @@
   .jg-velux-pcards { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── VELUX Trust bar — 3 variant backgrounds ─────────────── */
+/* ── VELUX Trust bar - 3 variant backgrounds ─────────────── */
 .jg-velux-prozori__trust { background: transparent; }
 
 .jg-velux-prozori__trust-item--navy {
@@ -7559,3 +8164,118 @@
 /* Gold accent consistency across VELUX */
 .jg-velux-stats__number,
 .jg-velux-reviews__star { color: #C5A059; }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE FIXES - consolidated patch
+   ═══════════════════════════════════════════════════════════ */
+
+/* VELUX stats grid - was 4-col with zero responsive rules */
+@media (max-width: 1024px) {
+  .jg-velux-stats__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .jg-velux-stats__grid { grid-template-columns: 1fr; }
+}
+
+/* VELUX prozori windows grid - was 2-col with zero responsive rules */
+@media (max-width: 768px) {
+  .jg-velux-prozori__grid { grid-template-columns: 1fr; }
+}
+
+/* VELUX upit form - two-col row fields stack on mobile */
+@media (max-width: 640px) {
+  .jg-velux-upit__row { grid-template-columns: 1fr; }
+  .jg-velux-upit__form-box { padding: 24px 20px; }
+}
+
+/* About features - was 2-col with zero responsive rules (fixed inline above at 503px) */
+/* Also tighten about-intro gap on tablets */
+@media (max-width: 768px) {
+  .jg-about-intro__inner { gap: 32px; }
+  .jg-mv-cards { grid-template-columns: 1fr; }
+}
+
+/* References - card grid tighten breakpoint */
+@media (max-width: 640px) {
+  .jg-ref-card-grid { grid-template-columns: 1fr; }
+  .jg-ref-stats__inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .jg-ref-stats__inner { grid-template-columns: 1fr; }
+}
+
+/* Parcels (Nekretnine) - reduce excessive gap on mobile */
+@media (max-width: 768px) {
+  .jg-parcels__inner { gap: 40px; }
+}
+
+/* Investicije services grid */
+@media (max-width: 640px) {
+  .jg-inv-services__grid { grid-template-columns: 1fr; }
+}
+
+/* Careers positions - section padding */
+@media (max-width: 640px) {
+  .jg-careers-positions { padding: 48px 16px; }
+  .jg-careers-benefits { padding: 48px 16px; }
+}
+
+/* Sofeija lightbox modal on very small screens */
+@media (max-width: 360px) {
+  .jg-sof-modal { padding: 48px 4px 12px; }
+  .jg-sof-modal__prev,
+  .jg-sof-modal__next { width: 32px; height: 32px; }
+}
+
+/* Global section padding tighten on mobile */
+@media (max-width: 480px) {
+  .jg-velux-stats { padding: 48px 16px; }
+  .jg-velux-promo { padding: 48px 16px; }
+  .jg-velux-prozori { padding: 48px 16px; }
+  .jg-velux-reviews { padding: 48px 16px; }
+  .jg-velux-upit { padding: 48px 16px; }
+  .jg-about-team { padding: 48px 0; }
+  .jg-cta-banner { padding: 32px 16px; }
+  .jg-cta-banner__inner { padding: 32px 20px; border-radius: 16px; }
+  .jg-cta-banner__heading { font-size: clamp(18px, 5vw, 28px); }
+}
+
+/* Form submit notices (contact, sofeija, careers, VELUX упит) */
+.jg-form-notice {
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.jg-form-notice--success {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+.jg-form-notice--error {
+  background: #fdecea;
+  color: #a13a2f;
+  border: 1px solid #f4b8b0;
+}
+
+/* Selected-file list under the CV upload field (careers + single position forms) */
+.jg-apply-form__file-list {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.jg-apply-form__file-item {
+  font-size: 13px;
+  color: #212950;
+  background: #f2f3f7;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+.jg-apply-form__file-item--error {
+  color: #a13a2f;
+  background: #fdecea;
+}

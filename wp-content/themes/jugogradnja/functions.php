@@ -1,6 +1,6 @@
 <?php
 /**
- * Jugogradnja block theme — functions.php
+ * Jugogradnja block theme - functions.php
  *
  * Performance-first setup:
  * - Remove WordPress bloat (emoji, oEmbed, XML-RPC, REST-API generator header).
@@ -15,7 +15,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // ──────────────────────────────────────────────
-// 1. PERFORMANCE — remove default bloat
+// 1. PERFORMANCE - remove default bloat
 // ──────────────────────────────────────────────
 
 add_action( 'init', function () {
@@ -141,9 +141,19 @@ add_action( 'wp_head', function () {
 // 5. CUSTOM POST TYPES
 // ──────────────────────────────────────────────
 
+// High-priority rewrite so /nekretnine/{slug}/ resolves to CPT single
+// before WordPress tries to match it as a child of the 'nekretnine' page.
+add_action( 'init', function () {
+	add_rewrite_rule(
+		'nekretnine/([^/]+)/?$',
+		'index.php?nekretnina=$matches[1]',
+		'top'
+	);
+} );
+
 add_action( 'init', function () {
 
-	// projekat — Reference / Projekti
+	// projekat - Reference / Projekti
 	register_post_type( 'projekat', [
 		'labels' => [
 			'name'               => __( 'Reference', 'jugogradnja' ),
@@ -163,7 +173,7 @@ add_action( 'init', function () {
 		'menu_position'      => 5,
 	] );
 
-	// nekretnina — Real estate
+	// nekretnina - Real estate
 	register_post_type( 'nekretnina', [
 		'labels' => [
 			'name'          => __( 'Nekretnine', 'jugogradnja' ),
@@ -182,7 +192,7 @@ add_action( 'init', function () {
 		'menu_position'      => 6,
 	] );
 
-	// pozicija — Job positions
+	// pozicija - Job positions
 	register_post_type( 'pozicija', [
 		'labels' => [
 			'name'          => __( 'Karijera pozicije', 'jugogradnja' ),
@@ -217,7 +227,7 @@ add_action( 'init', function () {
 		'show_in_rest'  => true,
 		'hierarchical'  => true,
 	] );
-} );
+}, 5 );
 
 // ──────────────────────────────────────────────
 // 5a. POZICIJA META FIELDS
@@ -308,6 +318,20 @@ add_filter( 'the_content',   'jugogradnja_maybe_transliterate', 20 );
 add_filter( 'widget_title',  'jugogradnja_maybe_transliterate', 20 );
 add_filter( 'nav_menu_item_title', 'jugogradnja_maybe_transliterate', 20 );
 
+// Force Latin slugs for nekretnina and projekat CPTs on save.
+add_filter( 'wp_insert_post_data', function ( array $data ): array {
+	if ( ! in_array( $data['post_type'], [ 'nekretnina', 'projekat' ], true ) ) {
+		return $data;
+	}
+	if ( empty( $data['post_name'] ) ) {
+		return $data;
+	}
+	// Transliterate any Cyrillic characters in the slug, then re-sanitize.
+	$latin_slug = jugogradnja_cyr_to_lat( urldecode( $data['post_name'] ) );
+	$data['post_name'] = sanitize_title( $latin_slug );
+	return $data;
+}, 10, 1 );
+
 // REST endpoint to set the script cookie (used by the JS toggle).
 add_action( 'rest_api_init', function () {
 	register_rest_route( 'jugogradnja/v1', '/set-script', [
@@ -340,7 +364,7 @@ add_action( 'plugins_loaded', function () {
 		return;
 	}
 
-	// Translatable CPTs and taxonomies — register with WPML
+	// Translatable CPTs and taxonomies - register with WPML
 	add_filter( 'wpml_translatable_documents', function ( $types ) {
 		$types['projekat']  = [ 'language_independent' => false ];
 		$types['nekretnina'] = [ 'language_independent' => false ];
@@ -378,6 +402,7 @@ add_action( 'init', function () {
 		'inserter'    => 'Inserter',
 	];
 
+	mb_internal_encoding( 'UTF-8' );
 	$patterns_dir = get_template_directory() . '/patterns';
 	foreach ( glob( $patterns_dir . '/*.php' ) ?: [] as $file ) {
 		$headers = get_file_data( $file, $header_keys );
@@ -457,13 +482,35 @@ add_action( 'init', function () {
 // ──────────────────────────────────────────────
 
 add_action( 'wp_enqueue_scripts', function () {
-	if ( is_post_type_archive( 'projekat' ) || has_block( 'jugogradnja/reference-grid' ) ) {
+	if ( ! is_admin() ) {
+		$dir = get_template_directory();
+		$uri = get_template_directory_uri();
+
+		$reference_expand_path = $dir . '/assets/js/reference-expand.js';
 		wp_enqueue_script(
 			'jg-reference-expand',
-			get_template_directory_uri() . '/assets/js/reference-expand.js',
+			$uri . '/assets/js/reference-expand.js',
 			[],
-			'1.0.0',
+			file_exists( $reference_expand_path ) ? filemtime( $reference_expand_path ) : '1.0.0',
 			[ 'strategy' => 'defer', 'in_footer' => true ]
+		);
+
+		$timeline_path = $dir . '/assets/js/timeline.js';
+		wp_enqueue_script(
+			'jg-timeline',
+			$uri . '/assets/js/timeline.js',
+			[],
+			file_exists( $timeline_path ) ? filemtime( $timeline_path ) : '1.0.0',
+			[ 'strategy' => 'defer', 'in_footer' => true ]
+		);
+
+		$sofeija_gallery_path = $dir . '/assets/js/sofeija-gallery.js';
+		wp_enqueue_script(
+			'jg-sofeija-gallery',
+			$uri . '/assets/js/sofeija-gallery.js',
+			[],
+			file_exists( $sofeija_gallery_path ) ? filemtime( $sofeija_gallery_path ) : '1.5.0',
+			[ 'in_footer' => true ]
 		);
 	}
 } );
@@ -489,3 +536,204 @@ add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mi
 	}
 	return $data;
 }, 10, 4 );
+
+// ──────────────────────────────────────────────
+// 13. FORM HANDLERS
+// ──────────────────────────────────────────────
+//
+// Temporary: all forms deliver to a single inbox for testing/preparation.
+// Swap this for the real per-form recipient(s) before launch.
+define( 'JG_FORMS_RECIPIENT', 'dusan@modulate.biz' );
+
+// Simple honeypot: forms include a hidden field named jg_hp that a human
+// never sees or fills in. If it arrives non-empty, silently drop the submit.
+function jg_forms_is_bot(): bool {
+	return ! empty( $_POST['jg_hp'] );
+}
+
+function jg_forms_redirect( string $key, string $status ): void {
+	$referer = wp_get_referer() ?: home_url( '/' );
+	$referer = remove_query_arg( [ 'jg_sent', 'jg_error' ], $referer );
+	$param   = 'ok' === $status ? 'jg_sent' : 'jg_error';
+	wp_safe_redirect( add_query_arg( $param, $key, $referer ) . '#' . $key . '-form' );
+	exit;
+}
+
+// ── Contact page form ──────────────────────────
+function jg_handle_contact_form(): void {
+	if ( jg_forms_is_bot() ) {
+		jg_forms_redirect( 'contact', 'ok' ); // Pretend success, drop silently.
+	}
+	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'jg_contact_form' ) ) {
+		jg_forms_redirect( 'contact', 'error' );
+	}
+
+	$name    = sanitize_text_field( wp_unslash( $_POST['jg_name'] ?? '' ) );
+	$email   = sanitize_email( wp_unslash( $_POST['jg_email'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['jg_message'] ?? '' ) );
+
+	if ( ! $name || ! is_email( $email ) || ! $message ) {
+		jg_forms_redirect( 'contact', 'error' );
+	}
+
+	$subject = 'Нова порука са контакт форме - Jugogradnja';
+	$body    = "Име и презиме: {$name}\nEmail: {$email}\n\nПорука:\n{$message}";
+	$headers = [ 'Reply-To: ' . $email ];
+
+	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers );
+	jg_forms_redirect( 'contact', $sent ? 'ok' : 'error' );
+}
+add_action( 'admin_post_jg_contact', 'jg_handle_contact_form' );
+add_action( 'admin_post_nopriv_jg_contact', 'jg_handle_contact_form' );
+
+// ── Sofeija contact form ───────────────────────
+function jg_handle_sofeija_form(): void {
+	if ( jg_forms_is_bot() ) {
+		jg_forms_redirect( 'sofeija', 'ok' );
+	}
+	if ( ! isset( $_POST['jg_sofeija_nonce'] ) || ! wp_verify_nonce( $_POST['jg_sofeija_nonce'], 'jg_sofeija_contact' ) ) {
+		jg_forms_redirect( 'sofeija', 'error' );
+	}
+
+	$name    = sanitize_text_field( wp_unslash( $_POST['sf_name'] ?? '' ) );
+	$phone   = sanitize_text_field( wp_unslash( $_POST['sf_phone'] ?? '' ) );
+	$city    = sanitize_text_field( wp_unslash( $_POST['sf_city'] ?? '' ) );
+	$company = sanitize_text_field( wp_unslash( $_POST['sf_company'] ?? '' ) );
+	$email   = sanitize_email( wp_unslash( $_POST['sf_email'] ?? '' ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['sf_message'] ?? '' ) );
+
+	if ( ! $name || ! $phone || ! $city || ! is_email( $email ) ) {
+		jg_forms_redirect( 'sofeija', 'error' );
+	}
+
+	$subject = 'Нови упит - Sofeija';
+	$body    = "Име и презиме: {$name}\nТелефон: {$phone}\nГрад: {$city}\nФирма: {$company}\nEmail: {$email}\n\nПорука:\n{$message}";
+	$headers = [ 'Reply-To: ' . $email ];
+
+	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers );
+	jg_forms_redirect( 'sofeija', $sent ? 'ok' : 'error' );
+}
+add_action( 'admin_post_jg_sofeija', 'jg_handle_sofeija_form' );
+add_action( 'admin_post_nopriv_jg_sofeija', 'jg_handle_sofeija_form' );
+
+// ── Careers application form (shared by careers page + single position page) ──
+function jg_handle_apply_form(): void {
+	if ( jg_forms_is_bot() ) {
+		jg_forms_redirect( 'apply', 'ok' );
+	}
+	if ( ! isset( $_POST['jg_apply_nonce'] ) || ! wp_verify_nonce( $_POST['jg_apply_nonce'], 'jg_apply_form' ) ) {
+		jg_forms_redirect( 'apply', 'error' );
+	}
+
+	$name       = sanitize_text_field( wp_unslash( $_POST['apply_name'] ?? '' ) );
+	$email      = sanitize_email( wp_unslash( $_POST['apply_email'] ?? '' ) );
+	$phone      = sanitize_text_field( wp_unslash( $_POST['apply_phone'] ?? '' ) );
+	$position   = sanitize_text_field( wp_unslash( $_POST['apply_position'] ?? '' ) );
+	$motivation = sanitize_textarea_field( wp_unslash( $_POST['apply_motivation'] ?? '' ) );
+
+	if ( ! $name || ! is_email( $email ) || ! $position ) {
+		jg_forms_redirect( 'apply', 'error' );
+	}
+
+	// apply_cv[] arrives as one array per property (PHP's native multi-file
+	// $_FILES shape) - reshape into one array of per-file arrays, max 3.
+	$attachments   = [];
+	$cv_temp_paths = [];
+	$cv_files      = [];
+	if ( ! empty( $_FILES['apply_cv']['name'] ) && is_array( $_FILES['apply_cv']['name'] ) ) {
+		$count = min( count( $_FILES['apply_cv']['name'] ), 3 );
+		for ( $i = 0; $i < $count; $i++ ) {
+			if ( '' === $_FILES['apply_cv']['name'][ $i ] ) {
+				continue;
+			}
+			$cv_files[] = [
+				'name'     => $_FILES['apply_cv']['name'][ $i ],
+				'type'     => $_FILES['apply_cv']['type'][ $i ],
+				'tmp_name' => $_FILES['apply_cv']['tmp_name'][ $i ],
+				'error'    => $_FILES['apply_cv']['error'][ $i ],
+				'size'     => $_FILES['apply_cv']['size'][ $i ],
+			];
+		}
+	}
+
+	if ( $cv_files ) {
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		foreach ( $cv_files as $file ) {
+			if ( 'application/pdf' !== $file['type'] || $file['size'] > 5 * MB_IN_BYTES ) {
+				jg_forms_redirect( 'apply', 'error' );
+			}
+			$upload = wp_handle_upload( $file, [ 'test_form' => false, 'mimes' => [ 'pdf' => 'application/pdf' ] ] );
+			if ( isset( $upload['file'] ) ) {
+				$cv_temp_paths[] = $upload['file'];
+				$attachments[]   = $upload['file'];
+			}
+		}
+	}
+
+	$subject = 'Нова пријава за посао - ' . $position;
+	$body    = "Име и презиме: {$name}\nEmail: {$email}\nТелефон: {$phone}\nПозиција: {$position}\n\nМотивационо писмо:\n{$motivation}";
+	$headers = [ 'Reply-To: ' . $email ];
+
+	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers, $attachments );
+
+	// The uploaded CVs only need to survive long enough to attach to the
+	// email above - delete them from the media directory either way.
+	foreach ( $cv_temp_paths as $cv_temp_path ) {
+		if ( file_exists( $cv_temp_path ) ) {
+			wp_delete_file( $cv_temp_path );
+		}
+	}
+
+	jg_forms_redirect( 'apply', $sent ? 'ok' : 'error' );
+}
+add_action( 'admin_post_jg_apply', 'jg_handle_apply_form' );
+add_action( 'admin_post_nopriv_jg_apply', 'jg_handle_apply_form' );
+
+// ── VELUX упит forms (прозори + ролетне) ───────
+function jg_handle_velux_form(): void {
+	if ( jg_forms_is_bot() ) {
+		jg_forms_redirect( 'velux', 'ok' );
+	}
+	if ( ! isset( $_POST['jg_velux_nonce'] ) || ! wp_verify_nonce( $_POST['jg_velux_nonce'], 'jg_velux_upit' ) ) {
+		jg_forms_redirect( 'velux', 'error' );
+	}
+
+	$tip   = 'roletne' === ( $_POST['upit_tip'] ?? '' ) ? 'roletne' : 'prozori';
+	$name  = sanitize_text_field( wp_unslash( $_POST['ime'] ?? '' ) );
+	$phone = sanitize_text_field( wp_unslash( $_POST['telefon'] ?? '' ) );
+	$email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
+	$note  = sanitize_textarea_field( wp_unslash( $_POST['napomena'] ?? '' ) );
+
+	if ( ! $name || ! $phone || ! is_email( $email ) ) {
+		jg_forms_redirect( 'velux', 'error' );
+	}
+
+	if ( 'prozori' === $tip ) {
+		$subject = 'Нови упит - VELUX кровни прозори';
+		$body    = sprintf(
+			"Име и презиме: %s\nТелефон: %s\nEmail: %s\nТип прозора: %s\nМатеријал: %s\nРазмак између греда: %s\nБрој прозора: %s\n\nНапомена:\n%s",
+			$name, $phone, $email,
+			sanitize_text_field( wp_unslash( $_POST['tip_prozora'] ?? '' ) ),
+			sanitize_text_field( wp_unslash( $_POST['materijal'] ?? '' ) ),
+			sanitize_text_field( wp_unslash( $_POST['razmak'] ?? '' ) ),
+			sanitize_text_field( wp_unslash( $_POST['broj'] ?? '' ) ),
+			$note
+		);
+	} else {
+		$subject = 'Нови упит - VELUX ролетне';
+		$body    = sprintf(
+			"Име и презиме: %s\nТелефон: %s\nEmail: %s\nТип ролетне: %s\nВеличина прозора: %s\nБоја: %s\n\nНапомена:\n%s",
+			$name, $phone, $email,
+			sanitize_text_field( wp_unslash( $_POST['tip_roletne'] ?? '' ) ),
+			sanitize_text_field( wp_unslash( $_POST['velicina'] ?? '' ) ),
+			sanitize_text_field( wp_unslash( $_POST['boja'] ?? '' ) ),
+			$note
+		);
+	}
+	$headers = [ 'Reply-To: ' . $email ];
+
+	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers );
+	jg_forms_redirect( 'velux', $sent ? 'ok' : 'error' );
+}
+add_action( 'admin_post_jg_velux', 'jg_handle_velux_form' );
+add_action( 'admin_post_nopriv_jg_velux', 'jg_handle_velux_form' );

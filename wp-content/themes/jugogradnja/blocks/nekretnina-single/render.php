@@ -1,7 +1,7 @@
 <?php
 /**
  * Render callback for jugogradnja/nekretnina-single block.
- * Called at render time — $post and get_the_ID() are valid here.
+ * Called at render time - $post and get_the_ID() are valid here.
  *
  * @var array    $attributes Block attributes.
  * @var string   $content    Inner block content (unused).
@@ -315,32 +315,34 @@ $parse_lines = function ( $raw ) {
 					<p class="jg-prop-single__contact-name">Неkretnine Jugogradnja</p>
 					<a class="jg-prop-single__contact-row" href="tel:+381112481075">
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-							<path d="M3 3.5A1.5 1.5 0 0 1 4.5 2h.764a1 1 0 0 1 .894.553l1 2a1 1 0 0 1-.263 1.21L5.72 6.72a7.07 7.07 0 0 0 3.56 3.56l.957-1.175a1 1 0 0 1 1.21-.263l2 1a1 1 0 0 1 .553.894V12.5A1.5 1.5 0 0 1 12.5 14C7.253 14 2 8.747 2 3.5A1.5 1.5 0 0 1 3 3.5Z" stroke="#253D86" stroke-width="1.2"/>
+							<path d="M3 3.5A1.5 1.5 0 0 1 4.5 2h.764a1 1 0 0 1 .894.553l1 2a1 1 0 0 1-.263 1.21L5.72 6.72a7.07 7.07 0 0 0 3.56 3.56l.957-1.175a1 1 0 0 1 1.21-.263l2 1a1 1 0 0 1 .553.894V12.5A1.5 1.5 0 0 1 12.5 14C7.253 14 2 8.747 2 3.5A1.5 1.5 0 0 1 3 3.5Z" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
 						</svg>
 						+381 11 248 10 75
 					</a>
 					<a class="jg-prop-single__contact-row" href="mailto:nekretnine@jugogradnja.rs">
 						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-							<path d="M2 4.5A1.5 1.5 0 0 1 3.5 3h9A1.5 1.5 0 0 1 14 4.5v7A1.5 1.5 0 0 1 12.5 13h-9A1.5 1.5 0 0 1 2 11.5v-7Zm1.5 0 4.5 3.5 4.5-3.5" stroke="#253D86" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M2 4.5A1.5 1.5 0 0 1 3.5 3h9A1.5 1.5 0 0 1 14 4.5v7A1.5 1.5 0 0 1 12.5 13h-9A1.5 1.5 0 0 1 2 11.5v-7Zm1.5 0 4.5 3.5 4.5-3.5" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
 						</svg>
 						nekretnine@jugogradnja.rs
 					</a>
-					<a class="jg-btn jg-btn--gold jg-btn--block" href="<?= esc_url( home_url( '/kontakt/' ) ) ?>">ЗАКАЖИ ОБИЛАЗАК</a>
-					<button class="jg-btn jg-btn--outline-white jg-btn--block jg-btn--share" type="button" onclick="navigator.share ? navigator.share({title:document.title,url:location.href}) : navigator.clipboard?.writeText(location.href)">
-						<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-							<circle cx="12" cy="3" r="1.5" stroke="currentColor" stroke-width="1.2"/>
-							<circle cx="12" cy="13" r="1.5" stroke="currentColor" stroke-width="1.2"/>
-							<circle cx="4" cy="8" r="1.5" stroke="currentColor" stroke-width="1.2"/>
-							<path d="M10.5 3.75 5.5 7.25M10.5 12.25 5.5 8.75" stroke="currentColor" stroke-width="1.2"/>
-						</svg>
-						ПОДЕЛИ
-					</button>
-					<?php
-					$pdf_url = get_post_meta( $id, '_nekretnina_pdf', true );
-					if ( $pdf_url ) :
-					?>
-					<a class="jg-btn jg-btn--outline-white jg-btn--block" href="<?= esc_url( $pdf_url ) ?>" target="_blank" rel="noopener">Преузми pdf</a>
-					<?php endif; ?>
+					<div class="jg-prop-single__sidebar-btns">
+						<a class="jg-btn jg-btn--gold jg-btn--block" href="<?= esc_url( home_url( '/kontakt/' ) ) ?>">ЗАКАЖИ ОБИЛАЗАК</a>
+						<button class="jg-btn jg-btn--outline-white jg-btn--block jg-btn--share" type="button" onclick="navigator.share ? navigator.share({title:document.title,url:location.href}) : navigator.clipboard?.writeText(location.href)">
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+								<circle cx="12" cy="3" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+								<circle cx="12" cy="13" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+								<circle cx="4" cy="8" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+								<path d="M10.5 3.75 5.5 7.25M10.5 12.25 5.5 8.75" stroke="currentColor" stroke-width="1.2"/>
+							</svg>
+							ПОДЕЛИ
+						</button>
+						<?php
+						$pdf_url = get_post_meta( $id, '_nekretnina_pdf', true );
+						if ( $pdf_url ) :
+						?>
+						<a class="jg-btn jg-btn--gold jg-btn--block" href="<?= esc_url( $pdf_url ) ?>" target="_blank" rel="noopener">Преузми pdf</a>
+						<?php endif; ?>
+					</div>
 				</div>
 
 			</div>

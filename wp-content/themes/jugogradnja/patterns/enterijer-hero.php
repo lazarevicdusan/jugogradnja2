@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Ентеријер — Херо
+ * Title: Ентеријер - Херо
  * Slug: jugogradnja/enterijer-hero
  * Categories: jugogradnja
  * Inserter: true

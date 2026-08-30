@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Ентеријер — Sofeyia партнер
+ * Title: Ентеријер - Sofeyia партнер
  * Slug: jugogradnja/enterijer-sofeyia
  * Categories: jugogradnja
  * Inserter: true

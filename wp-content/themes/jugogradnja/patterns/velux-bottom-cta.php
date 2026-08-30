@@ -17,7 +17,7 @@ $t = get_template_directory_uri();
 					<svg class="jg-velux-bcta__card-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.7 2 6 4.7 6 8c0 5 6 14 6 14s6-9 6-14c0-3.3-2.7-6-6-6z" stroke="#C5A059" stroke-width="1.5"/><circle cx="12" cy="8" r="2.2" stroke="#C5A059" stroke-width="1.5"/></svg>
 					<div>
 						<span class="jg-velux-bcta__card-label">Изложбени салон</span>
-						<strong class="jg-velux-bcta__card-value">Пуковника Пејовића 1а</strong>
+						<strong class="jg-velux-bcta__card-value">Светолика Никачевића бб</strong>
 						<span class="jg-velux-bcta__card-sub">Београд, Србија</span>
 					</div>
 				</div>

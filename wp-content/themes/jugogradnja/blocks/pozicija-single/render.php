@@ -120,8 +120,15 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 			<h2 class="jg-poz-apply__heading">Kako се пријавити</h2>
 			<p class="jg-poz-apply__sub">Ако сматрате да испуњавате наше критеријуме и да Југоградња представља правог послодавца за Вас, пошаљите нам своју радну биографију на српском језику са фотографијом.</p>
 			<div class="jg-poz-apply__form-wrap">
-				<form class="jg-apply-form" method="post" enctype="multipart/form-data" novalidate>
+				<?php if ( isset( $_GET['jg_sent'] ) && 'apply' === $_GET['jg_sent'] ) : ?>
+				<div class="jg-form-notice jg-form-notice--success">Хвала! Ваша пријава је успешно послата.</div>
+				<?php elseif ( isset( $_GET['jg_error'] ) && 'apply' === $_GET['jg_error'] ) : ?>
+				<div class="jg-form-notice jg-form-notice--error">Дошло је до грешке. Проверите да ли је CV у PDF формату (до 5MB) и покушајте поново.</div>
+				<?php endif; ?>
+				<form class="jg-apply-form" id="apply-form" method="post" action="<?= esc_url( admin_url( 'admin-post.php' ) ) ?>" enctype="multipart/form-data" novalidate>
+					<input type="hidden" name="action" value="jg_apply">
 					<input type="hidden" name="jg_apply_nonce" value="<?= esc_attr( $nonce ) ?>">
+					<input type="text" name="jg_hp" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
 					<div class="jg-apply-form__row jg-apply-form__row--2col">
 						<div class="jg-apply-form__field">
 							<label class="jg-apply-form__label" for="poz-name">Ime и презиме <span aria-hidden="true">*</span></label>
@@ -149,13 +156,14 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 					<div class="jg-apply-form__field">
 						<label class="jg-apply-form__label" for="poz-cv">CV (PDF) са фотографијом</label>
 						<div class="jg-apply-form__upload-area">
-							<input class="jg-apply-form__file" type="file" id="poz-cv" name="apply_cv" accept=".pdf">
+							<input class="jg-apply-form__file" type="file" id="poz-cv" name="apply_cv[]" accept=".pdf" multiple>
 							<label class="jg-apply-form__upload-label" for="poz-cv">
 								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								<span class="jg-apply-form__upload-text">Кликните или превуците фајл овде</span>
-								<span class="jg-apply-form__upload-hint">Радна биографија на српском језику са фотографијом</span>
+								<span class="jg-apply-form__upload-text">Кликните или превуците фајлове овде</span>
+								<span class="jg-apply-form__upload-hint">Радна биографија на српском језику са фотографијом - до 3 документа (PDF)</span>
 							</label>
 						</div>
+						<ul class="jg-apply-form__file-list" aria-live="polite"></ul>
 					</div>
 					<button class="jg-apply-form__submit" type="submit">ПОШАЉИТЕ ПРИЈАВУ</button>
 				</form>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Ентеријер — Процес рада
+ * Title: Ентеријер - Процес рада
  * Slug: jugogradnja/enterijer-process
  * Categories: jugogradnja
  * Inserter: true

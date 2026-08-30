@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Četiri stuba — mreža usluga
+ * Title: Četiri stuba - mreža usluga
  * Slug: jugogradnja/services-grid
  * Categories: jugogradnja
  * Inserter: true

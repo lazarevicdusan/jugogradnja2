@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Референце — Наслов странице
+ * Title: Референце - Наслов странице
  * Slug: jugogradnja/reference-header
  * Categories: jugogradnja
  * Inserter: true

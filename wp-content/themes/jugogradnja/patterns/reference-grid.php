@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Референце — Мрежа пројеката
+ * Title: Референце - Мрежа пројеката
  * Slug: jugogradnja/reference-grid
  * Categories: jugogradnja
  * Inserter: true

@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Некретнине — Листинг
+ * Title: Некретнине - Листинг
  * Slug: jugogradnja/nekretnine-grid
  * Categories: jugogradnja
  * Inserter: true
@@ -90,13 +90,21 @@ $total = $query->found_posts;
             $lokacija   = get_post_meta( get_the_ID(), '_nekretnina_lokacija', true );
             $godina     = get_post_meta( get_the_ID(), '_nekretnina_godina', true );
             $istaknuto  = get_post_meta( get_the_ID(), '_nekretnina_istaknuto', true );
+            $status     = get_post_meta( get_the_ID(), '_nekretnina_status', true );
+
+            $status_map = [
+                'na-prodaju' => [ 'label' => 'На продају', 'color' => '#22c55e' ],
+                'prodato'    => [ 'label' => 'Продато',    'color' => '#fb2c36' ],
+                'izdato'     => [ 'label' => 'Издато',     'color' => '#f97316' ],
+            ];
+            $status_info = isset( $status_map[ $status ] ) ? $status_map[ $status ] : null;
 
             $terms      = get_the_terms( get_the_ID(), 'tip_nekretnine' );
             $tip_label  = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 
             $thumb      = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), 'medium_large' ) : '';
         ?>
-        <a class="jg-prop-card" href="<?= esc_url( get_permalink() ) ?>">
+        <a class="jg-prop-card" href="<?= esc_url( home_url( '/nekretnine/' . get_post_field( 'post_name', get_the_ID() ) . '/' ) ) ?>">
           <div class="jg-prop-card__img-wrap">
             <?php if ( $thumb ) : ?>
             <img class="jg-prop-card__img" src="<?= esc_url( $thumb ) ?>" alt="<?= esc_attr( get_the_title() ) ?>" width="720" height="400" loading="lazy">
@@ -108,7 +116,9 @@ $total = $query->found_posts;
               <?php if ( $tip_label ) : ?>
               <span class="jg-prop-badge jg-prop-badge--type"><?= esc_html( $tip_label ) ?></span>
               <?php endif; ?>
-              <?php if ( $istaknuto ) : ?>
+              <?php if ( $status_info ) : ?>
+              <span class="jg-prop-badge jg-prop-badge--featured"><?= esc_html( mb_strtoupper( $status_info['label'], 'UTF-8' ) ) ?></span>
+              <?php elseif ( $istaknuto ) : ?>
               <span class="jg-prop-badge jg-prop-badge--featured">ИСТАКНУТО</span>
               <?php endif; ?>
             </div>

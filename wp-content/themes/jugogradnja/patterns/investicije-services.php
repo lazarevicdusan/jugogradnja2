@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Инвестиције — Шта нудимо
+ * Title: Инвестиције - Шта нудимо
  * Slug: jugogradnja/investicije-services
  * Categories: jugogradnja
  * Inserter: true
@@ -37,7 +37,7 @@ $services = [
       <?php foreach ( $services as $s ) : ?>
       <div class="jg-inv-service-card">
         <div class="jg-inv-service-card__icon-wrap">
-          <img src="<?= esc_url( $s['icon'] ) ?>" width="32" height="32" alt="" aria-hidden="true">
+          <img src="<?= esc_url( $s['icon'] ) ?>" alt="" aria-hidden="true">
         </div>
         <h3 class="jg-inv-service-card__title"><?= esc_html( $s['title'] ) ?></h3>
         <p class="jg-inv-service-card__desc"><?= esc_html( $s['desc'] ) ?></p>

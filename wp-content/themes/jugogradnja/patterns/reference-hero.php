@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Референце — херо
+ * Title: Референце - херо
  * Slug: jugogradnja/reference-hero
  * Categories: jugogradnja
  * Inserter: true

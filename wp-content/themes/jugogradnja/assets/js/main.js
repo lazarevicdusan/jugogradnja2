@@ -1,4 +1,4 @@
-/* main.js — vanilla JS only, no jQuery, loaded deferred */
+/* main.js - vanilla JS only, no jQuery, loaded deferred */
 (function () {
   'use strict';
 
@@ -77,6 +77,21 @@
     });
   }
 
+  /* ── Mobile accordion sub-menus ──────────────────────────── */
+  document.querySelectorAll('.mobile-drawer__chevron').forEach(function (btn) {
+    var sub = btn.closest('.mobile-drawer__item--has-sub').querySelector('.mobile-drawer__sub');
+    if (!sub) return;
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      if (isOpen) {
+        sub.setAttribute('hidden', '');
+      } else {
+        sub.removeAttribute('hidden');
+      }
+    });
+  });
+
   /* ── Desktop dropdown keyboard nav ───────────────────────── */
   document.querySelectorAll('.has-dropdown').forEach(function (item) {
     var btn   = item.querySelector('.dropdown-toggle');
@@ -122,6 +137,11 @@
     });
   });
 
+  /* Timeline scroll animation lives in assets/js/timeline.js - do not
+     duplicate it here. Two independent IntersectionObservers writing to
+     the same .jg-timeline__line element raced each other and caused the
+     line to visibly overshoot then snap back to its correct height. */
+
   /* ── Stat counter count-up ───────────────────────────────── */
   var counters = document.querySelectorAll('.jg-stat__number[data-count]');
   if (counters.length && 'IntersectionObserver' in window) {
@@ -141,7 +161,8 @@
           var progress = Math.min((ts - startTime) / duration, 1);
           var ease = 1 - Math.pow(1 - progress, 3); // ease-out-cubic
           var current = Math.round(ease * target);
-          el.textContent = current + suffix;
+          var formatted = current >= 1000 ? current.toLocaleString('sr-RS') : String(current);
+          el.textContent = formatted + suffix;
           if (progress < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
@@ -149,6 +170,57 @@
     }, { threshold: 0.3 });
     counters.forEach(function (el) { countObserver.observe(el); });
   }
+
+  /* ── Internship testimonial slider ──────────────────────── */
+  var slider = document.getElementById('jg-internship-slider');
+  if (slider) {
+    var iSlides  = Array.from(slider.querySelectorAll('.jg-internship-testimonial__slide'));
+    var iDots    = Array.from(slider.querySelectorAll('.jg-dot'));
+    var iCurrent = 0;
+
+    function iGoTo(n) {
+      iSlides[iCurrent].classList.remove('jg-slide--active');
+      iDots[iCurrent].classList.remove('jg-dot--active');
+      iCurrent = (n + iSlides.length) % iSlides.length;
+      iSlides[iCurrent].classList.add('jg-slide--active');
+      iDots[iCurrent].classList.add('jg-dot--active');
+    }
+
+    var iTimer = setInterval(function () { iGoTo(iCurrent + 1); }, 7000);
+
+    iDots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        clearInterval(iTimer);
+        iGoTo(i);
+        iTimer = setInterval(function () { iGoTo(iCurrent + 1); }, 7000);
+      });
+    });
+  }
+
+  /* ── CV upload: show selected filenames, cap at 3 files ──── */
+  var MAX_CV_FILES = 3;
+  document.querySelectorAll( '.jg-apply-form__file' ).forEach( function ( input ) {
+    var list = input.closest( '.jg-apply-form__field' ).querySelector( '.jg-apply-form__file-list' );
+    if ( ! list ) return;
+    input.addEventListener( 'change', function () {
+      var files = Array.from( input.files || [] );
+      list.innerHTML = '';
+      if ( files.length > MAX_CV_FILES ) {
+        input.value = '';
+        var warn = document.createElement( 'li' );
+        warn.className = 'jg-apply-form__file-item jg-apply-form__file-item--error';
+        warn.textContent = 'Можете отпремити највише ' + MAX_CV_FILES + ' документа. Молимо изаберите поново.';
+        list.appendChild( warn );
+        return;
+      }
+      files.forEach( function ( file ) {
+        var item = document.createElement( 'li' );
+        item.className = 'jg-apply-form__file-item';
+        item.textContent = file.name;
+        list.appendChild( item );
+      } );
+    } );
+  } );
 
   /* ── Smooth scroll for anchor links ──────────────────────── */
   document.addEventListener('click', function (e) {

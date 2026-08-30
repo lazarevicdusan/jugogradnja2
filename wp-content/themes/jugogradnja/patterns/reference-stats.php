@@ -1,15 +1,15 @@
 <?php
 /**
- * Title: Референце — статистика
+ * Title: Референце - статистика
  * Slug: jugogradnja/reference-stats
  * Categories: jugogradnja
  * Inserter: true
  */
 $stats = [
-    [ 'value' => '500+',      'label' => 'Пројеката' ],
-    [ 'value' => '34+',       'label' => 'Година искуства' ],
-    [ 'value' => '100.000+',  'label' => 'м² изграђено' ],
-    [ 'value' => '100%',      'label' => 'Задовољних клијената' ],
+    [ 'count' => 500,  'suffix' => '+',     'label' => 'Пројеката' ],
+    [ 'count' => 34,   'suffix' => '+',     'label' => 'Година искуства' ],
+    [ 'count' => 100,  'suffix' => '.000+', 'label' => 'м² изграђено' ],
+    [ 'count' => 100,  'suffix' => '%',     'label' => 'Задовољних клијената' ],
 ];
 ?>
 <!-- wp:html -->
@@ -17,7 +17,10 @@ $stats = [
   <div class="jg-ref-stats__inner">
     <?php foreach ( $stats as $s ) : ?>
     <div class="jg-ref-stats__item">
-      <span class="jg-ref-stats__value"><?= esc_html( $s['value'] ) ?></span>
+      <span class="jg-ref-stats__value jg-stat__number"
+            data-count="<?= esc_attr( $s['count'] ) ?>"
+            data-suffix="<?= esc_attr( $s['suffix'] ) ?>"
+      ><?= esc_html( $s['count'] . $s['suffix'] ) ?></span>
       <span class="jg-ref-stats__label"><?= esc_html( $s['label'] ) ?></span>
     </div>
     <?php endforeach; ?>

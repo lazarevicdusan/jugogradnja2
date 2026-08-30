@@ -1,6 +1,6 @@
 <?php
 /**
- * Title: Некретнине — Тражимо парцеле
+ * Title: Некретнине - Тражимо парцеле
  * Slug: jugogradnja/nekretnine-parcels
  * Categories: jugogradnja
  * Inserter: true
