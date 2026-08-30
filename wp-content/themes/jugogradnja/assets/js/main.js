@@ -197,28 +197,74 @@
     });
   }
 
-  /* ── CV upload: show selected filenames, cap at 3 files ──── */
+  /* ── CV upload: show selected filenames, allow removing one,
+     cap at 3 files. Picking again ADDS to the current selection
+     (native file inputs otherwise replace it wholesale), so a
+     wrong file can be removed and a replacement added without
+     losing the others. ──────────────────────────────────────── */
   var MAX_CV_FILES = 3;
   document.querySelectorAll( '.jg-apply-form__file' ).forEach( function ( input ) {
     var list = input.closest( '.jg-apply-form__field' ).querySelector( '.jg-apply-form__file-list' );
     if ( ! list ) return;
-    input.addEventListener( 'change', function () {
-      var files = Array.from( input.files || [] );
+
+    var selected = []; // Array<File>, persisted across change events.
+
+    function syncInput() {
+      var dt = new DataTransfer();
+      selected.forEach( function ( file ) { dt.items.add( file ); } );
+      input.files = dt.files;
+    }
+
+    function render() {
       list.innerHTML = '';
-      if ( files.length > MAX_CV_FILES ) {
-        input.value = '';
-        var warn = document.createElement( 'li' );
-        warn.className = 'jg-apply-form__file-item jg-apply-form__file-item--error';
-        warn.textContent = 'Можете отпремити највише ' + MAX_CV_FILES + ' документа. Молимо изаберите поново.';
-        list.appendChild( warn );
-        return;
-      }
-      files.forEach( function ( file ) {
+      selected.forEach( function ( file, i ) {
         var item = document.createElement( 'li' );
         item.className = 'jg-apply-form__file-item';
-        item.textContent = file.name;
+
+        var name = document.createElement( 'span' );
+        name.className = 'jg-apply-form__file-name';
+        name.textContent = file.name;
+        item.appendChild( name );
+
+        var remove = document.createElement( 'button' );
+        remove.type = 'button';
+        remove.className = 'jg-apply-form__file-remove';
+        remove.setAttribute( 'aria-label', 'Уклони ' + file.name );
+        remove.textContent = '×';
+        remove.addEventListener( 'click', function () {
+          selected.splice( i, 1 );
+          syncInput();
+          render();
+        } );
+        item.appendChild( remove );
+
         list.appendChild( item );
       } );
+    }
+
+    function showError( message ) {
+      list.innerHTML = '';
+      var warn = document.createElement( 'li' );
+      warn.className = 'jg-apply-form__file-item jg-apply-form__file-item--error';
+      warn.textContent = message;
+      list.appendChild( warn );
+    }
+
+    input.addEventListener( 'change', function () {
+      var incoming = Array.from( input.files || [] );
+      if ( ! incoming.length ) return; // User cancelled the picker.
+
+      var merged = selected.concat( incoming );
+      if ( merged.length > MAX_CV_FILES ) {
+        syncInput(); // Restore input.files to the pre-pick selection.
+        showError( 'Можете отпремити највише ' + MAX_CV_FILES + ' документа. Уклоните један да бисте додали други.' );
+        setTimeout( render, 2000 );
+        return;
+      }
+
+      selected = merged;
+      syncInput();
+      render();
     } );
   } );
 

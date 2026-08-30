@@ -8269,11 +8269,41 @@
   gap: 6px;
 }
 .jg-apply-form__file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   font-size: 13px;
   color: #212950;
   background: #f2f3f7;
   border-radius: 6px;
-  padding: 6px 10px;
+  padding: 6px 8px 6px 10px;
+}
+.jg-apply-form__file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jg-apply-form__file-remove {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 150ms, color 150ms;
+}
+.jg-apply-form__file-remove:hover,
+.jg-apply-form__file-remove:focus-visible {
+  background: #e2e4ea;
+  color: #a13a2f;
 }
 .jg-apply-form__file-item--error {
   color: #a13a2f;
