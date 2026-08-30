@@ -37,10 +37,10 @@ if ( $is_en ) {
     $sr_label  = 'СР';
     $sr_target = 'cyrillic';
 } elseif ( 'latin' === $script ) {
-    $sr_label  = 'ср';  // Cyrillic label - click switches back to Cyrillic
+    $sr_label  = 'СР';  // Cyrillic label (actual Cyrillic characters) - click switches back to Cyrillic
     $sr_target = 'cyrillic';
 } else {
-    $sr_label  = 'Sr';  // Latin label - click switches to Latin
+    $sr_label  = 'SR';  // Latin label - click switches to Latin
     $sr_target = 'latin';
 }
 
