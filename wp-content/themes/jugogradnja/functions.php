@@ -301,22 +301,80 @@ function jugogradnja_current_script(): string {
 }
 
 /**
- * Apply transliteration to text if Latin script is active.
- * Hooked to the_title, the_content, and widget_title when needed.
+ * Transliterate a full rendered HTML page to Latin script.
+ *
+ * The site's visible text lives in two places: database content (post
+ * titles/content, which WordPress runs through the_title/the_content) and
+ * hardcoded Serbian strings baked directly into dozens of pattern/block PHP
+ * files, echoed as raw HTML with no filter hook of their own. Rather than
+ * hand-editing every pattern, this transliterates the *entire rendered page*
+ * in one pass - so any current or future static string is covered for free.
+ *
+ * Only text nodes and a few attributes that hold visible text (alt,
+ * aria-label, placeholder, title, value) are touched; <script>/<style>
+ * contents are protected so JS/CSS is never mangled. strtr() is a no-op on
+ * text with no Cyrillic characters, so nonces, class names, and English
+ * strings pass through unchanged.
  */
-function jugogradnja_maybe_transliterate( string $text ): string {
-	if ( jugogradnja_current_script() === 'latin' ) {
-		return jugogradnja_cyr_to_lat( $text );
+function jugogradnja_transliterate_html( string $html ): string {
+	$protected = [];
+	$html = preg_replace_callback(
+		'#<(script|style)\b[^>]*>.*?</\1>#is',
+		function ( $m ) use ( &$protected ) {
+			$key = "\x01PROTECT" . count( $protected ) . "\x02";
+			$protected[ $key ] = $m[0];
+			return $key;
+		},
+		$html
+	);
+
+	foreach ( [ 'alt', 'aria-label', 'placeholder', 'title', 'value' ] as $attr ) {
+		$html = preg_replace_callback(
+			'/\b' . preg_quote( $attr, '/' ) . '="([^"]*)"/u',
+			function ( $m ) use ( $attr ) {
+				return $attr . '="' . jugogradnja_cyr_to_lat( $m[1] ) . '"';
+			},
+			$html
+		);
 	}
-	return $text;
+
+	$html = preg_replace_callback(
+		'/>([^<]+)</u',
+		function ( $m ) {
+			return '>' . jugogradnja_cyr_to_lat( $m[1] ) . '<';
+		},
+		$html
+	);
+
+	if ( $protected ) {
+		$html = strtr( $html, $protected );
+	}
+
+	return $html;
 }
 
-// Apply transliteration to rendered content when Latin is active.
-// We hook at a late priority so WPML's language filters run first.
-add_filter( 'the_title',     'jugogradnja_maybe_transliterate', 20 );
-add_filter( 'the_content',   'jugogradnja_maybe_transliterate', 20 );
-add_filter( 'widget_title',  'jugogradnja_maybe_transliterate', 20 );
-add_filter( 'nav_menu_item_title', 'jugogradnja_maybe_transliterate', 20 );
+// Buffer the whole front-end HTML response and transliterate it when the
+// visitor has picked Latin. Skipped for admin/REST/AJAX/cron, and for any
+// WPML language other than Serbian (transliteration is script-only, not
+// translation - English content should never pass through it).
+add_action( 'template_redirect', function () {
+	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
+		return;
+	}
+	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		return;
+	}
+	if ( jugogradnja_current_script() !== 'latin' ) {
+		return;
+	}
+	if ( has_filter( 'wpml_current_language' ) ) {
+		$lang = apply_filters( 'wpml_current_language', null );
+		if ( $lang && 'sr' !== $lang ) {
+			return;
+		}
+	}
+	ob_start( 'jugogradnja_transliterate_html' );
+}, 0 );
 
 // Force Latin slugs for nekretnina and projekat CPTs on save.
 add_filter( 'wp_insert_post_data', function ( array $data ): array {
