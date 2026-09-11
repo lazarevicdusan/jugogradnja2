@@ -138,6 +138,16 @@ add_action( 'wp_head', function () {
 }, 2 );
 
 // ──────────────────────────────────────────────
+// 4a. FAVICON (theme-bundled, no media-library dependency)
+// ──────────────────────────────────────────────
+
+add_action( 'wp_head', function () {
+	$dir = get_template_directory_uri() . '/assets/images/favicon/';
+	printf( '<link rel="icon" href="%sfavicon-32.png" sizes="32x32">' . "\n", esc_url( $dir ) );
+	printf( '<link rel="apple-touch-icon" href="%sapple-touch-icon.png">' . "\n", esc_url( $dir ) );
+}, 1 );
+
+// ──────────────────────────────────────────────
 // 5. CUSTOM POST TYPES
 // ──────────────────────────────────────────────
 
