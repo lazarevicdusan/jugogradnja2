@@ -31,8 +31,8 @@ $licence_list = [
   <div class="jg-licenses__inner">
 
     <div class="jg-section-header">
-      <h2 class="jg-licenses__heading">ЛИЦЕНЦЕ И СЕРТИФИКАТИ КВАЛИТЕТА</h2>
-      <p class="jg-section-sub">Послујемо у складу са домаћим и међународним стандардима и важећим грађевинским лиценцама које гарантују квалитет и поуздану реализацију.</p>
+      <h2 class="jg-licenses__heading"><?= esc_html__( 'ЛИЦЕНЦЕ И СЕРТИФИКАТИ КВАЛИТЕТА', 'jugogradnja' ) ?></h2>
+      <p class="jg-section-sub"><?= esc_html__( 'Послујемо у складу са домаћим и међународним стандардима и важећим грађевинским лиценцама које гарантују квалитет и поуздану реализацију.', 'jugogradnja' ) ?></p>
     </div>
 
     <div class="jg-licenses__grid">
@@ -43,7 +43,7 @@ $licence_list = [
             <img src="<?= $icon ?>" width="32" height="32" alt="" aria-hidden="true">
           </div>
         </div>
-        <h3 class="jg-cert-card__title">Сертификати<br>квалитета</h3>
+        <h3 class="jg-cert-card__title"><?php /* translators: <br> keeps the two-word title on separate lines - keep the tag in the translation. */ echo __( 'Сертификати<br>квалитета', 'jugogradnja' ); ?></h3>
         <ul class="jg-cert-card__list">
           <?php foreach ( $iso_list as $iso ) : ?>
           <li><?= esc_html( $iso ) ?></li>
@@ -57,8 +57,8 @@ $licence_list = [
             <img src="<?= $icon ?>" width="32" height="32" alt="" aria-hidden="true">
           </div>
         </div>
-        <h3 class="jg-cert-card__title">Велике лиценце</h3>
-        <p class="jg-cert-card__body">Лиценце за извођење грађевинско-занатских и конзерваторско-рестаураторских радова на објектима културног наслеђа, објектима од изузетног значаја (UNESCO), као и објектима под заштитом.</p>
+        <h3 class="jg-cert-card__title"><?= esc_html__( 'Велике лиценце', 'jugogradnja' ) ?></h3>
+        <p class="jg-cert-card__body"><?= esc_html__( 'Лиценце за извођење грађевинско-занатских и конзерваторско-рестаураторских радова на објектима културног наслеђа, објектима од изузетног значаја (UNESCO), као и објектима под заштитом.', 'jugogradnja' ) ?></p>
         <ul class="jg-cert-card__list jg-cert-card__list--license">
           <?php foreach ( $licence_list as $lic ) : ?>
           <li><?= esc_html( $lic ) ?></li>
@@ -68,11 +68,11 @@ $licence_list = [
 
       <div class="jg-cert-card">
         <div class="jg-cert-card__icon-wrap jg-cert-card__icon-wrap--logo">
-          <img src="<?= $pks ?>" width="144" height="64" alt="Привредна комора Србије" loading="lazy">
+          <img src="<?= $pks ?>" width="144" height="64" alt="<?= esc_attr__( 'Привредна комора Србије', 'jugogradnja' ) ?>" loading="lazy">
         </div>
-        <h3 class="jg-cert-card__title">Сертификат<br>ПКС</h3>
+        <h3 class="jg-cert-card__title"><?php echo __( 'Сертификат<br>ПКС', 'jugogradnja' ); ?></h3>
         <div class="jg-cert-card__badge">
-          <img src="<?= $sme ?>" width="280" height="116" alt="Excellent SME сертификат" loading="lazy">
+          <img src="<?= $sme ?>" width="280" height="116" alt="<?= esc_attr__( 'Excellent SME сертификат', 'jugogradnja' ) ?>" loading="lazy">
         </div>
       </div>
 

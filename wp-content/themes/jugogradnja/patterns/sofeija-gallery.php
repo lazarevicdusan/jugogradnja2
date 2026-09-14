@@ -19,98 +19,113 @@ $all = array_map( fn($f) => $base . $f, [
     'gallery-zidni.jpg',
 ] );
 
+/* translators: %d is the image number within the category (1, 2, 3...) */
+$alt_fmt = __( '%1$s %2$d', 'jugogradnja' );
+
+$labels = [
+    'kuhinjski'  => __( 'Кухињски елементи', 'jugogradnja' ),
+    'plakari'    => __( 'Плакари', 'jugogradnja' ),
+    'odlaganje'  => __( 'Елементи за одлагање', 'jugogradnja' ),
+    'kupatilski' => __( 'Купатилски ормарићи', 'jugogradnja' ),
+    'vratni'     => __( 'Вратни панели', 'jugogradnja' ),
+    'vitrine'    => __( 'Витрине за вино', 'jugogradnja' ),
+    'zidni'      => __( 'Зидни панели', 'jugogradnja' ),
+    'komadani'   => __( 'Комадани намештај', 'jugogradnja' ),
+    'dodaci'     => __( 'Додаци', 'jugogradnja' ),
+];
+
 $items = [
     [
-        'label'  => 'Кухињски елементи',
+        'label'  => $labels['kuhinjski'],
         'thumb'  => 'gallery-1.jpg',
         'images' => [
-            [ 'src' => $all[0], 'alt' => 'Кухињски елементи 1' ],
-            [ 'src' => $all[1], 'alt' => 'Кухињски елементи 2' ],
-            [ 'src' => $all[2], 'alt' => 'Кухињски елементи 3' ],
-            [ 'src' => $all[3], 'alt' => 'Кухињски елементи 4' ],
+            [ 'src' => $all[0], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 1 ) ],
+            [ 'src' => $all[1], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 2 ) ],
+            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 3 ) ],
+            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 4 ) ],
         ],
     ],
     [
-        'label'  => 'Плакари',
+        'label'  => $labels['plakari'],
         'thumb'  => 'gallery-2.jpg',
         'images' => [
-            [ 'src' => $all[1], 'alt' => 'Плакари 1' ],
-            [ 'src' => $all[2], 'alt' => 'Плакари 2' ],
-            [ 'src' => $all[3], 'alt' => 'Плакари 3' ],
+            [ 'src' => $all[1], 'alt' => sprintf( $alt_fmt, $labels['plakari'], 1 ) ],
+            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['plakari'], 2 ) ],
+            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['plakari'], 3 ) ],
         ],
     ],
     [
-        'label'  => 'Елементи за одлагање',
+        'label'  => $labels['odlaganje'],
         'thumb'  => 'gallery-3.jpg',
         'images' => [
-            [ 'src' => $all[2], 'alt' => 'Елементи за одлагање 1' ],
-            [ 'src' => $all[3], 'alt' => 'Елементи за одлагање 2' ],
-            [ 'src' => $all[4], 'alt' => 'Елементи за одлагање 3' ],
-            [ 'src' => $all[5], 'alt' => 'Елементи за одлагање 4' ],
+            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 1 ) ],
+            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 2 ) ],
+            [ 'src' => $all[4], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 3 ) ],
+            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 4 ) ],
         ],
     ],
     [
-        'label'  => 'Купатилски ормарићи',
+        'label'  => $labels['kupatilski'],
         'thumb'  => 'gallery-4.jpg',
         'images' => [
-            [ 'src' => $all[3], 'alt' => 'Купатилски ормарићи 1' ],
-            [ 'src' => $all[4], 'alt' => 'Купатилски ормарићи 2' ],
-            [ 'src' => $all[0], 'alt' => 'Купатилски ормарићи 3' ],
+            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['kupatilski'], 1 ) ],
+            [ 'src' => $all[4], 'alt' => sprintf( $alt_fmt, $labels['kupatilski'], 2 ) ],
+            [ 'src' => $all[0], 'alt' => sprintf( $alt_fmt, $labels['kupatilski'], 3 ) ],
         ],
     ],
     [
-        'label'  => 'Вратни панели',
+        'label'  => $labels['vratni'],
         'thumb'  => 'gallery-5.jpg',
         'images' => [
-            [ 'src' => $all[4], 'alt' => 'Вратни панели 1' ],
-            [ 'src' => $all[5], 'alt' => 'Вратни панели 2' ],
-            [ 'src' => $all[6], 'alt' => 'Вратни панели 3' ],
-            [ 'src' => $all[7], 'alt' => 'Вратни панели 4' ],
+            [ 'src' => $all[4], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 1 ) ],
+            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 2 ) ],
+            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 3 ) ],
+            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 4 ) ],
         ],
     ],
     [
-        'label'  => 'Витрине за вино',
+        'label'  => $labels['vitrine'],
         'thumb'  => 'gallery-6.jpg',
         'images' => [
-            [ 'src' => $all[5], 'alt' => 'Витрине за вино 1' ],
-            [ 'src' => $all[6], 'alt' => 'Витрине за вино 2' ],
-            [ 'src' => $all[7], 'alt' => 'Витрине за вино 3' ],
+            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['vitrine'], 1 ) ],
+            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['vitrine'], 2 ) ],
+            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['vitrine'], 3 ) ],
         ],
     ],
     [
-        'label'  => 'Зидни панели',
+        'label'  => $labels['zidni'],
         'thumb'  => 'gallery-zidni.jpg',
         'images' => [
-            [ 'src' => $all[8], 'alt' => 'Зидни панели 1' ],
-            [ 'src' => $all[0], 'alt' => 'Зидни панели 2' ],
-            [ 'src' => $all[1], 'alt' => 'Зидни панели 3' ],
-            [ 'src' => $all[2], 'alt' => 'Зидни панели 4' ],
+            [ 'src' => $all[8], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 1 ) ],
+            [ 'src' => $all[0], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 2 ) ],
+            [ 'src' => $all[1], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 3 ) ],
+            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 4 ) ],
         ],
     ],
     [
-        'label'  => 'Комадани намештај',
+        'label'  => $labels['komadani'],
         'thumb'  => 'gallery-7.jpg',
         'images' => [
-            [ 'src' => $all[6], 'alt' => 'Комадани намештај 1' ],
-            [ 'src' => $all[7], 'alt' => 'Комадани намештај 2' ],
-            [ 'src' => $all[8], 'alt' => 'Комадани намештај 3' ],
+            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['komadani'], 1 ) ],
+            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['komadani'], 2 ) ],
+            [ 'src' => $all[8], 'alt' => sprintf( $alt_fmt, $labels['komadani'], 3 ) ],
         ],
     ],
     [
-        'label'  => 'Додаци',
+        'label'  => $labels['dodaci'],
         'thumb'  => 'gallery-8.jpg',
         'images' => [
-            [ 'src' => $all[7], 'alt' => 'Додаци 1' ],
-            [ 'src' => $all[8], 'alt' => 'Додаци 2' ],
-            [ 'src' => $all[5], 'alt' => 'Додаци 3' ],
-            [ 'src' => $all[6], 'alt' => 'Додаци 4' ],
+            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 1 ) ],
+            [ 'src' => $all[8], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 2 ) ],
+            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 3 ) ],
+            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 4 ) ],
         ],
     ],
 ];
 ?>
 <section class="jg-sofeija-gallery">
 	<div class="jg-sofeija-gallery__inner">
-		<h2 class="jg-sofeija-gallery__heading">Комплетно уређење по мери</h2>
+		<h2 class="jg-sofeija-gallery__heading"><?= esc_html__( 'Комплетно уређење по мери', 'jugogradnja' ) ?></h2>
 		<div class="jg-sofeija-gallery__grid">
 			<?php foreach ( $items as $item ) :
 				$gallery_json = wp_json_encode( $item['images'] );
@@ -120,7 +135,7 @@ $items = [
 				 data-label="<?= esc_attr( $item['label'] ) ?>"
 				 role="button"
 				 tabindex="0"
-				 aria-label="<?= esc_attr( $item['label'] ) ?> - отвори галерију">
+				 aria-label="<?= esc_attr( sprintf( /* translators: %s is the gallery category name, e.g. "Плакари" */ __( '%s - отвори галерију', 'jugogradnja' ), $item['label'] ) ) ?>">
 				<img src="<?= esc_url( $base . $item['thumb'] ) ?>"
 					 alt="<?= esc_attr( $item['label'] ) ?>"
 					 width="460" height="300" loading="lazy">
@@ -138,14 +153,14 @@ $items = [
 
 <!-- Lightbox modal -->
 <div id="jg-sof-backdrop" class="jg-sof-backdrop" hidden></div>
-<div id="jg-sof-modal" class="jg-sof-modal" role="dialog" aria-modal="true" aria-label="Галерија" hidden>
-	<button class="jg-sof-modal__close" aria-label="Затвори">
+<div id="jg-sof-modal" class="jg-sof-modal" role="dialog" aria-modal="true" aria-label="<?= esc_attr__( 'Галерија', 'jugogradnja' ) ?>" hidden>
+	<button class="jg-sof-modal__close" aria-label="<?= esc_attr__( 'Затвори', 'jugogradnja' ) ?>">
 		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
 		</svg>
 	</button>
 	<div class="jg-sof-modal__stage">
-		<button class="jg-sof-modal__prev" aria-label="Претходна слика">
+		<button class="jg-sof-modal__prev" aria-label="<?= esc_attr__( 'Претходна слика', 'jugogradnja' ) ?>">
 			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
@@ -153,7 +168,7 @@ $items = [
 		<div class="jg-sof-modal__wrap">
 			<img class="jg-sof-modal__img" src="" alt="">
 		</div>
-		<button class="jg-sof-modal__next" aria-label="Следећа слика">
+		<button class="jg-sof-modal__next" aria-label="<?= esc_attr__( 'Следећа слика', 'jugogradnja' ) ?>">
 			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M9 18l6-6-6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
