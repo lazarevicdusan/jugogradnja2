@@ -16,8 +16,8 @@ $imgsm = esc_url( get_template_directory_uri() . '/assets/images/photos/hero-sm.
   </picture>
   <div class="jg-hero__overlay" aria-hidden="true"></div>
   <div class="jg-hero__content">
-    <h1 class="jg-hero__title">Радимо. Градимо. Од 1992. године</h1>
-    <p class="jg-hero__sub">Градимо поверење, стварамо трајне вредности</p>
+    <h1 class="jg-hero__title"><?= esc_html__( 'Радимо. Градимо. Од 1992. године', 'jugogradnja' ) ?></h1>
+    <p class="jg-hero__sub"><?= esc_html__( 'Градимо поверење, стварамо трајне вредности', 'jugogradnja' ) ?></p>
   </div>
   <div class="jg-hero__scroll" aria-hidden="true">
     <div class="jg-hero__scroll-bar"></div>

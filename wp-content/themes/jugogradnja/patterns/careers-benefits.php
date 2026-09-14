@@ -9,34 +9,34 @@ $t = get_template_directory_uri();
 $benefits = [
     [
         'icon'  => $t . '/assets/images/icons/icon-career-medal.svg',
-        'title' => 'Стабилно и дугорочно запослење',
+        'title' => __( 'Стабилно и дугорочно запослење', 'jugogradnja' ),
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-career-briefcase.svg',
-        'title' => 'Рад на великим и значајним пројектима',
+        'title' => __( 'Рад на великим и значајним пројектима', 'jugogradnja' ),
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-career-growth.svg',
-        'title' => 'Могућност напредовања',
+        'title' => __( 'Могућност напредовања', 'jugogradnja' ),
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-career-book.svg',
-        'title' => 'Континуиране обуке и усавршавање',
+        'title' => __( 'Континуиране обуке и усавршавање', 'jugogradnja' ),
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-career-team.svg',
-        'title' => 'Подршку стручног тима',
+        'title' => __( 'Подршку стручног тима', 'jugogradnja' ),
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-career-check.svg',
-        'title' => 'Савремене услове рада',
+        'title' => __( 'Савремене услове рада', 'jugogradnja' ),
     ],
 ];
 ?>
 <!-- wp:html -->
 <section class="jg-careers-benefits">
   <div class="jg-careers-benefits__inner">
-    <h2 class="jg-section-heading" style="text-align:center">Шта нудимо</h2>
+    <h2 class="jg-section-heading" style="text-align:center"><?= esc_html__( 'Шта нудимо', 'jugogradnja' ) ?></h2>
     <div class="jg-benefits-grid">
       <?php foreach ( $benefits as $b ) : ?>
       <div class="jg-benefit-card">

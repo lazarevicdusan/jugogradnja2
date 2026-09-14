@@ -8,25 +8,25 @@
 $t = get_template_directory_uri();
 $depts = [
     [
-        'title' => 'Продаја',
+        'title' => __( 'Продаја', 'jugogradnja' ),
         'email' => 'prodaja@jugogradnja.rs',
         'phone' => '+381 64 811 58 68',
         'icon'  => $t . '/assets/images/icons/icon-dept-prodaja.svg',
     ],
     [
-        'title' => 'Општи упити',
+        'title' => __( 'Општи упити', 'jugogradnja' ),
         'email' => 'gradnja@jugogradnja.rs',
         'phone' => '+381 11 624 80 75',
         'icon'  => $t . '/assets/images/icons/icon-dept-upiti.svg',
     ],
     [
-        'title' => 'Извођење радова',
+        'title' => __( 'Извођење радова', 'jugogradnja' ),
         'email' => 'gradnja@jugogradnja.rs',
         'phone' => '+381 11 624 80 75',
         'icon'  => $t . '/assets/images/icons/icon-dept-izvodjenje.svg',
     ],
     [
-        'title' => 'VELUX системи',
+        'title' => __( 'VELUX системи', 'jugogradnja' ),
         'email' => 'prodaja@jugogradnja.rs',
         'phone' => '+381 64 811 58 68',
         'icon'  => $t . '/assets/images/icons/icon-dept-velux.svg',
@@ -36,7 +36,7 @@ $depts = [
 <!-- wp:html -->
 <section class="jg-contact-depts">
   <div class="jg-contact-depts__inner">
-    <h2 class="jg-section-heading" style="text-align:center">Департмани</h2>
+    <h2 class="jg-section-heading" style="text-align:center"><?= esc_html__( 'Департмани', 'jugogradnja' ) ?></h2>
     <div class="jg-dept-grid">
       <?php foreach ( $depts as $d ) : ?>
       <div class="jg-dept-card">

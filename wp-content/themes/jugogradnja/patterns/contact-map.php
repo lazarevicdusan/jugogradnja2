@@ -9,7 +9,7 @@
 <!-- wp:html -->
 <section class="jg-contact-map">
   <div class="jg-contact-map__inner">
-    <h2 class="jg-contact-map__heading">Пронађите нас</h2>
+    <h2 class="jg-contact-map__heading"><?= esc_html__( 'Пронађите нас', 'jugogradnja' ) ?></h2>
     <div class="jg-contact-map__grid">
 
       <div class="jg-contact-map__item">
@@ -20,13 +20,13 @@
             width="100%" height="100%"
             style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Канцеларије - Пуковника Пејовића 1а, Београд"></iframe>
+            title="<?= esc_attr__( 'Канцеларије - Пуковника Пејовића 1а, Београд', 'jugogradnja' ) ?>"></iframe>
         </div>
         <p class="jg-contact-map__label">
           <svg class="jg-contact-map__pin" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M10 2C7.24 2 5 4.24 5 7c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 10 5a1.5 1.5 0 0 1 0 3z" fill="#C5A059"/>
           </svg>
-          <span><strong>Канцеларије:</strong> Пуковника Пејовића 1а, Београд (08:00 – 16:00)</span>
+          <span><strong><?= esc_html__( 'Канцеларије:', 'jugogradnja' ) ?></strong> <?= esc_html__( 'Пуковника Пејовића 1а, Београд (08:00 – 16:00)', 'jugogradnja' ) ?></span>
         </p>
       </div>
 
@@ -38,13 +38,13 @@
             width="100%" height="100%"
             style="border:0;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Малопродаја - Светолика Никачевића бб, Београд"></iframe>
+            title="<?= esc_attr__( 'Малопродаја - Светолика Никачевића бб, Београд', 'jugogradnja' ) ?>"></iframe>
         </div>
         <p class="jg-contact-map__label">
           <svg class="jg-contact-map__pin" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M10 2C7.24 2 5 4.24 5 7c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 10 5a1.5 1.5 0 0 1 0 3z" fill="#C5A059"/>
           </svg>
-          <span><strong>Малопродаја:</strong> Светолика Никачевића бб (07:00 – 15:00)</span>
+          <span><strong><?= esc_html__( 'Малопродаја:', 'jugogradnja' ) ?></strong> <?= esc_html__( 'Светолика Никачевића бб (07:00 – 15:00)', 'jugogradnja' ) ?></span>
         </p>
       </div>
 
