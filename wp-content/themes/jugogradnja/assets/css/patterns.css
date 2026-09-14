@@ -8309,3 +8309,11 @@
   color: #a13a2f;
   background: #fdecea;
 }
+
+/* TEMP: hide featured-properties heading + listing grid on /nekretnine/
+   until there's real inventory to show. Remove once nekretnine-grid
+   pattern is re-added to page-nekretnine.html (or this rule with it). */
+.jg-nekretnine-section__intro,
+.jg-nekretnine-section__content {
+  display: none !important;
+}
