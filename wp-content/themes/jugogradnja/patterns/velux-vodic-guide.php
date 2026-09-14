@@ -18,25 +18,25 @@ $example_icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><re
 			<div class="jg-velux-vodic__step-hrow">
 				<div class="jg-velux-vodic__step-num">01</div>
 				<div class="jg-velux-vodic__step-body">
-					<h2 class="jg-velux-vodic__step-title">Величина прозора и растојање између греда</h2>
-					<p class="jg-velux-vodic__step-text">VELUX кровни прозори се производе у различитим стандардним димензијама и уграђују се у одређена растојања између греда. У идеалним условима размак између греда треба да буде шири 5цм у односу на ширину прозора да би се идеално уградила термо и хидро изолација која иде около прозора.</p>
+					<h2 class="jg-velux-vodic__step-title"><?= esc_html__( 'Величина прозора и растојање између греда', 'jugogradnja' ) ?></h2>
+					<p class="jg-velux-vodic__step-text"><?= esc_html__( 'VELUX кровни прозори се производе у различитим стандардним димензијама и уграђују се у одређена растојања између греда. У идеалним условима размак између греда треба да буде шири 5цм у односу на ширину прозора да би се идеално уградила термо и хидро изолација која иде около прозора.', 'jugogradnja' ) ?></p>
 				</div>
 			</div>
 			<div class="jg-velux-vodic__step-content">
 				<div class="jg-velux-vodic__tip">
 					<?= $tip_icon ?>
 					<div>
-						<strong>САВЕТ:</strong>
-						<p>⚠️ ВЕОМА ВАЖНО: Обавезно је прецизно премерити греде пре куповине, најбоље са професионалним мајстором! Грешка у мерењу може да резултира прозором које не може да се угради. Позовите нас и повезаћемо вас са сертификованим мајстором који ће бесплатно изаћи на терен, утврдити размак између греда и помоћи вам да изаберете одговарајућу величину и модел прозора.</p>
+						<strong><?= esc_html__( 'САВЕТ:', 'jugogradnja' ) ?></strong>
+						<p><?= esc_html__( '⚠️ ВЕОМА ВАЖНО: Обавезно је прецизно премерити греде пре куповине, најбоље са професионалним мајстором! Грешка у мерењу може да резултира прозором које не може да се угради. Позовите нас и повезаћемо вас са сертификованим мајстором који ће бесплатно изаћи на терен, утврдити размак између греда и помоћи вам да изаберете одговарајућу величину и модел прозора.', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 				<div class="jg-velux-vodic__box">
-					<h4 class="jg-velux-vodic__box-title">Стандардне димензије:</h4>
+					<h4 class="jg-velux-vodic__box-title"><?= esc_html__( 'Стандардне димензије:', 'jugogradnja' ) ?></h4>
 					<div class="jg-velux-vodic__dims">
-						<div class="jg-velux-vodic__dim"><?= $check ?>Размак 60 цм → CK прозори (55 цм)</div>
-						<div class="jg-velux-vodic__dim"><?= $check ?>Размак 72 цм → FK прозори (66 цм)</div>
-						<div class="jg-velux-vodic__dim"><?= $check ?>Размак 83 цм → MK прозори (78 цм)</div>
-						<div class="jg-velux-vodic__dim"><?= $check ?>Размак 100 цм → SK прозори (94 цм)</div>
+						<div class="jg-velux-vodic__dim"><?= $check ?><?= esc_html__( 'Размак 60 цм → CK прозори (55 цм)', 'jugogradnja' ) ?></div>
+						<div class="jg-velux-vodic__dim"><?= $check ?><?= esc_html__( 'Размак 72 цм → FK прозори (66 цм)', 'jugogradnja' ) ?></div>
+						<div class="jg-velux-vodic__dim"><?= $check ?><?= esc_html__( 'Размак 83 цм → MK прозори (78 цм)', 'jugogradnja' ) ?></div>
+						<div class="jg-velux-vodic__dim"><?= $check ?><?= esc_html__( 'Размак 100 цм → SK прозори (94 цм)', 'jugogradnja' ) ?></div>
 					</div>
 				</div>
 			</div>
@@ -47,31 +47,31 @@ $example_icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><re
 			<div class="jg-velux-vodic__step-hrow">
 				<div class="jg-velux-vodic__step-num">02</div>
 				<div class="jg-velux-vodic__step-body">
-					<h2 class="jg-velux-vodic__step-title">Изаберите модел прозора</h2>
-					<p class="jg-velux-vodic__step-text">Након што утврдите која величина прозора вам одговара треба да изаберете модел прозора. У понуди имате Основни прозоре са двоструким стаклом и Стандард прозоре са троструким стаклом.</p>
+					<h2 class="jg-velux-vodic__step-title"><?= esc_html__( 'Изаберите модел прозора', 'jugogradnja' ) ?></h2>
+					<p class="jg-velux-vodic__step-text"><?= esc_html__( 'Након што утврдите која величина прозора вам одговара треба да изаберете модел прозора. У понуди имате Основни прозоре са двоструким стаклом и Стандард прозоре са троструким стаклом.', 'jugogradnja' ) ?></p>
 				</div>
 			</div>
 			<div class="jg-velux-vodic__step-content">
 				<div class="jg-velux-vodic__tip">
 					<?= $tip_icon ?>
 					<div>
-						<strong>САВЕТ:</strong>
-						<p>Прозори од белог полиуретана су погодни за просторије са већом концентрацијом влаге (купатило, кухиња).</p>
+						<strong><?= esc_html__( 'САВЕТ:', 'jugogradnja' ) ?></strong>
+						<p><?= esc_html__( 'Прозори од белог полиуретана су погодни за просторије са већом концентрацијом влаге (купатило, кухиња).', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 				<div class="jg-velux-vodic__models">
 					<div class="jg-velux-vodic__model">
-						<h4 class="jg-velux-vodic__model-title">ОСНОВНИ - Двоструко стакло</h4>
+						<h4 class="jg-velux-vodic__model-title"><?= esc_html__( 'ОСНОВНИ - Двоструко стакло', 'jugogradnja' ) ?></h4>
 						<ul class="jg-velux-vodic__model-list">
-							<li><?= $check ?><span>GZL - Природна боја дрвета, безбојни лак</span></li>
-							<li><?= $check ?><span>GLU - Бели полиуретан (без одржавања)</span></li>
+							<li><?= $check ?><span><?= esc_html__( 'GZL - Природна боја дрвета, безбојни лак', 'jugogradnja' ) ?></span></li>
+							<li><?= $check ?><span><?= esc_html__( 'GLU - Бели полиуретан (без одржавања)', 'jugogradnja' ) ?></span></li>
 						</ul>
 					</div>
 					<div class="jg-velux-vodic__model">
-						<h4 class="jg-velux-vodic__model-title">СТАНДАРД - Троструко стакло</h4>
+						<h4 class="jg-velux-vodic__model-title"><?= esc_html__( 'СТАНДАРД - Троструко стакло', 'jugogradnja' ) ?></h4>
 						<ul class="jg-velux-vodic__model-list">
-							<li><?= $check ?><span>GLL - Природна боја дрвета, безбојни лак</span></li>
-							<li><?= $check ?><span>GLU - Бели полиуретан (без одржавања)</span></li>
+							<li><?= $check ?><span><?= esc_html__( 'GLL - Природна боја дрвета, безбојни лак', 'jugogradnja' ) ?></span></li>
+							<li><?= $check ?><span><?= esc_html__( 'GLU - Бели полиуретан (без одржавања)', 'jugogradnja' ) ?></span></li>
 						</ul>
 					</div>
 				</div>
@@ -83,23 +83,23 @@ $example_icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><re
 			<div class="jg-velux-vodic__step-hrow">
 				<div class="jg-velux-vodic__step-num">03</div>
 				<div class="jg-velux-vodic__step-body">
-					<h2 class="jg-velux-vodic__step-title">Изаберите одговарајући број прозора</h2>
-					<p class="jg-velux-vodic__step-text">Да бисте добили потребан број прозора у просторији поделите величину ваше просторије у м² са десет како бисте добили оптималну величину кровних прозора.</p>
+					<h2 class="jg-velux-vodic__step-title"><?= esc_html__( 'Изаберите одговарајући број прозора', 'jugogradnja' ) ?></h2>
+					<p class="jg-velux-vodic__step-text"><?= esc_html__( 'Да бисте добили потребан број прозора у просторији поделите величину ваше просторије у м² са десет како бисте добили оптималну величину кровних прозора.', 'jugogradnja' ) ?></p>
 				</div>
 			</div>
 			<div class="jg-velux-vodic__step-content">
 				<div class="jg-velux-vodic__tip">
 					<?= $tip_icon ?>
 					<div>
-						<strong>САВЕТ:</strong>
-						<p>За правилно осветљење простора VELUX препоручује да стаклена површина износи најмање 10% површине пода просторије.</p>
+						<strong><?= esc_html__( 'САВЕТ:', 'jugogradnja' ) ?></strong>
+						<p><?= esc_html__( 'За правилно осветљење простора VELUX препоручује да стаклена површина износи најмање 10% површине пода просторије.', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 				<div class="jg-velux-vodic__example">
 					<?= $example_icon ?>
 					<div>
-						<p class="jg-velux-vodic__example-label">Пример прорачуна:</p>
-						<p class="jg-velux-vodic__example-text">Простор 30м² ÷ 10 = 3м² стаклене површине потребно</p>
+						<p class="jg-velux-vodic__example-label"><?= esc_html__( 'Пример прорачуна:', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__example-text"><?= esc_html__( 'Простор 30м² ÷ 10 = 3м² стаклене површине потребно', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 			</div>
@@ -110,39 +110,39 @@ $example_icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><re
 			<div class="jg-velux-vodic__step-hrow">
 				<div class="jg-velux-vodic__step-num">04</div>
 				<div class="jg-velux-vodic__step-body">
-					<h2 class="jg-velux-vodic__step-title">Изаберите одговарајуће производе за уградњу</h2>
-					<p class="jg-velux-vodic__step-text">VELUX кровни прозори треба да буду уграђени са одговарајућом опшивком које су направљене тако да се прецизно уклапају у специфичне величине прозора и обезбеђују водонепропусно повезивање између вашег прозора и кровног покривача.</p>
+					<h2 class="jg-velux-vodic__step-title"><?= esc_html__( 'Изаберите одговарајуће производе за уградњу', 'jugogradnja' ) ?></h2>
+					<p class="jg-velux-vodic__step-text"><?= esc_html__( 'VELUX кровни прозори треба да буду уграђени са одговарајућом опшивком које су направљене тако да се прецизно уклапају у специфичне величине прозора и обезбеђују водонепропусно повезивање између вашег прозора и кровног покривача.', 'jugogradnja' ) ?></p>
 				</div>
 			</div>
 			<div class="jg-velux-vodic__step-content">
 				<div class="jg-velux-vodic__note">
-					<p>Посебно је потребно напоменути ако се прозори уграђују један изнад другог или један поред другог - то јест ако их дели само греда - да би се купила одговарајућа комбинована опшивка.</p>
+					<p><?= esc_html__( 'Посебно је потребно напоменути ако се прозори уграђују један изнад другог или један поред другог - то јест ако их дели само греда - да би се купила одговарајућа комбинована опшивка.', 'jugogradnja' ) ?></p>
 				</div>
-				<h4 class="jg-velux-vodic__subtitle">Типови опшивки:</h4>
+				<h4 class="jg-velux-vodic__subtitle"><?= esc_html__( 'Типови опшивки:', 'jugogradnja' ) ?></h4>
 				<div class="jg-velux-vodic__flashings">
 					<div class="jg-velux-vodic__flashing">
 						<div class="jg-velux-vodic__flashing-hrow">
 							<strong class="jg-velux-vodic__flashing-code">EDW 2000</strong>
-							<span class="jg-velux-vodic__flashing-badge">Високо профилисани кровни покривачи</span>
+							<span class="jg-velux-vodic__flashing-badge"><?= esc_html__( 'Високо профилисани кровни покривачи', 'jugogradnja' ) ?></span>
 						</div>
-						<p class="jg-velux-vodic__flashing-desc">За: Цреп и профилисани лимови</p>
-						<span class="jg-velux-vodic__flashing-incl">Термо и хидро изолациони сет укључен</span>
+						<p class="jg-velux-vodic__flashing-desc"><?= esc_html__( 'За: Цреп и профилисани лимови', 'jugogradnja' ) ?></p>
+						<span class="jg-velux-vodic__flashing-incl"><?= esc_html__( 'Термо и хидро изолациони сет укључен', 'jugogradnja' ) ?></span>
 					</div>
 					<div class="jg-velux-vodic__flashing">
 						<div class="jg-velux-vodic__flashing-hrow">
 							<strong class="jg-velux-vodic__flashing-code">EDS 2000</strong>
-							<span class="jg-velux-vodic__flashing-badge">Равни кровни покривачи</span>
+							<span class="jg-velux-vodic__flashing-badge"><?= esc_html__( 'Равни кровни покривачи', 'jugogradnja' ) ?></span>
 						</div>
-						<p class="jg-velux-vodic__flashing-desc">За: Фалцовани лим и тегола</p>
-						<span class="jg-velux-vodic__flashing-excl">Потребно докупити термо и хидро изолацију</span>
+						<p class="jg-velux-vodic__flashing-desc"><?= esc_html__( 'За: Фалцовани лим и тегола', 'jugogradnja' ) ?></p>
+						<span class="jg-velux-vodic__flashing-excl"><?= esc_html__( 'Потребно докупити термо и хидро изолацију', 'jugogradnja' ) ?></span>
 					</div>
 					<div class="jg-velux-vodic__flashing">
 						<div class="jg-velux-vodic__flashing-hrow">
 							<strong class="jg-velux-vodic__flashing-code">EDB 2000</strong>
-							<span class="jg-velux-vodic__flashing-badge">Фалцовани бибер цреп</span>
+							<span class="jg-velux-vodic__flashing-badge"><?= esc_html__( 'Фалцовани бибер цреп', 'jugogradnja' ) ?></span>
 						</div>
-						<p class="jg-velux-vodic__flashing-desc">За: Нагиб крова од 20 степени</p>
-						<span class="jg-velux-vodic__flashing-incl">Термо и хидро изолациони сет укључен</span>
+						<p class="jg-velux-vodic__flashing-desc"><?= esc_html__( 'За: Нагиб крова од 20 степени', 'jugogradnja' ) ?></p>
+						<span class="jg-velux-vodic__flashing-incl"><?= esc_html__( 'Термо и хидро изолациони сет укључен', 'jugogradnja' ) ?></span>
 					</div>
 				</div>
 			</div>
@@ -153,8 +153,8 @@ $example_icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><re
 			<div class="jg-velux-vodic__step-hrow">
 				<div class="jg-velux-vodic__step-num">05</div>
 				<div class="jg-velux-vodic__step-body">
-					<h2 class="jg-velux-vodic__step-title">Одаберите праву заштиту од топлоте/светлости/инсеката</h2>
-					<p class="jg-velux-vodic__step-text">Изаберите одговарајућу заштиту за ваш VELUX прозор. Пре куповине обавезно погледајте тип и величину вашег кровног прозора на плочици коју можете да видите са горње стране прозора када га отворите.</p>
+					<h2 class="jg-velux-vodic__step-title"><?= esc_html__( 'Одаберите праву заштиту од топлоте/светлости/инсеката', 'jugogradnja' ) ?></h2>
+					<p class="jg-velux-vodic__step-text"><?= esc_html__( 'Изаберите одговарајућу заштиту за ваш VELUX прозор. Пре куповине обавезно погледајте тип и величину вашег кровног прозора на плочици коју можете да видите са горње стране прозора када га отворите.', 'jugogradnja' ) ?></p>
 				</div>
 			</div>
 			<div class="jg-velux-vodic__step-content">
@@ -162,68 +162,68 @@ $example_icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><re
 					<div class="jg-velux-vodic__pcard">
 						<div class="jg-velux-vodic__pcard-top">
 							<div>
-								<p class="jg-velux-vodic__pcard-cat">Заштита од топлоте</p>
-								<h4 class="jg-velux-vodic__pcard-name">VELUX спољна мрежица</h4>
+								<p class="jg-velux-vodic__pcard-cat"><?= esc_html__( 'Заштита од топлоте', 'jugogradnja' ) ?></p>
+								<h4 class="jg-velux-vodic__pcard-name"><?= esc_html__( 'VELUX спољна мрежица', 'jugogradnja' ) ?></h4>
 							</div>
 							<span class="jg-velux-vodic__pcard-code">MHL</span>
 						</div>
-						<p class="jg-velux-vodic__pcard-accent">Смањују топлоту до 76%</p>
-						<p class="jg-velux-vodic__pcard-desc">Ублажавају светлост до 30%, веома се лако и брзо уграђују</p>
+						<p class="jg-velux-vodic__pcard-accent"><?= esc_html__( 'Смањују топлоту до 76%', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__pcard-desc"><?= esc_html__( 'Ублажавају светлост до 30%, веома се лако и брзо уграђују', 'jugogradnja' ) ?></p>
 					</div>
 					<div class="jg-velux-vodic__pcard">
 						<div class="jg-velux-vodic__pcard-top">
 							<div>
-								<p class="jg-velux-vodic__pcard-cat">Заштита од светлости - Тотално замрачење</p>
-								<h4 class="jg-velux-vodic__pcard-name">Унутрашње ролетне</h4>
+								<p class="jg-velux-vodic__pcard-cat"><?= esc_html__( 'Заштита од светлости - Тотално замрачење', 'jugogradnja' ) ?></p>
+								<h4 class="jg-velux-vodic__pcard-name"><?= esc_html__( 'Унутрашње ролетне', 'jugogradnja' ) ?></h4>
 							</div>
 							<span class="jg-velux-vodic__pcard-code">DKL</span>
 						</div>
-						<p class="jg-velux-vodic__pcard-accent">Не пропушта светлост</p>
-						<p class="jg-velux-vodic__pcard-desc">Алуминијумске лајсне, боје: беж/тегет/бела</p>
+						<p class="jg-velux-vodic__pcard-accent"><?= esc_html__( 'Не пропушта светлост', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__pcard-desc"><?= esc_html__( 'Алуминијумске лајсне, боје: беж/тегет/бела', 'jugogradnja' ) ?></p>
 					</div>
 					<div class="jg-velux-vodic__pcard">
 						<div class="jg-velux-vodic__pcard-top">
 							<div>
-								<p class="jg-velux-vodic__pcard-cat">Заштита од светлости - Ублажавање</p>
-								<h4 class="jg-velux-vodic__pcard-name">Унутрашње ролетне</h4>
+								<p class="jg-velux-vodic__pcard-cat"><?= esc_html__( 'Заштита од светлости - Ублажавање', 'jugogradnja' ) ?></p>
+								<h4 class="jg-velux-vodic__pcard-name"><?= esc_html__( 'Унутрашње ролетне', 'jugogradnja' ) ?></h4>
 							</div>
 							<span class="jg-velux-vodic__pcard-code">RFL</span>
 						</div>
-						<p class="jg-velux-vodic__pcard-accent">Ублажава светлост</p>
-						<p class="jg-velux-vodic__pcard-desc">Алуминијумске лајсне, боје: беж/тегет/бела</p>
+						<p class="jg-velux-vodic__pcard-accent"><?= esc_html__( 'Ублажава светлост', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__pcard-desc"><?= esc_html__( 'Алуминијумске лајсне, боје: беж/тегет/бела', 'jugogradnja' ) ?></p>
 					</div>
 					<div class="jg-velux-vodic__pcard">
 						<div class="jg-velux-vodic__pcard-top">
 							<div>
-								<p class="jg-velux-vodic__pcard-cat">Ублажавање светлости</p>
-								<h4 class="jg-velux-vodic__pcard-name">Позиционирање у 3 положаја</h4>
+								<p class="jg-velux-vodic__pcard-cat"><?= esc_html__( 'Ублажавање светлости', 'jugogradnja' ) ?></p>
+								<h4 class="jg-velux-vodic__pcard-name"><?= esc_html__( 'Позиционирање у 3 положаја', 'jugogradnja' ) ?></h4>
 							</div>
 							<span class="jg-velux-vodic__pcard-code">RHL</span>
 						</div>
-						<p class="jg-velux-vodic__pcard-accent">Ублажава светлост</p>
-						<p class="jg-velux-vodic__pcard-desc">Боје: беж/тегет</p>
+						<p class="jg-velux-vodic__pcard-accent"><?= esc_html__( 'Ублажава светлост', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__pcard-desc"><?= esc_html__( 'Боје: беж/тегет', 'jugogradnja' ) ?></p>
 					</div>
 					<div class="jg-velux-vodic__pcard">
 						<div class="jg-velux-vodic__pcard-top">
 							<div>
-								<p class="jg-velux-vodic__pcard-cat">DUO ролетна</p>
-								<h4 class="jg-velux-vodic__pcard-name">Две ролетне у једној</h4>
+								<p class="jg-velux-vodic__pcard-cat"><?= esc_html__( 'DUO ролетна', 'jugogradnja' ) ?></p>
+								<h4 class="jg-velux-vodic__pcard-name"><?= esc_html__( 'Две ролетне у једној', 'jugogradnja' ) ?></h4>
 							</div>
 							<span class="jg-velux-vodic__pcard-code">DFD</span>
 						</div>
-						<p class="jg-velux-vodic__pcard-accent">DKL + RFL комбинација</p>
-						<p class="jg-velux-vodic__pcard-desc">Плисирана (бела) + замрачујућа (беж/тегет/бела)</p>
+						<p class="jg-velux-vodic__pcard-accent"><?= esc_html__( 'DKL + RFL комбинација', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__pcard-desc"><?= esc_html__( 'Плисирана (бела) + замрачујућа (беж/тегет/бела)', 'jugogradnja' ) ?></p>
 					</div>
 					<div class="jg-velux-vodic__pcard">
 						<div class="jg-velux-vodic__pcard-top">
 							<div>
-								<p class="jg-velux-vodic__pcard-cat">Заштита од инсеката</p>
-								<h4 class="jg-velux-vodic__pcard-name">VELUX комарници</h4>
+								<p class="jg-velux-vodic__pcard-cat"><?= esc_html__( 'Заштита од инсеката', 'jugogradnja' ) ?></p>
+								<h4 class="jg-velux-vodic__pcard-name"><?= esc_html__( 'VELUX комарници', 'jugogradnja' ) ?></h4>
 							</div>
 							<span class="jg-velux-vodic__pcard-code">ZIL</span>
 						</div>
-						<p class="jg-velux-vodic__pcard-accent">100% заштита од инсеката</p>
-						<p class="jg-velux-vodic__pcard-desc">Смештен на унутрашњу облогу, лако се скрива</p>
+						<p class="jg-velux-vodic__pcard-accent"><?= esc_html__( '100% заштита од инсеката', 'jugogradnja' ) ?></p>
+						<p class="jg-velux-vodic__pcard-desc"><?= esc_html__( 'Смештен на унутрашњу облогу, лако се скрива', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 			</div>

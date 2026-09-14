@@ -13,7 +13,7 @@ $slug_short = str_replace( 'velux-', '', $page_slug );
 ?>
 <section class="jg-velux-sp-gallery">
 	<div class="jg-velux-sp-gallery__inner">
-		<h2 class="jg-velux-sp-gallery__heading">Галерија производа</h2>
+		<h2 class="jg-velux-sp-gallery__heading"><?= esc_html__( 'Галерија производа', 'jugogradnja' ) ?></h2>
 		<div class="jg-velux-sp-gallery__grid">
 			<div class="jg-velux-sp-gallery__item">
 				<img src="<?= $t ?>/assets/images/velux/product-<?= esc_attr( $slug_short ) ?>.jpg" alt="" width="800" height="364" loading="lazy">
