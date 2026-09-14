@@ -39,7 +39,7 @@ foreach ( $random_posts as $rp ) {
 <!-- wp:html -->
 <section class="jg-inv-projects">
   <div class="jg-inv-projects__inner">
-    <h2 class="jg-inv-projects__heading">Наши пројекти</h2>
+    <h2 class="jg-inv-projects__heading"><?= esc_html__( 'Наши пројекти', 'jugogradnja' ) ?></h2>
 
     <div class="jg-inv-projects__grid">
       <?php foreach ( $projects as $p ) : ?>
@@ -74,7 +74,7 @@ foreach ( $random_posts as $rp ) {
           <?php if ( $p['desc'] ) : ?>
           <p class="jg-inv-proj-card__desc"><?= esc_html( $p['desc'] ) ?></p>
           <?php endif; ?>
-          <span class="jg-inv-proj-card__more">Детаљи &rarr;</span>
+          <span class="jg-inv-proj-card__more"><?= esc_html__( 'Детаљи', 'jugogradnja' ) ?> &rarr;</span>
         </div>
       </a>
       <?php endforeach; ?>
@@ -82,7 +82,7 @@ foreach ( $random_posts as $rp ) {
 
     <div class="jg-inv-projects__cta">
       <a class="jg-btn jg-btn--gold" href="<?= $ref_url ?>">
-        ПОГЛЕДАЈТЕ СВЕ ПРОЈЕКТЕ
+        <?= esc_html__( 'ПОГЛЕДАЈТЕ СВЕ ПРОЈЕКТЕ', 'jugogradnja' ) ?>
       </a>
     </div>
   </div>

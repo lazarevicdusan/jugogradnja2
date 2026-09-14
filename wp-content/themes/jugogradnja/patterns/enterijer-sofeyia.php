@@ -16,7 +16,7 @@ $logo = esc_url( $t . '/assets/images/photos/sofeyia-logo.png' );
          alt="Sofeyia"
          width="250" height="86"
          loading="lazy">
-    <a class="jg-btn jg-btn--gold jg-ent-sofeyia__btn" href="#">САЗНАЈ ВИШЕ</a>
+    <a class="jg-btn jg-btn--gold jg-ent-sofeyia__btn" href="#"><?= esc_html__( 'САЗНАЈ ВИШЕ', 'jugogradnja' ) ?></a>
   </div>
 </section>
 <!-- /wp:html -->

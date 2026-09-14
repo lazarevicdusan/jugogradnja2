@@ -11,30 +11,30 @@ $icon_check = esc_url( $t . '/assets/images/icons/icon-check-gold.svg' );
 $categories = [
     [
         'icon'  => $t . '/assets/images/icons/icon-izgr-stambeni.svg',
-        'title' => 'Стамбени и пословни комплекси',
+        'title' => __( 'Стамбени и пословни комплекси', 'jugogradnja' ),
         'items' => [
-            'Вишеспратне стамбене зграде',
-            'Стамбено-пословне целине са пратећим садржајима',
-            'Пословни простори и комерцијални центри',
+            __( 'Вишеспратне стамбене зграде', 'jugogradnja' ),
+            __( 'Стамбено-пословне целине са пратећим садржајима', 'jugogradnja' ),
+            __( 'Пословни простори и комерцијални центри', 'jugogradnja' ),
         ],
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-izgr-javna.svg',
-        'title' => 'Јавна и спортска инфраструктура',
+        'title' => __( 'Јавна и спортска инфраструктура', 'jugogradnja' ),
         'items' => [
-            'Клинички центри и болнице',
-            'Домови здравља',
-            'Образовне установе – школе и дечји вртићи',
-            'Спортске сале и спортско-рекреативни центри',
+            __( 'Клинички центри и болнице', 'jugogradnja' ),
+            __( 'Домови здравља', 'jugogradnja' ),
+            __( 'Образовне установе – школе и дечји вртићи', 'jugogradnja' ),
+            __( 'Спортске сале и спортско-рекреативни центри', 'jugogradnja' ),
         ],
     ],
     [
         'icon'  => $t . '/assets/images/icons/icon-izgr-industrija.svg',
-        'title' => 'Индустрија и развој капацитета',
+        'title' => __( 'Индустрија и развој капацитета', 'jugogradnja' ),
         'items' => [
-            'Изградња индустријских погона',
-            'Доградња објеката са сложеним техничким захтевима',
-            'Проширење производних капацитета',
+            __( 'Изградња индустријских погона', 'jugogradnja' ),
+            __( 'Доградња објеката са сложеним техничким захтевима', 'jugogradnja' ),
+            __( 'Проширење производних капацитета', 'jugogradnja' ),
         ],
     ],
 ];
@@ -42,7 +42,7 @@ $categories = [
 <!-- wp:html -->
 <section class="jg-izgr-what">
   <div class="jg-izgr-what__inner">
-    <h2 class="jg-izgr-what__heading">Шта градимо</h2>
+    <h2 class="jg-izgr-what__heading"><?= esc_html__( 'Шта градимо', 'jugogradnja' ) ?></h2>
     <div class="jg-izgr-what__list">
       <?php foreach ( $categories as $cat ) : ?>
       <div class="jg-izgr-cat-card">

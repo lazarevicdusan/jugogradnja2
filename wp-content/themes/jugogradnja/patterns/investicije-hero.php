@@ -9,7 +9,7 @@ $t    = get_template_directory_uri();
 $hero = esc_url( $t . '/assets/images/photos/investicije-hero.jpg' );
 ?>
 <!-- wp:html -->
-<section class="jg-svc-hero" aria-label="Инвестиције и развој пројеката">
+<section class="jg-svc-hero" aria-label="<?= esc_attr__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?>">
   <div class="jg-svc-hero__img-wrap">
     <img class="jg-svc-hero__img"
          src="<?= $hero ?>"
@@ -20,8 +20,8 @@ $hero = esc_url( $t . '/assets/images/photos/investicije-hero.jpg' );
   </div>
   <div class="jg-svc-hero__overlay">
     <div class="jg-svc-hero__content">
-      <h1 class="jg-svc-hero__title">Инвестиције и развој пројеката</h1>
-      <p class="jg-svc-hero__sub">Развој и реализација инвестиционих пројеката, од иницијалне идеје до потпуне изведбе, уз контролу свих фаза, поштовање рокова и дефинисаних стандарда квалитета.</p>
+      <h1 class="jg-svc-hero__title"><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></h1>
+      <p class="jg-svc-hero__sub"><?= esc_html__( 'Развој и реализација инвестиционих пројеката, од иницијалне идеје до потпуне изведбе, уз контролу свих фаза, поштовање рокова и дефинисаних стандарда квалитета.', 'jugogradnja' ) ?></p>
     </div>
   </div>
 </section>
