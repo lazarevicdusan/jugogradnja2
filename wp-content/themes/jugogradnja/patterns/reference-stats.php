@@ -6,9 +6,9 @@
  * Inserter: true
  */
 $stats = [
-    [ 'count' => 500,  'suffix' => '+',     'label' => 'Пројеката' ],
-    [ 'count' => 34,   'suffix' => '+',     'label' => 'Година искуства' ],
-    [ 'count' => 100,  'suffix' => '.000+', 'label' => 'м² изграђено' ],
+    [ 'count' => 500,  'suffix' => '+',     'label' => __( 'Пројеката', 'jugogradnja' ) ],
+    [ 'count' => 34,   'suffix' => '+',     'label' => __( 'Година искуства', 'jugogradnja' ) ],
+    [ 'count' => 100,  'suffix' => '.000+', 'label' => __( 'м² изграђено', 'jugogradnja' ) ],
 ];
 ?>
 <!-- wp:html -->

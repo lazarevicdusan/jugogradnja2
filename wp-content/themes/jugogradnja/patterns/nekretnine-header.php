@@ -9,8 +9,8 @@
 <!-- wp:html -->
 <section class="jg-page-header">
   <div class="jg-page-header__inner">
-    <h1 class="jg-page-header__title">Некретнине</h1>
-    <p class="jg-page-header__sub">Пронађите савршену некретнину која одговара вашим потребама</p>
+    <h1 class="jg-page-header__title"><?= esc_html__( 'Некретнине', 'jugogradnja' ) ?></h1>
+    <p class="jg-page-header__sub"><?= esc_html__( 'Пронађите савршену некретнину која одговара вашим потребама', 'jugogradnja' ) ?></p>
   </div>
 </section>
 <!-- /wp:html -->

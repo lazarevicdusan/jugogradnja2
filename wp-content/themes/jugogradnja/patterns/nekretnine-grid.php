@@ -17,10 +17,10 @@ $icon_arrow = esc_url( $t . '/assets/images/icons/icon-prop-arrow.svg' );
 $active_tip = isset( $_GET['tip'] ) ? sanitize_key( $_GET['tip'] ) : '';
 
 $filters = [
-    ''                 => 'Све некретнине',
-    'stan'             => 'Станови',
-    'kuca'             => 'Куће',
-    'poslovni-prostor' => 'Пословни простор',
+    ''                 => __( 'Све некретнине', 'jugogradnja' ),
+    'stan'             => __( 'Станови', 'jugogradnja' ),
+    'kuca'             => __( 'Куће', 'jugogradnja' ),
+    'poslovni-prostor' => __( 'Пословни простор', 'jugogradnja' ),
 ];
 
 /* ── Query ───────────────────────────────────────────── */
@@ -47,8 +47,8 @@ $total = $query->found_posts;
 <section class="jg-nekretnine-section">
   <div class="jg-nekretnine-section__intro">
     <div class="jg-nekretnine-section__intro-inner">
-      <h2 class="jg-section-heading" style="text-align:center">Истакнуте некретнине</h2>
-      <p class="jg-nekretnine-section__intro-sub">Најновије и најатрактивније понуде у нашем портфолију</p>
+      <h2 class="jg-section-heading" style="text-align:center"><?= esc_html__( 'Истакнуте некретнине', 'jugogradnja' ) ?></h2>
+      <p class="jg-nekretnine-section__intro-sub"><?= esc_html__( 'Најновије и најатрактивније понуде у нашем портфолију', 'jugogradnja' ) ?></p>
     </div>
   </div>
 
@@ -56,7 +56,7 @@ $total = $query->found_posts;
     <div class="jg-nekretnine-section__content-inner">
 
       <!-- Filter tabs -->
-      <div class="jg-prop-filters" role="tablist" aria-label="Филтер некретнина">
+      <div class="jg-prop-filters" role="tablist" aria-label="<?= esc_attr__( 'Филтер некретнина', 'jugogradnja' ) ?>">
         <?php foreach ( $filters as $slug => $label ) :
             $is_active = ( $slug === $active_tip );
             $url       = $slug ? esc_url( add_query_arg( 'tip', $slug ) ) : esc_url( remove_query_arg( 'tip' ) );
@@ -73,7 +73,8 @@ $total = $query->found_posts;
       <!-- Count -->
       <p class="jg-prop-count">
         <?php printf(
-            'Приказано %d од %d некретнина',
+            /* translators: 1: number of properties shown, 2: total number of properties */
+            esc_html__( 'Приказано %1$d од %2$d некретнина', 'jugogradnja' ),
             $query->post_count,
             $total
         ); ?>
@@ -93,9 +94,9 @@ $total = $query->found_posts;
             $status     = get_post_meta( get_the_ID(), '_nekretnina_status', true );
 
             $status_map = [
-                'na-prodaju' => [ 'label' => 'На продају', 'color' => '#22c55e' ],
-                'prodato'    => [ 'label' => 'Продато',    'color' => '#fb2c36' ],
-                'izdato'     => [ 'label' => 'Издато',     'color' => '#f97316' ],
+                'na-prodaju' => [ 'label' => __( 'На продају', 'jugogradnja' ), 'color' => '#22c55e' ],
+                'prodato'    => [ 'label' => __( 'Продато', 'jugogradnja' ),    'color' => '#fb2c36' ],
+                'izdato'     => [ 'label' => __( 'Издато', 'jugogradnja' ),     'color' => '#f97316' ],
             ];
             $status_info = isset( $status_map[ $status ] ) ? $status_map[ $status ] : null;
 
@@ -119,7 +120,7 @@ $total = $query->found_posts;
               <?php if ( $status_info ) : ?>
               <span class="jg-prop-badge jg-prop-badge--featured"><?= esc_html( mb_strtoupper( $status_info['label'], 'UTF-8' ) ) ?></span>
               <?php elseif ( $istaknuto ) : ?>
-              <span class="jg-prop-badge jg-prop-badge--featured">ИСТАКНУТО</span>
+              <span class="jg-prop-badge jg-prop-badge--featured"><?= esc_html__( 'ИСТАКНУТО', 'jugogradnja' ) ?></span>
               <?php endif; ?>
             </div>
 
@@ -153,20 +154,20 @@ $total = $query->found_posts;
               <?php if ( $sobe ) : ?>
               <div class="jg-prop-card__stat">
                 <img src="<?= $icon_rooms ?>" width="20" height="20" alt="" aria-hidden="true">
-                <span><?= esc_html( $sobe ) ?> соб<?= (int) $sobe === 1 ? 'а' : 'е' ?></span>
+                <span><?= esc_html( $sobe ) ?> <?= (int) $sobe === 1 ? esc_html__( 'соба', 'jugogradnja' ) : esc_html__( 'собе', 'jugogradnja' ) ?></span>
               </div>
               <?php endif; ?>
               <?php if ( $spavace !== '' && $spavace !== false ) : ?>
               <div class="jg-prop-card__stat">
                 <img src="<?= $icon_bed ?>" width="20" height="20" alt="" aria-hidden="true">
-                <span><?= esc_html( $spavace ) ?> спав.</span>
+                <span><?= esc_html( $spavace ) ?> <?= esc_html__( 'спав.', 'jugogradnja' ) ?></span>
               </div>
               <?php endif; ?>
             </div>
 
             <div class="jg-prop-card__footer">
               <span class="jg-prop-card__details-link">
-                Погледај детаље
+                <?= esc_html__( 'Погледај детаље', 'jugogradnja' ) ?>
                 <img src="<?= $icon_arrow ?>" width="16" height="16" alt="" aria-hidden="true">
               </span>
               <?php if ( $godina ) : ?>
@@ -178,7 +179,7 @@ $total = $query->found_posts;
         <?php endwhile; wp_reset_postdata(); ?>
       </div>
       <?php else : ?>
-      <p class="jg-prop-empty">Тренутно нема некретнина у овој категорији.</p>
+      <p class="jg-prop-empty"><?= esc_html__( 'Тренутно нема некретнина у овој категорији.', 'jugogradnja' ) ?></p>
       <?php endif; ?>
 
     </div>

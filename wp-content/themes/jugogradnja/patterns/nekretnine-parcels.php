@@ -13,30 +13,30 @@ $contact_url = esc_url( home_url( '/kontakt/' ) );
 
     <!-- Left: text -->
     <div class="jg-parcels__text">
-      <span class="jg-parcels__tag">ПОЗИВ ВЛАСНИЦИМА</span>
-      <h2 class="jg-parcels__heading">Тражимо парцеле за изградњу</h2>
-      <p class="jg-parcels__para">Ако поседујете грађевинску парцелу и размишљате о продаји или сарадњи, можете нас контактирати. Југоградња је стално у потрази за квалитетним локацијама за нове пројекте.</p>
+      <span class="jg-parcels__tag"><?= esc_html__( 'ПОЗИВ ВЛАСНИЦИМА', 'jugogradnja' ) ?></span>
+      <h2 class="jg-parcels__heading"><?= esc_html__( 'Тражимо парцеле за изградњу', 'jugogradnja' ) ?></h2>
+      <p class="jg-parcels__para"><?= esc_html__( 'Ако поседујете грађевинску парцелу и размишљате о продаји или сарадњи, можете нас контактирати. Југоградња је стално у потрази за квалитетним локацијама за нове пројекте.', 'jugogradnja' ) ?></p>
 
       <ul class="jg-parcels__checklist">
         <li class="jg-parcels__check-item">
           <span class="jg-parcels__check-icon" aria-hidden="true">✓</span>
           <div>
-            <strong class="jg-parcels__check-title">Брза процена</strong>
-            <p class="jg-parcels__check-desc">Професионална процена вредности ваше парцеле у најкраћем року</p>
+            <strong class="jg-parcels__check-title"><?= esc_html__( 'Брза процена', 'jugogradnja' ) ?></strong>
+            <p class="jg-parcels__check-desc"><?= esc_html__( 'Професионална процена вредности ваше парцеле у најкраћем року', 'jugogradnja' ) ?></p>
           </div>
         </li>
         <li class="jg-parcels__check-item">
           <span class="jg-parcels__check-icon" aria-hidden="true">✓</span>
           <div>
-            <strong class="jg-parcels__check-title">Поуздан партнер</strong>
-            <p class="jg-parcels__check-desc">Више од 30 година искуства у грађевинској индустрији</p>
+            <strong class="jg-parcels__check-title"><?= esc_html__( 'Поуздан партнер', 'jugogradnja' ) ?></strong>
+            <p class="jg-parcels__check-desc"><?= esc_html__( 'Више од 30 година искуства у грађевинској индустрији', 'jugogradnja' ) ?></p>
           </div>
         </li>
         <li class="jg-parcels__check-item">
           <span class="jg-parcels__check-icon" aria-hidden="true">✓</span>
           <div>
-            <strong class="jg-parcels__check-title">Флексибилни услови</strong>
-            <p class="jg-parcels__check-desc">Разматрамо различите моделе сарадње и куповине</p>
+            <strong class="jg-parcels__check-title"><?= esc_html__( 'Флексибилни услови', 'jugogradnja' ) ?></strong>
+            <p class="jg-parcels__check-desc"><?= esc_html__( 'Разматрамо различите моделе сарадње и куповине', 'jugogradnja' ) ?></p>
           </div>
         </li>
       </ul>
@@ -44,28 +44,28 @@ $contact_url = esc_url( home_url( '/kontakt/' ) );
 
     <!-- Right: contact card -->
     <div class="jg-parcels__card">
-      <h3 class="jg-parcels__card-heading">Контактирајте нас</h3>
-      <p class="jg-parcels__card-sub">Шаљите нам информације о вашој парцели на:</p>
+      <h3 class="jg-parcels__card-heading"><?= esc_html__( 'Контактирајте нас', 'jugogradnja' ) ?></h3>
+      <p class="jg-parcels__card-sub"><?= esc_html__( 'Шаљите нам информације о вашој парцели на:', 'jugogradnja' ) ?></p>
 
       <div class="jg-parcels__contact-items">
         <div class="jg-parcels__contact-item">
-          <span class="jg-parcels__contact-label">Емаил за парцеле</span>
+          <span class="jg-parcels__contact-label"><?= esc_html__( 'Емаил за парцеле', 'jugogradnja' ) ?></span>
           <a class="jg-parcels__contact-value" href="mailto:prodaja@jugogradnja.rs">prodaja@jugogradnja.rs</a>
         </div>
         <div class="jg-parcels__contact-item">
-          <span class="jg-parcels__contact-label">Телефон</span>
+          <span class="jg-parcels__contact-label"><?= esc_html__( 'Телефон', 'jugogradnja' ) ?></span>
           <a class="jg-parcels__contact-value" href="tel:+381648115868">+381 64 811 58 68</a>
         </div>
       </div>
 
       <div class="jg-parcels__attach">
-        <h4 class="jg-parcels__attach-heading">Молимо приложите:</h4>
+        <h4 class="jg-parcels__attach-heading"><?= esc_html__( 'Молимо приложите:', 'jugogradnja' ) ?></h4>
         <ul class="jg-parcels__attach-list">
-          <li>Локацију парцеле</li>
-          <li>Површину (м²)</li>
-          <li>Број парцеле и катастарску општини</li>
-          <li>Документацију (по могућности)</li>
-          <li>Ваша ценовна очекивања</li>
+          <li><?= esc_html__( 'Локацију парцеле', 'jugogradnja' ) ?></li>
+          <li><?= esc_html__( 'Површину (м²)', 'jugogradnja' ) ?></li>
+          <li><?= esc_html__( 'Број парцеле и катастарску општини', 'jugogradnja' ) ?></li>
+          <li><?= esc_html__( 'Документацију (по могућности)', 'jugogradnja' ) ?></li>
+          <li><?= esc_html__( 'Ваша ценовна очекивања', 'jugogradnja' ) ?></li>
         </ul>
       </div>
     </div>
