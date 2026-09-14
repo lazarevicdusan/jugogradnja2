@@ -25,8 +25,8 @@ $briefcase = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-h
 <!-- Hero -->
 <div class="jg-pozicija-hero">
 	<div class="jg-pozicija-hero__inner">
-		<h1 class="jg-pozicija-hero__title">Отворене позиције</h1>
-		<p class="jg-pozicija-hero__sub">Погледајте тренутно отворене позиције у Југоградњи и пронађите прави пут за вашу каријеру</p>
+		<h1 class="jg-pozicija-hero__title"><?= esc_html__( 'Отворене позиције', 'jugogradnja' ) ?></h1>
+		<p class="jg-pozicija-hero__sub"><?= esc_html__( 'Погледајте тренутно отворене позиције у Југоградњи и пронађите прави пут за вашу каријеру', 'jugogradnja' ) ?></p>
 	</div>
 </div>
 
@@ -36,7 +36,7 @@ $briefcase = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-h
 		<?php if ( $posts ) : ?>
 		<div class="jg-pozicija-grid">
 			<?php foreach ( $posts as $post ) :
-				$tip    = get_post_meta( $post->ID, '_pozicija_tip', true ) ?: 'Пуно радно време';
+				$tip    = get_post_meta( $post->ID, '_pozicija_tip', true ) ?: __( 'Пуно радно време', 'jugogradnja' );
 				$closed = get_post_meta( $post->ID, '_pozicija_closed', true );
 				$url    = esc_url( get_permalink( $post ) );
 			?>
@@ -46,21 +46,21 @@ $briefcase = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-h
 					<span class="jg-pozicija-card__title"><?= esc_html( $post->post_title ) ?></span>
 					<span class="jg-pozicija-card__meta">
 						<?= $briefcase ?>
-						<?= $closed ? 'Затворо' : esc_html( $tip ) ?>
+						<?= $closed ? esc_html__( 'Затворено', 'jugogradnja' ) : esc_html( $tip ) ?>
 					</span>
 				</div>
 			</a>
 			<?php endforeach; ?>
 		</div>
 		<?php else : ?>
-		<p class="jg-pozicija-archive__empty">Тренутно нема отворених позиција. Проверите поново ускоро.</p>
+		<p class="jg-pozicija-archive__empty"><?= esc_html__( 'Тренутно нема отворених позиција. Проверите поново ускоро.', 'jugogradnja' ) ?></p>
 		<?php endif; ?>
 
 		<!-- No match CTA -->
 		<div class="jg-pozicija-nomatch">
-			<h2 class="jg-pozicija-nomatch__heading">Не видите одговарајућу позицију?</h2>
-			<p class="jg-pozicija-nomatch__text">Ако тренутно не постоји отворена позиција која одговара вашем профилу, а сматрате да бисте могли да постанете део нашег тима, пошаљите нам своју радну биографију. Чуваћемо је у бази и контактирати вас када се појави одговарајућа прилика.</p>
-			<a class="jg-btn jg-btn--gold" href="<?= $karijere ?>#prijava">ПОШАЉИТЕ CV</a>
+			<h2 class="jg-pozicija-nomatch__heading"><?= esc_html__( 'Не видите одговарајућу позицију?', 'jugogradnja' ) ?></h2>
+			<p class="jg-pozicija-nomatch__text"><?= esc_html__( 'Ако тренутно не постоји отворена позиција која одговара вашем профилу, а сматрате да бисте могли да постанете део нашег тима, пошаљите нам своју радну биографију. Чуваћемо је у бази и контактирати вас када се појави одговарајућа прилика.', 'jugogradnja' ) ?></p>
+			<a class="jg-btn jg-btn--gold" href="<?= $karijere ?>#prijava"><?= esc_html__( 'ПОШАЉИТЕ CV', 'jugogradnja' ) ?></a>
 		</div>
 	</div>
 </div>

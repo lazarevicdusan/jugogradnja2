@@ -11,8 +11,8 @@ if ( ! $id || get_post_type( $id ) !== 'pozicija' ) {
 $t        = get_template_directory_uri();
 $archive  = esc_url( home_url( '/karijera/pozicije/' ) );
 $title    = get_the_title( $id );
-$tip      = get_post_meta( $id, '_pozicija_tip', true ) ?: 'Пуно радно време';
-$lokacija = get_post_meta( $id, '_pozicija_lokacija', true ) ?: 'Београд';
+$tip      = get_post_meta( $id, '_pozicija_tip', true ) ?: __( 'Пуно радно време', 'jugogradnja' );
+$lokacija = get_post_meta( $id, '_pozicija_lokacija', true ) ?: __( 'Београд', 'jugogradnja' );
 $opis_uvod = get_post_meta( $id, '_pozicija_opis_uvod', true );
 $opis     = get_post_meta( $id, '_pozicija_opis', true );
 $uslovi   = get_post_meta( $id, '_pozicija_uslovi', true );
@@ -39,7 +39,7 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
 				<path d="M10 13L5 8L10 3" stroke="#212950" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
-			Назад на Каријеру
+			<?= esc_html__( 'Назад на Каријеру', 'jugogradnja' ) ?>
 		</a>
 	</div>
 </div>
@@ -67,7 +67,7 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 
 		<?php $opis_lines = $parse_lines( $opis ); if ( $opis_uvod || $opis_lines ) : ?>
 		<div class="jg-poz-section">
-			<h2 class="jg-poz-section__heading">Опис посла</h2>
+			<h2 class="jg-poz-section__heading"><?= esc_html__( 'Опис посла', 'jugogradnja' ) ?></h2>
 			<?php if ( $opis_uvod ) : ?>
 			<p class="jg-poz-section__text"><?= esc_html( $opis_uvod ) ?></p>
 			<?php endif; ?>
@@ -86,7 +86,7 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 
 		<?php $uslovi_lines = $parse_lines( $uslovi ); if ( $uslovi_lines ) : ?>
 		<div class="jg-poz-section jg-poz-section--shaded">
-			<h2 class="jg-poz-section__heading">Услови за конкурс</h2>
+			<h2 class="jg-poz-section__heading"><?= esc_html__( 'Услови за конкурс', 'jugogradnja' ) ?></h2>
 			<ul class="jg-poz-checklist">
 				<?php foreach ( $uslovi_lines as $item ) : ?>
 				<li class="jg-poz-checklist__item">
@@ -102,7 +102,7 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 		<div class="jg-poz-nudimo-card">
 			<div class="jg-poz-nudimo-card__heading">
 				<?= $medal_icon ?>
-				<h2>Нудимо</h2>
+				<h2><?= esc_html__( 'Нудимо', 'jugogradnja' ) ?></h2>
 			</div>
 			<ul class="jg-poz-checklist">
 				<?php foreach ( $nudimo_lines as $item ) : ?>
@@ -117,13 +117,13 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 
 		<!-- Application form -->
 		<div class="jg-poz-apply">
-			<h2 class="jg-poz-apply__heading">Kako се пријавити</h2>
-			<p class="jg-poz-apply__sub">Ако сматрате да испуњавате наше критеријуме и да Југоградња представља правог послодавца за Вас, пошаљите нам своју радну биографију на српском језику са фотографијом.</p>
+			<h2 class="jg-poz-apply__heading"><?= esc_html__( 'Kako се пријавити', 'jugogradnja' ) ?></h2>
+			<p class="jg-poz-apply__sub"><?= esc_html__( 'Ако сматрате да испуњавате наше критеријуме и да Југоградња представља правог послодавца за Вас, пошаљите нам своју радну биографију на српском језику са фотографијом.', 'jugogradnja' ) ?></p>
 			<div class="jg-poz-apply__form-wrap">
 				<?php if ( isset( $_GET['jg_sent'] ) && 'apply' === $_GET['jg_sent'] ) : ?>
-				<div class="jg-form-notice jg-form-notice--success">Хвала! Ваша пријава је успешно послата.</div>
+				<div class="jg-form-notice jg-form-notice--success"><?= esc_html__( 'Хвала! Ваша пријава је успешно послата.', 'jugogradnja' ) ?></div>
 				<?php elseif ( isset( $_GET['jg_error'] ) && 'apply' === $_GET['jg_error'] ) : ?>
-				<div class="jg-form-notice jg-form-notice--error">Дошло је до грешке. Проверите да ли је CV у PDF формату (до 5MB) и покушајте поново.</div>
+				<div class="jg-form-notice jg-form-notice--error"><?= esc_html__( 'Дошло је до грешке. Проверите да ли је CV у PDF формату (до 5MB) и покушајте поново.', 'jugogradnja' ) ?></div>
 				<?php endif; ?>
 				<form class="jg-apply-form" id="apply-form" method="post" action="<?= esc_url( admin_url( 'admin-post.php' ) ) ?>" enctype="multipart/form-data" novalidate>
 					<input type="hidden" name="action" value="jg_apply">
@@ -131,41 +131,41 @@ $nonce = wp_create_nonce( 'jg_apply_form' );
 					<input type="text" name="jg_hp" value="" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true">
 					<div class="jg-apply-form__row jg-apply-form__row--2col">
 						<div class="jg-apply-form__field">
-							<label class="jg-apply-form__label" for="poz-name">Ime и презиме <span aria-hidden="true">*</span></label>
-							<input class="jg-apply-form__input" type="text" id="poz-name" name="apply_name" required autocomplete="name" placeholder="Ваше ime">
+							<label class="jg-apply-form__label" for="poz-name"><?= esc_html__( 'Ime и презиме', 'jugogradnja' ) ?> <span aria-hidden="true">*</span></label>
+							<input class="jg-apply-form__input" type="text" id="poz-name" name="apply_name" required autocomplete="name" placeholder="<?= esc_attr__( 'Ваше ime', 'jugogradnja' ) ?>">
 						</div>
 						<div class="jg-apply-form__field">
-							<label class="jg-apply-form__label" for="poz-email">Емаил адреса <span aria-hidden="true">*</span></label>
+							<label class="jg-apply-form__label" for="poz-email"><?= esc_html__( 'Емаил адреса', 'jugogradnja' ) ?> <span aria-hidden="true">*</span></label>
 							<input class="jg-apply-form__input" type="email" id="poz-email" name="apply_email" required autocomplete="email" placeholder="vasa@email.com">
 						</div>
 					</div>
 					<div class="jg-apply-form__row jg-apply-form__row--2col">
 						<div class="jg-apply-form__field">
-							<label class="jg-apply-form__label" for="poz-phone">Телефон</label>
+							<label class="jg-apply-form__label" for="poz-phone"><?= esc_html__( 'Телефон', 'jugogradnja' ) ?></label>
 							<input class="jg-apply-form__input" type="tel" id="poz-phone" name="apply_phone" autocomplete="tel" placeholder="+381 11 123 4567">
 						</div>
 						<div class="jg-apply-form__field">
-							<label class="jg-apply-form__label" for="poz-position">Позиција за коју конкуришете <span aria-hidden="true">*</span></label>
+							<label class="jg-apply-form__label" for="poz-position"><?= esc_html__( 'Позиција за коју конкуришете', 'jugogradnja' ) ?> <span aria-hidden="true">*</span></label>
 							<input class="jg-apply-form__input" type="text" id="poz-position" name="apply_position" required value="<?= esc_attr( $title ) ?>">
 						</div>
 					</div>
 					<div class="jg-apply-form__field">
-						<label class="jg-apply-form__label" for="poz-motivation">Мотивационо писмо</label>
-						<textarea class="jg-apply-form__textarea" id="poz-motivation" name="apply_motivation" rows="5" placeholder="Зашто желите да радите са нама..."></textarea>
+						<label class="jg-apply-form__label" for="poz-motivation"><?= esc_html__( 'Мотивационо писмо', 'jugogradnja' ) ?></label>
+						<textarea class="jg-apply-form__textarea" id="poz-motivation" name="apply_motivation" rows="5" placeholder="<?= esc_attr__( 'Зашто желите да радите са нама...', 'jugogradnja' ) ?>"></textarea>
 					</div>
 					<div class="jg-apply-form__field">
-						<label class="jg-apply-form__label" for="poz-cv">CV (PDF) са фотографијом</label>
+						<label class="jg-apply-form__label" for="poz-cv"><?= esc_html__( 'CV (PDF) са фотографијом', 'jugogradnja' ) ?></label>
 						<div class="jg-apply-form__upload-area">
 							<input class="jg-apply-form__file" type="file" id="poz-cv" name="apply_cv[]" accept=".pdf" multiple>
 							<label class="jg-apply-form__upload-label" for="poz-cv">
 								<svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-								<span class="jg-apply-form__upload-text">Кликните или превуците фајлове овде</span>
-								<span class="jg-apply-form__upload-hint">Радна биографија на српском језику са фотографијом - до 3 документа (PDF)</span>
+								<span class="jg-apply-form__upload-text"><?= esc_html__( 'Кликните или превуците фајлове овде', 'jugogradnja' ) ?></span>
+								<span class="jg-apply-form__upload-hint"><?= esc_html__( 'Радна биографија на српском језику са фотографијом - до 3 документа (PDF)', 'jugogradnja' ) ?></span>
 							</label>
 						</div>
 						<ul class="jg-apply-form__file-list" aria-live="polite"></ul>
 					</div>
-					<button class="jg-apply-form__submit" type="submit">ПОШАЉИТЕ ПРИЈАВУ</button>
+					<button class="jg-apply-form__submit" type="submit"><?= esc_html__( 'ПОШАЉИТЕ ПРИЈАВУ', 'jugogradnja' ) ?></button>
 				</form>
 			</div>
 		</div>
