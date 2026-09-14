@@ -30,9 +30,9 @@ $glu_cards = [
 		<!-- GLL series -->
 		<div class="jg-velux-pc__group">
 			<div class="jg-velux-pc__group-header">
-				<p class="jg-velux-pc__group-title">GLL серија - Природна боја дрвета</p>
-				<p class="jg-velux-pc__group-sub">Лакирани безбојним лаком, троструко стакло</p>
-				<p class="jg-velux-pc__group-note">Цена прозора је са опшивком EDW 2000</p>
+				<p class="jg-velux-pc__group-title"><?= esc_html__( 'GLL серија - Природна боја дрвета', 'jugogradnja' ) ?></p>
+				<p class="jg-velux-pc__group-sub"><?= esc_html__( 'Лакирани безбојним лаком, троструко стакло', 'jugogradnja' ) ?></p>
+				<p class="jg-velux-pc__group-note"><?= esc_html__( 'Цена прозора је са опшивком EDW 2000', 'jugogradnja' ) ?></p>
 			</div>
 			<div class="jg-velux-pc__grid jg-velux-pc__grid--3">
 				<?php foreach ( $gll_cards as $card ) : ?>
@@ -48,7 +48,7 @@ $glu_cards = [
 							<span class="jg-velux-pc__card-amount"><?= esc_html( $card['sale'] ) ?></span>
 							<span class="jg-velux-pc__card-currency">RSD</span>
 						</p>
-						<p class="jg-velux-pc__card-label">са попустом</p>
+						<p class="jg-velux-pc__card-label"><?= esc_html__( 'са попустом', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 				<?php endforeach; ?>
@@ -58,9 +58,9 @@ $glu_cards = [
 		<!-- GLU series -->
 		<div class="jg-velux-pc__group">
 			<div class="jg-velux-pc__group-header">
-				<p class="jg-velux-pc__group-title">GLU серија - Бели полиуретан</p>
-				<p class="jg-velux-pc__group-sub">Троструко стакло, без додатног одржавања</p>
-				<p class="jg-velux-pc__group-note">Цена прозора је са опшивком EDW 2000. Цене производа су са урачунатим ПДВ-ом и попустом.</p>
+				<p class="jg-velux-pc__group-title"><?= esc_html__( 'GLU серија - Бели полиуретан', 'jugogradnja' ) ?></p>
+				<p class="jg-velux-pc__group-sub"><?= esc_html__( 'Троструко стакло, без додатног одржавања', 'jugogradnja' ) ?></p>
+				<p class="jg-velux-pc__group-note"><?= esc_html__( 'Цена прозора је са опшивком EDW 2000. Цене производа су са урачунатим ПДВ-ом и попустом.', 'jugogradnja' ) ?></p>
 			</div>
 			<div class="jg-velux-pc__grid jg-velux-pc__grid--4">
 				<?php foreach ( $glu_cards as $card ) : ?>
@@ -76,7 +76,7 @@ $glu_cards = [
 							<span class="jg-velux-pc__card-amount"><?= esc_html( $card['sale'] ) ?></span>
 							<span class="jg-velux-pc__card-currency">RSD</span>
 						</p>
-						<p class="jg-velux-pc__card-label">са попустом</p>
+						<p class="jg-velux-pc__card-label"><?= esc_html__( 'са попустом', 'jugogradnja' ) ?></p>
 					</div>
 				</div>
 				<?php endforeach; ?>
