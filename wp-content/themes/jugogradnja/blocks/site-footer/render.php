@@ -28,44 +28,44 @@ $year = gmdate( 'Y' );
       <a class="site-footer__logo" href="<?= $h ?>" aria-label="<?= esc_attr__( 'Jugogradnja - početna stranica', 'jugogradnja' ) ?>">
         <img src="<?= $lw ?>" width="315" height="49" alt="Jugogradnja" loading="lazy">
       </a>
-      <p class="site-footer__tagline">Радимо. Градимо. Од 1992. године</p>
+      <p class="site-footer__tagline"><?= esc_html__( 'Радимо. Градимо. Од 1992. године', 'jugogradnja' ) ?></p>
     </div>
 
     <nav class="site-footer__col" aria-label="<?= esc_attr__( 'Meni u podgrađu', 'jugogradnja' ) ?>">
-      <p class="site-footer__heading">Навигација</p>
+      <p class="site-footer__heading"><?= esc_html__( 'Навигација', 'jugogradnja' ) ?></p>
       <ul class="site-footer__links" role="list">
-        <li><a href="<?= $u( '/o-nama/' ) ?>">О нама</a></li>
-        <li><a href="<?= $u( '/reference/' ) ?>">Референце</a></li>
-        <li><a href="<?= $u( '/nekretnine/' ) ?>">Некретнине</a></li>
+        <li><a href="<?= $u( '/o-nama/' ) ?>"><?= esc_html__( 'О нама', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/reference/' ) ?>"><?= esc_html__( 'Референце', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/nekretnine/' ) ?>"><?= esc_html__( 'Некретнине', 'jugogradnja' ) ?></a></li>
         <li><a href="<?= $u( '/sofeiya/' ) ?>">Sofeiya</a></li>
         <li><a href="<?= $u( '/velux/' ) ?>">VELUX</a></li>
-        <li><a href="<?= $u( '/karijera/' ) ?>">Каријера</a></li>
-        <li><a href="<?= $u( '/kontakt/' ) ?>">Контакт</a></li>
+        <li><a href="<?= $u( '/karijera/' ) ?>"><?= esc_html__( 'Каријера', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/kontakt/' ) ?>"><?= esc_html__( 'Контакт', 'jugogradnja' ) ?></a></li>
       </ul>
     </nav>
 
     <nav class="site-footer__col" aria-label="<?= esc_attr__( 'Usluge u podgrađu', 'jugogradnja' ) ?>">
-      <p class="site-footer__heading">Услуге</p>
+      <p class="site-footer__heading"><?= esc_html__( 'Услуге', 'jugogradnja' ) ?></p>
       <ul class="site-footer__links" role="list">
-        <li><a href="<?= $u( '/investicije/' ) ?>">Инвестиције и развој пројеката</a></li>
-        <li><a href="<?= $u( '/izgradnja/' ) ?>">Изградња објеката</a></li>
-        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>">Реконструкција и санација</a></li>
-        <li><a href="<?= $u( '/enterijer/' ) ?>">Дизајн и опремање ентеријера</a></li>
+        <li><a href="<?= $u( '/investicije/' ) ?>"><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/izgradnja/' ) ?>"><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>"><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/enterijer/' ) ?>"><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
       </ul>
     </nav>
 
     <div class="site-footer__col">
-      <p class="site-footer__heading">Контакт</p>
+      <p class="site-footer__heading"><?= esc_html__( 'Контакт', 'jugogradnja' ) ?></p>
       <ul class="site-footer__contact" role="list">
 
         <li class="site-footer__contact-item">
           <img src="<?= $ico['location'] ?>" width="16" height="16" alt="" aria-hidden="true">
           <div class="site-footer__contact-text">
-            <span class="site-footer__contact-label">Седиште</span>
-            <span>Пуковника Пејовића 1а, Београд</span>
+            <span class="site-footer__contact-label"><?= esc_html__( 'Седиште', 'jugogradnja' ) ?></span>
+            <span><?= esc_html__( 'Пуковника Пејовића 1а, Београд', 'jugogradnja' ) ?></span>
             <span class="site-footer__contact-hours">08:00 – 16:00</span>
-            <span class="site-footer__contact-label">Малопродаја</span>
-            <span>Светолика Никачевића бб</span>
+            <span class="site-footer__contact-label"><?= esc_html__( 'Малопродаја', 'jugogradnja' ) ?></span>
+            <span><?= esc_html__( 'Светолика Никачевића бб', 'jugogradnja' ) ?></span>
             <span class="site-footer__contact-hours">07:00 – 15:00</span>
           </div>
         </li>
@@ -92,10 +92,10 @@ $year = gmdate( 'Y' );
   </div>
 
   <div class="site-footer__bar">
-    <p class="site-footer__copy">© <?= esc_html( $year ) ?> Југоградња д.о.о. Сва права задржана.</p>
+    <p class="site-footer__copy"><?= esc_html( sprintf( __( '© %s Југоградња д.о.о. Сва права задржана.', 'jugogradnja' ), $year ) ) ?></p>
     <nav class="site-footer__legal" aria-label="<?= esc_attr__( 'Pravni linkovi', 'jugogradnja' ) ?>">
-      <a href="<?= $u( '/politika-privatnosti/' ) ?>">Политика приватности</a>
-      <a href="<?= $u( '/uslovi-koriscenja/' ) ?>">Услови коришћења</a>
+      <a href="<?= $u( '/politika-privatnosti/' ) ?>"><?= esc_html__( 'Политика приватности', 'jugogradnja' ) ?></a>
+      <a href="<?= $u( '/uslovi-koriscenja/' ) ?>"><?= esc_html__( 'Услови коришћења', 'jugogradnja' ) ?></a>
     </nav>
   </div>
 </footer>

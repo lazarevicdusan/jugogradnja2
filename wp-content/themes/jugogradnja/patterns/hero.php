@@ -17,9 +17,9 @@ $ref    = esc_url( home_url( '/reference/' ) );
   </picture>
   <div class="jg-hero__overlay" aria-hidden="true"></div>
   <div class="jg-hero__content">
-    <h1 class="jg-hero__title">Радимо. Градимо. Од 1992. године</h1>
-    <p class="jg-hero__sub">Традиција која траје - три деценије искуства и поверења</p>
-    <a class="jg-btn-outline" href="<?= $ref ?>">ИСТРАЖИТЕ ПРОЈЕКТЕ</a>
+    <h1 class="jg-hero__title"><?= esc_html__( 'Радимо. Градимо. Од 1992. године', 'jugogradnja' ) ?></h1>
+    <p class="jg-hero__sub"><?= esc_html__( 'Традиција која траје - три деценије искуства и поверења', 'jugogradnja' ) ?></p>
+    <a class="jg-btn-outline" href="<?= $ref ?>"><?= esc_html__( 'ИСТРАЖИТЕ ПРОЈЕКТЕ', 'jugogradnja' ) ?></a>
   </div>
   <div class="jg-hero__scroll" aria-hidden="true">
     <div class="jg-hero__scroll-bar"></div>

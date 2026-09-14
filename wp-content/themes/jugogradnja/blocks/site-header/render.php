@@ -69,34 +69,34 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
       <ul class="site-nav__list" role="list">
 
         <li class="site-nav__item has-dropdown">
-          <a class="site-nav__link" href="<?= $u( '/o-nama/' ) ?>"<?= $is_current( '/o-nama/' ) ?>>О нама</a>
+          <a class="site-nav__link" href="<?= $u( '/o-nama/' ) ?>"<?= $is_current( '/o-nama/' ) ?>><?= esc_html__( 'О нама', 'jugogradnja' ) ?></a>
           <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-label="<?= esc_attr__( 'Proširi podmeni O nama', 'jugogradnja' ) ?>">
             <img src="<?= $chv ?>" width="8" height="4" alt="" aria-hidden="true">
           </button>
           <ul class="site-nav__dropdown" role="list">
-            <li><a href="<?= $u( '/karijere/' ) ?>"<?= $is_current( '/karijere/' ) ?>>Каријере</a></li>
+            <li><a href="<?= $u( '/karijere/' ) ?>"<?= $is_current( '/karijere/' ) ?>><?= esc_html__( 'Каријере', 'jugogradnja' ) ?></a></li>
           </ul>
         </li>
 
         <li class="site-nav__item has-dropdown">
-          <a class="site-nav__link" href="<?= $u( '/usluge/' ) ?>"<?= $is_current( '/usluge/' ) ?>>Услуге</a>
+          <a class="site-nav__link" href="<?= $u( '/usluge/' ) ?>"<?= $is_current( '/usluge/' ) ?>><?= esc_html__( 'Услуге', 'jugogradnja' ) ?></a>
           <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-label="<?= esc_attr__( 'Proširi podmeni Usluge', 'jugogradnja' ) ?>">
             <img src="<?= $chv ?>" width="8" height="4" alt="" aria-hidden="true">
           </button>
           <ul class="site-nav__dropdown" role="list">
-            <li><a href="<?= $u( '/investicije/' ) ?>"<?= $is_current( '/investicije/' ) ?>>Инвестиције и развој пројеката</a></li>
-            <li><a href="<?= $u( '/izgradnja/' ) ?>"<?= $is_current( '/izgradnja/' ) ?>>Изградња објеката</a></li>
-            <li><a href="<?= $u( '/rekonstrukcija/' ) ?>"<?= $is_current( '/rekonstrukcija/' ) ?>>Реконструкција и санација</a></li>
-            <li><a href="<?= $u( '/enterijer/' ) ?>"<?= $is_current( '/enterijer/' ) ?>>Дизајн и опремање ентеријера</a></li>
+            <li><a href="<?= $u( '/investicije/' ) ?>"<?= $is_current( '/investicije/' ) ?>><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/izgradnja/' ) ?>"<?= $is_current( '/izgradnja/' ) ?>><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/rekonstrukcija/' ) ?>"<?= $is_current( '/rekonstrukcija/' ) ?>><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/enterijer/' ) ?>"<?= $is_current( '/enterijer/' ) ?>><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
           </ul>
         </li>
 
         <li class="site-nav__item">
-          <a class="site-nav__link" href="<?= $u( '/reference/' ) ?>"<?= $is_current( '/reference/' ) ?>>Референце</a>
+          <a class="site-nav__link" href="<?= $u( '/reference/' ) ?>"<?= $is_current( '/reference/' ) ?>><?= esc_html__( 'Референце', 'jugogradnja' ) ?></a>
         </li>
 
         <li class="site-nav__item">
-          <a class="site-nav__link" href="<?= $u( '/nekretnine/' ) ?>"<?= $is_current( '/nekretnine/' ) ?>>Некретнине</a>
+          <a class="site-nav__link" href="<?= $u( '/nekretnine/' ) ?>"<?= $is_current( '/nekretnine/' ) ?>><?= esc_html__( 'Некретнине', 'jugogradnja' ) ?></a>
         </li>
 
         <li class="site-nav__item">
@@ -109,17 +109,17 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
             <img src="<?= $chv ?>" width="8" height="4" alt="" aria-hidden="true">
           </button>
           <ul class="site-nav__dropdown" role="list">
-            <li><a href="<?= $u( '/velux-osnovni/' ) ?>"<?= $is_current( '/velux-osnovni/' ) ?>>Основни</a></li>
-            <li><a href="<?= $u( '/velux-standard/' ) ?>"<?= $is_current( '/velux-standard/' ) ?>>Стандард</a></li>
-            <li><a href="<?= $u( '/velux-komfor/' ) ?>"<?= $is_current( '/velux-komfor/' ) ?>>Комфор</a></li>
-            <li><a href="<?= $u( '/velux-komfor-plus/' ) ?>"<?= $is_current( '/velux-komfor-plus/' ) ?>>Комфор Плус</a></li>
-            <li><a href="<?= $u( '/velux-roletne/' ) ?>"<?= $is_current( '/velux-roletne/' ) ?>>Ролетне</a></li>
-            <li><a href="<?= $u( '/velux-vodic/' ) ?>"<?= $is_current( '/velux-vodic/' ) ?>>Водич за куповину</a></li>
+            <li><a href="<?= $u( '/velux-osnovni/' ) ?>"<?= $is_current( '/velux-osnovni/' ) ?>><?= esc_html__( 'Основни', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/velux-standard/' ) ?>"<?= $is_current( '/velux-standard/' ) ?>><?= esc_html__( 'Стандард', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/velux-komfor/' ) ?>"<?= $is_current( '/velux-komfor/' ) ?>><?= esc_html__( 'Комфор', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/velux-komfor-plus/' ) ?>"<?= $is_current( '/velux-komfor-plus/' ) ?>><?= esc_html__( 'Комфор Плус', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/velux-roletne/' ) ?>"<?= $is_current( '/velux-roletne/' ) ?>><?= esc_html__( 'Ролетне', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $u( '/velux-vodic/' ) ?>"<?= $is_current( '/velux-vodic/' ) ?>><?= esc_html__( 'Водич за куповину', 'jugogradnja' ) ?></a></li>
           </ul>
         </li>
 
         <li class="site-nav__item">
-          <a class="site-nav__link" href="<?= $u( '/kontakt/' ) ?>"<?= $is_current( '/kontakt/' ) ?>>Контакт</a>
+          <a class="site-nav__link" href="<?= $u( '/kontakt/' ) ?>"<?= $is_current( '/kontakt/' ) ?>><?= esc_html__( 'Контакт', 'jugogradnja' ) ?></a>
         </li>
 
       </ul>
@@ -177,7 +177,7 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
     <!-- О нама accordion (mirrors desktop: sub = Каријере) -->
     <div class="mobile-drawer__item mobile-drawer__item--has-sub">
       <div class="mobile-drawer__row">
-        <a class="mobile-drawer__link" href="<?= $u( '/o-nama/' ) ?>" tabindex="-1"<?= $is_current( '/o-nama/' ) ?>>О нама</a>
+        <a class="mobile-drawer__link" href="<?= $u( '/o-nama/' ) ?>" tabindex="-1"<?= $is_current( '/o-nama/' ) ?>><?= esc_html__( 'О нама', 'jugogradnja' ) ?></a>
         <button class="mobile-drawer__chevron" aria-expanded="false" aria-label="<?= esc_attr__( 'Proširi O nama', 'jugogradnja' ) ?>" tabindex="-1">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -185,14 +185,14 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
         </button>
       </div>
       <ul class="mobile-drawer__sub" hidden role="list">
-        <li><a href="<?= $u( '/karijere/' ) ?>" tabindex="-1"<?= $is_current( '/karijere/' ) ?>>Каријере</a></li>
+        <li><a href="<?= $u( '/karijere/' ) ?>" tabindex="-1"<?= $is_current( '/karijere/' ) ?>><?= esc_html__( 'Каријере', 'jugogradnja' ) ?></a></li>
       </ul>
     </div>
 
     <!-- Услуге accordion -->
     <div class="mobile-drawer__item mobile-drawer__item--has-sub">
       <div class="mobile-drawer__row">
-        <a class="mobile-drawer__link" href="<?= $u( '/usluge/' ) ?>" tabindex="-1"<?= $is_current( '/usluge/' ) ?>>Услуге</a>
+        <a class="mobile-drawer__link" href="<?= $u( '/usluge/' ) ?>" tabindex="-1"<?= $is_current( '/usluge/' ) ?>><?= esc_html__( 'Услуге', 'jugogradnja' ) ?></a>
         <button class="mobile-drawer__chevron" aria-expanded="false" aria-label="<?= esc_attr__( 'Proširi Usluge', 'jugogradnja' ) ?>" tabindex="-1">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -200,19 +200,19 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
         </button>
       </div>
       <ul class="mobile-drawer__sub" hidden role="list">
-        <li><a href="<?= $u( '/investicije/' ) ?>" tabindex="-1"<?= $is_current( '/investicije/' ) ?>>Инвестиције и развој пројеката</a></li>
-        <li><a href="<?= $u( '/izgradnja/' ) ?>" tabindex="-1"<?= $is_current( '/izgradnja/' ) ?>>Изградња објеката</a></li>
-        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>" tabindex="-1"<?= $is_current( '/rekonstrukcija/' ) ?>>Реконструкција и санација</a></li>
-        <li><a href="<?= $u( '/enterijer/' ) ?>" tabindex="-1"<?= $is_current( '/enterijer/' ) ?>>Дизајн и опремање ентеријера</a></li>
+        <li><a href="<?= $u( '/investicije/' ) ?>" tabindex="-1"<?= $is_current( '/investicije/' ) ?>><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/izgradnja/' ) ?>" tabindex="-1"<?= $is_current( '/izgradnja/' ) ?>><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>" tabindex="-1"<?= $is_current( '/rekonstrukcija/' ) ?>><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/enterijer/' ) ?>" tabindex="-1"<?= $is_current( '/enterijer/' ) ?>><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
       </ul>
     </div>
 
     <div class="mobile-drawer__item">
-      <a class="mobile-drawer__link" href="<?= $u( '/reference/' ) ?>" tabindex="-1"<?= $is_current( '/reference/' ) ?>>Референце</a>
+      <a class="mobile-drawer__link" href="<?= $u( '/reference/' ) ?>" tabindex="-1"<?= $is_current( '/reference/' ) ?>><?= esc_html__( 'Референце', 'jugogradnja' ) ?></a>
     </div>
 
     <div class="mobile-drawer__item">
-      <a class="mobile-drawer__link" href="<?= $u( '/nekretnine/' ) ?>" tabindex="-1"<?= $is_current( '/nekretnine/' ) ?>>Некретнине</a>
+      <a class="mobile-drawer__link" href="<?= $u( '/nekretnine/' ) ?>" tabindex="-1"<?= $is_current( '/nekretnine/' ) ?>><?= esc_html__( 'Некретнине', 'jugogradnja' ) ?></a>
     </div>
 
     <div class="mobile-drawer__item">
@@ -230,17 +230,17 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
         </button>
       </div>
       <ul class="mobile-drawer__sub" hidden role="list">
-        <li><a href="<?= $u( '/velux-osnovni/' ) ?>" tabindex="-1">Основни</a></li>
-        <li><a href="<?= $u( '/velux-standard/' ) ?>" tabindex="-1">Стандард</a></li>
-        <li><a href="<?= $u( '/velux-komfor/' ) ?>" tabindex="-1">Комфор</a></li>
-        <li><a href="<?= $u( '/velux-komfor-plus/' ) ?>" tabindex="-1">Комфор Плус</a></li>
-        <li><a href="<?= $u( '/velux-roletne/' ) ?>" tabindex="-1">Ролетне</a></li>
-        <li><a href="<?= $u( '/velux-vodic/' ) ?>" tabindex="-1">Водич за куповину</a></li>
+        <li><a href="<?= $u( '/velux-osnovni/' ) ?>" tabindex="-1"><?= esc_html__( 'Основни', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/velux-standard/' ) ?>" tabindex="-1"><?= esc_html__( 'Стандард', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/velux-komfor/' ) ?>" tabindex="-1"><?= esc_html__( 'Комфор', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/velux-komfor-plus/' ) ?>" tabindex="-1"><?= esc_html__( 'Комфор Плус', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/velux-roletne/' ) ?>" tabindex="-1"><?= esc_html__( 'Ролетне', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $u( '/velux-vodic/' ) ?>" tabindex="-1"><?= esc_html__( 'Водич за куповину', 'jugogradnja' ) ?></a></li>
       </ul>
     </div>
 
     <div class="mobile-drawer__item">
-      <a class="mobile-drawer__link" href="<?= $u( '/kontakt/' ) ?>" tabindex="-1"<?= $is_current( '/kontakt/' ) ?>>Контакт</a>
+      <a class="mobile-drawer__link" href="<?= $u( '/kontakt/' ) ?>" tabindex="-1"<?= $is_current( '/kontakt/' ) ?>><?= esc_html__( 'Контакт', 'jugogradnja' ) ?></a>
     </div>
 
     <!-- Language toggle -->
