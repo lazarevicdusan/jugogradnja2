@@ -45,7 +45,15 @@ if ( $is_en ) {
 }
 
 // English URL (WPML or fallback)
-$en_url = esc_url( home_url( '/en/' ) );
+// A raw home_url( '/en/' ) string gets silently rewritten back to the
+// current language's root by WPML's own home_url filters, so use
+// wpml_permalink on the unambiguous home_url( '/' ) instead - safe here
+// (unlike on singular posts) since there's no post to mis-guess.
+$en_url = esc_url(
+    defined( 'ICL_SITEPRESS_VERSION' )
+        ? apply_filters( 'wpml_permalink', home_url( '/' ), 'en' )
+        : home_url( '/en/' )
+);
 if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
     $current_id = get_queried_object_id();
     if ( $current_id ) {
