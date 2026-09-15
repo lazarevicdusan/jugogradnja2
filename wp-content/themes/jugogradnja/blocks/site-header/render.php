@@ -65,7 +65,20 @@ $jg_find_translated_permalink = static function ( int $post_id, string $target_l
     if ( ! $target_id ) {
         return null;
     }
+    // get_permalink() is itself filtered by WPML to always return the URL
+    // in the CURRENTLY active language, regardless of which post ID is
+    // passed in - so asking it for a different-language post's permalink
+    // while browsing in another language just hands back the current
+    // page's own URL. Temporarily switch WPML's active language first,
+    // as WPML's own docs recommend for exactly this situation.
+    $switched = has_action( 'wpml_switch_language' );
+    if ( $switched ) {
+        do_action( 'wpml_switch_language', $target_lang );
+    }
     $permalink = get_permalink( (int) $target_id );
+    if ( $switched ) {
+        do_action( 'wpml_switch_language', null );
+    }
     return $permalink ?: null;
 };
 
