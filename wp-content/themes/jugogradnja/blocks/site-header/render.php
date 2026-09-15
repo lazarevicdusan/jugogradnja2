@@ -84,13 +84,25 @@ $jg_find_translated_permalink = static function ( int $post_id, string $target_l
 
 $current_id = defined( 'ICL_SITEPRESS_VERSION' ) ? get_queried_object_id() : 0;
 
+// Base URL for the current request when there's no singular post to look
+// up a translation for (post type archives, the blog-posts front page,
+// etc.) - used as the basis for the wpml_permalink fallback below instead
+// of always defaulting to the homepage.
+$current_base_url = home_url( '/' );
+if ( ! $current_id && is_post_type_archive() ) {
+    $archive_link = get_post_type_archive_link( get_query_var( 'post_type' ) );
+    if ( $archive_link ) {
+        $current_base_url = $archive_link;
+    }
+}
+
 // English URL (WPML or fallback). A raw home_url( '/en/' ) string gets
 // silently rewritten back to the current language's root by WPML's own
-// home_url filters, so use wpml_permalink on the unambiguous
-// home_url( '/' ) instead for the homepage case.
+// home_url filters, so use wpml_permalink on the unambiguous current
+// base URL instead.
 $en_url = esc_url(
     defined( 'ICL_SITEPRESS_VERSION' )
-        ? apply_filters( 'wpml_permalink', home_url( '/' ), 'en' )
+        ? apply_filters( 'wpml_permalink', $current_base_url, 'en' )
         : home_url( '/en/' )
 );
 if ( $current_id ) {
@@ -111,7 +123,7 @@ if ( $is_en ) {
             $sr_nav_url = esc_url( $sr_permalink );
         }
     } elseif ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
-        $sr_nav_url = esc_url( apply_filters( 'wpml_permalink', home_url( '/' ), 'sr' ) );
+        $sr_nav_url = esc_url( apply_filters( 'wpml_permalink', $current_base_url, 'sr' ) );
     }
 }
 
