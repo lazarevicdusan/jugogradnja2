@@ -44,26 +44,46 @@ if ( $is_en ) {
     $sr_target = 'latin';
 }
 
-// English URL (WPML or fallback)
-// A raw home_url( '/en/' ) string gets silently rewritten back to the
-// current language's root by WPML's own home_url filters, so use
-// wpml_permalink on the unambiguous home_url( '/' ) instead - safe here
-// (unlike on singular posts) since there's no post to mis-guess.
+// Look up a post's translation into $target_lang directly via WPML's
+// translation-pairing table (trid), bypassing the wpml_object_id /
+// wpml_permalink filters - those proved unreliable for the reverse
+// (non-default -> default language) direction on this site.
+$jg_find_translated_permalink = static function ( int $post_id, string $target_lang ): ?string {
+    global $wpdb;
+    $element_type = 'post_' . get_post_type( $post_id );
+    $trid = $wpdb->get_var( $wpdb->prepare(
+        "SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id = %d AND element_type = %s",
+        $post_id, $element_type
+    ) );
+    if ( ! $trid ) {
+        return null;
+    }
+    $target_id = $wpdb->get_var( $wpdb->prepare(
+        "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid = %d AND language_code = %s",
+        $trid, $target_lang
+    ) );
+    if ( ! $target_id ) {
+        return null;
+    }
+    $permalink = get_permalink( (int) $target_id );
+    return $permalink ?: null;
+};
+
+$current_id = defined( 'ICL_SITEPRESS_VERSION' ) ? get_queried_object_id() : 0;
+
+// English URL (WPML or fallback). A raw home_url( '/en/' ) string gets
+// silently rewritten back to the current language's root by WPML's own
+// home_url filters, so use wpml_permalink on the unambiguous
+// home_url( '/' ) instead for the homepage case.
 $en_url = esc_url(
     defined( 'ICL_SITEPRESS_VERSION' )
         ? apply_filters( 'wpml_permalink', home_url( '/' ), 'en' )
         : home_url( '/en/' )
 );
-if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
-    $current_id = get_queried_object_id();
-    if ( $current_id ) {
-        $en_post_id = apply_filters( 'wpml_object_id', $current_id, get_post_type( $current_id ) ?: 'page', false, 'en' );
-        if ( $en_post_id ) {
-            $en_permalink = get_permalink( $en_post_id );
-            if ( $en_permalink ) {
-                $en_url = esc_url( $en_permalink );
-            }
-        }
+if ( $current_id ) {
+    $en_permalink = $jg_find_translated_permalink( $current_id, 'en' );
+    if ( $en_permalink ) {
+        $en_url = esc_url( $en_permalink );
     }
 }
 
@@ -71,16 +91,13 @@ if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 // the "СР" button can actually navigate back instead of just toggling
 // the Cyrillic/Latin script cookie.
 $sr_nav_url = esc_url( home_url( '/' ) );
-if ( $is_en && defined( 'ICL_SITEPRESS_VERSION' ) ) {
+if ( $is_en ) {
     if ( $current_id ) {
-        $sr_post_id = apply_filters( 'wpml_object_id', $current_id, get_post_type( $current_id ) ?: 'page', false, 'sr' );
-        if ( $sr_post_id ) {
-            $sr_permalink = get_permalink( $sr_post_id );
-            if ( $sr_permalink ) {
-                $sr_nav_url = esc_url( $sr_permalink );
-            }
+        $sr_permalink = $jg_find_translated_permalink( $current_id, 'sr' );
+        if ( $sr_permalink ) {
+            $sr_nav_url = esc_url( $sr_permalink );
         }
-    } else {
+    } elseif ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
         $sr_nav_url = esc_url( apply_filters( 'wpml_permalink', home_url( '/' ), 'sr' ) );
     }
 }
