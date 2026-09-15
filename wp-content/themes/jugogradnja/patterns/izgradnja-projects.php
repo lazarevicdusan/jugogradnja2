@@ -17,6 +17,7 @@ $random_posts = get_posts( [
     'posts_per_page' => 3,
     'orderby'        => 'rand',
     'no_found_rows'  => true,
+    'suppress_filters' => false,
 ] );
 
 $projects = [];

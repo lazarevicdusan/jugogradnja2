@@ -35,6 +35,7 @@ if ( $deeplink_slug ) {
                 [ 'key' => 'godina', 'compare' => 'NOT EXISTS' ],
             ],
             'orderby'        => [ 'godina_clause' => 'DESC', 'date' => 'DESC' ],
+            'suppress_filters' => false,
         ] );
         $dl_position = array_search( $deeplink_post->ID, $dl_ids, true );
         if ( false !== $dl_position ) {
