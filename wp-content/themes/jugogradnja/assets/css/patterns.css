@@ -5959,6 +5959,80 @@
   color: #9ca3af;
   margin: 0;
 }
+.jg-velux-promo__card {
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 40px;
+  background: #fafafa;
+  text-align: left;
+}
+.jg-velux-promo__card-title {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  color: #212950;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+.jg-velux-promo__card-text {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 16px;
+  font-weight: 300;
+  color: #374151;
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+.jg-velux-promo__card-subheading {
+  font-family: var(--wp--preset--font-family--heading, 'Montserrat', sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: #212950;
+  margin: 0 0 16px;
+}
+.jg-velux-promo__card-steps {
+  margin: 0 0 28px;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.jg-velux-promo__card-steps li {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 15px;
+  font-weight: 300;
+  color: #374151;
+  line-height: 1.6;
+}
+.jg-velux-promo__card-steps a {
+  color: #C5A059;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.jg-velux-promo__card-note {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 13px;
+  font-weight: 300;
+  font-style: italic;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+.jg-velux-promo__card-contact {
+  font-family: var(--wp--preset--font-family--body, 'Roboto', sans-serif);
+  font-size: 15px;
+  font-weight: 400;
+  color: #212950;
+  margin: 0;
+}
+.jg-velux-promo__card-contact a {
+  color: #C5A059;
+  font-weight: 500;
+}
+@media (max-width: 599px) {
+  .jg-velux-promo__card { padding: 28px 20px; border-radius: 16px; }
+}
 
 
 /* ── VELUX Прозори ──────────────────────────────────────── */
