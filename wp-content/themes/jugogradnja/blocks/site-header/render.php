@@ -45,11 +45,19 @@ if ( $is_en ) {
 }
 
 // English URL (WPML or fallback)
-$en_url = esc_url(
-    defined( 'ICL_SITEPRESS_VERSION' )
-        ? apply_filters( 'wpml_permalink', get_permalink() ?: home_url( '/' ), 'en' )
-        : home_url( '/' )
-);
+$en_url = esc_url( home_url( '/en/' ) );
+if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+    $current_id = get_queried_object_id();
+    if ( $current_id ) {
+        $en_post_id = apply_filters( 'wpml_object_id', $current_id, get_post_type( $current_id ) ?: 'page', false, 'en' );
+        if ( $en_post_id ) {
+            $en_permalink = get_permalink( $en_post_id );
+            if ( $en_permalink ) {
+                $en_url = esc_url( $en_permalink );
+            }
+        }
+    }
+}
 
 // URL helper
 $u = static fn( string $path ): string => esc_url( home_url( $path ) );
