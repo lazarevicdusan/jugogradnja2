@@ -67,6 +67,24 @@ if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
     }
 }
 
+// Serbian URL - only needed when currently viewing the English site, so
+// the "СР" button can actually navigate back instead of just toggling
+// the Cyrillic/Latin script cookie.
+$sr_nav_url = esc_url( home_url( '/' ) );
+if ( $is_en && defined( 'ICL_SITEPRESS_VERSION' ) ) {
+    if ( $current_id ) {
+        $sr_post_id = apply_filters( 'wpml_object_id', $current_id, get_post_type( $current_id ) ?: 'page', false, 'sr' );
+        if ( $sr_post_id ) {
+            $sr_permalink = get_permalink( $sr_post_id );
+            if ( $sr_permalink ) {
+                $sr_nav_url = esc_url( $sr_permalink );
+            }
+        }
+    } else {
+        $sr_nav_url = esc_url( apply_filters( 'wpml_permalink', home_url( '/' ), 'sr' ) );
+    }
+}
+
 // URL helper
 $u = static fn( string $path ): string => esc_url( home_url( $path ) );
 
@@ -142,9 +160,15 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
     </nav>
 
     <div class="site-header__lang" aria-label="<?= esc_attr__( 'Izbor pisma i jezika', 'jugogradnja' ) ?>">
+      <?php if ( $is_en ) : ?>
+      <a class="lang-btn lang-btn--script" href="<?= $sr_nav_url ?>" data-notranslit>
+        <?= esc_html( $sr_label ) ?>
+      </a>
+      <?php else : ?>
       <button class="lang-btn lang-btn--script" data-script-toggle="<?= esc_attr( $sr_target ) ?>" data-notranslit type="button">
         <?= esc_html( $sr_label ) ?>
       </button>
+      <?php endif; ?>
       <span class="lang-sep" aria-hidden="true">|</span>
       <a class="lang-btn<?= $is_en ? ' lang-btn--active' : '' ?>" href="<?= $en_url ?>">EN</a>
     </div>
@@ -261,9 +285,15 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
 
     <!-- Language toggle -->
     <div class="mobile-drawer__item mobile-drawer__item--lang">
+      <?php if ( $is_en ) : ?>
+      <a class="mobile-drawer__lang-btn lang-btn--script" href="<?= $sr_nav_url ?>" data-notranslit tabindex="-1">
+        <?= esc_html( $sr_label ) ?>
+      </a>
+      <?php else : ?>
       <button class="mobile-drawer__lang-btn lang-btn--script" data-script-toggle="<?= esc_attr( $sr_target ) ?>" data-notranslit type="button" tabindex="-1">
         <?= esc_html( $sr_label ) ?>
       </button>
+      <?php endif; ?>
       <span class="mobile-drawer__lang-sep" aria-hidden="true">|</span>
       <a class="mobile-drawer__lang-btn<?= $is_en ? ' is-active' : '' ?>" href="<?= $en_url ?>" tabindex="-1">EN</a>
     </div>
