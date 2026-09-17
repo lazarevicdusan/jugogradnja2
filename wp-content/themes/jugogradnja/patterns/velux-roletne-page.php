@@ -14,9 +14,9 @@ $products = [
 		'desc'   => __( 'Ефективна заштита од топлоте. Смањење загревања до 76%.Једноставно руковање из просторије.', 'jugogradnja' ),
 		'note'   => __( 'Покрива све дужине', 'jugogradnja' ),
 		'prices' => [
-			['code' => 'MHL CK00', 'size' => '55×00cm', 'price' => '7,556'],
-			['code' => 'MHL FK00', 'size' => '66×00cm', 'price' => '8,520'],
-			['code' => 'MHL MK00', 'size' => '78×00cm', 'price' => '9,094'],
+			['code' => 'MHL CK00', 'size' => '55×00cm', 'price' => '7,726'],
+			['code' => 'MHL FK00', 'size' => '66×00cm', 'price' => '8,684'],
+			['code' => 'MHL MK00', 'size' => '78×00cm', 'price' => '9,340'],
 		],
 		'photos' => ['roletne-1.jpg', 'roletne-2.jpg', 'roletne-3.jpg'],
 	],
@@ -27,9 +27,9 @@ $products = [
 		'desc'   => __( 'Перфектан сан дању и ноћу. Потпуно замрачење.Једноставан дизајн са изузетно узаним вођицама.', 'jugogradnja' ),
 		'note'   => __( 'Доступне димензије (беж боја)', 'jugogradnja' ),
 		'prices' => [
-			['code' => 'DKL CK02', 'size' => '55×78cm',  'price' => '7,472'],
-			['code' => 'DKL FK06', 'size' => '66×118cm', 'price' => '9,094'],
-			['code' => 'DKL MK06', 'size' => '78×118cm', 'price' => '9,851'],
+			['code' => 'DKL CK02', 'size' => '55×78cm',  'price' => '7,897'],
+			['code' => 'DKL FK06', 'size' => '66×118cm', 'price' => '9,586'],
+			['code' => 'DKL MK06', 'size' => '78×118cm', 'price' => '10,361'],
 		],
 		'photos' => ['roletne-1.jpg', 'roletne-2.jpg', 'roletne-3.jpg'],
 	],
@@ -40,9 +40,9 @@ $products = [
 		'desc'   => __( 'Ублажава јачину дневне светлости. Више приватности и контрола светлости.Једноставан дизајн са изузетно узаним вођицама.', 'jugogradnja' ),
 		'note'   => __( 'Доступне димензије (беж боја)', 'jugogradnja' ),
 		'prices' => [
-			['code' => 'RFL CK02', 'size' => '55×78cm',  'price' => '6,706'],
-			['code' => 'RFL FK06', 'size' => '66×118cm', 'price' => '9,002'],
-			['code' => 'RFL MK06', 'size' => '78×118cm', 'price' => '9,512'],
+			['code' => 'RFL CK02', 'size' => '55×78cm',  'price' => '7,046'],
+			['code' => 'RFL FK06', 'size' => '66×118cm', 'price' => '8,917'],
+			['code' => 'RFL MK06', 'size' => '78×118cm', 'price' => '9,341'],
 		],
 		'photos' => ['roletne-1.jpg', 'roletne-2.jpg', 'roletne-3.jpg'],
 	],
@@ -53,8 +53,8 @@ $products = [
 		'desc'   => __( 'Свеж ваздух без инсеката. 100% заштита од инсеката. Може се одложити када се не користи.', 'jugogradnja' ),
 		'note'   => __( 'Доступне димензије', 'jugogradnja' ),
 		'prices' => [
-			['code' => 'ZIL FK06 – FK08', 'size' => '(66×118, 66×140)', 'price' => '13,762'],
-			['code' => 'ZIL MK04 – MK06', 'size' => '(78×98, 78×118)',  'price' => '13,762'],
+			['code' => 'ZIL FK06 – FK08', 'size' => '(66×118, 66×140)', 'price' => '14,101'],
+			['code' => 'ZIL MK04 – MK06', 'size' => '(78×98, 78×118)',  'price' => '14,101'],
 		],
 		'photos' => ['roletne-1.jpg', 'roletne-2.jpg', 'roletne-3.jpg'],
 	],
@@ -138,15 +138,15 @@ $products = [
 				<div class="jg-velux-rp-addons__rows">
 					<div class="jg-velux-rp-addons__row">
 						<span class="jg-velux-rp-addons__left"><strong>RHL CK00</strong><span class="jg-velux-rp-addons__sz">55×00cm</span></span>
-						<span class="jg-velux-rp-addons__price">3,901 RSD</span>
+						<span class="jg-velux-rp-addons__price">4,156 RSD</span>
 					</div>
 					<div class="jg-velux-rp-addons__row">
 						<span class="jg-velux-rp-addons__left"><strong>RHL FK00</strong><span class="jg-velux-rp-addons__sz">66×00cm</span></span>
-						<span class="jg-velux-rp-addons__price">4,582 RSD</span>
+						<span class="jg-velux-rp-addons__price">4,837 RSD</span>
 					</div>
 					<div class="jg-velux-rp-addons__row">
 						<span class="jg-velux-rp-addons__left"><strong>RHL MK00</strong><span class="jg-velux-rp-addons__sz">78×00cm</span></span>
-						<span class="jg-velux-rp-addons__price">4,921 RSD</span>
+						<span class="jg-velux-rp-addons__price">5,176 RSD</span>
 					</div>
 				</div>
 			</div>

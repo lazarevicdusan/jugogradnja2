@@ -6,22 +6,24 @@
  */
 
 $gll_cards = [
-	['size' => '66x118cm', 'code' => 'GLL FK06 1061', 'sale' => '45,151', 'orig' => '51,308'],
-	['size' => '66x140cm', 'code' => 'GLL FK08 1061', 'sale' => '50,181', 'orig' => '57,024'],
-	['size' => '78x118cm', 'code' => 'GLL MK06 1061', 'sale' => '47,897', 'orig' => '54,428'],
-	['size' => '78x140cm', 'code' => 'GLL MK08 1061', 'sale' => '52,434', 'orig' => '59,584'],
-	['size' => '66x118cm', 'code' => 'GLL FK06 0061', 'sale' => '46,308', 'orig' => '52,623'],
-	['size' => '78x118cm', 'code' => 'GLL MK06 0061', 'sale' => '49,125', 'orig' => '55,824'],
+	['size' => '66x118cm', 'code' => 'GLL FK06 1061',   'sale' => '53,804', 'orig' => '68,980'],
+	['size' => '66x140cm', 'code' => 'GLL FK08 1061',   'sale' => '59,745', 'orig' => '74,680'],
+	['size' => '78x98cm',  'code' => 'GLL MK04 1061',   'sale' => '54,303', 'orig' => '67,880'],
+	['size' => '78x118cm', 'code' => 'GLL MK06 1061',   'sale' => '57,002', 'orig' => '73,080'],
+	['size' => '78x140cm', 'code' => 'GLL MK08 1061',   'sale' => '62,385', 'orig' => '77,980'],
+	['size' => '66x118cm', 'code' => 'GLL FK06 1061 B', 'sale' => '55,184', 'orig' => '68,980'],
+	['size' => '78x118cm', 'code' => 'GLL MK06 1061 B', 'sale' => '58,464', 'orig' => '73,080'],
 ];
 
 $glu_cards = [
-	['size' => '55x78cm',  'code' => 'GLU CK02 0061', 'sale' => '43,847', 'orig' => '49,826'],
-	['size' => '78x118cm', 'code' => 'GLU MK06 0061', 'sale' => '56,478', 'orig' => '64,179'],
-	['size' => '78x140cm', 'code' => 'GLU MK08 0061', 'sale' => '61,868', 'orig' => '70,305'],
-	['size' => '66x118cm', 'code' => 'GLU FK06 0061', 'sale' => '54,545', 'orig' => '61,983'],
-	['size' => '78x118cm', 'code' => 'GLU MK06 0061', 'sale' => '57,925', 'orig' => '65,824'],
-	['size' => '66x118cm', 'code' => 'GLU FK06 0061', 'sale' => '53,182', 'orig' => '60,434'],
-	['size' => '66x140cm', 'code' => 'GLU FK08 0061', 'sale' => '59,263', 'orig' => '67,344'],
+	['size' => '55x78cm',  'code' => 'GLU CK02 0061',   'sale' => '52,245', 'orig' => '66,980'],
+	['size' => '66x118cm', 'code' => 'GLU FK06 0061',   'sale' => '63,398', 'orig' => '61,590'],
+	['size' => '66x140cm', 'code' => 'GLU FK08 0061',   'sale' => '70,545', 'orig' => '88,180'],
+	['size' => '78x98cm',  'code' => 'GLU MK04 0061',   'sale' => '63,984', 'orig' => '79,980'],
+	['size' => '78x118cm', 'code' => 'GLU MK06 0061',   'sale' => '67,221', 'orig' => '86,180'],
+	['size' => '78x140cm', 'code' => 'GLU MK08 0061',   'sale' => '73,584', 'orig' => '91,980'],
+	['size' => '66x118cm', 'code' => 'GLU FK06 0061 B', 'sale' => '65,024', 'orig' => '61,590'],
+	['size' => '78x118cm', 'code' => 'GLU MK06 0061 B', 'sale' => '68,944', 'orig' => '86,180'],
 ];
 ?>
 <section class="jg-velux-pc">
