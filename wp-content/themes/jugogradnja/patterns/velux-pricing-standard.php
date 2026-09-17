@@ -17,12 +17,12 @@ $gll_cards = [
 
 $glu_cards = [
 	['size' => '55x78cm',  'code' => 'GLU CK02 0061',   'sale' => '52,245', 'orig' => '66,980'],
-	['size' => '66x118cm', 'code' => 'GLU FK06 0061',   'sale' => '63,398', 'orig' => '61,590'],
+	['size' => '66x118cm', 'code' => 'GLU FK06 0061',   'sale' => '63,398', 'orig' => '81,280'],
 	['size' => '66x140cm', 'code' => 'GLU FK08 0061',   'sale' => '70,545', 'orig' => '88,180'],
 	['size' => '78x98cm',  'code' => 'GLU MK04 0061',   'sale' => '63,984', 'orig' => '79,980'],
 	['size' => '78x118cm', 'code' => 'GLU MK06 0061',   'sale' => '67,221', 'orig' => '86,180'],
 	['size' => '78x140cm', 'code' => 'GLU MK08 0061',   'sale' => '73,584', 'orig' => '91,980'],
-	['size' => '66x118cm', 'code' => 'GLU FK06 0061 B', 'sale' => '65,024', 'orig' => '61,590'],
+	['size' => '66x118cm', 'code' => 'GLU FK06 0061 B', 'sale' => '65,024', 'orig' => '81,280'],
 	['size' => '78x118cm', 'code' => 'GLU MK06 0061 B', 'sale' => '68,944', 'orig' => '86,180'],
 ];
 ?>
