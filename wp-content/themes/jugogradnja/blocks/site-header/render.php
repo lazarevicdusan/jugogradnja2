@@ -130,6 +130,39 @@ if ( $is_en ) {
 // URL helper
 $u = static fn( string $path ): string => esc_url( home_url( $path ) );
 
+// Language-aware resolver for the four service pages - a raw home_url()
+// path only exists for the Serbian original and gets mangled by WPML's
+// own home_url filters when viewed in another language.
+$jg_page_url = static function ( int $sr_post_id, string $fallback_path ) {
+    if ( ! defined( 'ICL_SITEPRESS_VERSION' ) || ! function_exists( 'wpml_get_current_language' ) ) {
+        return home_url( $fallback_path );
+    }
+    $current_lang = wpml_get_current_language();
+    if ( 'sr' === $current_lang ) {
+        return get_permalink( $sr_post_id ) ?: home_url( $fallback_path );
+    }
+    global $wpdb;
+    $trid = $wpdb->get_var( $wpdb->prepare(
+        "SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id = %d AND element_type = 'post_page'",
+        $sr_post_id
+    ) );
+    $target_id = $trid ? $wpdb->get_var( $wpdb->prepare(
+        "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid = %d AND language_code = %s",
+        $trid, $current_lang
+    ) ) : null;
+    if ( ! $target_id ) {
+        return home_url( $fallback_path );
+    }
+    do_action( 'wpml_switch_language', $current_lang );
+    $permalink = get_permalink( (int) $target_id );
+    do_action( 'wpml_switch_language', null );
+    return $permalink ?: home_url( $fallback_path );
+};
+$investicije_url    = esc_url( $jg_page_url( 7, '/investicije/' ) );
+$izgradnja_url      = esc_url( $jg_page_url( 8, '/izgradnja/' ) );
+$rekonstrukcija_url = esc_url( $jg_page_url( 9, '/rekonstrukcija/' ) );
+$enterijer_url      = esc_url( $jg_page_url( 10, '/enterijer/' ) );
+
 // Current path for aria-current
 $req_path = trailingslashit( strtok( wp_parse_url( $_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH ), '?' ) );
 $is_current = static fn( string $path ): string => ( $req_path === trailingslashit( $path ) ) ? ' aria-current="page"' : '';
@@ -160,10 +193,10 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
             <img src="<?= $chv ?>" width="8" height="4" alt="" aria-hidden="true">
           </button>
           <ul class="site-nav__dropdown" role="list">
-            <li><a href="<?= $u( '/investicije/' ) ?>"<?= $is_current( '/investicije/' ) ?>><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
-            <li><a href="<?= $u( '/izgradnja/' ) ?>"<?= $is_current( '/izgradnja/' ) ?>><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
-            <li><a href="<?= $u( '/rekonstrukcija/' ) ?>"<?= $is_current( '/rekonstrukcija/' ) ?>><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
-            <li><a href="<?= $u( '/enterijer/' ) ?>"<?= $is_current( '/enterijer/' ) ?>><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $investicije_url ?>"<?= $is_current( '/investicije/' ) ?>><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $izgradnja_url ?>"<?= $is_current( '/izgradnja/' ) ?>><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $rekonstrukcija_url ?>"<?= $is_current( '/rekonstrukcija/' ) ?>><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
+            <li><a href="<?= $enterijer_url ?>"<?= $is_current( '/enterijer/' ) ?>><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
           </ul>
         </li>
 
@@ -282,10 +315,10 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
         </button>
       </div>
       <ul class="mobile-drawer__sub" hidden role="list">
-        <li><a href="<?= $u( '/investicije/' ) ?>" tabindex="-1"<?= $is_current( '/investicije/' ) ?>><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
-        <li><a href="<?= $u( '/izgradnja/' ) ?>" tabindex="-1"<?= $is_current( '/izgradnja/' ) ?>><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
-        <li><a href="<?= $u( '/rekonstrukcija/' ) ?>" tabindex="-1"<?= $is_current( '/rekonstrukcija/' ) ?>><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
-        <li><a href="<?= $u( '/enterijer/' ) ?>" tabindex="-1"<?= $is_current( '/enterijer/' ) ?>><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $investicije_url ?>" tabindex="-1"<?= $is_current( '/investicije/' ) ?>><?= esc_html__( 'Инвестиције и развој пројеката', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $izgradnja_url ?>" tabindex="-1"<?= $is_current( '/izgradnja/' ) ?>><?= esc_html__( 'Изградња објеката', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $rekonstrukcija_url ?>" tabindex="-1"<?= $is_current( '/rekonstrukcija/' ) ?>><?= esc_html__( 'Реконструкција и санација', 'jugogradnja' ) ?></a></li>
+        <li><a href="<?= $enterijer_url ?>" tabindex="-1"<?= $is_current( '/enterijer/' ) ?>><?= esc_html__( 'Дизајн и опремање ентеријера', 'jugogradnja' ) ?></a></li>
       </ul>
     </div>
 
