@@ -32,6 +32,12 @@ $is_en = defined( 'ICL_SITEPRESS_VERSION' )
     && function_exists( 'wpml_get_current_language' )
     && 'en' === wpml_get_current_language();
 
+// Latin logo wordmark for the English site only
+$logo_webp = $is_en ? esc_url( $t . '/assets/images/icons/logo-color-en.webp' ) : '';
+if ( $is_en ) {
+    $lc = esc_url( $t . '/assets/images/icons/logo-color-en.png' );
+}
+
 // Script toggle label and target
 if ( $is_en ) {
     $sr_label  = 'СР';
@@ -171,7 +177,14 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
   <div class="site-header__inner">
 
     <a class="site-header__logo" href="<?= $h ?>" aria-label="<?= esc_attr__( 'Jugogradnja - početna stranica', 'jugogradnja' ) ?>">
+      <?php if ( $logo_webp ) : ?>
+      <picture>
+        <source srcset="<?= $logo_webp ?>" type="image/webp">
+        <img src="<?= $lc ?>" width="320" height="50" alt="Jugogradnja" loading="eager" fetchpriority="high">
+      </picture>
+      <?php else : ?>
       <img src="<?= $lc ?>" width="320" height="50" alt="Jugogradnja" loading="eager" fetchpriority="high">
+      <?php endif; ?>
     </a>
 
     <nav class="site-nav" id="site-nav" aria-label="<?= esc_attr__( 'Primarni meni', 'jugogradnja' ) ?>">
@@ -274,7 +287,14 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
   <!-- Drawer header bar -->
   <div class="mobile-drawer__head">
     <a class="mobile-drawer__logo" href="<?= $h ?>" tabindex="-1">
+      <?php if ( $logo_webp ) : ?>
+      <picture>
+        <source srcset="<?= $logo_webp ?>" type="image/webp">
+        <img src="<?= $lc ?>" width="200" height="32" alt="Jugogradnja">
+      </picture>
+      <?php else : ?>
       <img src="<?= $lc ?>" width="200" height="32" alt="Jugogradnja">
+      <?php endif; ?>
     </a>
     <button class="mobile-drawer__close"
             aria-label="<?= esc_attr__( 'Zatvori meni', 'jugogradnja' ) ?>"
