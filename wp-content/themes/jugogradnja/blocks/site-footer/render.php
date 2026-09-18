@@ -93,9 +93,7 @@ $year = gmdate( 'Y' );
 
   <div class="site-footer__bar">
     <p class="site-footer__copy"><?= esc_html( sprintf( __( '© %s Југоградња д.о.о. Сва права задржана.', 'jugogradnja' ), $year ) ) ?></p>
-    <nav class="site-footer__legal" aria-label="<?= esc_attr__( 'Pravni linkovi', 'jugogradnja' ) ?>">
-      <a href="<?= $u( '/politika-privatnosti/' ) ?>"><?= esc_html__( 'Политика приватности', 'jugogradnja' ) ?></a>
-      <a href="<?= $u( '/uslovi-koriscenja/' ) ?>"><?= esc_html__( 'Услови коришћења', 'jugogradnja' ) ?></a>
-    </nav>
+    <!-- Politika privatnosti / Uslovi koriscenja links removed until those pages have real content -->
+
   </div>
 </footer>
