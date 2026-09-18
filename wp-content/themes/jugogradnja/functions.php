@@ -148,6 +148,86 @@ add_action( 'wp_head', function () {
 }, 1 );
 
 // ──────────────────────────────────────────────
+// 4b. SEO META TAGS (description, canonical, Open Graph, Twitter Card)
+// ──────────────────────────────────────────────
+
+/**
+ * Build a plain-text description for the current page: post excerpt if
+ * set, otherwise the first ~30 words of post content, falling back to
+ * the site tagline on the homepage or any page without content.
+ */
+function jugogradnja_seo_description(): string {
+	if ( is_singular() ) {
+		$excerpt = get_the_excerpt();
+		if ( $excerpt ) {
+			return wp_strip_all_tags( $excerpt );
+		}
+		global $post;
+		if ( $post && $post->post_content ) {
+			return wp_trim_words( wp_strip_all_tags( $post->post_content ), 30 );
+		}
+	}
+	return get_bloginfo( 'description' ) ?: get_bloginfo( 'name' );
+}
+
+/**
+ * Absolute URL of the current page's featured image (or the site-wide
+ * fallback hero photo), for Open Graph / Twitter Card.
+ */
+function jugogradnja_seo_image(): string {
+	if ( is_singular() && has_post_thumbnail() ) {
+		$src = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+		if ( $src ) {
+			return $src;
+		}
+	}
+	return get_template_directory_uri() . '/assets/images/photos/hero.jpg';
+}
+
+add_action( 'wp_head', function () {
+	$description = esc_attr( jugogradnja_seo_description() );
+	$title       = esc_attr( wp_get_document_title() );
+	$url         = esc_url( is_singular() ? get_permalink() : home_url( add_query_arg( [], $_SERVER['REQUEST_URI'] ?? '/' ) ) );
+	$image       = esc_url( jugogradnja_seo_image() );
+	$site_name   = esc_attr( get_bloginfo( 'name' ) );
+	$locale      = ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) && 'en' === wpml_get_current_language() )
+		? 'en_US' : 'sr_RS';
+
+	echo "<meta name=\"description\" content=\"{$description}\">\n";
+	echo "<link rel=\"canonical\" href=\"{$url}\">\n";
+
+	echo "<meta property=\"og:type\" content=\"website\">\n";
+	echo "<meta property=\"og:title\" content=\"{$title}\">\n";
+	echo "<meta property=\"og:description\" content=\"{$description}\">\n";
+	echo "<meta property=\"og:url\" content=\"{$url}\">\n";
+	echo "<meta property=\"og:image\" content=\"{$image}\">\n";
+	echo "<meta property=\"og:site_name\" content=\"{$site_name}\">\n";
+	echo "<meta property=\"og:locale\" content=\"{$locale}\">\n";
+
+	echo "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
+	echo "<meta name=\"twitter:title\" content=\"{$title}\">\n";
+	echo "<meta name=\"twitter:description\" content=\"{$description}\">\n";
+	echo "<meta name=\"twitter:image\" content=\"{$image}\">\n";
+}, 3 );
+
+// ──────────────────────────────────────────────
+// 4c. GOOGLE ANALYTICS (GA4)
+// ──────────────────────────────────────────────
+
+add_action( 'wp_head', function () {
+	$ga_id = 'G-6BEDE9EE2X';
+	?>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=<?= esc_attr( $ga_id ) ?>"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', '<?= esc_js( $ga_id ) ?>');
+	</script>
+	<?php
+}, 5 );
+
+// ──────────────────────────────────────────────
 // 5. CUSTOM POST TYPES
 // ──────────────────────────────────────────────
 
