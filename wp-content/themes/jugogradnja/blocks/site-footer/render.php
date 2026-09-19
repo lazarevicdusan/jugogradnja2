@@ -10,7 +10,18 @@ defined( 'ABSPATH' ) || exit;
 
 $t  = get_template_directory_uri();
 $h  = esc_url( home_url( '/' ) );
-$lw = esc_url( $t . '/assets/images/icons/logo-white-full.svg' );
+
+// Latin wordmark logo on the English site only, matching the header.
+$is_en_footer = defined( 'ICL_SITEPRESS_VERSION' )
+    && function_exists( 'wpml_get_current_language' )
+    && 'en' === wpml_get_current_language();
+$lw          = esc_url( $t . '/assets/images/icons/logo-white-full.svg' );
+$lw_webp     = '';
+if ( $is_en_footer ) {
+    $lw      = esc_url( $t . '/assets/images/icons/logo-white-en-full.png' );
+    $lw_webp = esc_url( $t . '/assets/images/icons/logo-white-en-full.webp' );
+}
+
 $ico = [
     'location' => esc_url( $t . '/assets/images/icons/icon-location.svg' ),
     'phone'    => esc_url( $t . '/assets/images/icons/icon-phone.svg' ),
@@ -26,7 +37,14 @@ $year = gmdate( 'Y' );
 
     <div class="site-footer__col site-footer__col--brand">
       <a class="site-footer__logo" href="<?= $h ?>" aria-label="<?= esc_attr__( 'Jugogradnja - početna stranica', 'jugogradnja' ) ?>">
+        <?php if ( $lw_webp ) : ?>
+        <picture>
+          <source srcset="<?= $lw_webp ?>" type="image/webp">
+          <img src="<?= $lw ?>" width="315" height="49" alt="Jugogradnja" loading="lazy">
+        </picture>
+        <?php else : ?>
         <img src="<?= $lw ?>" width="315" height="49" alt="Jugogradnja" loading="lazy">
+        <?php endif; ?>
       </a>
       <p class="site-footer__tagline"><?= esc_html__( 'Радимо. Градимо. Од 1992. године', 'jugogradnja' ) ?></p>
     </div>
