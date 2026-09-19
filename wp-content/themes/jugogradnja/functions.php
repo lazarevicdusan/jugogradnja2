@@ -693,6 +693,61 @@ add_filter( 'wp_check_filetype_and_ext', function ( $data, $file, $filename, $mi
 }, 10, 4 );
 
 // ──────────────────────────────────────────────
+// 12a. WPML-AWARE PERMALINK-BY-SLUG HELPER
+// ──────────────────────────────────────────────
+
+/**
+ * Resolve a page's permalink in the CURRENT WPML language, given only its
+ * Serbian (source-language) slug. Patterns throughout the theme link to
+ * other pages via hardcoded Serbian slugs (e.g. get_page_by_path('kontakt')
+ * + get_permalink()) - that resolves to the Serbian post's permalink even
+ * when viewing the English site, because get_permalink() is itself
+ * filtered by WPML to always return a URL in the CURRENTLY active
+ * language, not the language of the post object passed in.
+ *
+ * @param string $slug      The Serbian (source language) page/post slug.
+ * @param string $post_type Post type to search within (default 'page').
+ * @return string The permalink in the current language, or '#' if not found.
+ */
+function jugogradnja_permalink_by_slug( string $slug, string $post_type = 'page' ): string {
+	$sr_post = get_page_by_path( $slug, OBJECT, $post_type );
+	if ( ! $sr_post ) {
+		return '#';
+	}
+
+	$target_id    = $sr_post->ID;
+	$current_lang = ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) )
+		? wpml_get_current_language()
+		: 'sr';
+
+	if ( 'sr' === $current_lang ) {
+		return get_permalink( $target_id ) ?: '#';
+	}
+
+	global $wpdb;
+	$element_type = 'post_' . $post_type;
+	$trid = $wpdb->get_var( $wpdb->prepare(
+		"SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id = %d AND element_type = %s",
+		$sr_post->ID, $element_type
+	) );
+	if ( $trid ) {
+		$translated_id = $wpdb->get_var( $wpdb->prepare(
+			"SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid = %d AND language_code = %s",
+			$trid, $current_lang
+		) );
+		if ( $translated_id ) {
+			$target_id = (int) $translated_id;
+		}
+	}
+
+	do_action( 'wpml_switch_language', $current_lang );
+	$permalink = get_permalink( $target_id ) ?: '#';
+	do_action( 'wpml_switch_language', null );
+
+	return $permalink;
+}
+
+// ──────────────────────────────────────────────
 // 13. FORM HANDLERS
 // ──────────────────────────────────────────────
 //

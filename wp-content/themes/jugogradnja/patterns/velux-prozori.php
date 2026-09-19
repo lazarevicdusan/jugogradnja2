@@ -81,7 +81,7 @@ $products = [
 						<li><?= esc_html( $f ) ?></li>
 						<?php endforeach; ?>
 					</ul>
-					<a class="jg-velux-prozori__cta" href="<?= esc_url( get_permalink( get_page_by_path( $p['slug'] ) ) ?: '#' ) ?>"><?= esc_html__( 'ПОГЛЕДАЈТЕ ДЕТАЉЕ И ЦЕНЕ', 'jugogradnja' ) ?> &rarr;</a>
+					<a class="jg-velux-prozori__cta" href="<?= esc_url( jugogradnja_permalink_by_slug( $p['slug'] ) ) ?>"><?= esc_html__( 'ПОГЛЕДАЈТЕ ДЕТАЉЕ И ЦЕНЕ', 'jugogradnja' ) ?> &rarr;</a>
 				</div>
 			</div>
 			<?php endforeach; ?>
@@ -105,7 +105,7 @@ $products = [
 			</div>
 			<div class="jg-velux-prozori__guide">
 				<p><?= esc_html__( 'Нисте сигурни који прозор да изаберете? Погледајте наш детаљан водич за куповину или позовите 064/811-58-68', 'jugogradnja' ) ?></p>
-				<a class="jg-velux-prozori__guide-btn" href="<?= esc_url( get_permalink( get_page_by_path( 'velux-vodic' ) ) ?: '#' ) ?>"><?= esc_html__( 'ВОДИЧ ЗА КУПОВИНУ', 'jugogradnja' ) ?> &rarr;</a>
+				<a class="jg-velux-prozori__guide-btn" href="<?= esc_url( jugogradnja_permalink_by_slug( 'velux-vodic' ) ) ?>"><?= esc_html__( 'ВОДИЧ ЗА КУПОВИНУ', 'jugogradnja' ) ?> &rarr;</a>
 			</div>
 		</div>
 	</div>

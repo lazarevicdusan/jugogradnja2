@@ -5,7 +5,7 @@
  * Categories: jugogradnja
  * Inserter: true
  */
-$contact_url = esc_url( get_permalink( get_page_by_path( 'kontakt' ) ) );
+$contact_url = esc_url( jugogradnja_permalink_by_slug( 'kontakt' ) );
 ?>
 <!-- wp:html -->
 <section class="jg-ent-cta">

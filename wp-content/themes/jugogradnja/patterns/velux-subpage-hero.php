@@ -6,10 +6,42 @@
  */
 $t = get_template_directory_uri();
 
-// Derive slug from the request URI - reliable at any WP execution stage
-$uri_path  = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
-$segments  = array_values( array_filter( explode( '/', $uri_path ) ) );
-$page_slug = end( $segments ) ?: '';
+// Resolve the SERBIAN (source) slug regardless of current language, since
+// the $configs keys below are the Serbian slugs - the English pages have
+// different slugs (e.g. velux-komfor-plus -> velux-comfort-plus) which
+// would otherwise fail to match.
+$page_slug  = '';
+$current_id = get_queried_object_id();
+if ( $current_id ) {
+    $sr_ref_id = $current_id;
+    if ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) && 'sr' !== wpml_get_current_language() ) {
+        global $wpdb;
+        $element_type = 'post_' . get_post_type( $current_id );
+        $trid = $wpdb->get_var( $wpdb->prepare(
+            "SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id = %d AND element_type = %s",
+            $current_id, $element_type
+        ) );
+        if ( $trid ) {
+            $sr_id = $wpdb->get_var( $wpdb->prepare(
+                "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid = %d AND language_code = 'sr'",
+                $trid
+            ) );
+            if ( $sr_id ) {
+                $sr_ref_id = (int) $sr_id;
+            }
+        }
+    }
+    $ref_post = get_post( $sr_ref_id );
+    if ( $ref_post ) {
+        $page_slug = $ref_post->post_name;
+    }
+}
+if ( ! $page_slug ) {
+    // Fallback: derive from the request URI (original behavior).
+    $uri_path  = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+    $segments  = array_values( array_filter( explode( '/', $uri_path ) ) );
+    $page_slug = end( $segments ) ?: '';
+}
 
 $configs = [
 	'velux-osnovni' => [
@@ -51,6 +83,36 @@ $configs = [
 ];
 
 $cfg = $configs[ $page_slug ] ?? $configs['velux-osnovni'];
+
+// Resolve the "Back to VELUX" link in the current language too, rather
+// than hardcoding the Serbian "velux" slug.
+$velux_sr_page = get_page_by_path( 'velux' );
+$velux_back_url = '#';
+if ( $velux_sr_page ) {
+    $velux_target_id = $velux_sr_page->ID;
+    $current_lang = ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) ) ? wpml_get_current_language() : 'sr';
+    if ( 'sr' !== $current_lang ) {
+        global $wpdb;
+        $trid = $wpdb->get_var( $wpdb->prepare(
+            "SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id = %d AND element_type = 'post_page'",
+            $velux_sr_page->ID
+        ) );
+        if ( $trid ) {
+            $en_id = $wpdb->get_var( $wpdb->prepare(
+                "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid = %d AND language_code = %s",
+                $trid, $current_lang
+            ) );
+            if ( $en_id ) {
+                $velux_target_id = (int) $en_id;
+            }
+        }
+        do_action( 'wpml_switch_language', $current_lang );
+        $velux_back_url = get_permalink( $velux_target_id ) ?: '#';
+        do_action( 'wpml_switch_language', null );
+    } else {
+        $velux_back_url = get_permalink( $velux_target_id ) ?: '#';
+    }
+}
 ?>
 <section class="jg-velux-sp-hero">
 	<div class="jg-velux-sp-hero__bg" aria-hidden="true">
@@ -58,7 +120,7 @@ $cfg = $configs[ $page_slug ] ?? $configs['velux-osnovni'];
 		<div class="jg-velux-sp-hero__overlay"></div>
 	</div>
 	<div class="jg-velux-sp-hero__inner">
-		<a class="jg-velux-sp-hero__back" href="<?= esc_url( get_permalink( get_page_by_path('velux') ) ?: '#' ) ?>">
+		<a class="jg-velux-sp-hero__back" href="<?= esc_url( $velux_back_url ) ?>">
 			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M12 4l-6 6 6 6" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 <?= esc_html__( 'Назад на VELUX', 'jugogradnja' ) ?>
 		</a>

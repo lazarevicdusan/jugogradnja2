@@ -60,7 +60,7 @@ $features = [
 		<div class="jg-velux-roletne__cta">
 			<h3 class="jg-velux-roletne__cta-title"><?= esc_html__( 'Погледајте комплетну понуду ролетни', 'jugogradnja' ) ?></h3>
 			<p class="jg-velux-roletne__cta-text"><?= esc_html__( 'Детаљне информације о свим моделима, димензијама и ценама. Цене од 3.901 RSD до 13.762 RSD.', 'jugogradnja' ) ?></p>
-			<a class="jg-velux-roletne__cta-btn" href="<?= esc_url( get_permalink( get_page_by_path( 'velux-roletne' ) ) ?: '#' ) ?>"><?= esc_html__( 'ПОГЛЕДАЈТЕ СВЕ РОЛЕТНЕ И ЦЕНЕ', 'jugogradnja' ) ?> &rarr;</a>
+			<a class="jg-velux-roletne__cta-btn" href="<?= esc_url( jugogradnja_permalink_by_slug( 'velux-roletne' ) ) ?>"><?= esc_html__( 'ПОГЛЕДАЈТЕ СВЕ РОЛЕТНЕ И ЦЕНЕ', 'jugogradnja' ) ?> &rarr;</a>
 		</div>
 	</div>
 </section>
