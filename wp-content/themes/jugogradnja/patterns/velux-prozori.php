@@ -66,16 +66,6 @@ $products = [
 				</div>
 				<div class="jg-velux-prozori__card-body">
 					<p class="jg-velux-prozori__card-desc"><?= esc_html( $p['desc'] ) ?></p>
-					<div class="jg-velux-prozori__price-wrap">
-						<?php if ( $p['price'] === __( 'На упит', 'jugogradnja' ) ) : ?>
-						<span class="jg-velux-prozori__price jg-velux-prozori__price--inquiry"><?= esc_html__( 'На упит', 'jugogradnja' ) ?></span>
-						<span class="jg-velux-prozori__price-unit">RSD <?= esc_html__( 'по прозору', 'jugogradnja' ) ?></span>
-						<?php else : ?>
-						<span class="jg-velux-prozori__price-label"><?= esc_html__( 'Цена од', 'jugogradnja' ) ?></span>
-						<span class="jg-velux-prozori__price"><?= esc_html( $p['price'] ) ?></span>
-						<span class="jg-velux-prozori__price-unit">RSD <?= esc_html__( 'по прозору', 'jugogradnja' ) ?></span>
-						<?php endif; ?>
-					</div>
 					<ul class="jg-velux-prozori__features">
 						<?php foreach ( $p['features'] as $f ) : ?>
 						<li><?= esc_html( $f ) ?></li>

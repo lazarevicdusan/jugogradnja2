@@ -87,11 +87,6 @@ function jg_velux_chars( string $label, array $items ): void {
 
 		<?php jg_velux_price_cards( $gzl_cards ); ?>
 
-		<div class="jg-velux-discount-banner">
-			<strong><?= esc_html__( '-15% ПОПУСТ', 'jugogradnja' ) ?></strong>
-			<span><?= esc_html__( 'Важи до 01.07.2026 | Ограничена понуда', 'jugogradnja' ) ?></span>
-		</div>
-
 		<?php jg_velux_chars( 'GZL', $gzl_chars ); ?>
 
 		<!-- GLU серија -->
@@ -102,11 +97,6 @@ function jg_velux_chars( string $label, array $items ): void {
 		</div>
 
 		<?php jg_velux_price_cards( $glu_cards ); ?>
-
-		<div class="jg-velux-discount-banner">
-			<strong><?= esc_html__( '-15% ПОПУСТ', 'jugogradnja' ) ?></strong>
-			<span><?= esc_html__( 'Важи до 01.07.2026 | Ограничена понуда', 'jugogradnja' ) ?></span>
-		</div>
 
 		<?php jg_velux_chars( 'GLU', $glu_chars ); ?>
 
