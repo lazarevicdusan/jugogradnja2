@@ -14,7 +14,7 @@
 				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2.833 6.333c.75 1.917 2.417 3.5 4.417 4.417L8.75 9.25c.167-.167.417-.25.667-.167.75.25 1.583.417 2.417.417.333 0 .666.25.666.666V12.5c0 .333-.25.667-.666.667C5.833 14.167 1 9.333 1 3.167c0-.334.25-.667.667-.667H4.25c.333 0 .667.25.667.667 0 .833.166 1.666.416 2.416.084.25 0 .5-.166.667L2.833 6.333z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 				<?= esc_html__( 'ПОЗОВИТЕ: 064/811-58-68', 'jugogradnja' ) ?>
 			</a>
-			<a class="jg-velux-rcta__btn-secondary" href="/velux-vodic-za-kupovinu"><?= esc_html__( 'ВОДИЧ ЗА КУПОВИНУ', 'jugogradnja' ) ?></a>
+			<a class="jg-velux-rcta__btn-secondary" href="<?= esc_url( jugogradnja_permalink_by_slug( 'velux-vodic' ) ) ?>"><?= esc_html__( 'ВОДИЧ ЗА КУПОВИНУ', 'jugogradnja' ) ?></a>
 		</div>
 	</div>
 </section>
