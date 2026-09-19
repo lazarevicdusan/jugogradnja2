@@ -7,9 +7,15 @@
 // Resolve the SERBIAN (source) slug regardless of current language, since
 // the $configs keys below are the Serbian slugs - the English pages have
 // different slugs (e.g. velux-komfor-plus -> velux-comfort-plus) which
-// would otherwise fail to match.
+// would otherwise fail to match. get_queried_object_id() returns 0 in
+// this pattern's rendering context, so look the current post up by its
+// own URL slug instead of relying on the main query object.
 $page_slug  = '';
-$current_id = get_queried_object_id();
+$url_path   = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+$url_segs   = array_values( array_filter( explode( '/', $url_path ) ) );
+$url_slug   = end( $url_segs ) ?: '';
+$current_post = $url_slug ? get_page_by_path( $url_slug ) : null;
+$current_id = $current_post ? $current_post->ID : 0;
 if ( $current_id ) {
     $sr_ref_id = $current_id;
     if ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) && 'sr' !== wpml_get_current_language() ) {
@@ -35,10 +41,7 @@ if ( $current_id ) {
     }
 }
 if ( ! $page_slug ) {
-    // Fallback: derive from the request URI (original behavior).
-    $uri_path  = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
-    $segments  = array_values( array_filter( explode( '/', $uri_path ) ) );
-    $page_slug = end( $segments ) ?: '';
+    $page_slug = $url_slug;
 }
 
 $configs = [
