@@ -35,7 +35,7 @@ $t = get_template_directory_uri();
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
 				<div>
 					<span class="jg-velux-hero__contact-label"><?= esc_html__( 'Изложбени салон', 'jugogradnja' ) ?></span>
-					<span class="jg-velux-hero__contact-value">Светолика Никачевића бб</span>
+					<span class="jg-velux-hero__contact-value"><?= esc_html__( 'Светолика Никачевића бб', 'jugogradnja' ) ?></span>
 				</div>
 			</div>
 		</div>
