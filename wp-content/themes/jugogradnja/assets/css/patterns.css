@@ -6930,6 +6930,12 @@
   font-weight: 300;
   color: rgba(255,255,255,0.9);
 }
+@media (max-width: 640px) {
+  .jg-velux-energy { padding: 40px 20px; }
+  .jg-velux-energy__stats { grid-template-columns: 1fr; gap: 16px; }
+  .jg-velux-energy__stat { padding: 20px; }
+  .jg-velux-energy__stat-num { font-size: 28px; }
+}
 
 /* ── VELUX Pricing ────────────────────────────────────────── */
 /* ── VELUX Pricing Cards (Standard) ──────────────────────── */
@@ -7699,6 +7705,15 @@
 .jg-velux-rp-card__price-grid:has(.jg-velux-rp-card__price-item:only-child),
 .jg-velux-rp-card__price-grid:has(> *:nth-child(2)):not(:has(> *:nth-child(3))) {
   grid-template-columns: repeat(2,1fr); max-width: 66.67%;
+}
+@media (max-width: 640px) {
+  .jg-velux-rp-card__prices { padding: 20px; }
+  .jg-velux-rp-card__price-grid,
+  .jg-velux-rp-card__price-grid:has(.jg-velux-rp-card__price-item:only-child),
+  .jg-velux-rp-card__price-grid:has(> *:nth-child(2)):not(:has(> *:nth-child(3))) {
+    grid-template-columns: 1fr; max-width: 100%; gap: 12px;
+  }
+  .jg-velux-rp-card__photos { grid-template-columns: 1fr; gap: 16px; padding: 20px; }
 }
 
 .jg-velux-rp-addons { background: #f9f9f9; padding: 80px 40px; }
