@@ -742,7 +742,12 @@ function jugogradnja_permalink_by_slug( string $slug, string $post_type = 'page'
 
 	do_action( 'wpml_switch_language', $current_lang );
 	$permalink = get_permalink( $target_id ) ?: '#';
-	do_action( 'wpml_switch_language', null );
+	// Restore $current_lang, not null - do_action( 'wpml_switch_language', null )
+	// resets WPML's active language to the site default (Serbian) instead of
+	// restoring the original request language, corrupting language detection
+	// for anything that renders after this call on English pages (e.g. the
+	// reference-grid block's category sidebar, when this runs from the header).
+	do_action( 'wpml_switch_language', $current_lang );
 
 	return $permalink;
 }

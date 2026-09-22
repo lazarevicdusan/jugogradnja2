@@ -79,11 +79,17 @@ $jg_find_translated_permalink = static function ( int $post_id, string $target_l
     // as WPML's own docs recommend for exactly this situation.
     $switched = has_action( 'wpml_switch_language' );
     if ( $switched ) {
+        // do_action( 'wpml_switch_language', null ) does not restore the
+        // original request language - it resets WPML's active language to
+        // the site default (Serbian), corrupting language detection for
+        // everything rendered after the header on English pages. Capture
+        // the real original language first and restore to that instead.
+        $original_lang = function_exists( 'wpml_get_current_language' ) ? wpml_get_current_language() : null;
         do_action( 'wpml_switch_language', $target_lang );
     }
     $permalink = get_permalink( (int) $target_id );
     if ( $switched ) {
-        do_action( 'wpml_switch_language', null );
+        do_action( 'wpml_switch_language', $original_lang );
     }
     return $permalink ?: null;
 };
@@ -161,7 +167,11 @@ $jg_page_url = static function ( int $sr_post_id, string $fallback_path ) {
     }
     do_action( 'wpml_switch_language', $current_lang );
     $permalink = get_permalink( (int) $target_id );
-    do_action( 'wpml_switch_language', null );
+    // Restore the language we were actually already on ($current_lang),
+    // not null - passing null resets WPML's active language to the site
+    // default (Serbian) rather than restoring the original request
+    // language, corrupting detection for anything rendered afterward.
+    do_action( 'wpml_switch_language', $current_lang );
     return $permalink ?: home_url( $fallback_path );
 };
 $investicije_url    = esc_url( $jg_page_url( 7, '/investicije/' ) );

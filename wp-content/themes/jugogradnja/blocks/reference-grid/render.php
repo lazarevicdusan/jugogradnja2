@@ -4,12 +4,17 @@
  * URL params: ?kategorija=<slug>  ?stranica=<n>
  */
 
-// wpml_get_current_language() unreliably returns 'sr' even on /en/ pages
-// in this block's rendering context, so detect the language from the URL
-// directly instead (site uses "different languages in directories":
-// jugogradnja.rs/ = sr, jugogradnja.rs/en/ = en).
-$jg_url_path    = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
-$jg_current_lang = ( 0 === strpos( $jg_url_path, 'en/' ) || 'en' === $jg_url_path ) ? 'en' : 'sr';
+// wpml_get_current_language() previously returned the wrong language here
+// because the site-header block (rendered earlier in the page) called
+// do_action( 'wpml_switch_language', null ) as a "reset", which actually
+// reset WPML's active language to the site default (Serbian) instead of
+// restoring the real current language - corrupting every language check
+// that ran afterward, including this one. That reset bug is now fixed at
+// its source (site-header.php / functions.php), so the normal WPML API
+// is reliable again here.
+$jg_current_lang = ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) )
+    ? wpml_get_current_language()
+    : 'sr';
 
 $per_page    = 6;
 $active_slug = isset( $_GET['kategorija'] ) ? sanitize_title( $_GET['kategorija'] ) : '';
