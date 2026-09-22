@@ -751,9 +751,9 @@ function jugogradnja_permalink_by_slug( string $slug, string $post_type = 'page'
 // 13. FORM HANDLERS
 // ──────────────────────────────────────────────
 //
-// Temporary: all forms deliver to a single inbox for testing/preparation.
-// Swap this for the real per-form recipient(s) before launch.
-define( 'JG_FORMS_RECIPIENT', 'dusan@modulate.biz' );
+// All forms (contact, Sofeija, careers application, VELUX inquiry)
+// deliver to this inbox.
+define( 'JG_FORMS_RECIPIENT', 'prodaja@jugogradnja.rs' );
 
 // Simple honeypot: forms include a hidden field named jg_hp that a human
 // never sees or fills in. If it arrives non-empty, silently drop the submit.
