@@ -64,20 +64,42 @@ $terms = get_terms( [
     'orderby'    => 'name',
 ] );
 
-// get_terms() doesn't automatically filter by the current WPML language
-// for this taxonomy, so both the Serbian and English term duplicates
-// come back together. Filter down to only the current language's terms.
+// The English "translations" of this taxonomy's terms are WPML shadow
+// terms used only for labels - actual projects are only ever assigned to
+// the original Serbian term_taxonomy_id (wp_term_relationships never
+// points at the English copies), so the English terms' own ->count is
+// always 0 and filtering by them returns nothing. Always work from the
+// original (source-language) terms, which hold the real counts and post
+// relationships, and just swap in the current language's translated name
+// for display.
+$jg_cat_name_map = [];
 if ( defined( 'ICL_SITEPRESS_VERSION' ) && ! is_wp_error( $terms ) ) {
     global $wpdb;
     $tt_ids = wp_list_pluck( $terms, 'term_taxonomy_id' );
     if ( $tt_ids ) {
         $placeholders = implode( ',', array_fill( 0, count( $tt_ids ), '%d' ) );
-        $valid_tt_ids = $wpdb->get_col( $wpdb->prepare(
-            "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE element_type = 'tax_kategorija_projekta' AND language_code = %s AND element_id IN ({$placeholders})",
-            array_merge( [ $jg_current_lang ], $tt_ids )
+        $source_tt_ids = $wpdb->get_col( $wpdb->prepare(
+            "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE element_type = 'tax_kategorija_projekta' AND source_language_code IS NULL AND element_id IN ({$placeholders})",
+            $tt_ids
         ) );
-        $valid_tt_ids = array_map( 'intval', $valid_tt_ids );
-        $terms = array_values( array_filter( $terms, static fn( $t ) => in_array( (int) $t->term_taxonomy_id, $valid_tt_ids, true ) ) );
+        $source_tt_ids = array_map( 'intval', $source_tt_ids );
+        $terms = array_values( array_filter( $terms, static fn( $t ) => in_array( (int) $t->term_taxonomy_id, $source_tt_ids, true ) ) );
+
+        if ( 'en' === $jg_current_lang && $source_tt_ids ) {
+            $placeholders2 = implode( ',', array_fill( 0, count( $source_tt_ids ), '%d' ) );
+            $rows = $wpdb->get_results( $wpdb->prepare(
+                "SELECT src.element_id AS source_tt_id, tr_term.name AS translated_name
+                 FROM {$wpdb->prefix}icl_translations src
+                 JOIN {$wpdb->prefix}icl_translations tgt ON tgt.trid = src.trid AND tgt.language_code = 'en'
+                 JOIN {$wpdb->prefix}term_taxonomy tr_tt ON tr_tt.term_taxonomy_id = tgt.element_id
+                 JOIN {$wpdb->prefix}terms tr_term ON tr_term.term_id = tr_tt.term_id
+                 WHERE src.element_type = 'tax_kategorija_projekta' AND src.element_id IN ({$placeholders2})",
+                $source_tt_ids
+            ) );
+            foreach ( $rows as $row ) {
+                $jg_cat_name_map[ (int) $row->source_tt_id ] = $row->translated_name;
+            }
+        }
     }
 }
 
@@ -136,8 +158,13 @@ function jg_ref_filter_url( string $slug ): string {
 }
 
 function jg_ref_cat_label( int $post_id ): string {
+    global $jg_cat_name_map;
     $t = get_the_terms( $post_id, 'kategorija_projekta' );
-    return ( $t && ! is_wp_error( $t ) ) ? esc_html( $t[0]->name ) : '';
+    if ( ! $t || is_wp_error( $t ) ) {
+        return '';
+    }
+    $name = $jg_cat_name_map[ (int) $t[0]->term_taxonomy_id ] ?? $t[0]->name;
+    return esc_html( $name );
 }
 ?>
 <section class="jg-ref-grid-section">
@@ -159,7 +186,7 @@ function jg_ref_cat_label( int $post_id ): string {
         <li>
           <a class="jg-ref-sidebar__link<?= $active_slug === $term->slug ? ' is-active' : '' ?>"
              href="<?= jg_ref_filter_url( $term->slug ) ?>">
-            <?= esc_html( $term->name ) ?>
+            <?= esc_html( $jg_cat_name_map[ (int) $term->term_taxonomy_id ] ?? $term->name ) ?>
             <span class="jg-ref-sidebar__count"><?= esc_html( (string) $term->count ) ?></span>
           </a>
         </li>
