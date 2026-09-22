@@ -756,9 +756,10 @@ function jugogradnja_permalink_by_slug( string $slug, string $post_type = 'page'
 // 13. FORM HANDLERS
 // ──────────────────────────────────────────────
 //
-// All forms (contact, Sofeija, careers application, VELUX inquiry)
-// deliver to this inbox.
-define( 'JG_FORMS_RECIPIENT', 'prodaja@jugogradnja.rs' );
+// Contact, Sofeija, and careers application forms deliver to this inbox;
+// VELUX inquiries go to their own address below.
+define( 'JG_FORMS_RECIPIENT', 'gradnja@jugogradnja.rs' );
+define( 'JG_VELUX_FORMS_RECIPIENT', 'prodaja@jugogradnja.rs' );
 
 // Simple honeypot: forms include a hidden field named jg_hp that a human
 // never sees or fills in. If it arrives non-empty, silently drop the submit.
@@ -947,7 +948,7 @@ function jg_handle_velux_form(): void {
 	}
 	$headers = [ 'Reply-To: ' . $email ];
 
-	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers );
+	$sent = wp_mail( JG_VELUX_FORMS_RECIPIENT, $subject, $body, $headers );
 	jg_forms_redirect( 'velux', $sent ? 'ok' : 'error' );
 }
 add_action( 'admin_post_jg_velux', 'jg_handle_velux_form' );
