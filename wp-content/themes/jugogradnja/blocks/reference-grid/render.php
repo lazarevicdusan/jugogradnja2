@@ -58,10 +58,17 @@ if ( $deeplink_slug ) {
     }
 }
 
+// suppress_filters is required here: WPML hooks get_terms() to only
+// return the current language's terms, which on the English page means
+// ONLY the empty English shadow terms (19-23) come back and nothing is
+// left after filtering down to the source-language terms below. Fetch
+// the raw, unfiltered set instead so the real (Serbian) terms are always
+// available regardless of which language is currently active.
 $terms = get_terms( [
-    'taxonomy'   => 'kategorija_projekta',
-    'hide_empty' => false,
-    'orderby'    => 'name',
+    'taxonomy'         => 'kategorija_projekta',
+    'hide_empty'       => false,
+    'orderby'          => 'name',
+    'suppress_filters' => true,
 ] );
 
 // The English "translations" of this taxonomy's terms are WPML shadow
