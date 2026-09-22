@@ -767,6 +767,129 @@ function jg_forms_is_bot(): bool {
 	return ! empty( $_POST['jg_hp'] );
 }
 
+// ── Submission log (precaution against lost wp_mail() failures) ──
+// wp_mail() has no built-in retry or persistence - if it fails (SMTP
+// hiccup, spam rejection, etc.) the submission is otherwise gone with no
+// way to recover it. Save every submission to its own table before/after
+// attempting to send, regardless of outcome, so nothing is ever lost.
+function jg_forms_table_name(): string {
+	global $wpdb;
+	return $wpdb->prefix . 'jg_form_submissions';
+}
+
+function jg_forms_maybe_create_table(): void {
+	if ( get_option( 'jg_forms_db_version' ) === '1' ) {
+		return;
+	}
+	global $wpdb;
+	$table_name      = jg_forms_table_name();
+	$charset_collate = $wpdb->get_charset_collate();
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( "CREATE TABLE {$table_name} (
+		id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+		form_type VARCHAR(20) NOT NULL,
+		recipient VARCHAR(190) NOT NULL,
+		subject VARCHAR(255) NOT NULL,
+		body LONGTEXT NOT NULL,
+		sent TINYINT(1) NOT NULL DEFAULT 0,
+		created_at DATETIME NOT NULL,
+		PRIMARY KEY (id),
+		KEY form_type (form_type),
+		KEY created_at (created_at)
+	) {$charset_collate};" );
+	update_option( 'jg_forms_db_version', '1' );
+}
+add_action( 'init', 'jg_forms_maybe_create_table' );
+
+function jg_forms_log_submission( string $form_type, string $recipient, string $subject, string $body, bool $sent ): void {
+	global $wpdb;
+	$wpdb->insert(
+		jg_forms_table_name(),
+		[
+			'form_type'  => $form_type,
+			'recipient'  => $recipient,
+			'subject'    => $subject,
+			'body'       => $body,
+			'sent'       => $sent ? 1 : 0,
+			'created_at' => current_time( 'mysql' ),
+		],
+		[ '%s', '%s', '%s', '%s', '%d', '%s' ]
+	);
+}
+
+// ── Admin viewer: Tools -> Form Submissions ──
+add_action( 'admin_menu', function () {
+	add_management_page(
+		__( 'Form Submissions', 'jugogradnja' ),
+		__( 'Form Submissions', 'jugogradnja' ),
+		'manage_options',
+		'jg-form-submissions',
+		'jg_render_form_submissions_page'
+	);
+} );
+
+function jg_render_form_submissions_page(): void {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	global $wpdb;
+	$table    = jg_forms_table_name();
+	$per_page = 30;
+	$paged    = max( 1, (int) ( $_GET['paged'] ?? 1 ) );
+	$offset   = ( $paged - 1 ) * $per_page;
+
+	$total = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
+	$rows  = $wpdb->get_results( $wpdb->prepare(
+		"SELECT * FROM {$table} ORDER BY created_at DESC LIMIT %d OFFSET %d",
+		$per_page, $offset
+	) );
+	$total_pages = (int) ceil( $total / $per_page );
+	?>
+	<div class="wrap">
+		<h1><?php esc_html_e( 'Form Submissions', 'jugogradnja' ); ?></h1>
+		<p><?php esc_html_e( 'A record of every form submission on the site, kept as a backup in case an email fails to send.', 'jugogradnja' ); ?></p>
+		<table class="widefat striped">
+			<thead>
+				<tr>
+					<th><?php esc_html_e( 'Date', 'jugogradnja' ); ?></th>
+					<th><?php esc_html_e( 'Form', 'jugogradnja' ); ?></th>
+					<th><?php esc_html_e( 'Recipient', 'jugogradnja' ); ?></th>
+					<th><?php esc_html_e( 'Subject', 'jugogradnja' ); ?></th>
+					<th><?php esc_html_e( 'Email sent?', 'jugogradnja' ); ?></th>
+					<th><?php esc_html_e( 'Message', 'jugogradnja' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if ( ! $rows ) : ?>
+				<tr><td colspan="6"><?php esc_html_e( 'No submissions yet.', 'jugogradnja' ); ?></td></tr>
+				<?php else : foreach ( $rows as $row ) : ?>
+				<tr>
+					<td><?php echo esc_html( $row->created_at ); ?></td>
+					<td><?php echo esc_html( $row->form_type ); ?></td>
+					<td><?php echo esc_html( $row->recipient ); ?></td>
+					<td><?php echo esc_html( $row->subject ); ?></td>
+					<td><?php echo $row->sent ? '✅' : '❌'; ?></td>
+					<td><pre style="white-space:pre-wrap;margin:0;font-family:inherit;"><?php echo esc_html( $row->body ); ?></pre></td>
+				</tr>
+				<?php endforeach; endif; ?>
+			</tbody>
+		</table>
+		<?php if ( $total_pages > 1 ) : ?>
+		<div class="tablenav"><div class="tablenav-pages">
+			<?php
+			echo paginate_links( [
+				'base'      => add_query_arg( 'paged', '%#%' ),
+				'format'    => '',
+				'current'   => $paged,
+				'total'     => $total_pages,
+			] );
+			?>
+		</div></div>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
 function jg_forms_redirect( string $key, string $status ): void {
 	$referer = wp_get_referer() ?: home_url( '/' );
 	$referer = remove_query_arg( [ 'jg_sent', 'jg_error' ], $referer );
@@ -797,6 +920,7 @@ function jg_handle_contact_form(): void {
 	$headers = [ 'Reply-To: ' . $email ];
 
 	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers );
+	jg_forms_log_submission( 'contact', JG_FORMS_RECIPIENT, $subject, $body, $sent );
 	jg_forms_redirect( 'contact', $sent ? 'ok' : 'error' );
 }
 add_action( 'admin_post_jg_contact', 'jg_handle_contact_form' );
@@ -827,6 +951,7 @@ function jg_handle_sofeija_form(): void {
 	$headers = [ 'Reply-To: ' . $email ];
 
 	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers );
+	jg_forms_log_submission( 'sofeija', JG_FORMS_RECIPIENT, $subject, $body, $sent );
 	jg_forms_redirect( 'sofeija', $sent ? 'ok' : 'error' );
 }
 add_action( 'admin_post_jg_sofeija', 'jg_handle_sofeija_form' );
@@ -891,6 +1016,10 @@ function jg_handle_apply_form(): void {
 	$headers = [ 'Reply-To: ' . $email ];
 
 	$sent = wp_mail( JG_FORMS_RECIPIENT, $subject, $body, $headers, $attachments );
+	// Note: attached CVs themselves are not kept in the submission log
+	// (see below) - only the text fields, since the files are deleted
+	// right after this regardless of send outcome.
+	jg_forms_log_submission( 'apply', JG_FORMS_RECIPIENT, $subject, $body, $sent );
 
 	// The uploaded CVs only need to survive long enough to attach to the
 	// email above - delete them from the media directory either way.
@@ -949,6 +1078,7 @@ function jg_handle_velux_form(): void {
 	$headers = [ 'Reply-To: ' . $email ];
 
 	$sent = wp_mail( JG_VELUX_FORMS_RECIPIENT, $subject, $body, $headers );
+	jg_forms_log_submission( 'velux', JG_VELUX_FORMS_RECIPIENT, $subject, $body, $sent );
 	jg_forms_redirect( 'velux', $sent ? 'ok' : 'error' );
 }
 add_action( 'admin_post_jg_velux', 'jg_handle_velux_form' );
