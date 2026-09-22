@@ -58,55 +58,51 @@ if ( $deeplink_slug ) {
     }
 }
 
-// suppress_filters is required here: WPML hooks get_terms() to only
-// return the current language's terms, which on the English page means
-// ONLY the empty English shadow terms (19-23) come back and nothing is
-// left after filtering down to the source-language terms below. Fetch
-// the raw, unfiltered set instead so the real (Serbian) terms are always
-// available regardless of which language is currently active.
-$terms = get_terms( [
-    'taxonomy'         => 'kategorija_projekta',
-    'hide_empty'       => false,
-    'orderby'          => 'name',
-    'suppress_filters' => true,
-] );
-
-// The English "translations" of this taxonomy's terms are WPML shadow
-// terms used only for labels - actual projects are only ever assigned to
-// the original Serbian term_taxonomy_id (wp_term_relationships never
-// points at the English copies), so the English terms' own ->count is
-// always 0 and filtering by them returns nothing. Always work from the
-// original (source-language) terms, which hold the real counts and post
-// relationships, and just swap in the current language's translated name
-// for display.
+// get_terms() is unusable here: WPML hooks it to filter by the current
+// language (so on English pages only the 5 empty English shadow terms
+// come back, not the real Serbian ones with actual counts) and, even
+// within one language, WPML's own JOIN duplicates every row. Bypass
+// get_terms() entirely and read the canonical (source-language) term
+// list directly from the DB - these are the terms that actually hold
+// real ->count values and real post relationships. Only the display
+// name is swapped for the current language's translation, via a LEFT
+// JOIN to that term's English counterpart.
+global $wpdb;
 $jg_cat_name_map = [];
-if ( defined( 'ICL_SITEPRESS_VERSION' ) && ! is_wp_error( $terms ) ) {
-    global $wpdb;
-    $tt_ids = wp_list_pluck( $terms, 'term_taxonomy_id' );
-    if ( $tt_ids ) {
-        $placeholders = implode( ',', array_fill( 0, count( $tt_ids ), '%d' ) );
-        $source_tt_ids = $wpdb->get_col( $wpdb->prepare(
-            "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE element_type = 'tax_kategorija_projekta' AND source_language_code IS NULL AND element_id IN ({$placeholders})",
-            $tt_ids
-        ) );
-        $source_tt_ids = array_map( 'intval', $source_tt_ids );
-        $terms = array_values( array_filter( $terms, static fn( $t ) => in_array( (int) $t->term_taxonomy_id, $source_tt_ids, true ) ) );
-
-        if ( 'en' === $jg_current_lang && $source_tt_ids ) {
-            $placeholders2 = implode( ',', array_fill( 0, count( $source_tt_ids ), '%d' ) );
-            $rows = $wpdb->get_results( $wpdb->prepare(
-                "SELECT src.element_id AS source_tt_id, tr_term.name AS translated_name
-                 FROM {$wpdb->prefix}icl_translations src
-                 JOIN {$wpdb->prefix}icl_translations tgt ON tgt.trid = src.trid AND tgt.language_code = 'en'
-                 JOIN {$wpdb->prefix}term_taxonomy tr_tt ON tr_tt.term_taxonomy_id = tgt.element_id
-                 JOIN {$wpdb->prefix}terms tr_term ON tr_term.term_id = tr_tt.term_id
-                 WHERE src.element_type = 'tax_kategorija_projekta' AND src.element_id IN ({$placeholders2})",
-                $source_tt_ids
-            ) );
-            foreach ( $rows as $row ) {
-                $jg_cat_name_map[ (int) $row->source_tt_id ] = $row->translated_name;
-            }
+$terms = [];
+if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+    $rows = $wpdb->get_results(
+        "SELECT tt.term_id, tt.term_taxonomy_id, t.name, t.slug, tt.count, en_term.name AS en_name
+         FROM {$wpdb->prefix}icl_translations src
+         JOIN {$wpdb->prefix}term_taxonomy tt ON tt.term_taxonomy_id = src.element_id
+         JOIN {$wpdb->prefix}terms t ON t.term_id = tt.term_id
+         LEFT JOIN {$wpdb->prefix}icl_translations tgt ON tgt.trid = src.trid AND tgt.language_code = 'en'
+         LEFT JOIN {$wpdb->prefix}term_taxonomy en_tt ON en_tt.term_taxonomy_id = tgt.element_id
+         LEFT JOIN {$wpdb->prefix}terms en_term ON en_term.term_id = en_tt.term_id
+         WHERE src.element_type = 'tax_kategorija_projekta' AND src.source_language_code IS NULL AND tt.taxonomy = 'kategorija_projekta'
+         ORDER BY t.name"
+    );
+    foreach ( $rows as $row ) {
+        $term = (object) [
+            'term_id'          => (int) $row->term_id,
+            'term_taxonomy_id' => (int) $row->term_taxonomy_id,
+            'name'             => $row->name,
+            'slug'             => $row->slug,
+            'count'            => (int) $row->count,
+        ];
+        $terms[] = $term;
+        if ( 'en' === $jg_current_lang && $row->en_name ) {
+            $jg_cat_name_map[ $term->term_taxonomy_id ] = $row->en_name;
         }
+    }
+} else {
+    $terms = get_terms( [
+        'taxonomy'   => 'kategorija_projekta',
+        'hide_empty' => false,
+        'orderby'    => 'name',
+    ] );
+    if ( is_wp_error( $terms ) ) {
+        $terms = [];
     }
 }
 
