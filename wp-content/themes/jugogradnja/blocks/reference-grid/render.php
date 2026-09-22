@@ -4,6 +4,13 @@
  * URL params: ?kategorija=<slug>  ?stranica=<n>
  */
 
+// wpml_get_current_language() unreliably returns 'sr' even on /en/ pages
+// in this block's rendering context, so detect the language from the URL
+// directly instead (site uses "different languages in directories":
+// jugogradnja.rs/ = sr, jugogradnja.rs/en/ = en).
+$jg_url_path    = trim( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+$jg_current_lang = ( 0 === strpos( $jg_url_path, 'en/' ) || 'en' === $jg_url_path ) ? 'en' : 'sr';
+
 $per_page    = 6;
 $active_slug = isset( $_GET['kategorija'] ) ? sanitize_title( $_GET['kategorija'] ) : '';
 $page_num    = max( 1, isset( $_GET['stranica'] ) ? absint( $_GET['stranica'] ) : 1 );
@@ -55,15 +62,14 @@ $terms = get_terms( [
 // get_terms() doesn't automatically filter by the current WPML language
 // for this taxonomy, so both the Serbian and English term duplicates
 // come back together. Filter down to only the current language's terms.
-if ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) && ! is_wp_error( $terms ) ) {
+if ( defined( 'ICL_SITEPRESS_VERSION' ) && ! is_wp_error( $terms ) ) {
     global $wpdb;
-    $current_lang = wpml_get_current_language();
     $tt_ids = wp_list_pluck( $terms, 'term_taxonomy_id' );
     if ( $tt_ids ) {
         $placeholders = implode( ',', array_fill( 0, count( $tt_ids ), '%d' ) );
         $valid_tt_ids = $wpdb->get_col( $wpdb->prepare(
             "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE element_type = 'tax_kategorija_projekta' AND language_code = %s AND element_id IN ({$placeholders})",
-            array_merge( [ $current_lang ], $tt_ids )
+            array_merge( [ $jg_current_lang ], $tt_ids )
         ) );
         $valid_tt_ids = array_map( 'intval', $valid_tt_ids );
         $terms = array_values( array_filter( $terms, static fn( $t ) => in_array( (int) $t->term_taxonomy_id, $valid_tt_ids, true ) ) );
