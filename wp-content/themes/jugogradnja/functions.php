@@ -55,6 +55,49 @@ add_filter( 'wp_headers', function ( $headers ) {
 add_filter( 'should_load_separate_core_block_assets', '__return_true' );
 
 // ──────────────────────────────────────────────
+// 1b. DISABLE COMMENTS SITE-WIDE
+// ──────────────────────────────────────────────
+// This is a corporate marketing site with no blog/comment use case -
+// comments are a spam magnet with no upside here, so turn them off
+// everywhere rather than moderating an empty feature.
+
+// Close comments/pings on the front end, regardless of a post's own setting.
+add_filter( 'comments_open', '__return_false', 20, 2 );
+add_filter( 'pings_open',    '__return_false', 20, 2 );
+
+// Hide any comments/comment form that could still render (e.g. old content).
+add_filter( 'comments_array', '__return_empty_array', 10, 2 );
+
+// Remove comment support from every post type.
+add_action( 'init', function () {
+	foreach ( get_post_types() as $post_type ) {
+		if ( post_type_supports( $post_type, 'comments' ) ) {
+			remove_post_type_support( $post_type, 'comments' );
+			remove_post_type_support( $post_type, 'trackbacks' );
+		}
+	}
+}, 100 );
+
+// Remove the Comments admin menu and dashboard widget, and the admin bar bubble.
+add_action( 'admin_menu', function () {
+	remove_menu_page( 'edit-comments.php' );
+} );
+add_action( 'wp_dashboard_setup', function () {
+	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+} );
+add_action( 'wp_before_admin_bar_render', function () {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu( 'comments' );
+} );
+
+// Redirect anyone hitting wp-comments-post.php or a comments feed directly.
+add_action( 'template_redirect', function () {
+	if ( is_comment_feed() ) {
+		wp_die( __( 'Comments are closed.', 'jugogradnja' ), '', [ 'response' => 403 ] );
+	}
+} );
+
+// ──────────────────────────────────────────────
 // 2. THEME SETUP
 // ──────────────────────────────────────────────
 
