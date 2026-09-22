@@ -52,6 +52,24 @@ $terms = get_terms( [
     'orderby'    => 'name',
 ] );
 
+// get_terms() doesn't automatically filter by the current WPML language
+// for this taxonomy, so both the Serbian and English term duplicates
+// come back together. Filter down to only the current language's terms.
+if ( defined( 'ICL_SITEPRESS_VERSION' ) && function_exists( 'wpml_get_current_language' ) && ! is_wp_error( $terms ) ) {
+    global $wpdb;
+    $current_lang = wpml_get_current_language();
+    $tt_ids = wp_list_pluck( $terms, 'term_taxonomy_id' );
+    if ( $tt_ids ) {
+        $placeholders = implode( ',', array_fill( 0, count( $tt_ids ), '%d' ) );
+        $valid_tt_ids = $wpdb->get_col( $wpdb->prepare(
+            "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE element_type = 'tax_kategorija_projekta' AND language_code = %s AND element_id IN ({$placeholders})",
+            array_merge( [ $current_lang ], $tt_ids )
+        ) );
+        $valid_tt_ids = array_map( 'intval', $valid_tt_ids );
+        $terms = array_values( array_filter( $terms, static fn( $t ) => in_array( (int) $t->term_taxonomy_id, $valid_tt_ids, true ) ) );
+    }
+}
+
 $tax_query = [];
 if ( $active_slug ) {
     $tax_query[] = [
@@ -87,6 +105,18 @@ $query = new WP_Query( [
 $total_posts = $query->found_posts;
 $total_pages = $query->max_num_pages;
 
+// wp_count_posts() is a raw count that ignores WPML's per-language query
+// filtering entirely, so it was summing Serbian + English projects
+// together. Get a current-language-aware total via a lightweight query.
+$all_lang_count_query = new WP_Query( [
+    'post_type'      => 'projekat',
+    'post_status'    => 'publish',
+    'posts_per_page' => 1,
+    'fields'         => 'ids',
+    'no_found_rows'  => false,
+] );
+$all_categories_count = $all_lang_count_query->found_posts;
+
 function jg_ref_filter_url( string $slug ): string {
     $base   = strtok( $_SERVER['REQUEST_URI'], '?' );
     $params = [];
@@ -111,7 +141,7 @@ function jg_ref_cat_label( int $post_id ): string {
           <a class="jg-ref-sidebar__link<?= ! $active_slug ? ' is-active' : '' ?>"
              href="<?= jg_ref_filter_url( '' ) ?>">
             <?= esc_html__( 'Све категорије', 'jugogradnja' ) ?>
-            <span class="jg-ref-sidebar__count"><?= esc_html( (string) wp_count_posts( 'projekat' )->publish ) ?></span>
+            <span class="jg-ref-sidebar__count"><?= esc_html( (string) $all_categories_count ) ?></span>
           </a>
         </li>
         <?php foreach ( $terms as $term ) : ?>
