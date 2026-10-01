@@ -19,7 +19,7 @@ $nonce = wp_create_nonce( 'jg_sofeija_contact' );
 			<p class="jg-sofeija-contact__body"><?php echo __( 'Слободно нам пошаљите свој упит и детаље пројекта. Контактираћемо вас у року од 24 сата!<br>Више волите директан разговор? Позовите нас на:', 'jugogradnja' ); ?></p>
 			<a class="jg-btn jg-btn--gold" href="tel:+381642433334">064 243 33 34</a>
 			<span class="jg-sofeija-contact__catalog-label"><?= esc_html__( 'Погледајте целокупну понуду', 'jugogradnja' ) ?></span>
-			<a class="jg-btn jg-btn--gold jg-btn--catalog" href="#"><?= esc_html__( 'Преузмите наш каталог', 'jugogradnja' ) ?></a>
+			<a class="jg-btn jg-btn--gold jg-btn--catalog" href="<?= esc_url( $t . '/assets/files/sofeyia-company-profile.pdf' ) ?>" target="_blank" rel="noopener"><?= esc_html__( 'Преузмите наш каталог', 'jugogradnja' ) ?></a>
 		</div>
 		<div class="jg-sofeija-contact__right">
 			<?php if ( isset( $_GET['jg_sent'] ) && 'sofeija' === $_GET['jg_sent'] ) : ?>
