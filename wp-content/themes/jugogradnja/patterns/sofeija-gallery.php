@@ -4,124 +4,57 @@
  * Slug: jugogradnja/sofeija-gallery
  * Categories: jugogradnja
  */
-$t = get_template_directory_uri();
-$base = $t . '/assets/images/sofeija/';
-
-/*
- * Each category has a 'thumb' (the grid card image) and 'images' (the
- * lightbox gallery). Add more images to the 'images' array as assets
- * become available - the lightbox will show prev/next automatically.
- */
-/* All sofeija images available as placeholders */
-$all = array_map( fn($f) => $base . $f, [
-    'gallery-1.jpg', 'gallery-2.jpg', 'gallery-3.jpg', 'gallery-4.jpg',
-    'gallery-5.jpg', 'gallery-6.jpg', 'gallery-7.jpg', 'gallery-8.jpg',
-    'gallery-zidni.jpg',
-] );
+$t    = get_template_directory_uri();
+$base = $t . '/assets/images/sofeija/gallery/';
 
 /* translators: %d is the image number within the category (1, 2, 3...) */
 $alt_fmt = __( '%1$s %2$d', 'jugogradnja' );
 
 $labels = [
-    'kuhinjski'  => __( 'Кухињски елементи', 'jugogradnja' ),
-    'plakari'    => __( 'Плакари', 'jugogradnja' ),
-    'odlaganje'  => __( 'Елементи за одлагање', 'jugogradnja' ),
-    'kupatilski' => __( 'Купатилски ормарићи', 'jugogradnja' ),
-    'vratni'     => __( 'Вратни панели', 'jugogradnja' ),
-    'vitrine'    => __( 'Витрине за вино', 'jugogradnja' ),
-    'zidni'      => __( 'Зидни панели', 'jugogradnja' ),
-    'komadani'   => __( 'Комадани намештај', 'jugogradnja' ),
-    'dodaci'     => __( 'Додаци', 'jugogradnja' ),
+    'kuhinja'      => __( 'Кухињски елементи', 'jugogradnja' ),
+    'plakari'      => __( 'Плакари', 'jugogradnja' ),
+    'kupatilo'     => __( 'Купатилски ормарићи', 'jugogradnja' ),
+    'opustanje'    => __( 'Простор за опуштање', 'jugogradnja' ),
+    'radni'        => __( 'Радни простор', 'jugogradnja' ),
+    'spavace'      => __( 'Спаваће собе', 'jugogradnja' ),
+    'trpezarija'   => __( 'Трпезарија', 'jugogradnja' ),
+    'zidni'        => __( 'Зидни панели', 'jugogradnja' ),
+    'dodaci'       => __( 'Додаци', 'jugogradnja' ),
 ];
 
-$items = [
-    [
-        'label'  => $labels['kuhinjski'],
-        'thumb'  => 'gallery-1.jpg',
-        'images' => [
-            [ 'src' => $all[0], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 1 ) ],
-            [ 'src' => $all[1], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 2 ) ],
-            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 3 ) ],
-            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['kuhinjski'], 4 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['plakari'],
-        'thumb'  => 'gallery-2.jpg',
-        'images' => [
-            [ 'src' => $all[1], 'alt' => sprintf( $alt_fmt, $labels['plakari'], 1 ) ],
-            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['plakari'], 2 ) ],
-            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['plakari'], 3 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['odlaganje'],
-        'thumb'  => 'gallery-3.jpg',
-        'images' => [
-            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 1 ) ],
-            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 2 ) ],
-            [ 'src' => $all[4], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 3 ) ],
-            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['odlaganje'], 4 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['kupatilski'],
-        'thumb'  => 'gallery-4.jpg',
-        'images' => [
-            [ 'src' => $all[3], 'alt' => sprintf( $alt_fmt, $labels['kupatilski'], 1 ) ],
-            [ 'src' => $all[4], 'alt' => sprintf( $alt_fmt, $labels['kupatilski'], 2 ) ],
-            [ 'src' => $all[0], 'alt' => sprintf( $alt_fmt, $labels['kupatilski'], 3 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['vratni'],
-        'thumb'  => 'gallery-5.jpg',
-        'images' => [
-            [ 'src' => $all[4], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 1 ) ],
-            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 2 ) ],
-            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 3 ) ],
-            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['vratni'], 4 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['vitrine'],
-        'thumb'  => 'gallery-6.jpg',
-        'images' => [
-            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['vitrine'], 1 ) ],
-            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['vitrine'], 2 ) ],
-            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['vitrine'], 3 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['zidni'],
-        'thumb'  => 'gallery-zidni.jpg',
-        'images' => [
-            [ 'src' => $all[8], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 1 ) ],
-            [ 'src' => $all[0], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 2 ) ],
-            [ 'src' => $all[1], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 3 ) ],
-            [ 'src' => $all[2], 'alt' => sprintf( $alt_fmt, $labels['zidni'], 4 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['komadani'],
-        'thumb'  => 'gallery-7.jpg',
-        'images' => [
-            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['komadani'], 1 ) ],
-            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['komadani'], 2 ) ],
-            [ 'src' => $all[8], 'alt' => sprintf( $alt_fmt, $labels['komadani'], 3 ) ],
-        ],
-    ],
-    [
-        'label'  => $labels['dodaci'],
-        'thumb'  => 'gallery-8.jpg',
-        'images' => [
-            [ 'src' => $all[7], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 1 ) ],
-            [ 'src' => $all[8], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 2 ) ],
-            [ 'src' => $all[5], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 3 ) ],
-            [ 'src' => $all[6], 'alt' => sprintf( $alt_fmt, $labels['dodaci'], 4 ) ],
-        ],
-    ],
+/*
+ * Each category lists its own image filenames (first one doubles as the
+ * grid thumbnail). Add/remove filenames here as assets change - the
+ * lightbox shows prev/next automatically based on how many are listed.
+ */
+$files = [
+    'kuhinja'    => [ 'kuhinja-1.png', 'kuhinja-2.png', 'kuhinja-3.jpg', 'kuhinja-4.jpg', 'kuhinja-5.jpg', 'kuhinja-6.jpg' ],
+    'plakari'    => [ 'plakari-1.jpg', 'plakari-2.jpg', 'plakari-3.jpg', 'plakari-4.jpg', 'plakari-5.jpg', 'plakari-6.jpg' ],
+    'kupatilo'   => [ 'kupatilo-1.jpg', 'kupatilo-2.jpg', 'kupatilo-3.jpg' ],
+    'opustanje'  => [ 'opustanje-1.jpg', 'opustanje-2.jpg', 'opustanje-3.jpg', 'opustanje-4.jpg', 'opustanje-5.jpg', 'opustanje-6.jpg', 'opustanje-7.jpg' ],
+    'radni'      => [ 'radni-prostor-1.jpg', 'radni-prostor-2.jpg', 'radni-prostor-3.jpg' ],
+    'spavace'    => [ 'spavace-sobe-1.jpg', 'spavace-sobe-2.jpg', 'spavace-sobe-3.jpg', 'spavace-sobe-4.jpg', 'spavace-sobe-5.jpg' ],
+    'trpezarija' => [ 'trpezarija-1.jpg', 'trpezarija-2.jpg', 'trpezarija-3.jpg', 'trpezarija-4.jpg', 'trpezarija-5.jpg', 'trpezarija-6.jpg' ],
+    'zidni'      => [ 'zidni-paneli-1.jpeg', 'zidni-paneli-2.jpeg', 'zidni-paneli-3.jpg', 'zidni-paneli-4.jpeg' ],
+    'dodaci'     => [ 'dodaci-1.jpg', 'dodaci-2.jpg', 'dodaci-3.jpg', 'dodaci-4.jpg', 'dodaci-5.jpg', 'dodaci-6.jpg', 'dodaci-7.jpg' ],
 ];
+
+$items = [];
+foreach ( $files as $key => $filenames ) {
+    $label  = $labels[ $key ];
+    $images = [];
+    foreach ( $filenames as $i => $filename ) {
+        $images[] = [
+            'src' => $base . $filename,
+            'alt' => sprintf( $alt_fmt, $label, $i + 1 ),
+        ];
+    }
+    $items[] = [
+        'label'  => $label,
+        'thumb'  => $filenames[0],
+        'images' => $images,
+    ];
+}
 ?>
 <section class="jg-sofeija-gallery">
 	<div class="jg-sofeija-gallery__inner">
