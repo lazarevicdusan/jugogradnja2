@@ -8,7 +8,7 @@ $t = get_template_directory_uri();
 ?>
 <section class="jg-sofeija-hero" aria-label="<?= esc_attr__( 'Ко смо ми', 'jugogradnja' ) ?>">
 	<div class="jg-sofeija-hero__bg" aria-hidden="true">
-		<img src="<?= $t ?>/assets/images/sofeija/hero-bg.jpg" alt="" width="1920" height="500" loading="eager">
+		<img src="<?= $t ?>/assets/images/sofeija/hero-bg-2.jpg" alt="" width="2400" height="1333" loading="eager">
 		<div class="jg-sofeija-hero__overlay"></div>
 	</div>
 	<div class="jg-sofeija-hero__inner">
