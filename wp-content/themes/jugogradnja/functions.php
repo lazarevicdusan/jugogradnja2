@@ -710,6 +710,15 @@ add_action( 'wp_enqueue_scripts', function () {
 			file_exists( $sofeija_gallery_path ) ? filemtime( $sofeija_gallery_path ) : '1.5.0',
 			[ 'in_footer' => true ]
 		);
+
+		$sofeija_katalozi_path = $dir . '/assets/js/sofeija-katalozi.js';
+		wp_enqueue_script(
+			'jg-sofeija-katalozi',
+			$uri . '/assets/js/sofeija-katalozi.js',
+			[],
+			file_exists( $sofeija_katalozi_path ) ? filemtime( $sofeija_katalozi_path ) : '1.0.0',
+			[ 'in_footer' => true ]
+		);
 	}
 } );
 

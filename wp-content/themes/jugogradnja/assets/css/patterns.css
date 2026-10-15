@@ -8406,3 +8406,117 @@
 .jg-nekretnine-section__content {
   display: none !important;
 }
+
+/* ── Sofeija catalog browser page ── */
+.jg-sof-katalozi {
+  background: #fff;
+  padding: 64px 32px 96px;
+}
+.jg-sof-katalozi__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.jg-sof-katalozi__heading {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 32px;
+  letter-spacing: -0.01em;
+}
+.jg-sof-katalozi__layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.jg-sof-katalozi__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 8px;
+  position: sticky;
+  top: 24px;
+}
+.jg-sof-katalozi__tab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-family: var(--wp--preset--font-family--body);
+  font-size: 15px;
+  font-weight: 400;
+  color: #212950;
+  text-decoration: none;
+  transition: background 150ms, color 150ms;
+}
+.jg-sof-katalozi__tab:hover,
+.jg-sof-katalozi__tab:focus-visible {
+  background: #f4f4f6;
+}
+.jg-sof-katalozi__tab.is-active {
+  background: #212950;
+  color: #fff;
+}
+.jg-sof-katalozi__tab-icon {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.jg-sof-katalozi__viewer {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.jg-sof-katalozi__viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jg-sof-katalozi__viewer-label {
+  font-family: var(--wp--preset--font-family--heading);
+  font-size: 16px;
+  color: #212950;
+}
+.jg-sof-katalozi__viewer-open {
+  font-family: var(--wp--preset--font-family--body);
+  font-size: 14px;
+  color: #C5A059;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.jg-sof-katalozi__viewer-open:hover {
+  text-decoration: underline;
+}
+.jg-sof-katalozi__frame {
+  width: 100%;
+  height: 80vh;
+  min-height: 500px;
+  border: 0;
+  display: block;
+}
+@media (max-width: 900px) {
+  .jg-sof-katalozi__layout {
+    grid-template-columns: 1fr;
+  }
+  .jg-sof-katalozi__tabs {
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .jg-sof-katalozi__tab {
+    flex: 1 1 auto;
+  }
+  .jg-sof-katalozi__frame {
+    height: 70vh;
+  }
+}
