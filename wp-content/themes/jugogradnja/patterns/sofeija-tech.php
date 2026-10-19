@@ -40,6 +40,9 @@ $t = get_template_directory_uri();
 		</div>
 		<div class="jg-sofeija-tech__photo">
 			<img src="<?= $t ?>/assets/images/sofeija/home2.jpg" alt="<?= esc_attr__( 'Sofeyia ентеријер', 'jugogradnja' ) ?>" width="689" height="485" loading="lazy">
+			<div class="jg-sofeija-tech__photo-overlay">
+				<img class="jg-sofeija-tech__photo-logo" src="<?= $t ?>/assets/images/sofeija/sofeyia-logo-white.png" alt="Sofeyia" width="120" height="41" loading="lazy">
+			</div>
 		</div>
 	</div>
 </section>
