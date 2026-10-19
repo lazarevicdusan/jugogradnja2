@@ -8490,18 +8490,9 @@
 .jg-sof-katalozi__viewer-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
-.jg-sof-katalozi__viewer-open {
-  font-family: var(--wp--preset--font-family--body);
-  font-size: 14px;
-  color: #C5A059;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.jg-sof-katalozi__viewer-open:hover {
-  text-decoration: underline;
-}
+.jg-sof-katalozi__viewer-open,
 .jg-sof-katalozi__viewer-download {
   display: inline-flex;
   align-items: center;
@@ -8516,8 +8507,23 @@
   white-space: nowrap;
   transition: background 150ms;
 }
+.jg-sof-katalozi__viewer-open:hover,
 .jg-sof-katalozi__viewer-download:hover {
   background: #2d3669;
+}
+.jg-sof-katalozi__viewer-open {
+  position: relative;
+  margin-right: 10px;
+}
+.jg-sof-katalozi__viewer-open::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: #e5e5e5;
 }
 .jg-sof-katalozi__frame {
   width: 100%;
