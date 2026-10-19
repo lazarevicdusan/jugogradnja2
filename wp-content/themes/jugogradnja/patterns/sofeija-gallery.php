@@ -72,7 +72,10 @@ foreach ( $files as $key => $filenames ) {
 				<img src="<?= esc_url( $base . $item['thumb'] ) ?>"
 					 alt="<?= esc_attr( $item['label'] ) ?>"
 					 width="460" height="300" loading="lazy">
-				<div class="jg-sofeija-gallery__label"><?= esc_html( $item['label'] ) ?></div>
+				<div class="jg-sofeija-gallery__label">
+					<span class="jg-sofeija-gallery__label-text"><?= esc_html( $item['label'] ) ?></span>
+					<img class="jg-sofeija-gallery__label-logo" src="<?= esc_url( $t . '/assets/images/sofeija/sofeyia-logo-white.png' ) ?>" alt="" width="120" height="41" loading="lazy">
+				</div>
 				<div class="jg-sofeija-gallery__hover-icon" aria-hidden="true">
 					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
