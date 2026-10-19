@@ -8487,6 +8487,11 @@
   font-size: 16px;
   color: #212950;
 }
+.jg-sof-katalozi__viewer-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 .jg-sof-katalozi__viewer-open {
   font-family: var(--wp--preset--font-family--body);
   font-size: 14px;
@@ -8496,6 +8501,23 @@
 }
 .jg-sof-katalozi__viewer-open:hover {
   text-decoration: underline;
+}
+.jg-sof-katalozi__viewer-download {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--wp--preset--font-family--body);
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: #212950;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 150ms;
+}
+.jg-sof-katalozi__viewer-download:hover {
+  background: #2d3669;
 }
 .jg-sof-katalozi__frame {
   width: 100%;

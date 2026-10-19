@@ -5,6 +5,7 @@
 	var frame = document.querySelector( '.jg-sof-katalozi__frame' );
 	var label = document.querySelector( '.jg-sof-katalozi__viewer-label' );
 	var openLink = document.querySelector( '.jg-sof-katalozi__viewer-open' );
+	var downloadLink = document.querySelector( '.jg-sof-katalozi__viewer-download' );
 
 	tabs.forEach( function ( tab ) {
 		tab.addEventListener( 'click', function ( e ) {
@@ -23,6 +24,7 @@
 			frame.src = url;
 			if ( label ) label.textContent = tab.textContent.trim();
 			if ( openLink ) openLink.href = url;
+			if ( downloadLink ) downloadLink.href = url;
 		} );
 	} );
 } )();

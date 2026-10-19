@@ -45,7 +45,10 @@ $catalogs = [
 			<div class="jg-sof-katalozi__viewer">
 				<div class="jg-sof-katalozi__viewer-bar">
 					<span class="jg-sof-katalozi__viewer-label"><?= esc_html( $catalogs[0]['label'] ) ?></span>
-					<a class="jg-sof-katalozi__viewer-open" href="<?= esc_url( $uploads_base . $catalogs[0]['file'] ) ?>" target="_blank" rel="noopener"><?= esc_html__( 'Отвори у новој картици', 'jugogradnja' ) ?></a>
+					<div class="jg-sof-katalozi__viewer-actions">
+						<a class="jg-sof-katalozi__viewer-open" href="<?= esc_url( $uploads_base . $catalogs[0]['file'] ) ?>" target="_blank" rel="noopener"><?= esc_html__( 'Отвори у новој картици', 'jugogradnja' ) ?></a>
+						<a class="jg-sof-katalozi__viewer-download" href="<?= esc_url( $uploads_base . $catalogs[0]['file'] ) ?>" download><?= esc_html__( 'Преузми', 'jugogradnja' ) ?></a>
+					</div>
 				</div>
 				<iframe class="jg-sof-katalozi__frame" src="<?= esc_url( $uploads_base . $catalogs[0]['file'] ) ?>" title="<?= esc_attr__( 'Преглед каталога', 'jugogradnja' ) ?>"></iframe>
 			</div>
