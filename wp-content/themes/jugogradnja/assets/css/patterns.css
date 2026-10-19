@@ -4883,8 +4883,10 @@
 }
 .jg-sofeija-gallery__label-logo {
   flex-shrink: 0;
-  height: 22px;
+  max-height: 16px;
   width: auto;
+  height: auto;
+  object-fit: contain;
 }
 .jg-sofeija-gallery__cta {
   text-align: center;
