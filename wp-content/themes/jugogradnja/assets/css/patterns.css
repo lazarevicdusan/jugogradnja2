@@ -4881,11 +4881,10 @@
 .jg-sofeija-gallery__label-text {
   min-width: 0;
 }
-.jg-sofeija-gallery__label-logo {
+.jg-sofeija-gallery__card img.jg-sofeija-gallery__label-logo {
   flex-shrink: 0;
-  max-height: 16px;
-  width: auto;
-  height: auto;
+  width: 46px !important;
+  height: 16px !important;
   object-fit: contain;
 }
 .jg-sofeija-gallery__cta {
