@@ -13,7 +13,6 @@ $uploads_base = content_url( 'uploads/katalozi/' );
  */
 $catalogs = [
 	[ 'label' => __( 'Профил компаније', 'jugogradnja' ), 'file' => 'profil-kompanije.pdf' ],
-	[ 'label' => __( 'Каталог производа', 'jugogradnja' ), 'file' => 'katalog-proizvoda.pdf' ],
 	[ 'label' => __( 'Најпродаванији производи', 'jugogradnja' ), 'file' => 'najprodavaniji-proizvodi.pdf' ],
 	[ 'label' => __( 'Модуларна колекција плакара', 'jugogradnja' ), 'file' => 'modularna-kolekcija-plakara.pdf' ],
 	[ 'label' => __( 'Слободностојећи намештај', 'jugogradnja' ), 'file' => 'slobodnostojeci-namestaj.pdf' ],
