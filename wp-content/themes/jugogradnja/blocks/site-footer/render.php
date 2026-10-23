@@ -55,7 +55,7 @@ $year = gmdate( 'Y' );
         <li><a href="<?= $u( '/o-nama/' ) ?>"><?= esc_html__( 'О нама', 'jugogradnja' ) ?></a></li>
         <li><a href="<?= $u( '/reference/' ) ?>"><?= esc_html__( 'Референце', 'jugogradnja' ) ?></a></li>
         <li><a href="<?= $u( '/nekretnine/' ) ?>"><?= esc_html__( 'Некретнине', 'jugogradnja' ) ?></a></li>
-        <li><a href="<?= $u( '/sofeiya/' ) ?>">Sofeiya</a></li>
+        <li><a href="<?= $u( '/sofeyia/' ) ?>">Sofeyia</a></li>
         <li><a href="<?= $u( '/velux/' ) ?>">VELUX</a></li>
         <li><a href="<?= $u( '/karijera/' ) ?>"><?= esc_html__( 'Каријера', 'jugogradnja' ) ?></a></li>
         <li><a href="<?= $u( '/kontakt/' ) ?>"><?= esc_html__( 'Контакт', 'jugogradnja' ) ?></a></li>

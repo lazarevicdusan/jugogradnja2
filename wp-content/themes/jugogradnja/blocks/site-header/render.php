@@ -232,7 +232,7 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
         </li>
 
         <li class="site-nav__item">
-          <a class="site-nav__link" href="<?= $u( '/sofeiya/' ) ?>"<?= $is_current( '/sofeiya/' ) ?>>Sofeiya</a>
+          <a class="site-nav__link" href="<?= $u( '/sofeyia/' ) ?>"<?= $is_current( '/sofeyia/' ) ?>>Sofeyia</a>
         </li>
 
         <li class="site-nav__item has-dropdown">
@@ -361,7 +361,7 @@ $is_current = static fn( string $path ): string => ( $req_path === trailingslash
     </div>
 
     <div class="mobile-drawer__item">
-      <a class="mobile-drawer__link" href="<?= $u( '/sofeiya/' ) ?>" tabindex="-1"<?= $is_current( '/sofeiya/' ) ?>>Sofeiya</a>
+      <a class="mobile-drawer__link" href="<?= $u( '/sofeyia/' ) ?>" tabindex="-1"<?= $is_current( '/sofeyia/' ) ?>>Sofeyia</a>
     </div>
 
     <!-- VELUX accordion -->
