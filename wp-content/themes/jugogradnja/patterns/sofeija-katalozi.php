@@ -12,15 +12,15 @@ $uploads_base = content_url( 'uploads/katalozi/' );
  * filenames here as new catalogs arrive.
  */
 $catalogs = [
-	[ 'label' => __( 'Профил компаније', 'jugogradnja' ), 'file' => 'profil-kompanije.pdf' ],
-	[ 'label' => __( 'Најпродаванији производи', 'jugogradnja' ), 'file' => 'najprodavaniji-proizvodi.pdf' ],
-	[ 'label' => __( 'Модуларна колекција плакара', 'jugogradnja' ), 'file' => 'modularna-kolekcija-plakara.pdf' ],
-	[ 'label' => __( 'Слободностојећи намештај', 'jugogradnja' ), 'file' => 'slobodnostojeci-namestaj.pdf' ],
-	[ 'label' => __( 'Дрвена врата', 'jugogradnja' ), 'file' => 'drvena-vrata.pdf' ],
-	[ 'label' => __( 'Додаци', 'jugogradnja' ), 'file' => 'dodaci.pdf' ],
+	[ 'label' => __( 'Каталог производа', 'jugogradnja' ), 'file' => 'katalog-proizvoda.pdf' ],
 	[ 'label' => __( 'Комплетно решење за дом', 'jugogradnja' ), 'file' => 'kompletno-resenje-za-dom.pdf' ],
 	[ 'label' => __( 'Хотелски пројекти', 'jugogradnja' ), 'file' => 'hotelski-projekti.pdf' ],
+	[ 'label' => __( 'Дрвена врата', 'jugogradnja' ), 'file' => 'drvena-vrata.pdf' ],
+	[ 'label' => __( 'Слободностојећи намештај', 'jugogradnja' ), 'file' => 'slobodnostojeci-namestaj.pdf' ],
+	[ 'label' => __( 'Модуларна колекција плакара', 'jugogradnja' ), 'file' => 'modularna-kolekcija-plakara.pdf' ],
+	[ 'label' => __( 'Додаци', 'jugogradnja' ), 'file' => 'dodaci.pdf' ],
 	[ 'label' => __( 'Пројекти', 'jugogradnja' ), 'file' => 'projekti.pdf' ],
+	[ 'label' => __( 'Профил компаније', 'jugogradnja' ), 'file' => 'profil-kompanije.pdf' ],
 ];
 ?>
 <section class="jg-sof-katalozi">
