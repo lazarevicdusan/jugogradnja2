@@ -64,18 +64,10 @@ $first = $catalogs[0];
 					</div>
 				</div>
 
-				<!-- Fast pager (shown when the active catalog has pre-split page images) -->
-				<div class="jg-sof-katalozi__pager" id="jg-sof-pager"<?= empty( $first['pages'] ) ? ' hidden' : '' ?>>
-					<div class="jg-sof-katalozi__pager-frame">
-						<div class="jg-sof-katalozi__pager-spinner" id="jg-sof-pager-spinner"></div>
-						<img class="jg-sof-katalozi__pager-img" id="jg-sof-pager-img" alt="">
-					</div>
-					<div class="jg-sof-katalozi__pager-controls">
-						<button class="jg-sof-katalozi__pager-nav" id="jg-sof-pager-prev" type="button"><?= esc_html__( '← Претходна', 'jugogradnja' ) ?></button>
-						<span class="jg-sof-katalozi__pager-count"><span id="jg-sof-pager-num">1</span> / <span id="jg-sof-pager-total">1</span></span>
-						<button class="jg-sof-katalozi__pager-nav" id="jg-sof-pager-next" type="button"><?= esc_html__( 'Следећа →', 'jugogradnja' ) ?></button>
-					</div>
-				</div>
+				<!-- Fast scroll-stack viewer (shown when the active catalog has pre-split page images).
+				     Pages are stacked vertically, no pagination - each page image is only
+				     requested once the one before it has finished loading. -->
+				<div class="jg-sof-katalozi__pager" id="jg-sof-pager"<?= empty( $first['pages'] ) ? ' hidden' : '' ?>></div>
 
 				<!-- Plain PDF embed (shown for catalogs without page images) -->
 				<iframe class="jg-sof-katalozi__frame" id="jg-sof-pdf-frame" src="<?= empty( $first['pages'] ) ? esc_url( $uploads_base . $first['file'] ) : '' ?>" title="<?= esc_attr__( 'Преглед каталога', 'jugogradnja' ) ?>"<?= empty( $first['pages'] ) ? '' : ' hidden' ?>></iframe>

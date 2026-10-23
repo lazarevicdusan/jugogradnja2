@@ -8569,20 +8569,23 @@
   display: block;
 }
 .jg-sof-katalozi__pager {
-  display: flex;
-  flex-direction: column;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #f4f4f6;
 }
-.jg-sof-katalozi__pager-frame {
+.jg-sof-katalozi__page {
   position: relative;
-  height: 80vh;
-  min-height: 500px;
+  aspect-ratio: 16 / 9;
   background: #f4f4f6;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
 }
-.jg-sof-katalozi__pager-img {
+.jg-sof-katalozi__page:last-child {
+  border-bottom: 0;
+}
+.jg-sof-katalozi__page-img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -8591,10 +8594,13 @@
   opacity: 0;
   transition: opacity 180ms ease;
 }
-.jg-sof-katalozi__pager-img.is-shown {
+.jg-sof-katalozi__page.is-loaded .jg-sof-katalozi__page-img {
   opacity: 1;
 }
-.jg-sof-katalozi__pager-spinner {
+.jg-sof-katalozi__page.is-loaded .jg-sof-katalozi__page-spinner {
+  display: none;
+}
+.jg-sof-katalozi__page-spinner {
   width: 26px;
   height: 26px;
   border-radius: 50%;
@@ -8602,44 +8608,8 @@
   border-top-color: #C5A059;
   animation: jg-sof-pager-spin 0.8s linear infinite;
 }
-.jg-sof-katalozi__pager-spinner[hidden] {
-  display: none;
-}
 @keyframes jg-sof-pager-spin {
   to { transform: rotate(360deg); }
-}
-.jg-sof-katalozi__pager-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 20px;
-  border-top: 1px solid #e5e5e5;
-  background: #f9f9f9;
-}
-.jg-sof-katalozi__pager-nav {
-  font-family: var(--wp--preset--font-family--body);
-  font-size: 13px;
-  font-weight: 500;
-  color: #212950;
-  background: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
-  padding: 8px 14px;
-  cursor: pointer;
-}
-.jg-sof-katalozi__pager-nav:hover:not(:disabled) {
-  border-color: #C5A059;
-  color: #C5A059;
-}
-.jg-sof-katalozi__pager-nav:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-.jg-sof-katalozi__pager-count {
-  font-family: var(--wp--preset--font-family--body);
-  font-size: 13px;
-  color: #666;
 }
 @media (max-width: 900px) {
   .jg-sof-katalozi__layout {
@@ -8656,7 +8626,7 @@
   .jg-sof-katalozi__frame {
     height: 70vh;
   }
-  .jg-sof-katalozi__pager-frame {
-    height: 70vh;
+  .jg-sof-katalozi__pager {
+    max-height: 70vh;
   }
 }

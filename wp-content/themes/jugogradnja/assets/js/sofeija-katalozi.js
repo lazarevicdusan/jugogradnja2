@@ -2,53 +2,48 @@
 	var tabs = document.querySelectorAll( '.jg-sof-katalozi__tab' );
 	if ( ! tabs.length ) return;
 
-	var label      = document.querySelector( '.jg-sof-katalozi__viewer-label' );
-	var openLink   = document.querySelector( '.jg-sof-katalozi__viewer-open' );
+	var label        = document.querySelector( '.jg-sof-katalozi__viewer-label' );
+	var openLink     = document.querySelector( '.jg-sof-katalozi__viewer-open' );
 	var downloadLink = document.querySelector( '.jg-sof-katalozi__viewer-download' );
-	var pdfFrame   = document.getElementById( 'jg-sof-pdf-frame' );
-	var pager      = document.getElementById( 'jg-sof-pager' );
-	var pagerImg   = document.getElementById( 'jg-sof-pager-img' );
-	var pagerSpinner = document.getElementById( 'jg-sof-pager-spinner' );
-	var pagerPrev  = document.getElementById( 'jg-sof-pager-prev' );
-	var pagerNext  = document.getElementById( 'jg-sof-pager-next' );
-	var pagerNum   = document.getElementById( 'jg-sof-pager-num' );
-	var pagerTotal = document.getElementById( 'jg-sof-pager-total' );
+	var pdfFrame     = document.getElementById( 'jg-sof-pdf-frame' );
+	var pager        = document.getElementById( 'jg-sof-pager' );
 
-	var pagerState = { imgbase: '', pages: 0, current: 1, loaded: {} };
+	// Bumped on every tab switch so a still-loading chain from a catalog
+	// the visitor already left stops instead of racing the new one.
+	var loadToken = 0;
 
-	function pagerSrc( n ) {
-		return pagerState.imgbase + 'page-' + String( n ).padStart( 2, '0' ) + '.jpg';
+	function buildStack( imgbase, pages ) {
+		var myToken = ++loadToken;
+		pager.innerHTML = '';
+
+		var slots = [];
+		for ( var i = 1; i <= pages; i++ ) {
+			var slot = document.createElement( 'div' );
+			slot.className = 'jg-sof-katalozi__page';
+			var spinner = document.createElement( 'div' );
+			spinner.className = 'jg-sof-katalozi__page-spinner';
+			var img = document.createElement( 'img' );
+			img.className = 'jg-sof-katalozi__page-img';
+			img.alt = '';
+			slot.appendChild( spinner );
+			slot.appendChild( img );
+			pager.appendChild( slot );
+			slots.push( { slot: slot, img: img } );
+		}
+
+		function loadPage( i ) {
+			if ( myToken !== loadToken || i > pages ) return;
+			var entry = slots[ i - 1 ];
+			entry.img.onload = function () {
+				if ( myToken !== loadToken ) return;
+				entry.slot.classList.add( 'is-loaded' );
+				loadPage( i + 1 );
+			};
+			entry.img.src = imgbase + 'page-' + String( i ).padStart( 2, '0' ) + '.jpg';
+		}
+
+		loadPage( 1 );
 	}
-
-	function pagerPreload( n ) {
-		if ( n < 1 || n > pagerState.pages || pagerState.loaded[ n ] ) return;
-		var pre = new Image();
-		pre.onload = function () { pagerState.loaded[ n ] = true; };
-		pre.src = pagerSrc( n );
-	}
-
-	function pagerGo( n ) {
-		if ( n < 1 || n > pagerState.pages ) return;
-		pagerState.current = n;
-		pagerNum.textContent = n;
-		pagerPrev.disabled = n === 1;
-		pagerNext.disabled = n === pagerState.pages;
-
-		pagerImg.classList.remove( 'is-shown' );
-		pagerSpinner.hidden = false;
-		var tester = new Image();
-		tester.onload = function () {
-			pagerState.loaded[ n ] = true;
-			pagerImg.src = tester.src;
-			pagerSpinner.hidden = true;
-			pagerImg.classList.add( 'is-shown' );
-			pagerPreload( n + 1 );
-		};
-		tester.src = pagerSrc( n );
-	}
-
-	pagerPrev.addEventListener( 'click', function () { pagerGo( pagerState.current - 1 ); } );
-	pagerNext.addEventListener( 'click', function () { pagerGo( pagerState.current + 1 ); } );
 
 	function activateCatalog( tab ) {
 		var pdfUrl  = tab.getAttribute( 'data-pdf' );
@@ -62,14 +57,14 @@
 		if ( downloadLink ) downloadLink.href = pdfUrl;
 
 		if ( pages > 0 && imgbase ) {
-			pagerState = { imgbase: imgbase, pages: pages, current: 1, loaded: {} };
-			pagerTotal.textContent = pages;
 			pdfFrame.hidden = true;
 			pdfFrame.src = '';
 			pager.hidden = false;
-			pagerGo( 1 );
+			buildStack( imgbase, pages );
 		} else {
+			loadToken++; // stop any in-flight stack from the previous catalog
 			pager.hidden = true;
+			pager.innerHTML = '';
 			pdfFrame.hidden = false;
 			pdfFrame.src = pdfUrl;
 		}
@@ -79,8 +74,9 @@
 		tab.addEventListener( 'click', function ( e ) {
 			// Mobile browsers generally can't render a PDF inside an iframe,
 			// so let the tap fall through to the real link (opens the PDF
-			// directly) instead of swapping the embed. The fast pager works
-			// fine on mobile though, so only bail out for PDF-embed catalogs.
+			// directly) instead of swapping the embed. The scroll-stack
+			// viewer works fine on mobile though, so only bail out for
+			// PDF-embed catalogs.
 			var hasPages = tab.hasAttribute( 'data-pages' );
 			if ( ! hasPages && window.matchMedia( '(max-width: 900px)' ).matches ) {
 				return;
@@ -89,4 +85,11 @@
 			activateCatalog( tab );
 		} );
 	} );
+
+	// Initial catalog (first tab) is already marked is-active server-side -
+	// kick off its stack if it's a paged one.
+	var initial = document.querySelector( '.jg-sof-katalozi__tab.is-active' );
+	if ( initial && initial.hasAttribute( 'data-pages' ) ) {
+		buildStack( initial.getAttribute( 'data-imgbase' ), parseInt( initial.getAttribute( 'data-pages' ), 10 ) );
+	}
 } )();
