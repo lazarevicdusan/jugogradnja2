@@ -5513,6 +5513,7 @@
   .jg-sofeija-stats__inner { grid-template-columns: repeat(2, 1fr); }
   .jg-sofeija-tech__inner { grid-template-columns: 1fr; }
   .jg-sofeija-tech__photo { order: -1; }
+  .jg-sofeija-tech__heading { white-space: normal; }
   .jg-sofeija-gallery__grid { grid-template-columns: repeat(2, 1fr); }
   .jg-sofeija-why__grid { grid-template-columns: repeat(2, 1fr); }
   .jg-sofeija-svc__inner { grid-template-columns: repeat(2, 1fr); }
