@@ -4651,6 +4651,8 @@
   padding: 80px 32px;
   text-align: center;
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
 }
 .jg-sofeija-hero__badge {
   font-family: var(--wp--preset--font-family--heading);
