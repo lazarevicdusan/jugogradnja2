@@ -12,23 +12,23 @@ $images_base  = get_template_directory_uri() . '/assets/images/katalozi/';
  * not committed to the theme repo (they're ~330MB combined) - add
  * filenames here as new catalogs arrive.
  *
- * 'pages' + 'folder' are optional: when set, the viewer shows fast
- * pre-split page images (assets/images/katalozi/<folder>/page-NN.jpg)
- * with a prev/next pager instead of embedding the full PDF, so only
- * the page being viewed is ever downloaded. "Отвори у новој картици"
- * and "Преузми" still point at the real PDF either way. Catalogs
- * without 'pages' keep the plain iframe embed.
+ * 'pages' + 'folder' make the viewer show fast pre-split page images
+ * (assets/images/katalozi/<folder>/page-NN.jpg) as a scrolling stack,
+ * loaded one page at a time in order, instead of embedding the full
+ * PDF. "Отвори у новој картици" and "Преузми" still point at the real
+ * PDF either way. A catalog without 'pages' falls back to the plain
+ * iframe embed.
  */
 $catalogs = [
 	[ 'label' => __( 'Каталог производа', 'jugogradnja' ), 'file' => 'katalog-proizvoda.pdf', 'pages' => 54, 'folder' => 'katalog-proizvoda' ],
-	[ 'label' => __( 'Комплетно решење за дом', 'jugogradnja' ), 'file' => 'kompletno-resenje-za-dom.pdf' ],
-	[ 'label' => __( 'Хотелски пројекти', 'jugogradnja' ), 'file' => 'hotelski-projekti.pdf' ],
-	[ 'label' => __( 'Дрвена врата', 'jugogradnja' ), 'file' => 'drvena-vrata.pdf' ],
-	[ 'label' => __( 'Слободностојећи намештај', 'jugogradnja' ), 'file' => 'slobodnostojeci-namestaj.pdf' ],
-	[ 'label' => __( 'Модуларна колекција плакара', 'jugogradnja' ), 'file' => 'modularna-kolekcija-plakara.pdf' ],
-	[ 'label' => __( 'Додаци', 'jugogradnja' ), 'file' => 'dodaci.pdf' ],
-	[ 'label' => __( 'Пројекти', 'jugogradnja' ), 'file' => 'projekti.pdf' ],
-	[ 'label' => __( 'Профил компаније', 'jugogradnja' ), 'file' => 'profil-kompanije.pdf' ],
+	[ 'label' => __( 'Комплетно решење за дом', 'jugogradnja' ), 'file' => 'kompletno-resenje-za-dom.pdf', 'pages' => 62, 'folder' => 'kompletno-resenje-za-dom' ],
+	[ 'label' => __( 'Хотелски пројекти', 'jugogradnja' ), 'file' => 'hotelski-projekti.pdf', 'pages' => 44, 'folder' => 'hotelski-projekti' ],
+	[ 'label' => __( 'Дрвена врата', 'jugogradnja' ), 'file' => 'drvena-vrata.pdf', 'pages' => 63, 'folder' => 'drvena-vrata' ],
+	[ 'label' => __( 'Слободностојећи намештај', 'jugogradnja' ), 'file' => 'slobodnostojeci-namestaj.pdf', 'pages' => 17, 'folder' => 'slobodnostojeci-namestaj' ],
+	[ 'label' => __( 'Модуларна колекција плакара', 'jugogradnja' ), 'file' => 'modularna-kolekcija-plakara.pdf', 'pages' => 73, 'folder' => 'modularna-kolekcija-plakara' ],
+	[ 'label' => __( 'Додаци', 'jugogradnja' ), 'file' => 'dodaci.pdf', 'pages' => 17, 'folder' => 'dodaci' ],
+	[ 'label' => __( 'Пројекти', 'jugogradnja' ), 'file' => 'projekti.pdf', 'pages' => 46, 'folder' => 'projekti' ],
+	[ 'label' => __( 'Профил компаније', 'jugogradnja' ), 'file' => 'profil-kompanije.pdf', 'pages' => 29, 'folder' => 'profil-kompanije' ],
 ];
 
 $first = $catalogs[0];
